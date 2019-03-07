@@ -1,0 +1,31 @@
+body, table, tr, td {
+	background-color:#FFFFFF;
+  font-family:Arial, Verdana, Helvetica, sans-serif;
+  font-size:11px;
+  line-height:15px;
+}
+
+a {text-decoration:none;color:#000}
+a:hover {color:#95472B}
+
+ul {
+  list-style-image: url(../img/ponto.gif);
+  margin:20;padding:0
+}
+
+li {margin:0;padding:0}
+
+.hr {
+background: url(../img/traco.gif) repeat-x;
+  height:3px;
+  font-size:0;
+}
+.boxnormal {
+	font-family: Arial;
+	font-size: 8pt;
+}
+.boxover {
+	font-family: Arial;
+	font-size: 8pt;
+	background-color: #ECF8FF;
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsResponse xmlns="http://www.e-governeapps2.com.br/">
+  <ConsultarLoteRpsResult>
+    <ListaNfse>
+      <CompNfse>
+        <tcCompNfse>
+          <Nfse>
+            <InfNfse>
+              <Numero>8472</Numero>
+              <CodigoVerificacao>N53HKB0X</CodigoVerificacao>
+              <DataEmissao>2016-02-02T10:02:47</DataEmissao>
+              <IdentificacaoRps>
+                <Numero>47</Numero>
+                <Serie>PMC</Serie>
+                <Tipo>1</Tipo>
+              </IdentificacaoRps>
+              <DataEmissaoRps>2016-02-02T10:02:47</DataEmissaoRps>
+              <NaturezaOperacao>1</NaturezaOperacao>
+              <RegimeEspecialTributacao>0</RegimeEspecialTributacao>
+              <OptanteSimplesNacional>1</OptanteSimplesNacional>
+              <IncentivadorCultural>2</IncentivadorCultural>
+              <Competencia>0001-01-01T00:00:00</Competencia>
+              <NfseSubstituida>0</NfseSubstituida>
+              <Servico>
+                <Valores>
+                  <ValorServicos>10.32</ValorServicos>
+                  <ValorDeducoes>0.00</ValorDeducoes>
+                  <ValorPis>0.00</ValorPis>
+                  <ValorCofins>0.00</ValorCofins>
+                  <ValorInss>0.00</ValorInss>
+                  <ValorIr>0.00</ValorIr>
+                  <ValorCsll>0.00</ValorCsll>
+                  <IssRetido>2</IssRetido>
+                  <ValorIss>0.00</ValorIss>
+                  <ValorIssRetido>0.00</ValorIssRetido>
+                  <OutrasRetencoes>0.00</OutrasRetencoes>
+                  <BaseCalculo>10.32</BaseCalculo>
+                  <Aliquota>0.00</Aliquota>
+                  <ValorLiquidoNfse>10.32</ValorLiquidoNfse>
+                  <DescontoIncondicionado>0.00</DescontoIncondicionado>
+                  <DescontoCondicionado>0.00</DescontoCondicionado>
+                </Valores>
+                <ItemListaServico>1701</ItemListaServico>
+                <CodigoCnae>3315500</CodigoCnae>
+                <Discriminacao>MAO DE OBRA DE SERVICOS</Discriminacao>
+                <CodigoMunicipio>4106902</CodigoMunicipio>
+              </Servico>
+              <ValorCredito>0.02</ValorCredito>
+              <PrestadorServico>
+                <IdentificacaoPrestador>
+                  <Cnpj>06866893000139</Cnpj>
+                  <InscricaoMunicipal>150504796831</InscricaoMunicipal>
+                </IdentificacaoPrestador>
+                <NomeFantasia>INFORM SYSTEM SERVICOS DE PROTECAO AO CREDITO NACIONAL LTDA EPP</NomeFantasia>
+                <Endereco>
+                  <Endereco>MARECHAL FLORIANO PEIXOTO</Endereco>
+                  <Numero>306 SL 11</Numero>
+                  <Bairro>CENTRO</Bairro>
+                  <CodigoMunicipio>4106902</CodigoMunicipio>
+                  <Uf>PR</Uf>
+                  <Cep>80010130</Cep>
+                </Endereco>
+              </PrestadorServico>
+              <TomadorServico>
+                <IdentificacaoTomador>
+                  <CpfCnpj>
+                    <Cpf>76721132168</Cpf>
+                  </CpfCnpj>
+                </IdentificacaoTomador>
+                <RazaoSocial>WELLINGTON FERNANDES</RazaoSocial>
+                <Endereco>
+                  <Endereco>MARECHAL FLORIANO PEIXOTO 2</Endereco>
+                  <Numero>306</Numero>
+                  <Complemento>CONJ 11</Complemento>
+                  <Bairro>CENTRO</Bairro>
+                  <CodigoMunicipio>4106902</CodigoMunicipio>
+                  <Uf>PR</Uf>
+                  <Cep>80010130</Cep>
+                </Endereco>
+                <Contato>
+                  <Telefone>4134345566</Telefone>
+                  <Email>administrativo@informsystem.com.br</Email>
+                </Contato>
+              </TomadorServico>
+            </InfNfse>
+          </Nfse>
+        </tcCompNfse>
+      </CompNfse>
+    </ListaNfse>
+    <ListaMensagemRetorno/>
+  </ConsultarLoteRpsResult>
+</ConsultarLoteRpsResponse>

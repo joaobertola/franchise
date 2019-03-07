@@ -1,0 +1,35 @@
+<form name="form1" method="post" action="detalha_devedor.php">
+<table width="650" border="0" cellspacing="0" cellpadding="3" align="center">
+  <tr align="center"> 
+    <td colspan="2" bgcolor="#eeeeee" class="formulario">Confirma&ccedil;&atilde;o 
+      de Recebimento de T&iacute;tulo - Crediario System / Recupere System </td>
+  </tr>
+  <tr> 
+    <td width="30%" class="tabela">N&uacute;mero de Boleto:</td>
+    <td class="html">{numdoc}<input type="hidden" name="numdoc" value="{numdoc}" /></td>
+  </tr>
+  <tr> 
+    <td class="tabela">Nome do Devedor:</td>
+    <td class="html">{nome}
+      <input type="hidden" name="codloja" value="{codloja}" />
+      <input type="hidden" name="cpfcnpj" value="{cpfcnpj}" /></td>
+  </tr>
+  <tr> 
+    <td class="tabela">Vencimento:</td>
+    <td class="html">{vencimento}
+      <input type="hidden" name="mes" value="{mes}" />
+      <input type="hidden" name="ano" value="{ano}" /></td>
+  </tr>
+  <tr> 
+    <td class="tabela">Valor da D&iacute;vida:</td>
+    <td class="html">R$ <input type="text" name="vlr" value="{valor}" class="boxnormal" onKeyDown="FormataValor(this,20,event,2)" onKeyPress="soNumero()" />
+    <input type="hidden" id="metodo" name="metodo" value="ok" /></td>
+  </tr>
+</table>
+<br />
+	<div align="center">
+		<input name="receber_ok" type="submit" id="receber_ok" value="Confirmar Baixa" class="botao_laranja" />
+		<input type="button" onclick="javascript: history.back()" value=" Voltar " class="botao_cinza" />
+	</div>
+</form>
+ 

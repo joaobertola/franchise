@@ -1,0 +1,37 @@
+* About to connect() to isscuritiba.curitiba.pr.gov.br port 443 (#0)
+*   Trying 200.140.228.224... * connected
+* Connected to isscuritiba.curitiba.pr.gov.br (200.140.228.224) port 443 (#0)
+* Initializing NSS with certpath: sql:/etc/pki/nssdb
+* warning: ignoring value of ssl.verifyhost
+* skipping SSL peer certificate verification
+* SSL connection using TLS_RSA_WITH_AES_128_CBC_SHA
+* Server certificate:
+* 	subject: CN=isscuritiba.curitiba.pr.gov.br,OU="Member, Symantec Trust Network",OU=Authenticated by Certisign Certificadora Digital LTDA,OU=Terms of use at www.certisign.com.br/rpa (c) 04,OU=GERENCIA DE PRODUCAO GEPRO,O=INSTITUTO CURITIBA DE INFORMATICA,L=Curitiba,ST=Parana,C=BR
+* 	start date: Nov 29 00:00:00 2013 GMT
+* 	expire date: Dez 29 23:59:59 2015 GMT
+* 	common name: isscuritiba.curitiba.pr.gov.br
+* 	issuer: CN=VeriSign Class 3 International Server CA - G3,OU=Terms of use at https://www.verisign.com/rpa (c)10,OU=VeriSign Trust Network,O="VeriSign, Inc.",C=US
+> POST /Iss.NfseWebService/nfsews.asmx HTTP/1.1
+Accept: */*
+Host: isscuritiba.curitiba.pr.gov.br
+Content-Type: application/soap+xml;charset=utf-8
+Content-length: 482
+
+* skipping SSL peer certificate verification
+* NSS: client certificate from file
+* 	subject: CN=LC LIMA REFRIGERACAO AUTOMOTIVA ME:86130331991,OU=AC CAIXA PJ v2,OU=Caixa Economica Federal,O=ICP-Brasil,C=BR
+* 	start date: Jul 02 20:21:18 2015 GMT
+* 	expire date: Jul 01 20:21:18 2016 GMT
+* 	common name: LC LIMA REFRIGERACAO AUTOMOTIVA ME:86130331991
+* 	issuer: CN=AC CAIXA PJ v2,OU=Caixa Economica Federal,O=ICP-Brasil,C=BR
+< HTTP/1.1 200 OK
+< Cache-Control: private, max-age=0
+< Content-Type: application/soap+xml; charset=utf-8
+< Server: Microsoft-IIS/7.5
+< X-AspNet-Version: 4.0.30319
+< X-Powered-By: ASP.NET
+< Date: Tue, 29 Sep 2015 20:10:18 GMT
+< Content-Length: 688
+< 
+* Connection #0 to host isscuritiba.curitiba.pr.gov.br left intact
+* Closing connection #0

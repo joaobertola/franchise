@@ -1,0 +1,1057 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Inform System - Pesquisas de Créditos Inteligentes</title>
+<link href="../../inform/css/estilos.css" type="text/css" rel="stylesheet">
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody>
+  <!--INICIO DO TOPO -->
+    <tr class="noprint">
+    <td colspan="4" height="81" valign="bottom">&nbsp;</td>
+		</tr>
+        <tr>
+        	<td valign="top">
+<table align="center" border="0" width="624">
+	<tbody>
+		<tr>
+			<td class="Grande" align="center" background="../../images/titulo.gif">Pesquisa Personnalite</td>
+		</tr>
+		<tr>
+			<td height="57">
+				<table border="0" cellpadding="1" cellspacing="0" width="100%">
+					<tbody><tr> 
+						<td class="Grande">Dados informados na Consulta</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="exemplo">ASSOCIADO:</td>
+						<td class="html">48785</td>
+					</tr>
+					<tr>
+						<td class="exemplo">NOME DO ASSOCIADO</td>
+						<td class="html">EMPRESA &amp; FANTASIA</td>
+					</tr>
+					<tr>
+						<td class="exemplo">DATA DA CONSULTA:</td>
+						<td class="html">18/10/2011 às 17:10:34</td>
+					</tr>
+                    <tr>
+						<td class="exemplo">CPF/CNPJ CONSULTADO:</td>
+						<td class="html">656.037.960-49</td>
+					</tr>
+					<tr>
+					  <td class="exemplo">NOME(S):</td>
+					  <td class="html">ANA FLAVIA CUNHA DOS STO.S</td>
+					</tr>
+					<tr> 
+						<td class="exemplo" width="50%">IDENTIFICADOR DA CONSULTA:</td>
+						<td class="html" width="50%"><font color="red">5548653</font></td>
+					</tr>
+				</tbody></table>			</td>
+		</tr>
+		<tr>
+			<td><br>			</td>
+		</tr>
+		<tr>
+			<td class="Grande">
+				Avisos de Registros e/ou Advertências			</td>
+		</tr>
+		<tr>
+		  <td><table border="0" width="100%">
+	<tbody><tr>
+		<td class="Grande" align="center" valign="middle"><font color="red">ATENÇÃO<br>
+			<img src="../../images/visto03.gif"><br>
+			COM RESTRIÇÕES</font>
+	 	</td>
+		<td class="tabela" align="center">Este CPF / CNPJ apresenta Restrições nesta modalidade de consulta.					</td>
+	</tr>
+</tbody></table></td>
+	  </tr>
+		<tr>
+		  <td>&nbsp;</td>
+	  </tr>
+		<tr>
+	  		<td class="Grande" style="color: rgb(255, 255, 255); text-align: center; padding-bottom: 10px;" align="center" background="personalite_arquivos/bar5.gif" height="55">RESUMO DA CONSULTA: RESTRIÇÕES/PENDÊNCIAS</td>
+    	</tr>
+		<tr>
+          <td><table cellpadding="0" cellspacing="0" width="100%">
+          <tbody><tr> 
+            <td class="tabela" width="75%"><b>CHEQUES SEM FUNDOS (Banco Central)</b></td>
+            <td class="html" align="center" width="25%"><a href="#qtcheques">00000</a></td>
+          </tr>
+          <tr> 
+            <td class="tabela"><b>RESTRIÇÕES COMERCIAIS</b></td>
+            <td class="html" align="center"><a href="#qtdAlerta">00000</a></td>
+          </tr>
+          <tr>
+            <td class="tabela"><b>PENDÊNCIAS INTERNAS</b></td>
+            <td class="html" align="center"><a href="#qtdRestritiva"><font color="#FF0000"><b>00007</b></font></a></td>
+          </tr>
+		  <!--
+          <tr> 
+            <td class="tabela">Pend&ecirc;ncias Financeiras:</td>
+            <td class="html">{ocorrencias}</td>
+          </tr>
+          <tr> 
+            <td class="tabela"></td>
+            <td class="html"></td>
+          </tr>
+          <tr> 
+            <td class="tabela">Refinanciamento de Dívidas:</td>
+            <td class="html">00000</td>
+          </tr>
+		  -->
+          <tr> 
+            <td class="tabela"><b>PROTESTOS EM CARTÓRIOS</b></td>
+            <td class="html" align="center"><a href="#qtdProtesto"><font color="#FF0000"><b>00001</b></font></a></td>
+          </tr>
+          <tr> 
+            <td class="tabela"><b>AÇÕES JUDICIAIS</b></td>
+            <td class="html" align="center"><a href="#qtdAcoes">00000</a></td>
+          </tr>
+		  <tr {registro_restritiva}="">
+			<td class="tabela"><b>RESTRITIVOS NACIONAL</b></td>
+			<td class="html" align="center"><a href="#qtdRestritivo">{qtdRestritivosNacional}</a></td>
+		  </tr>
+          
+        </tbody></table></td>
+	  </tr>
+		<tr>
+	  <td>&nbsp;</td>
+    </tr>
+	<tr>
+	  <td class="Grande" style="color: rgb(255, 255, 255); text-align: center; padding-bottom: 10px;" align="center" background="personalite_arquivos/bar5.gif" height="55"><b>RESUMO DA CONSULTA: INFORMAÇÕES COMPLEMENTARES</b></td>
+    </tr>
+    <tr>
+		<td>
+			<table cellpadding="0" cellspacing="0" width="100%">
+				<tbody><tr>
+					<td class="tabela" width="75%"><b>RELACIONAMENTO BANCÁRIO</b></td>
+					<td class="html" align="center" width="25%"><a href="#qtdRelaciona">00000</a></td>
+				</tr>
+
+				<tr>
+					<td class="tabela"><b>CONTUMÁCIA - Banco do Brasil</b></td>
+					<td class="html" align="center"><a href="#qtdContumacia">00000</a></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+                    <td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td class="tabela"><b>TELEFONE FIXOS CADASTRADOS</b></td>
+					<td class="html" align="center"><a href="#qtdTel">00000</a></td>
+				</tr>
+				<tr>
+					<td class="tabela"><b>TELEFONE CELULARES CADASTRADOS</b></td>
+					<td class="html" align="center"><a href="#qtdCel">00000</a></td>
+				</tr>
+                <tr>
+                	<td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+					<td colspan="2" class="total"><span style="font-size:12px; font-weight:bold">PASSAGENS COMERCIAIS</span></td>
+				</tr>
+                <tr>
+					<td colspan="2">
+                    	<table cellpadding="0" cellspacing="0" width="100%">
+                        	<tbody><tr align="center">
+                            	<td class="tabela" width="25%"><b>ATÉ 30 DIAS</b></td>
+                                <td class="tabela" width="25%"><b>30 a 60 DIAS</b></td>
+                                <td class="tabela" width="25%"><b>60 a 90 DIAS</b></td>
+                                <td class="tabela" width="25%"><b>ACIMA DE 90 DIAS</b></td>
+                            </tr>
+                            <tr align="center">
+                            	<td class="html"><a href="#qtdPass30"><font color="blue"><b>00001</b></font></a></td>
+                                <td class="html"><a href="#qtdPass60">00000</a></td>
+                                <td class="html"><a href="#qtdPass90">00000</a></td>
+                                <td class="html"><a href="#qtdPass90X"><font color="blue"><b>00002</b></font></a></td>
+                            </tr>
+                        </tbody></table>                     </td>
+				</tr>
+            </tbody></table>         </td>
+	</tr>
+		<tr>
+		  <td></td>
+	  </tr>
+		<tr>
+		  <td>&nbsp;</td>
+	  </tr>
+		<tr>
+		  <td class="Grande" align="center" background="../../images/titulo.gif">DADOS CADASTRAIS</td>
+	  </tr>
+		<tr>
+		  <td><br>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td class="Grande" align="center" background="personalite_arquivos/separador.gif">Confirmação de Nome</td>
+  </tr>
+  <tr>
+          <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr> 
+          <td class="tabela" width="50%">Nome</td>
+          <td class="html" width="50%">NÃO ENCONTRADO</td>
+        </tr>
+        
+        <tr>
+          <td class="tabela">Endereço:</td>
+          <td class="html">- -</td>
+        </tr>
+        <tr>
+          <td class="tabela" d="d">Número e Complemento:</td>
+          <td class="html">- -</td>
+        </tr>
+        <tr>
+          <td class="tabela">Cidade:</td>
+          <td class="html">-</td>
+        </tr>
+        <tr>
+          <td class="tabela">U.F.:</td>
+          <td class="html">-</td>
+        </tr>
+        <tr>
+          <td class="tabela">CEP:</td>
+          <td class="html">-</td>
+        </tr>
+        
+      </tbody></table></td>
+  </tr>
+</tbody></table>
+
+</td>
+	  </tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>	
+        <tr>
+            <td class="Grande" style="color: rgb(255, 255, 255); text-align: center; padding-bottom: 10px;" align="center" background="personalite_arquivos/bar5.gif" height="55">RESTRIÇÕES / PENDÊNCIAS</td>
+        </tr>
+		<tr>
+			<td>
+            <a name="qtdRestritivo"></a>
+            <a name="qtcheques"></a><table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td class="Grande" align="center" background="personalite_arquivos/separador.gif">Restrição Banco Central</td>
+  </tr>
+	<tr>
+		<td class="tabela" align="center">NADA CONSTA PARA ESSE DOCUMENTO</td>
+	</tr>
+</tbody></table>
+
+            <a name="qtdAlerta"></a>
+            
+            <a name="qtdRestritiva"></a>
+            <br>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td class="Grande" align="center" background="../../images/atencao.gif"><font color="#FFFFFF">Restrições Comerciais - Internas</font></td>
+  </tr>
+  <tr>
+    <td>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td><img src="../../images/item.gif"></td>
+        <td class="tabela" width="48%">Informante</td>
+        <td class="html" width="50%">ITAU/BFB LEASING</td>
+	</tr>
+	
+	<tr>
+	  <td rowspan="7"></td>
+        <td class="tabela">Contrato</td>
+        <td class="html">00000004065345</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Data Ocorrência</td>
+	  <td class="html">13/08/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Data da Disponibilização</td>
+	  <td class="html">16/09/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Valor</td>
+	  <td class="html">R$ 491,00</td>
+    </tr>
+	<!--
+	<tr>
+	  <td class="tabela">Tipo de Ocorr&ecirc;ncia </td>
+	  <td class="html">REGISTRADO</td>
+    </tr>
+	<tr>
+	  <td class="tabela">UF</td>
+	  <td class="html">SP</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Situa&ccedil;&atilde;o</td>
+	  <td class="html">COMPRADOR</td>
+  </tr>
+	-->
+	 <tr>
+	 	<td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+	   
+          
+          
+          
+
+          
+          
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td><img src="../../images/item.gif"></td>
+        <td class="tabela" width="48%">Informante</td>
+        <td class="html" width="50%">BANCO SANTANDER S/A</td>
+	</tr>
+	
+	<tr>
+	  <td rowspan="7"></td>
+        <td class="tabela">Contrato</td>
+        <td class="html">UG148032000003435032</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Data Ocorrência</td>
+	  <td class="html">07/05/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Data da Disponibilização</td>
+	  <td class="html">24/05/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Valor</td>
+	  <td class="html">R$ 1.495,61</td>
+    </tr>
+	<!--
+	<tr>
+	  <td class="tabela">Tipo de Ocorr&ecirc;ncia </td>
+	  <td class="html">REGISTRADO</td>
+    </tr>
+	<tr>
+	  <td class="tabela">UF</td>
+	  <td class="html">SP</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Situa&ccedil;&atilde;o</td>
+	  <td class="html">COMPRADOR</td>
+  </tr>
+	-->
+	 <tr>
+	 	<td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+	   
+          
+          
+          
+
+          
+          
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td><img src="../../images/item.gif"></td>
+        <td class="tabela" width="48%">Informante</td>
+        <td class="html" width="50%">BANCO SANTANDER S/A</td>
+	</tr>
+	
+	<tr>
+	  <td rowspan="7"></td>
+        <td class="tabela">Contrato</td>
+        <td class="html">UG148032000002444032</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Data Ocorrência</td>
+	  <td class="html">07/05/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Data da Disponibilização</td>
+	  <td class="html">24/05/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Valor</td>
+	  <td class="html">R$ 5.021,22</td>
+    </tr>
+	<!--
+	<tr>
+	  <td class="tabela">Tipo de Ocorr&ecirc;ncia </td>
+	  <td class="html">REGISTRADO</td>
+    </tr>
+	<tr>
+	  <td class="tabela">UF</td>
+	  <td class="html">SP</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Situa&ccedil;&atilde;o</td>
+	  <td class="html">COMPRADOR</td>
+  </tr>
+	-->
+	 <tr>
+	 	<td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+	   
+          
+          
+          
+
+          
+          
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td><img src="../../images/item.gif"></td>
+        <td class="tabela" width="48%">Informante</td>
+        <td class="html" width="50%">BANCO IBI S.A BANCO</td>
+	</tr>
+	
+	<tr>
+	  <td rowspan="7"></td>
+        <td class="tabela">Contrato</td>
+        <td class="html">1300101636680000</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Data Ocorrência</td>
+	  <td class="html">11/03/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Data da Disponibilização</td>
+	  <td class="html">11/04/2011</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Valor</td>
+	  <td class="html">R$ 250,84</td>
+    </tr>
+	<!--
+	<tr>
+	  <td class="tabela">Tipo de Ocorr&ecirc;ncia </td>
+	  <td class="html">REGISTRADO</td>
+    </tr>
+	<tr>
+	  <td class="tabela">UF</td>
+	  <td class="html">SP</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Situa&ccedil;&atilde;o</td>
+	  <td class="html">COMPRADOR</td>
+  </tr>
+	-->
+	 <tr>
+	 	<td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+	   
+          
+          
+          
+
+          
+          
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td><img src="../../images/item.gif"></td>
+        <td class="tabela" width="48%">Informante</td>
+        <td class="html" width="50%">CAIXA ECONOMICA FEDE</td>
+	</tr>
+	
+	<tr>
+	  <td rowspan="7"></td>
+        <td class="tabela">Contrato</td>
+        <td class="html">000000000001496800</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Data Ocorrência</td>
+	  <td class="html">30/04/2010</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Data da Disponibilização</td>
+	  <td class="html">20/05/2010</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Valor</td>
+	  <td class="html">R$ 548,86</td>
+    </tr>
+	<!--
+	<tr>
+	  <td class="tabela">Tipo de Ocorr&ecirc;ncia </td>
+	  <td class="html">REGISTRADO</td>
+    </tr>
+	<tr>
+	  <td class="tabela">UF</td>
+	  <td class="html">SP</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Situa&ccedil;&atilde;o</td>
+	  <td class="html">COMPRADOR</td>
+  </tr>
+	-->
+	 <tr>
+	 	<td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+	   
+          
+          
+          
+
+          
+          
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td><img src="../../images/item.gif"></td>
+        <td class="tabela" width="48%">Informante</td>
+        <td class="html" width="50%">CAIXA ECONOMICA FEDE</td>
+	</tr>
+	
+	<tr>
+	  <td rowspan="7"></td>
+        <td class="tabela">Contrato</td>
+        <td class="html">5187670711420244</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Data Ocorrência</td>
+	  <td class="html">01/04/2010</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Data da Disponibilização</td>
+	  <td class="html">17/05/2010</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Valor</td>
+	  <td class="html">R$ 92,31</td>
+    </tr>
+	<!--
+	<tr>
+	  <td class="tabela">Tipo de Ocorr&ecirc;ncia </td>
+	  <td class="html">REGISTRADO</td>
+    </tr>
+	<tr>
+	  <td class="tabela">UF</td>
+	  <td class="html">SP</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Situa&ccedil;&atilde;o</td>
+	  <td class="html">COMPRADOR</td>
+  </tr>
+	-->
+	 <tr>
+	 	<td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+	   
+          
+          
+          
+
+          
+          
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td><img src="../../images/item.gif"></td>
+        <td class="tabela" width="48%">Informante</td>
+        <td class="html" width="50%">CASA BAHIA</td>
+	</tr>
+	
+	<tr>
+	  <td rowspan="7"></td>
+        <td class="tabela">Contrato</td>
+        <td class="html">00044201104392</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Data Ocorrência</td>
+	  <td class="html">07/04/2009</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Data da Disponibilização</td>
+	  <td class="html">24/05/2009</td>
+    </tr>
+	<tr>
+	  <td class="tabela">Valor</td>
+	  <td class="html">R$ 237,52</td>
+    </tr>
+	<!--
+	<tr>
+	  <td class="tabela">Tipo de Ocorr&ecirc;ncia </td>
+	  <td class="html">REGISTRADO</td>
+    </tr>
+	<tr>
+	  <td class="tabela">UF</td>
+	  <td class="html">SP</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Situa&ccedil;&atilde;o</td>
+	  <td class="html">COMPRADOR</td>
+  </tr>
+	-->
+	 <tr>
+	 	<td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+	   
+          
+          
+          
+
+          
+          
+          
+	</td>
+  </tr>
+</tbody></table>
+            <a name="qtdProtesto"></a>
+            <br>
+<table bgcolor="#FF0000" cellpadding="1" cellspacing="0" width="100%">
+	<tbody><tr>
+    	<td>
+<table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td class="Grande" align="center" background="personalite_arquivos/atencao.gif"><font color="#FFFFFF">Protestos</font></td>
+  </tr>
+  <tr>
+  	<td class="Grande">00001 Protesto(s) com valor total de R$ 1,170,20</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+    
+  <tr>
+  	<td class="Grande" align="center" background="../../images/separador.gif">Últimos
+  	  5 protestos</td>
+  </tr>
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td><img src="personalite_arquivos/item.gif"></td>
+	  <td class="tabela" width="48%">Cartorio:</td>
+	  <td class="html" width="50%">2º Cartorio de RS-PORTO ALEGRE                  </td>
+	</tr>
+    <tr>
+    	<td rowspan="2"></td>
+    	<td class="tabela">Data da ocorrencia</td>
+        <td class="html">08/06/2010</td>
+    </tr>
+    <tr>
+    	<td class="tabela">Valor</td>
+        <td class="html">1.170,20</td>
+    </tr>
+   	<tr>
+	  <td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table></td>
+  </tr>
+</tbody></table>
+		</td>
+	</tr>
+</tbody></table>
+
+            <a name="qtdAcoes"></a>
+            <br>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td>
+      	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+        	<tbody><tr>
+            	<td class="Grande" align="center" background="../../images/titulo.gif">Ações Judiciais</td>
+                <td background="../../images/titulo.gif" width="20"><a href="#topo"><img src="personalite_arquivos/ancora.gif" border="0"></a></td>
+            </tr>
+        </tbody></table>
+       </td>
+  </tr>
+	<tr>
+		<td class="tabela" align="center">NÃO CONSTAM AÇÕES PARA O DOCUMENTO CONSULTADO</td>
+	</tr>
+</tbody></table>
+            
+            <br>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td>
+      	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+        	<tbody><tr>
+            	<td class="Grande" align="center" background="../../images/titulo.gif">CONTUMÁCIA - Banco do Brasil</td>
+                <td background="../../images/titulo.gif" width="20"><a href="#topo"><img src="../../images/ancora.gif" border="0"></a></td>
+            </tr>
+        </tbody></table>
+       </td>
+  </tr>
+	<tr>
+		<td class="tabela" align="center">NÃO CONSTAM OCORRÊNCIAS PARA O DOCUMENTO CONSULTADO</td>
+	</tr>
+</tbody></table></td>
+	  </tr>
+		<tr>
+        	<td class="Grande" style="color: rgb(255, 255, 255); text-align: center; padding-bottom: 10px;" align="center" background="../../images/bar5.gif" height="55">Adicionais</td>
+		</tr>
+        <tr>
+        	<td> 
+            <table border="0" width="100%">
+	<tbody><tr>
+    <td style="font-family: Tahoma,Verdana,Arial; font-size: 10px; border: 2px solid rgb(255, 102, 0); padding-top: 5px; padding-bottom: 5px;" align="center"><b>ÍTEM : LOCALIZA MAX  --&gt; NÃO FOI SELECIONADA !</b></td>
+	</tr>
+</tbody></table>
+			            </td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+        	<td class="Grande" style="color: rgb(255, 255, 255); text-align: center; padding-bottom: 10px;" align="center" background="../../images/bar5.gif" height="55">INFORMAÇÕES COMPLEMENTARES</td>
+		</tr>
+		<tr>
+			<td>
+      	<br>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td class="Grande" align="center" background="../../images/separador.gif">Participação em outras empresas </td>
+  </tr>
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td><img src="../../images/item.gif"></td>
+	  <td class="exemplo" width="48%">Socio:</td>
+	  <td class="html" width="50%">ANA FLAVIA CUNHA DOS SANTOS             </td>
+	</tr>
+    <tr>
+    	<td rowspan="3"></td>
+    	<td class="tabela">CNPJ::</td>
+        <td class="html">11.182.906/0001-90</td>
+    </tr>
+    <tr>
+      <td class="tabela">Participação:</td>
+      <td class="html">100 %</td>
+  </tr>
+    <tr>
+    	<td class="tabela">Entrada 28/09/2009</td>
+        <td class="html"></td>
+    </tr>
+   	<tr>
+	  <td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table>
+</td>
+  </tr>
+</tbody></table>
+
+            
+        
+        </td>
+	  </tr>
+        <tr>
+			<td class="Grande" align="center" background="../../images/titulo.gif">Importante</td>
+		</tr>
+		<tr>
+			<td class="tabela" style="padding: 10px;" align="justify">Estas informações não são de carater restritivo <strong>- exceto quando o(s) numero(s) do(s) cheque(s)</strong> objeto da consulta esteja(m) relacionado(s) e devem ser utilizadas para complementar a analise crediticia do consumidor.<br>
+				A <strong>CONTUMACIA</strong>, quando registrada, significa que o 
+consumidor contra-ordenou nos últimos 6 meses, em dias diferentes, 3 
+(três) ou mais ocorrências de sustação ou extravío de cheques.</td>
+		</tr>
+		<tr>
+			<td>
+      	<a name="qtdPass30"></a>
+      	<br>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td>
+      	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+        	<tbody><tr>
+            	<td class="Grande" align="center" background="../../images/titulo.gif">CONSULTAS REALIZADAS NOS ÚLTIMOS 30 DIAS</td>
+                <td background="../../images/titulo.gif" width="20"><a href="#topo"><img src="../../images/ancora.gif" alt="Voltar ao topo" border="0"></a></td>
+            </tr>
+        </tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="Grande">Listadas 1 de um total de 1 consultas realizadas.</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td width="2%"><img src="../../images/item.gif"></td>
+	  <td class="tabela" width="48%">Data:</td>
+	  <td class="html" width="50%">18/10/2011</td>
+	</tr>
+	<tr>
+	  <td rowspan="7">&nbsp;</td>
+	  <td class="tabela">Nome / Empresa</td>
+	  <td class="html">EMPRESA &amp; FANTASIA</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Telefone</td>
+	  <td class="html">4199998888     </td>
+	</tr>
+	<tr>
+	  <td class="tabela">Cidade / UF:</td>
+	  <td class="html">SAO PAULO - SP </td>
+	</tr>
+	
+	<tr>
+	  <td class="tabela">1° Vencimento</td>
+	  <td class="html">10/10/2011</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Valor Venda</td>
+	  <td class="html">1.00</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Tipo Venda</td>
+	  <td class="html">Somente Consulta</td>
+  </tr>
+	<tr>
+	  <td class="tabela">N° Parcelas</td>
+	  <td class="html">1</td>
+    </tr>
+	
+	
+	<tr>
+	  <td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table></td>
+    </tr>
+</tbody></table>
+        <a name="qtdPass60"></a>
+        
+        <a name="qtdPass90"></a>
+        
+        <a name="qtdPass90X"></a>
+        <br>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td>
+      	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+        	<tbody><tr>
+            	<td class="Grande" align="center" background="../../images/titulo.gif">CONSULTAS REALIZADAS NOS ÚLTIMOS ACIMA DE 90 DIAS</td>
+                <td background="../../images/titulo.gif" width="20"><a href="#topo"><img src="../../images/ancora.gif" alt="Voltar ao topo" border="0"></a></td>
+          	</tr>
+        </tbody></table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="Grande">Listadas 2 de um total de 2 consultas realizadas.</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td width="2%"><img src="../../images/item.gif"></td>
+	  <td class="tabela" width="48%">Data:</td>
+	  <td class="html" width="50%">11/12/2007</td>
+	</tr>
+	<tr>
+	  <td rowspan="7">&nbsp;</td>
+	  <td class="tabela">Nome / Empresa</td>
+	  <td class="html">LAN HOUSE FIRE</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Telefone</td>
+	  <td class="html">5134411130     </td>
+	</tr>
+	<tr>
+	  <td class="tabela">Cidade / UF:</td>
+	  <td class="html">CACHOEIRINHA - RS </td>
+	</tr>
+	
+	<tr>
+	  <td class="tabela">1° Vencimento</td>
+	  <td class="html">12/12/2007</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Valor Venda</td>
+	  <td class="html">1.00</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Tipo Venda</td>
+	  <td class="html">Crediário</td>
+  </tr>
+	<tr>
+	  <td class="tabela">N° Parcelas</td>
+	  <td class="html">1</td>
+    </tr>
+	
+	
+	<tr>
+	  <td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+	  <td width="2%"><img src="../../images/item.gif"></td>
+	  <td class="tabela" width="48%">Data:</td>
+	  <td class="html" width="50%">11/12/2007</td>
+	</tr>
+	<tr>
+	  <td rowspan="7">&nbsp;</td>
+	  <td class="tabela">Nome / Empresa</td>
+	  <td class="html">LAN HOUSE FIRE</td>
+	</tr>
+	<tr>
+	  <td class="tabela">Telefone</td>
+	  <td class="html">5134411130     </td>
+	</tr>
+	<tr>
+	  <td class="tabela">Cidade / UF:</td>
+	  <td class="html">CACHOEIRINHA - RS </td>
+	</tr>
+	
+	<tr>
+	  <td class="tabela">1° Vencimento</td>
+	  <td class="html">00/00/0000</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Valor Venda</td>
+	  <td class="html">1.00</td>
+  </tr>
+	<tr>
+	  <td class="tabela">Tipo Venda</td>
+	  <td class="html">Crediário</td>
+  </tr>
+	<tr>
+	  <td class="tabela">N° Parcelas</td>
+	  <td class="html">1</td>
+    </tr>
+	
+	
+	<tr>
+	  <td colspan="3">&nbsp;</td>
+	</tr>
+</tbody></table></td>
+    </tr>
+</tbody></table>
+	        </td>
+		</tr>
+		<tr>
+			<td class="Grande" align="center" background="../../images/titulo.gif">AVISO IMPORTANTE !</td>
+		</tr>
+		<tr>
+			<td class="tabela" style="padding: 10px;" align="justify">Estas 
+informações são confidenciais e deverão ser utilizadas, única e 
+exclusivamente, para orientação das transações comerciais de usuário, 
+responsabilizando-se civil e criminalmente por danos que ocasionar a 
+terceiros, quando utilizadas em desacordo com a legislacão em vigor.</td>
+		</tr>
+		<tr>
+			<td class="Grande" align="center">Ligue: (0**41) 3207-1700 - Fax: (0**41) 3207-1704 - Email: <a href="mailto:atendimento@informsystem.com.br">atendimento@informsystem.com.br</a></td>
+		</tr>
+		<tr>
+		  <td>  </td>
+	  </tr>
+	  	<tr>
+	  <td>&nbsp;</td>
+    </tr>
+	<tr>
+	  <td class="Grande" align="center" background="../../images/titulo.gif">Registro de Relacionamento com o Consumidor </td>
+    </tr>
+	<tr>
+	  <td>
+	  	<table align="center">
+			<tbody><tr>
+				<td valign="top">
+					<table class="tabela" cellspacing="0"> 
+					  <tbody><tr class="formulario">
+						<td colspan="2" bgcolor="#eeeeee">Resumo das Qualificações</td>
+					  </tr>
+					  <tr>
+						<td class="tabela">Qualificações Positivas</td>
+						<td class="html"><font style="font-weight:bold" color="#009900">0</font> %</td>
+					  </tr>
+					  <tr>
+						<td class="tabela">Qualificações Negativas</td>
+						<td class="html"><font style="font-weight:bold" color="#FF0000">0</font> %</td>
+					  </tr>
+					  <tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					  </tr>
+					</tbody></table>				</td>
+				<td>
+				<table class="tabela" border="0" cellspacing="0">
+				  <tbody><tr class="formulario" bgcolor="#eeeeee">
+					<td>Qualificações Recebidas</td>
+					<td>Últimos<br>
+					7 dias</td>
+					<td>Último<br>
+					mês</td>
+					<td>Últimos<br>
+					6 meses </td>
+				  </tr>
+				  <tr>
+					<td class="html">Positiva</td>
+					<td class="tabela">0</td>
+					<td class="tabela">0</td>
+					<td class="tabela">0</td>
+				  </tr>
+				  <tr>
+					<td class="html">Neutra</td>
+					<td class="tabela">0</td>
+					<td class="tabela">0</td>
+					<td class="tabela">0</td>
+				  </tr>
+				  <tr>
+					<td class="html">Negativa</td>
+					<td class="tabela">0</td>
+					<td class="tabela">0</td>
+					<td class="tabela">0</td>
+				  </tr>
+				</tbody></table>				</td>
+			</tr>
+		</tbody></table>		</td>
+    </tr>
+	<tr>
+	  <td>
+	  <table>
+	<tbody><tr>
+		<td class="tabela" style="text-align: justify; padding: 15px;"><b>Observação:</b>
+ As informações contidas neste registro de relacionamento não são de 
+caráter restritivo, e sim para conhecer o relacionamento do consumidor 
+com os demais empresários. A inclusão destas informações é de inteira 
+responsabilidade do empresario que as incluiu, pois manteve relações 
+comerciais com o consumidor. </td>
+	</tr>
+</tbody></table>	  </td>
+    </tr>
+	<tr>
+	  <td>&nbsp;</td>
+    </tr>
+	<tr>
+    	<td class="Grande" align="center" background="../../images/separador.gif">Qualificações Recebidas 		</td>
+  	</tr>
+	<tr><td class="Grande" align="center">Cliente sem Qualificacao</td></tr>
+	<tr>
+	  <td>&nbsp;</td>
+  </tr>
+	<tr>
+	  <td></td>
+    </tr>
+
+
+		<tr>
+			<td>
+				<br>
+				<hr noshade="noshade" size="1">
+				<p><font size="1">Final da Consulta.</font></p>			</td>
+		</tr>
+		<tr>
+			<td align="right"><a href="#topo"><font size="1">Retornar ao topo</font> <img src="../../images/ancora.gif" border="0"></a></td>
+		</tr>
+	</tbody>
+</table>
+<!--
+		Sitresp: 1 ;
+		Data:  ; Nome: ANA FLAVIA CUNHA DOS SANTOS ;
+		Sittel: 0 ;
+		Qtd check: 0 ;
+		Numero cons: 5548653 ; 
+		--></td>
+            <td align="left" valign="top">&nbsp;</td>
+        </tr>
+	</tbody>
+</table>

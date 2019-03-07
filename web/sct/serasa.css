@@ -1,0 +1,5 @@
+* {visibility:hidden;margin:0;padding:0}
+body, .imprimir, .imprimir * {visibility:visible;font-family:Arial,'Times New Roman',Verdana,Helvetica,sans-serif;font-size:10pt;}
+.linha {height:25px;border-bottom:1px solid #000}
+.linhafim {height:25px;border-bottom:1px dashed #000}
+.quebrapagina {page-break-before:always;}

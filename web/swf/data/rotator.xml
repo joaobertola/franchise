@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<rotator>
+ <webdoor>
+  <url>http://www.informsystem.com.br/web/swf/assets/banner1.swf</url>
+ </webdoor>
+ <webdoor>
+  <url>http://www.informsystem.com.br/web/swf/assets/banner14.swf</url>
+ </webdoor>
+ <webdoor>
+  <url>http://www.informsystem.com.br/web/swf/assets/banner5.swf</url>
+ </webdoor>
+ <webdoor>
+  <url>http://www.informsystem.com.br/web/swf/assets/banner12.swf</url>
+ </webdoor>
+ <webdoor>
+  <url>http://www.informsystem.com.br/web/swf/assets/banner13.swf</url>
+ </webdoor>
+</rotator>
+

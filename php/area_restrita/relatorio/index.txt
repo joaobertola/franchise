@@ -1,0 +1,207 @@
+
+    <meta charset="utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="jquery.tablesorter.min.js"></script>
+    <script src="jquery.tablesorter.pager.js"></script>
+		<link rel="stylesheet" href="custom.css" media="screen" />
+  <body>
+    <form action="exemplo.html" id="frm-filtro">
+      <p>
+        <label for="pesquisar">Pesquisar</label>
+        <input type="text" id="pesquisar" size="30" />
+      </p>
+    </form>
+    
+    <table cellspacing="0" summary="relatorio">
+      <thead>
+        <tr>
+          <th><input type="checkbox" value="1" id="marcar-todos" name="marcar-todos" /></th>
+          <th>ID</th>
+          <th>Data Pedido</th>
+          <th>Valor</th>
+          <th>Data Dep&oacute;sito</th>
+          <th>A&ccedil;&otilde;es</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>3.450,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>3.450,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		<tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>3.450,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		<tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>3.450,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		<tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>3.450,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		<tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>3.451,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		<tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>482,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		<tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>2.235,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		<tr>
+          <td><input type="checkbox" value="1" name="marcar[]" /></td>
+					<td>1</td>
+          <td>18/03/2014</td>
+          <td>1.180,00</td>
+          <td>19/03/2014</td>
+          <td>
+            <a href="#"><img src="edit.png" width="16" height="16" /></a>
+            <a href="#"><img src="delete.png" width="16" height="16" /></a>
+          </td>
+        </tr>
+		
+      </tbody>
+    </table>
+    
+    <div id="pager" class="pager">
+    	<form>
+				<span>
+					Exibir <select class="pagesize">
+							<option selected="selected"  value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option  value="40">40</option>
+					</select> registros
+				</span>
+
+				<img src="first.png" class="first"/>
+    		<img src="prev.png" class="prev"/>
+    		<input type="text" class="pagedisplay"/>
+    		<img src="next.png" class="next"/>
+    		<img src="last.png" class="last"/>
+    	</form>
+    </div>
+    
+    <script>
+    $(function(){
+      
+      $('table > tbody > tr:odd').addClass('odd');
+      
+      $('table > tbody > tr').hover(function(){
+        $(this).toggleClass('hover');
+      });
+      
+      $('#marcar-todos').click(function(){
+        $('table > tbody > tr > td > :checkbox')
+          .attr('checked', $(this).is(':checked'))
+          .trigger('change');
+      });
+      
+      $('table > tbody > tr > td > :checkbox').bind('click change', function(){
+        var tr = $(this).parent().parent();
+        if($(this).is(':checked')) $(tr).addClass('selected');
+        else $(tr).removeClass('selected');
+      });
+      
+      $('form').submit(function(e){ e.preventDefault(); });
+      
+      $('#pesquisar').keydown(function(){
+        var encontrou = false;
+        var termo = $(this).val().toLowerCase();
+		alert(termo);
+        $('table > tbody > tr').each(function(){
+          $(this).find('td').each(function(){
+            if($(this).text().toLowerCase().indexOf(termo) > -1) encontrou = true;
+          });
+          if(!encontrou) $(this).hide();
+          else $(this).show();
+          encontrou = false;
+        });
+      });
+      
+      $("table") 
+        .tablesorter({
+          dateFormat: 'uk',
+          headers: {
+            0: {
+              sorter: false
+            },
+            5: {
+              sorter: false
+            }
+          }
+        }) 
+        .tablesorterPager({container: $("#pager")})
+        .bind('sortEnd', function(){
+          $('table > tbody > tr').removeClass('odd');
+          $('table > tbody > tr:odd').addClass('odd');
+        });
+      
+    });
+    </script>
+  </body>
+</html>

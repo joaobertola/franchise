@@ -1,0 +1,269 @@
+<script>
+//script para validar a conta e agencia bancaria
+function validarConta() {
+	d = document.form1;
+	agencia = d.agencia.value;
+	agencia2 = d.agencia2.value;
+	ctacte = d.ctacte.value;
+	ctacte2 = d.ctacte2.value;
+	banco = d.banco.value;
+	cpfcnpj = d.cpfcnpj.value;
+	correntista = d.correntista.value;
+	
+	if (banco == "") {
+		alert("Selecione um banco!");
+		d.banco.focus();
+		return false;
+	}
+	if ((agencia == "")||(agencia2 == "")){
+		alert("Preencha o numero da agencia bancaria!");
+		d.agencia.focus();
+		return false;
+	}
+	if (agencia != agencia2) {
+		alert("A agencia bancaria nao confere. Favor digite novamente");
+		d.agencia.focus();
+		return false;
+	}
+	if ((ctacte == "")||(ctacte2 == "")){
+		alert("Preencha o numero da conta bancaria!");
+		d.ctacte.focus();
+		return false;
+	}
+	if (ctacte != ctacte2) {
+		alert("A conta bancaria nao confere. Favor digite novamente");
+		d.ctacte.focus();
+		return false;
+	}
+	if (cpfcnpj == ""){
+		alert("Preencha o CPF / CNPJ do correntista!");
+		d.cpfcnpj.focus();
+		return false;
+	}
+	if (correntista == ""){
+		alert("Preencha o nome do correntista!");
+		d.correntista.focus();
+		return false;
+	}
+	return true;
+}
+
+//para mostrar ou ocultar os campos
+function mostrar(id) {
+	bco = document.form1.banco.value;
+	if (bco == '001') {
+		if (document.getElementById(id).style.display == 'none') {
+			document.getElementById(id).style.display = '';
+		}
+	}
+}
+
+function ocultar(id) {
+	bco = document.form1.banco.value;
+	if (bco == '001') {
+		document.getElementById(id).style.display = 'none';
+	}
+}
+</script>
+<table width="100%" height="300"  border="0" cellpadding="0" cellspacing="0" style="background: url(../images/recuperesystem.jpg); background-repeat:no-repeat; background-position:top center;">
+	<tr> 
+    	<td colspan="2">&nbsp;</td>
+	</tr>
+    <tr> 
+    	<td class="Titulo_consulta" valign="bottom" height="84" colspan="2">&nbsp;<font color="#FF6600">Recupere System</font> - Conta para Cr&eacute;ditos</td>
+    	 </td>
+	</tr>
+  <tr>
+        <td width="50%">
+          <form name="form1" onsubmit="return validarConta()" action="consulta_recebafacil.php" method="post" >
+            <table width="95%" align="center">
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+	                <td bgcolor="#c0c8c0">
+                    	<table width="100%" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF">
+                  			<tr>
+                    			<td colspan="2" class="menuheader">Cadastro</td>
+				  			</tr>
+                            <tr>
+                    			<td width="40%"><b>ID do Cliente</b></td>
+                   			  	<td width="60%">{codloja}</td>
+                        	</tr>
+                            <tr>
+                            	<td><b>Nome de Fantasia</b></td>
+                            	<td>{empresa}</td>
+                            </tr>
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                    			<td colspan="2" class="menuheader">Dados Banc&aacute;rios</td>
+				  			</tr>
+                            <tr>
+                   				<td>Banco</td>
+                   			  <td>
+                                <select name="banco" id="banco" class="boxnormal" >
+                                <option selected>Selecione o banco</option>
+                                <option value="001">Banco do Brasil</option>
+                                <option value="024">Banco Bandepe</option>
+                                <option value="021">Banco Banestes</option>
+                                <option value="041">Banco Banrisul</option>
+                                <option value="027">Banco Besc</option>
+                                <option value="031">Banco Beg</option>
+                                <option value="048">Banco Bemge</option>
+                                <option value="041">Banco Banrisul</option>
+                                <option value="389">Banco Mercantil do Brasil</option>
+                                <option value="030">Banco Paraiban</option>
+                                <option value="756">Banco Sicoob</option>
+                                <option value="237">Bradesco</option>
+                                <option value="104">Caixa</option>
+                                <option value="748">Cooperativo Sicred S.A.</option>
+                                <option value="399">HSBC</option>
+                                <option value="341">Itau</option>
+                                <option value="070">BRB - Banco de Brasilia S.A.</option>
+                                <option value="356">Real/ABN Amro</option>
+                                <option value="353">Santander</option>
+                                <option value="409">Unibanco</option>
+                                </select> 
+                                *								</td>
+                   			</tr>
+                            <tr>
+                              <td class="Grande">&nbsp;</td>
+                              <td>
+                              	<input type="radio" name="tpconta" value="1" onFocus="ocultar('poupanca');mostrar('contacorrente');return true;" checked />Conta Corrente 
+                              	<input type="radio" name="tpconta" value="2" onFocus="ocultar('contacorrente');mostrar('poupanca');return true;" />Poupan&ccedil;a                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2"><hr noshade="noshade" size="1" width="90%" color="#c0c8c0"  /></td>
+                            </tr>
+                            <tr>
+                        		<td>N&uacute;mero da Ag&ecirc;ncia</td>
+								<td>
+                                	<input name="agencia" id="agencia" 
+                             		onKeyPress="formatar('####-#', this)" class="boxnormal"
+                            		onfocus="this.className='boxover'" onBlur="this.className='boxnormal'"
+                            		size="14" maxlength="6" onKeyUp="autoTab(this, 6, event)" />
+                        			* <font color="#999999">Ex.: 1234-9</font>                                </td>
+                        	</tr>
+                            <tr>
+                              <td>Repetir Ag&ecirc;ncia</td>
+                              <td><input name="agencia2" id="agencia2" 
+                             		onkeypress="formatar('####-#', this)" class="boxnormal"
+                            		onfocus="this.className='boxover'" onblur="this.className='boxnormal'"
+                            		size="14" maxlength="6" onkeyup="autoTab(this, 6, event)" />
+                              *</td>
+                            </tr>
+                            <tr>
+                              <td colspan="2"><hr noshade="noshade" size="1" width="90%" color="#c0c8c0"  /></td>
+                            </tr>
+                            <tr>
+                              <td colspan="2">
+                              <table width="100%" id="contacorrente">
+                                  <tr>
+                                    <td width="40%">Conta e D&iacute;gito</td>
+                                    <td>
+                                        <input name="ctacte" id="ctacte" 
+                                        class="boxnormal"
+                                        onfocus="this.className='boxover'" onBlur="this.className='boxnormal'"
+                                        size="14" maxlength="14" />
+                                        * <font color="#999999">Ex.: 12345-X</font>                                    </td>
+                                  </tr>
+                                  <tr>
+                                  	<td>Repetir Conta</td>
+                                  	<td><input name="ctacte2" id="ctacte2" 
+                                        class="boxnormal"
+                                        onfocus="this.className='boxover'" onblur="this.className='boxnormal'"
+                                        size="14" maxlength="14" />
+                                  	*</td>
+                                  </tr>
+                              </table>                              </td>
+                            </tr>
+<tr>
+                              <td colspan="2">
+                              <table width="100%" id="poupanca" style="display:none">
+                                  <tr>
+                                    <td width="40%">Conta Poupan&ccedil;a<br /><font color="#FF0000">(sem d&iacute;gito verificador)</font></td>
+                                    <td>
+                                        1
+                                        <input name="ppc" id="ppc" 
+                                        class="boxnormal"
+                                        onfocus="this.className='boxover'" onBlur="this.className='boxnormal'"
+                                        size="14" maxlength="7" /> 
+                                        
+                                         * <font color="#999999">Ex.: 23456</font>                                    </td>
+                                  </tr>
+                                  <tr>
+                                  	<td>Repetir Conta</td>
+                                  	<td>1
+                                  	  <input name="ppc2" id="ppc2" 
+                                        class="boxnormal"
+                                        onfocus="this.className='boxover'" onblur="this.className='boxnormal'"
+                                        size="14" maxlength="7" />
+                                  	 *</td>
+                                  </tr>
+                              </table>                              </td>
+                            </tr>
+                            <tr>
+                              <td colspan="2"><hr noshade="noshade" size="1" width="90%" color="#c0c8c0"  /></td>
+                            </tr>
+                            <tr>
+                        		<td>CPF / CNPJ do Correntista</td>
+<td>
+                                	<input name="cpfcnpj" id="cpfcnpj" 
+                             		onKeyPress="soNumero()" class="boxnormal"
+                            		onfocus="this.className='boxover'" onBlur="this.className='boxnormal'; return validadoc()"
+                            		size="14" maxlength="14" /> 
+                                	*                                </td>
+                        	</tr>
+                            <tr>
+                        		<td>Nome do Correntista</td>
+<td>
+                                	<input name="correntista" id="correntista" class="boxnormal"
+                            		onfocus="this.className='boxover'" onBlur="this.className='boxnormal'"
+                            		size="35" maxlength="60" /> 
+                                	*                                </td>
+                        	</tr>
+                            <tr>
+                    			<td colspan="2"><hr noshade="noshade" size="1" width="90%" color="#c0c8c0"  /></td>
+                  			</tr>
+                            <tr>
+                    			<td colspan="2" align="center" height="70" background="../images/fdotbl.jpg">
+              						<input type="hidden" name="tipo" id="tipo" value="dadosbancarios">
+                					<input name="consulta" type="hidden" id="consulta" value="A0800" />
+                                    <input style="font-size: 9px; border-width: 0; HEIGHT: 33px; WIDTH: 86px; background-image:url(../images/consultar.gif);" type="submit" name="envia" id="envia" value="Cadastrar" />                   				</td>
+                        	</tr>
+                    	</table>
+               	  </td>
+                </tr>
+            </table>
+          </form>
+          (*) Preenchimento obrigatório 
+        </td>
+    <td width="50%" rowspan="2" valign="top" class="TextoEsquerda">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+	  <fieldset>
+			<legend><span class="Titulo_consulta">Recupere System - Recupera&ccedil;&atilde;o de Cr&eacute;ditos Perdidos</span></legend>
+  <ul>
+			<p>A Inform System, l&iacute;der em Informa&ccedil;&otilde;es e An&aacute;lise de Cr&eacute;dito, lan&ccedil;a a n&iacute;vel nacional o <strong>IN&Eacute;DITO e mais NOVO SERVI&Ccedil;O</strong> de apoio a Micro, Pequena e M&eacute;dia Empresa; se trata do produto <strong>RECUPERE SYSTEM</strong></p>
+			<p>O<strong> RECUPERE SYSTEM</strong> &eacute; uma solu&ccedil;&atilde;o direcionada &agrave; empresas que enfrentam dificudades no recebimento da carteira de inadimplentes.</p>
+			<p>O<strong> RECUPERE SYSTEM</strong> &eacute; f&aacute;cil, tanto para o empres&aacute;rio quanto para o consumidor inadimplente que, ao receber o comunicado de inclus&atilde;o dos &oacute;rg&atilde;os de Prote&ccedil;&atilde;o ao cr&eacute;dito e cong&ecirc;neres, tem a op&ccedil;&atilde;o de liquidar a d&iacute;vida com o pagamento de boleto e evita que seu nome conste na lista negra de inadimplentes.</p>
+			<p>No momento de enviar a <strong>Notifica&ccedil;&atilde;o Extrajudicial</strong> de inclus&atilde;o o associado oferece uma &quot;&uacute;ltima chance&quot; do inadimplente regularizar o d&eacute;bito, podendo o associado enviar boletos &agrave; vista ou parcelado em at&eacute; 1 + 11 vezes.</p>
+			<p>O inadimplente, pagando o d&eacute;bito, o valor pago ser&aacute; transferido para a conta corrente/poupan&ccedil;a indicado pelo associado.</p>
+			</ul>
+	  </fieldset>	</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><table width="305" align="center">
+      <tr>
+        <td width="305" align="center" class="Titulo_consulta"><img src="templates/alerta.gif" /> Instru&ccedil;&otilde;es de uso</td>
+      </tr>
+      <tr>
+        <td><p align="justify">Aten&ccedil;&atilde;o: Clique no bot&atilde;o CADASTRAR ou  tecla ENTER <font color="red">apenas uma vez</font> e aguarde a resposta</p>          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>

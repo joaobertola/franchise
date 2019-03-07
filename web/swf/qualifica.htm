@@ -1,0 +1,88 @@
+<table width="600" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+	<td width="600" height="100" valign="bottom" background="../images/relacionamento.jpg" class="Titulo_consulta">Registro de Relacionamento <font color="#FF6600">com o Consumidor</font><br />&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="Grande">Consultado: {nome}</td>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center">{qualificar}</td>
+  </tr>
+</table>
+<br />
+
+<br />
+<table align="center">
+	<tr>
+		<td valign="top">
+		<table cellspacing="0" class="tabela"> 
+		  <tr class="formulario">
+			<td colspan="2" bgcolor="#eeeeee">Resumo das Qualifica&ccedil;&otilde;es</td>
+		  </tr>
+		  <tr>
+			<td class="tabela">Qualifica&ccedil;&otilde;es Positivas</td>
+			<td class="html"><font color="#009900" style="font-weight:bold">{res_pos}</font> %</td>
+		  </tr>
+		  <tr>
+			<td class="tabela">Qualifica&ccedil;&otilde;es Negativas</td>
+			<td class="html"><font color="#FF0000" style="font-weight:bold">{res_neg}</font> %</td>
+		  </tr>
+		  <tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		  </tr>
+		</table>
+		</td>
+		<td>
+		<table border="0" cellspacing="0" class="tabela">
+		  <tr bgcolor="#eeeeee" class="formulario">
+			<td>Qualifica&ccedil;&otilde;es Recebidas</td>
+			<td>&Uacute;ltimos<br />
+			7 dias</td>
+			<td>&Uacute;ltimo<br />
+			m&ecirc;s</td>
+			<td>&Uacute;ltimos<br />
+			6 meses </td>
+		  </tr>
+		  <tr>
+			<td class="html">Positiva</td>
+			<td class="tabela">{pos7}</td>
+			<td class="tabela">{pos30}</td>
+			<td class="tabela">{pos180}</td>
+		  </tr>
+		  <tr>
+		    <td class="html">Neutra</td>
+		    <td class="tabela">{neg7}</td>
+		    <td class="tabela">{neg30}</td>
+		    <td class="tabela">{neg180}</td>
+		  </tr>
+		  <tr>
+			<td class="html">Negativa</td>
+			<td class="tabela">{ntr7}</td>
+			<td class="tabela">{ntr30}</td>
+			<td class="tabela">{ntr180}</td>
+		  </tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+<br />
+<table width="600" class="tabela" align="center">
+  <tr>
+    <td align="center" background="../images/titulo.gif" class="Grande">Todas as Qualifica&ccedil;&otilde;es </td>
+  </tr>
+	{comentarios}
+  <tr>
+  	<td><HR noshade size='1' width="90%"></td>
+  </tr>
+  <tr>
+  	<td>Final da Consulta.</td>
+  </tr>
+</table>

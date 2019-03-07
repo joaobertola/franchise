@@ -1,0 +1,20 @@
+/*body, table, tr, td {
+  font-family:Arial, Verdana, Helvetica, sans-serif;
+  font-size:11px;
+  line-height:20px;
+}*/
+
+a {text-decoration:none;color:#E18803}
+a:hover {color:#95472B}
+
+ul {
+  list-style-image: url(../img/ponto.gif);
+}
+
+
+.hr {
+background: url(../img/traco.gif) repeat-x;
+  height:3px;
+  font-size:0;
+}
+

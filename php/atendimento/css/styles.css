@@ -1,0 +1,365 @@
+/* CSS styles
+ * Author Simeia Avellar Pedroso
+ * 2015
+ */
+
+/* footer fixed bottom */
+
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 80%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+}
+
+/* end fixed bottom */
+
+body {
+    background-color: transparent;
+    color: #717171;
+    /*font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;*/
+    font-size: 12px !important;
+    background: #f5f5f5
+}
+
+a:hover{
+    cursor: pointer;
+    text-decoration:none;
+}
+
+ul{
+    margin:0;
+    padding:0 20px;
+}
+
+ul li{
+    list-style: square;
+    margin:0;
+    padding:0;
+}
+
+/* fieldset */
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 10px;
+    text-align: justify;
+}
+
+fieldset .bordered, fieldset p{
+    padding: 10px;
+}
+
+fieldset input{
+    height: 12px !important;
+    margin: 0;
+}
+
+fieldset label{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+fieldset .form-group{
+    margin: 0;
+    padding: 0 !important;
+}
+
+fieldset .checkbox, fieldset .radio {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+legend {
+    display: block;
+    padding: 0;
+    margin-bottom: 0 !important;
+    color: #ff6600;
+    border: 0;
+    width: auto;
+    /*border-bottom: 1px solid #E5E5E5;*/
+}
+
+/* cores */
+
+.green{
+    color: #589d1a;
+}
+
+.red{
+    color: #cc0a0a !important;
+}
+
+.blue{
+    color: #2156c2;
+}
+
+.yellow{
+    color: #f3a30c;
+}
+
+.orange{
+    color: #fd802d;
+}
+
+.grey{
+    color:#bbb;
+}
+
+/**/
+
+h2, h5{
+    border-bottom: 1px solid #ccc !important;
+    padding-bottom: 10px;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+h5{
+    font-size:16px;
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.txtcenter{
+    text-align: center;
+}
+
+.email{
+    font-style: italic;
+    color: #8080ff
+}
+
+.table{
+    font-size: 12px;
+}
+
+.margin-top-35{
+    margin-top: 35px;
+}
+
+.margin-top-10{
+    margin-top: 10px;
+}
+
+.margin-bottom-35{
+    margin-bottom: 35px;
+}
+
+.tdIcons span{
+    margin-right:5px;
+}
+
+.featuredTitle{
+    background: #fd8c41; /* fd802d */
+    border: 1px solid #fd802d;
+    padding: 5px;
+    font-weight: bold;
+    color: #fff;
+    margin: 20px 0;
+    border-radius: 2px;
+}
+
+#tblListaAtendimento > tbody > tr{
+    cursor:pointer;
+}
+
+.footer{
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 11px;
+    background-color: #333;
+    color: #9db1c5;
+    bottom:0;
+    width:100%;
+    border: 0;
+}
+
+.noborder, .noborder td{
+    border:0 !important;
+}
+
+.listaSolicitanteDinamyc{
+    z-index: 1;
+    position: absolute;
+    border: 1px solid #ccc;
+    background: #eee;
+    padding: 0;
+}
+
+.listaSolicitanteDinamyc li{
+    list-style: none;
+    padding: 5px;
+    border-bottom: 1px dotted #ddd;
+}
+
+.listaSolicitanteDinamyc li:hover{
+    background: #ddd;
+    cursor: pointer;
+}
+
+.divDescricaoProblema{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.documentoViewToPrint{
+    padding: 15px;
+    border: 1px dashed #000;
+    font-size: 12px;
+    color: #000;
+}
+
+.documentoViewToPrint h4{
+    font-weight: bold;
+    text-align: center;
+    font-size: 22px;
+}
+
+.documentoViewToPrint table tr td{
+    padding: 5px 10px;
+}
+
+.txtright{
+    text-align: right;
+}
+
+.fontsize10{
+    font-size: 10px !important;
+}
+
+#tblListaAtendimento th, #tblListaAtendimento td{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.processandoEmail{
+    content: url('../imgs/loading.gif');
+    width: 16px;
+    height: 16px;
+    float: right;
+    margin-top: 5px;
+}
+
+.processadoEmail{
+    float: right;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+* changing bootstrap defaults
+*/
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th{
+    padding: 5px;
+}
+
+.bwell {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.form-control{
+    font-size: 12px;
+    height: 28px; 
+    padding: 3px 6px;
+}
+
+.btn {
+    padding: 3px 6px;
+    font-size: 12px;
+    height: 28px;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #fd761c;
+    border-color: #fd802d;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #fd8c41;
+    border-color: #fd802d;
+}
+
+input[type=checkbox], input[type=radio] {
+    margin: 2px 0 0;
+}
+
+.table .noborder > td{
+    border: 0px !important;
+}
+
+
+
+
+
+
+
+
+
+

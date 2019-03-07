@@ -1,0 +1,83 @@
+<table width="100%" style="background:url(../images/relacionamento_2.jpg); background-repeat:no-repeat; background-position:top center;" border="0" cellpadding="0" cellspacing="0">
+<tr> 
+    	<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+   	  <td colspan="2" width="600" height="105" class="Titulo_consulta">&nbsp;&nbsp;&nbsp;Registro de Relacionamento<font color="#FF6600"> com o Consumidor</font></td>
+	</tr>
+</table>
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" align="center">
+
+  <tr>
+    <td><b>Situa&ccedil;&atilde;o:</b></td>
+    <td><img src="../images/0.gif" width="16" height="16" /></td>
+    <td>Nada Consta</td>
+    <td><img src="../images/1.gif" width="16" height="16" /></td>
+    <td>Com Restri&ccedil;&atilde;o</td>
+    <td><img src="../images/2.gif" width="16" height="16" /></td>
+    <td>Alerta</td>
+  </tr>
+</table>
+<br />
+<table align="center">
+	<tr>
+	  <td height="40" style="padding:10px">
+      	<form action="#" method="post" name="form2" target="_self">
+      	<table cellspacing="0" cellpadding="4" bgcolor="#fff0d3" class="tabela"> 
+            <tr>
+                <td>&nbsp;</td>
+                <td class="Grande" width="150">Localizar Consumidor</td>
+                <td>
+                	<font color="#523026">Numero de Documento:</font>
+                	<input name="cpfcnpj" id="cpfcnpj" class="boxnormal"
+                    onfocus="this.className='boxover'"
+                    onblur="this.className='boxnormal'" onkeypress="soNumero()"
+                    size=24 maxlength=14 />                </td>
+                <td>
+                	<input name="cservico" type="hidden" id="cservico" value="500" />
+                    <input name="passo" type="hidden" id="passo" value="localiza" />
+                    <input type="submit" class="botao_laranja" value="Localizar" />                </td>
+                <td>&nbsp;</td>
+          </tr>
+        </table>
+        </form>      </td>
+  </tr>
+</table>
+
+<table cellspacing="0" align="center" width="890">
+	<tr>
+		<td width="103" class="total">
+   	  <table border="0">
+            	<tr>
+                	<td><a href="consulta.php?cservico=500&ordem={ordem_data}"><img src="../../images/desc.gif" alt="Descendente" border="0" /></a></td>
+                    <td>Data</td>
+                </tr>
+          </table>
+        </td>
+	  <td width="106" class="total">
+<table border="0">
+            	<tr>
+                	<td><a href="consulta.php?cservico=500&ordem={ordem_insc}"><img src="../../images/desc.gif" alt="Descendente" border="0" /></a></td>
+                    <td>Documento</td>
+                </tr>
+            </table>
+      </td>
+	  <td width="286" class="total">
+<table border="0">
+            	<tr>
+                	<td><a href="consulta.php?cservico=500&ordem={ordem_nome}"><img src="../../images/desc.gif" alt="Descendente" border="0" /></a></td>
+                    <td>Consultado</td>
+                </tr>
+            </table>
+      </td>
+	  <td width="172" class="total">Consulta</td>
+	  <td width="56" class="total">Situa&ccedil;&atilde;o</td>
+	  <td width="153" class="total">&nbsp;</td>
+  </tr>
+	{loop_relacionamento}
+	<span class="Grande"><font color="red">{mensagem_registro}</font></span>
+  	<tr>
+  		<td align="center" colspan="6">{paginacao}</td>
+  	</tr>
+</table>

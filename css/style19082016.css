@@ -1,0 +1,111 @@
+.total
+{
+    FONT-SIZE: 10px;
+    COLOR: midnightblue;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: wheat;
+    TEXT-ALIGN: center;
+	border: 1px solid #D1D7DC;
+}
+.html {
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 11px;
+	background-color: #ECF8FF;
+	border: 1px solid #D1D7DC;
+	padding: 3px;
+	TEXT-ALIGN: center;
+}
+.normal {
+	font-family:Arial;
+	color: #666666;
+	font-size: 12px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+}
+.menu3
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+.menu
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bolder;
+    TEXT-DECORATION: none
+}
+.menu2
+{
+    COLOR: midnightblue;
+    FONT-FAMILY: Arial, Verdana, Helvetica;
+    FONT-SIZE: 12px;
+    FONT-WEIGHT: bolder;
+    TEXT-DECORATION: none
+}
+.terra
+{
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 10px;
+    TEXT-DECORATION: none
+}
+.quente
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+.chamada1
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 12px;
+    TEXT-DECORATION: none
+}
+.chamada2
+{
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 13px;
+    TEXT-DECORATION: none
+}
+.chamada3
+{
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 18px;
+    TEXT-DECORATION: none
+}
+.chamada4
+{
+    COLOR: #ff0000;
+    FONT-FAMILY: Verdana, Arial, Helvetica;
+    FONT-SIZE: 18px;
+    TEXT-DECORATION: none
+}
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	color: #000000;
+	text-decoration: underline;
+}
+/*topo site*/
+.h_logo {
+	height:100px;
+	width:100%;
+	padding-top: 40px;
+}
+
+.left { float:left}
+.right {float:right}
