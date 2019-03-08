@@ -347,9 +347,8 @@ switch ($tp_rel){
                     <td width='30%'>Descri&ccedil;&atilde;o</td>
                     <td width='10%'>S&eacute;rie</td>
                     <td width='10%'>Vr. Unit&aacute;rio</td>
-                    <?php if ($id_franquia == 1) { ?>
+                    <?php if ($id_franquia == 163) { ?>
                         <td width='10%'>Consultor</td>
-                        <td width='10%'>Alterar Consultor</td>
                     <?php } ?>
                 </tr>
                 <?php
@@ -392,9 +391,8 @@ switch ($tp_rel){
                     echo "    <td align='center'>$serie</td>";
                     echo "    <td align='center'>R$ $vr_unit</td>";
 
-                    if ($id_franquia == 1) {
+                    if ($id_franquia == 163) {
                         echo "<td align='center'>" . $reg['nome'] . "</td>";
-                        echo "<td align='center'><a onclick='alterarVendedor(\"" . $reg['id'] . "\")'>Alterar Consultor</a></td>";
                     }
                     echo "</tr>";
 
