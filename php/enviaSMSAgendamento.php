@@ -15,6 +15,7 @@ $sql = "SELECT
         SUBSTR(REPLACE(REPLACE(REPLACE(REPLACE(fone2,'(',''),')',''),' ',''),'-',''),3,1) = 7)
         AND LENGTH(REPLACE(REPLACE(REPLACE(REPLACE(fone2,'(',''),')',''),' ',''),'-','')) > 9
         AND enviar_sms = 'S'
+        AND data_cadastro >= subdate(now(), interval 30 day)
         GROUP BY fone
         ";
 $res = mysql_query($sql);
