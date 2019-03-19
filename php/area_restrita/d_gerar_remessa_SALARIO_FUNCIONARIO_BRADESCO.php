@@ -3,7 +3,7 @@
     # Autor:   Luciano Mancini
     # M�dulo:  Remessa Funcionario - Banco Bradesco
     # Finalidade: 
-    #		Gerar o arquivo de VT+VR
+    #       Gerar o arquivo de VT+VR
 
     include("../../../validar2.php");
 
@@ -88,7 +88,9 @@
             
             $id        = $registro['id'];
             $nome      = $registro['nome'];
-            $endereco  = $registro['endereco'];
+
+            $endereco  = limpa_str($registro['endereco']);
+            
             $banco     = $registro['nr_banco'];
             $agencia   = $registro['agencia'];
             $agencia   = str_replace('-','',$agencia);
@@ -123,7 +125,7 @@
                 $Registro .= '1';                          // 002 a 002 - 1 CPF 2 CGC
                 $base = substr($cpfcnpj,0,9);
                 $filial = '';
-                $dv = substr($cpfcnpj,9,2);	
+                $dv = substr($cpfcnpj,9,2); 
             }else{
                 $Registro .= '2';
                 $base = substr($cpfcnpj,0,8);
@@ -178,7 +180,7 @@
                 $modalidade = '01'; // credito em conta
             else{
                 if ( $saldo < 5000 ) $modalidade = '03'; // DOC
-                else $modalidade = '08'; // TED	
+                else $modalidade = '08'; // TED 
             }
 
             $Registro .= colocazeros($modalidade,2);        // 264 a 265 - Modalidade de Pagamento
@@ -268,7 +270,7 @@
         $qry_registro = mysql_query($sql_registro,$conexao);
 
         # Mostrando os TED
-        $linha_ted .= "</table>";	
+        $linha_ted .= "</table>";   
         echo $linha_ted;
         
     }else{
@@ -276,6 +278,14 @@
         echo "<center>Nenhum Salario a Pagar..</center><br><hr><br>";
     }
 
+    function limpa_str($dados){
+        $trocaeste = array("(", ")", "'", "Ö", "Ç", "Ü", "Ú", "Ó", "Ô", "Õ", "Ò", "Ã", "Â", "Á", "À", "É", "Í", ";","|");
+        $poreste = array(" ", " ", " ", "O", "C", "U", "U", "O", "O", "O", "O", "A", "A", "A", "A", "E", "I", " ","-");
+        $saidax = str_replace($trocaeste, $poreste, $dados);
+        $saidax = preg_replace('@[^A-Za-z0-9<>=?":\\n /,.\-_]+@i', "", $saidax);
+        return $saidax;
+    }
+    
     include( "d_gerar_remessa_VTVR_FUNCIONARIO_BRADESCO.php" );
     
 ?>

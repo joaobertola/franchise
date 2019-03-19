@@ -45,15 +45,15 @@
 	$Registro .= colocaespacos('',6);                 // 009 a 014 - BRANCOS
 	$Registro .= '080';                               // 015 a 017 - Layout do Arquivo
 	$Registro .= '2';                                 // 018 a 018 - Tipo de inscricao
-	$Registro .= '06866893000139';                    // 019 a 032 - N�mero de inscri��o do cedente
+	$Registro .= '13117948000173';                    // 019 a 032 - N�mero de inscri��o do cedente
 	              
 	$Registro .=  colocaespacos('',20);               // 033 a 052 - BRANCOS
-	$Registro .= '08616';                             // 053 a 057 - C�digo da ag�ncia do cedente
+	$Registro .= '03833';                             // 053 a 057 - C�digo da ag�ncia do cedente
 	$Registro .= ' ';                                 // 058 a 058 - BRANCOS
-	$Registro .= colocazeros('21199',12);             // 059 a 070 - N�mero da conta do cedente
+	$Registro .= colocazeros('62830',12);             // 059 a 070 - N�mero da conta do cedente
 	$Registro .= ' ';                                 // 071 a 071 - BRANCOS
-	$Registro .= '4';                                 // 072 a 072 - D�gito verificador da ag�ncia / conta
-	$Registro .= colocaespacosdir('INFORM SYSTEM TECN INF LTDA',30);  // 073 a 102 - Nome do cedente
+	$Registro .= '2';                                 // 072 a 072 - D�gito verificador da ag�ncia / conta
+	$Registro .= colocaespacosdir('WEB CONTROL SISTEMAS DE AUTOM',30);  // 073 a 102 - Nome do cedente
 	$Registro .= colocaespacosdir('BANCO ITAU',30);       // 103 a 132 - Nome do banco
 	$Registro .= colocaespacos('',10);                    // 133 a 142 - BRANCOS
 	$Registro .= '1';                                     // 143 a 143 - C�digo de Remessa (1) / Retorno (2)
@@ -106,25 +106,25 @@
 		$Registro .= '040';                               // 014 a 016 - Layout do Lote
 		$Registro .= ' ';                                 // 017 a 017 - Em branco
 		$Registro .= '2';                                 // 018 a 018 - Empresa Tipo Inscri��o - Debitada
-		$Registro .= '06866893000139';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
+		$Registro .= '13117948000173';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
 		
 		$Registro .= $tp_pagto.$forma_pgto;               // 033 a 036 - Identificacao do lan�amento
 		$Registro .= colocaespacos('',16);                // 037 a 052 - Em branco
 		
-		$Registro .= '08616';                             // 053 a 057 - Agencia debitada
+		$Registro .= '03833';                             // 053 a 057 - Agencia debitada
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
-		$Registro .= colocazeros('21199',12);             // 059 a 070 - Conta debitada
+		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('INFORM SYSTEM TECN INF LTDA',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		                            
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
-		$Registro .= colocaespacosdir('AV. MAL. FLORIANO PEIXOTO',30);            // 143 a 172 - Endereco da empresa
-		$Registro .= colocaespacosdir('306',5);              // 173 a 177 - Numero
-		$Registro .= colocaespacosdir('SALA 11',15);         // 178 a 192 - Complemento
+		$Registro .= colocaespacosdir('AV. CANDIDO DE ABREU',30);            // 143 a 172 - Endereco da empresa
+		$Registro .= colocaespacosdir('70',5);              // 173 a 177 - Numero
+		$Registro .= colocaespacosdir('SALA 604',15);         // 178 a 192 - Complemento
 		$Registro .= colocaespacosdir('CURITIBA',20);        // 193 a 212 - Cidade
-		$Registro .= colocaespacosdir('80010130',8);         // 213 a 220 - CEP
+		$Registro .= colocaespacosdir('80530000',8);         // 213 a 220 - CEP
 		$Registro .= colocaespacos('PR',2);               // 221 a 222 - UF
 		$Registro .= colocaespacos('',8);                 // 223 a 230 - Em branco
 		$Registro .= colocazeros('',10);                  // 231 a 240 - Ocorrencias
@@ -269,24 +269,24 @@
 		$Registro .= '040';                               // 014 a 016 - Layout do Lote
 		$Registro .= ' ';                                 // 017 a 017 - Em branco
 		$Registro .= '2';                                 // 018 a 018 - Empresa Tipo Inscri��o - Debitada
-		$Registro .= '06866893000139';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
+		$Registro .= '13117948000173';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
 		
 		$Registro .= '20'.$forma_pgto;               // 033 a 036 - Identificacao do lan�amento
 		$Registro .= colocaespacos('',16);                // 037 a 052 - Em branco
 		
-		$Registro .= '08616';                             // 053 a 057 - Agencia debitada
+		$Registro .= '03833';                             // 053 a 057 - Agencia debitada
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
-		$Registro .= colocazeros('21199',12);             // 059 a 070 - Conta debitada
+		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('INFORM SYSTEM TECN INF LTDA',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
-		$Registro .= colocaespacosdir('AV. MAL. FLORIANO PEIXOTO',30);            // 143 a 172 - Endereco da empresa
-		$Registro .= colocaespacosdir('306',5);              // 173 a 177 - Numero
-		$Registro .= colocaespacosdir('SALA 11',15);         // 178 a 192 - Complemento
+		$Registro .= colocaespacosdir('AV. CANDIDO DE ABREU',30);            // 143 a 172 - Endereco da empresa
+		$Registro .= colocaespacosdir('70',5);              // 173 a 177 - Numero
+		$Registro .= colocaespacosdir('SALA 604',15);         // 178 a 192 - Complemento
 		$Registro .= colocaespacosdir('CURITIBA',20);        // 193 a 212 - Cidade
-		$Registro .= colocaespacosdir('80010130',8);         // 213 a 220 - CEP
+		$Registro .= colocaespacosdir('80530000',8);         // 213 a 220 - CEP
 		$Registro .= colocaespacos('PR',2);               // 221 a 222 - UF
 		$Registro .= colocaespacos('',8);                 // 223 a 230 - Em branco
 		$Registro .= colocazeros('',10);                  // 231 a 240 - Ocorrencias
@@ -428,24 +428,24 @@
 		$Registro .= '040';                               // 014 a 016 - Layout do Lote
 		$Registro .= ' ';                                 // 017 a 017 - Em branco
 		$Registro .= '2';                                 // 018 a 018 - Empresa Tipo Inscri��o - Debitada
-		$Registro .= '06866893000139';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
+		$Registro .= '13117948000173';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
 	
 		$Registro .= $tp_pagto.$forma_pgto;               // 033 a 036 - Identificacao do lan�amento
 		$Registro .= colocaespacos('',16);                // 037 a 052 - Em branco
 		
-		$Registro .= '08616';                             // 053 a 057 - Agencia debitada
+		$Registro .= '03833';                             // 053 a 057 - Agencia debitada
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
-		$Registro .= colocazeros('21199',12);             // 059 a 070 - Conta debitada
+		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('INFORM SYSTEM TECN INF LTDA',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
-		$Registro .= colocaespacosdir('AV. MAL. FLORIANO PEIXOTO',30);            // 143 a 172 - Endereco da empresa
-		$Registro .= colocaespacosdir('306',5);              // 173 a 177 - Numero
-		$Registro .= colocaespacosdir('SALA 11',15);         // 178 a 192 - Complemento
+		$Registro .= colocaespacosdir('AV. CANDIDO DE ABREU',30);            // 143 a 172 - Endereco da empresa
+		$Registro .= colocaespacosdir('70',5);              // 173 a 177 - Numero
+		$Registro .= colocaespacosdir('SALA 604',15);         // 178 a 192 - Complemento
 		$Registro .= colocaespacosdir('CURITIBA',20);        // 193 a 212 - Cidade
-		$Registro .= colocaespacosdir('80010130',8);         // 213 a 220 - CEP
+		$Registro .= colocaespacosdir('80530000',8);         // 213 a 220 - CEP
 		$Registro .= colocaespacos('PR',2);               // 221 a 222 - UF
 		$Registro .= colocaespacos('',8);                 // 223 a 230 - Em branco
 		$Registro .= colocazeros('',10);                  // 231 a 240 - Ocorrencias
@@ -585,24 +585,24 @@
 		$Registro .= '040';                               // 014 a 016 - Layout do Lote
 		$Registro .= ' ';                                 // 017 a 017 - Em branco
 		$Registro .= '2';                                 // 018 a 018 - Empresa Tipo Inscri��o - Debitada
-		$Registro .= '06866893000139';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
+		$Registro .= '13117948000173';                    // 019 a 032 - Empresa Numero Inscri��o - Debitada
 		
 		$Registro .= $tp_pagto.$forma_pgto;               // 033 a 036 - Identificacao do lan�amento
 		$Registro .= colocaespacos('',16);                // 037 a 052 - Em branco
 		
-		$Registro .= '08616';                             // 053 a 057 - Agencia debitada
+		$Registro .= '03833';                             // 053 a 057 - Agencia debitada
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
-		$Registro .= colocazeros('21199',12);             // 059 a 070 - Conta debitada
+		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('INFORM SYSTEM TECN INF LTDA',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
-		$Registro .= colocaespacosdir('AV. MAL. FLORIANO PEIXOTO',30);            // 143 a 172 - Endereco da empresa
-		$Registro .= colocaespacosdir('306',5);              // 173 a 177 - Numero
-		$Registro .= colocaespacosdir('SALA 11',15);         // 178 a 192 - Complemento
+		$Registro .= colocaespacosdir('AV. CANDIDO DE ABREU',30);            // 143 a 172 - Endereco da empresa
+		$Registro .= colocaespacosdir('70',5);              // 173 a 177 - Numero
+		$Registro .= colocaespacosdir('SALA 604',15);         // 178 a 192 - Complemento
 		$Registro .= colocaespacosdir('CURITIBA',20);        // 193 a 212 - Cidade
-		$Registro .= colocaespacosdir('80010130',8);         // 213 a 220 - CEP
+		$Registro .= colocaespacosdir('80530000',8);         // 213 a 220 - CEP
 		$Registro .= colocaespacos('PR',2);               // 221 a 222 - UF
 		$Registro .= colocaespacos('',8);                 // 223 a 230 - Em branco
 		$Registro .= colocazeros('',10);                  // 231 a 240 - Ocorrencias
