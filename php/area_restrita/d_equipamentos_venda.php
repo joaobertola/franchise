@@ -623,9 +623,7 @@ $acao = $_REQUEST['acao'];
         valor = valor.replace('Total Geral R$ ','');
         valor = valor.replace('.','');
         valor = valor.replace(',','.');
-        
-        alert( valor );
-          
+
         switch (idFormaPagamento) {
 
             case '1':
@@ -920,6 +918,7 @@ $acao = $_REQUEST['acao'];
         var totalParcelas = $('.forma_pgto').length;
         var valor = parseFloat($('#iptSaldo').val().replace('.', '').replace(',', '.')) / totalParcelas
         valor = number_format(valor, 2);
+        valor = valor.replace('.', ',');
         $.each($('.vlr_recebido'), function () {
             $(this).val(valor);
         });
