@@ -6,7 +6,7 @@ $codigo = $_REQUEST['codigo'];
 
 $sql = "SELECT p.id, descricao, custo_medio_venda, codigo_barra, comissao_valor, pcc.controle_qtd AS controle_qtd "
     . "FROM base_web_control.produto p
-    INNER JOIN base_web_control.produto_configuracoes_comercial pcc
+    LEFT OUTER base_web_control.produto_configuracoes_comercial pcc
     ON pcc.id_produto = p.id "
     . " WHERE id_cadastro = '62735' AND ( codigo_barra = '$codigo' or identificacao_interna = '$codigo' )";
 //echo $sql;

@@ -4,6 +4,7 @@
 	# Modulo:  Remessa Franquia - Banco Itau
 	# Finalidade: Gerar o arquivo de credito a serem enviados ao Banco ITAU para os franqueados
 
+
 	include("../../../validar2.php");
 
 	global $conexao,$arquivo;

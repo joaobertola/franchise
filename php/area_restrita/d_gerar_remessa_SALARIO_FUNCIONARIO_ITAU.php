@@ -1,8 +1,8 @@
 <?php
 
 	# Author:  Luciano Mancini
-	# M�dulo:  Remessa Funcion�rio - SALARIO - Banco Itau
-	# Finalidade: Gerar o arquivo de cr�dito a serem enviados ao Banco ITAU para os funcion�rios
+	# Modulo:  Remessa Funcionario - SALARIO - Banco Itau
+	# Finalidade: Gerar o arquivo de credito a serem enviados ao Banco ITAU para os funcionarios
 
 	include("../../../validar2.php");
 

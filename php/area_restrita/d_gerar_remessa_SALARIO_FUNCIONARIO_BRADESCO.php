@@ -1,7 +1,7 @@
 <?php
 
     # Autor:   Luciano Mancini
-    # M�dulo:  Remessa Funcionario - Banco Bradesco
+    # Modulo:  Remessa Funcionario - Banco Bradesco
     # Finalidade: 
     #       Gerar o arquivo de VT+VR
 
