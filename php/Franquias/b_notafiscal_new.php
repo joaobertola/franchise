@@ -1,7 +1,6 @@
 <?php
 require "connect/sessao.php";
 
-
 $go        = $_REQUEST['go'];
 
 $quantidade = 100;
@@ -103,7 +102,7 @@ if ($go=='ingressar'){
             window.open("https://www.webcontrolempresas.com.br/franquias/php/Franquias/b_notafiscal_sendmail.php?numdoc="+numdoc+"&faturamento="+faturamento);
         }
         
-        function Gerar_NFSe(numdoc) {
+        function Gerar_NFSe(faturamento,numdoc) {
             var r = confirm("Você tem certeza que deseja gerar a NOTA FISCAL DE SERVIÇO ?");
             if (r == true) {
                 location.href = 'painel.php?pagina1=Franquias/b_notafiscal_gerar.php&numdoc=' + numdoc;
@@ -298,7 +297,6 @@ if ($go=='ingressar'){
                 LEFT OUTER JOIN cs2.titulos b ON a.codloja = b.codloja
                 LEFT OUTER JOIN cs2.titulos_notafiscal c ON b.numdoc = c.numdoc
                 WHERE 
-                    -- a.emitir_nfs = 'S' AND 
                     MID(b.numdoc,1,4) = '$mes$ano'
                     $adicional
                 ORDER BY a.razaosoc";
@@ -319,7 +317,6 @@ if ($go=='ingressar'){
                 LEFT OUTER JOIN cs2.titulos b ON a.codloja = b.codloja
                 LEFT OUTER JOIN cs2.titulos_notafiscal c ON b.numdoc = c.numdoc
                 WHERE 
-                    -- a.emitir_nfs = 'S' AND 
                     MID(b.numdoc,1,4) = '$mes$ano'
                     $adicional
                 ORDER BY a.razaosoc
@@ -360,15 +357,15 @@ if ($go=='ingressar'){
                 $registro++;
                 $login      = $reg['login'];
                 $insc       = $reg['insc'];
-        $razaosoc   = substr($reg['razaosoc'],0,40);
-        $cidade     = $reg['cidade'];
-        $uf         = $reg['uf'];
-        $fone       = $reg['fone'];
-        $email      = $reg['email'];
-        $numdoc     = $reg['numdoc'];
-        $vencimento = $reg['vencimento'];
-        $valor      = $reg['valor'];
-        $protocolo  = $reg['protocolo'];
+                $razaosoc   = substr($reg['razaosoc'],0,40);
+                $cidade     = $reg['cidade'];
+                $uf         = $reg['uf'];
+                $fone       = $reg['fone'];
+                $email      = $reg['email'];
+                $numdoc     = $reg['numdoc'];
+                $vencimento = $reg['vencimento'];
+                $valor      = $reg['valor'];
+                $protocolo  = $reg['protocolo'];
                 
                 if ( $valor > 0 )
                     $link_ver_nota = "<input name='selecao[]' type='checkbox' value='$numdoc' />";
@@ -382,17 +379,20 @@ if ($go=='ingressar'){
                 }else{
                     // NAO FOI GERADA NOTA
                     $link_print_nota = "";
-                    $link_sendmail_nota = "<a href='#' onClick='Gerar_NFSe(\"$numdoc\")'><img src='../img/nfiscal.gif' height='16' title='Emissão de Nota Fiscal' border='0'></a>";
-                    $tem_nota_gerar++;
+                
+                    if ( $valor > 0 ){
+                        $link_sendmail_nota = "<a href='#' onClick='Gerar_NFSe(\"$faturamento\",\"$numdoc\")'><img src='../img/nfiscal.gif' height='16' title='Emissão de Nota Fiscal' border='0'></a>";
+                        $tem_nota_gerar++;
+                    }
                 }
                 
                 echo "<tr height='24' style='font-size:9px' ";
-        if (($registro%2) <> 0) {
-            echo "bgcolor='#E5E5E5'>";
-        } else {
-            echo ">";
-        }
-        echo "
+                if (($registro%2) <> 0) {
+                    echo "bgcolor='#E5E5E5'>";
+                } else {
+                    echo ">";
+                }
+                echo "
                             <td width='15px'>$login</td>
                             <td width='300px'>$razaosoc</td>
                             <td>$cidade / $uf</td>
@@ -406,7 +406,8 @@ if ($go=='ingressar'){
             }
         }
         else{
-            echo "<script>alert('Nenhum registro encontrado ou Cliente Cancelado.');history.back()</script>";
+            echo "<script>alert('Nenhum registro encontrado ou Cliente Cancelado.')</script>";
+            die;
         }
   
     } catch (Exception $e) {
