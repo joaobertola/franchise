@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<ConsultarLoteRpsResposta xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ListaNfse>
+    <CompNfse>
+      <tcCompNfse>
+        <Nfse>
+          <InfNfse>
+            <Numero>45856</Numero>
+            <CodigoVerificacao>7M7LH60O</CodigoVerificacao>
+            <DataEmissao>2019-03-22T17:09:52</DataEmissao>
+            <IdentificacaoRps>
+              <Numero>83219</Numero>
+              <Serie>RPS</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissaoRps>2019-03-22T17:09:52</DataEmissaoRps>
+            <NaturezaOperacao>1</NaturezaOperacao>
+            <RegimeEspecialTributacao>0</RegimeEspecialTributacao>
+            <OptanteSimplesNacional>1</OptanteSimplesNacional>
+            <IncentivadorCultural>2</IncentivadorCultural>
+            <Competencia>0001-01-01T00:00:00</Competencia>
+            <NfseSubstituida>0</NfseSubstituida>
+            <Servico>
+              <Valores>
+                <ValorServicos>1173.18</ValorServicos>
+                <ValorDeducoes>0.00</ValorDeducoes>
+                <ValorPis>0.00</ValorPis>
+                <ValorCofins>0.00</ValorCofins>
+                <ValorInss>0.00</ValorInss>
+                <ValorIr>0.00</ValorIr>
+                <ValorCsll>0.00</ValorCsll>
+                <IssRetido>2</IssRetido>
+                <ValorIss>58.65</ValorIss>
+                <ValorIssRetido>0.00</ValorIssRetido>
+                <OutrasRetencoes>0.00</OutrasRetencoes>
+                <BaseCalculo>1173.18</BaseCalculo>
+                <Aliquota>0.05</Aliquota>
+                <ValorLiquidoNfse>1173.18</ValorLiquidoNfse>
+                <DescontoIncondicionado>0.00</DescontoIncondicionado>
+                <DescontoCondicionado>0.00</DescontoCondicionado>
+              </Valores>
+              <ItemListaServico>1505</ItemListaServico>
+              <CodigoCnae>0</CodigoCnae>
+              <Discriminacao>MENSALIDADE REFERENTE A VENCIMENTO : 29/03/2019 - TITULO: 1903034010 - Codigo: 55275</Discriminacao>
+              <CodigoMunicipio>4106902</CodigoMunicipio>
+            </Servico>
+            <ValorCredito>0</ValorCredito>
+            <PrestadorServico>
+              <IdentificacaoPrestador>
+                <Cnpj>13117948000173</Cnpj>
+                <InscricaoMunicipal>010106049109</InscricaoMunicipal>
+              </IdentificacaoPrestador>
+              <NomeFantasia>WEB CONTROL SISTEMAS DE AUTOMACAO LTDA - ME</NomeFantasia>
+              <Endereco>
+                <Endereco>CANDIDO DE ABREU</Endereco>
+                <Numero>70 ES 604 </Numero>
+                <Bairro>CENTRO CÍVICO</Bairro>
+                <CodigoMunicipio>4106902</CodigoMunicipio>
+                <Uf>PR</Uf>
+                <Cep>80530000</Cep>
+              </Endereco>
+            </PrestadorServico>
+            <TomadorServico>
+              <IdentificacaoTomador>
+                <CpfCnpj>
+                  <Cnpj>49217532000174</Cnpj>
+                </CpfCnpj>
+              </IdentificacaoTomador>
+              <RazaoSocial>PLANTEL EMPREENDIMENTOS IMOBILIARIOS LTDA</RazaoSocial>
+              <Endereco>
+                <Endereco>RUA GENERAL OSORIO</Endereco>
+                <Numero>896</Numero>
+                <Bairro>CENTRO</Bairro>
+                <CodigoMunicipio>3543402</CodigoMunicipio>
+                <Uf>SP</Uf>
+                <Cep>14010000</Cep>
+              </Endereco>
+              <Contato>
+                <Telefone>1636102010</Telefone>
+                <Email>locacao@plantelimoveis.com.br</Email>
+              </Contato>
+            </TomadorServico>
+          </InfNfse>
+        </Nfse>
+      </tcCompNfse>
+    </CompNfse>
+  </ListaNfse>
+  <ListaMensagemRetorno />
+</ConsultarLoteRpsResposta>

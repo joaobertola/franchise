@@ -55,8 +55,8 @@ $codigo = $_POST['codigo'];
         if (dataVencimentoComparar < dataAtualComparar) {
             alert('O Vencimento deve ser maior que a Data Atual!');
             return false;
-        }
-
+        } 
+		
         window.location.href = '../../inform/boleto/boleto.php?numdoc=' + numDoc + '&link_externo=sim&de=' + de + '&para=' + para + '&assunto=' + assunto + '&venc_atualizado=' + venc_atualizado + '&venc_atualizado_confirmado=' + venc_atualizado_confirmado;
 
     }
@@ -691,7 +691,7 @@ Dpto. Financeiro WEB CONTROL EMPRESAS";
 	e seu acesso ao seu SITE e as PESQUISAS e SOLU&Ccedil;&Otilde;ES ser&aacute; AUTOM&Aacute;TICAMENTE LIBERADO. <br>
     <br>
 	<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vencimento : <a href='https://www.webcontrolempresas.com.br/inform/$link/boleto.php?numdoc=$numdoc&link_externo=sim'>$vencimento</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vencimento : <a href='https://www.webcontrolempresas.com.br/inform/$link/boleto.php?numdoc=$numdoc&link_externo=sim'>Acessar Boleto: $vencimento</a>
     <br>
     <br><br>
     Dpto. Financeiro WEB CONTROL EMPRESAS";
