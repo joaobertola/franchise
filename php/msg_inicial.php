@@ -16,7 +16,7 @@ $total_contrato_mes_fechado = mysql_num_rows($qry_contratos_mes);
 $total_falta = $meta_mes_contrato - $total_contrato_mes_fechado; 
 
 $sql_frame = "SELECT * FROM dbsites.tbl_escolhaframe WHERE esc_ativo = 'S' ORDER BY esc_data_ativacao DESC LIMIT 10 ";
-$qry_frame = mysql_query($sql_frame, $conemail);
+$qry_frame = mysql_query($sql_frame, $con);
 // or die ("Erro SQL ao listar os Frames : $sql_frame");
 
 	$dia = date('%d');
