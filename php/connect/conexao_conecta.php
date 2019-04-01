@@ -18,7 +18,7 @@ if (!$con) {
 	}
 }
 
-$conemail = @mysql_pconnect("10.2.2.3", "csinform", "inform4416#scf");
+$conemail = @mysql_pconnect("10.2.2.7", "root", "cntos43");
 if (!$conemail) {
 //	echo 'Erro na conexão com o Servidor 2<br>';
 //	echo mysql_error();
@@ -26,8 +26,8 @@ if (!$conemail) {
 } else {
 	$database = mysql_select_db("dbsites",$conemail);
 	if (!$database) {
-		echo 'Erro na conexão com o Banco de dados 2<br>';
-		echo mysql_error();
+	//	echo 'Erro na conexão com o Banco de dados 2<br>';
+	//	echo mysql_error();
 	}
 }
 
