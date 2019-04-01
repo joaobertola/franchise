@@ -1,6 +1,6 @@
 <?php
 
-$con_virtual = @mysql_pconnect("10.2.2.3", "csinform", "inform4416#scf");
+$con_virtual = @mysql_pconnect("10.2.2.7", "root", "cntos43");
 if (!$con_virtual) {
 	echo 'Erro na conexao com o Servidor<br>';
 	echo mysql_error();

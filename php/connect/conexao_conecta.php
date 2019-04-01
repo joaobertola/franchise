@@ -18,7 +18,7 @@ if (!$con) {
 	}
 }
 
-$conemail = @mysql_pconnect("10.2.2.3", "csinform", "inform4416#scf");
+$conemail = @mysql_pconnect("10.2.2.7", "root", "cntos43");
 if (!$conemail) {
 //	echo 'Erro na conexão com o Servidor 2<br>';
 //	echo mysql_error();
