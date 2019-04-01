@@ -15,7 +15,7 @@ $qry_contratos_mes = mysql_query($sql_contratos_mes, $con);
 $total_contrato_mes_fechado = mysql_num_rows($qry_contratos_mes);
 $total_falta = $meta_mes_contrato - $total_contrato_mes_fechado; 
 
-$cnx_email = @mysql_pconnect("10.2.2.7", "root", "cntos43");
+$cnx_email = @mysql_pconnect("10.2.2.3", "csinform", "inform4416#scf");
 $sql_frame = "SELECT * FROM dbsites.tbl_escolhaframe WHERE esc_ativo = 'S' ORDER BY esc_data_ativacao DESC LIMIT 10 ";
 $qry_frame = mysql_query($sql_frame, $cnx_email) or die ("Erro SQL ao listar os Frames : $sql_frame");
 
