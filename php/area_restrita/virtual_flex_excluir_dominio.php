@@ -23,10 +23,10 @@ $qry_f = mysql_query($sql_f, $con) or die ("Erro : $sql_f" );
 
 # Conexao BD Site Virtual Flex
 
-$usermy="root";
-$passwordmy	= "cntos43";
+$usermy="csinform";
+$passwordmy	= "inform4416#scf";
 $nomedb		= "dbsites";
-$conexao	= @mysql_pconnect("10.2.2.7",$usermy,$passwordmy)or die ("Problemas ao conectar no servidor de banco de dados".mail("lucianomancini@gmail.com","problemas na conexao com mysql"," From:lucianomancini@gmail.com"));
+$conexao	= @mysql_pconnect("10.2.2.3",$usermy,$passwordmy)or die ("Problemas ao conectar no servidor de banco de dados".mail("lucianomancini@gmail.com","problemas na conexao com mysql"," From:lucianomancini@gmail.com"));
 $bd			= mysql_select_db($nomedb,$conexao) or die("Nao foi posivel selecionar o banco de dados contate o administrador erro 30");
 
 $dominio       = $_REQUEST['dominio'];
