@@ -55,8 +55,8 @@ $codigo = $_POST['codigo'];
         if (dataVencimentoComparar < dataAtualComparar) {
             alert('O Vencimento deve ser maior que a Data Atual!');
             return false;
-        }
-
+        } 
+		
         window.location.href = '../../inform/boleto/boleto.php?numdoc=' + numDoc + '&link_externo=sim&de=' + de + '&para=' + para + '&assunto=' + assunto + '&venc_atualizado=' + venc_atualizado + '&venc_atualizado_confirmado=' + venc_atualizado_confirmado;
 
     }
@@ -253,7 +253,7 @@ if ($go == 'ingressar') {
                         $vr_orig = number_format($vr_orig, 2, ",", ".");
 
                         echo "
-					<a href=\"https://www.webcontrolempresas.com.br/inform/boleto_antecipa/boleto.php?numdoc=$boleto\">$venc_orig</a>&nbsp;&nbsp;
+					<a href=\"https://www.webcontrolempresas.com.br/inform/boleto_antecipa/boleto.php?numdoc=$boleto\">Boleto $venc_orig</a>&nbsp;&nbsp;
 		<a href=\"painel.php?pagina1=Franquias/b_boleto.php&go=email_antecipa&numdoc=$boleto&email=$email&vencimento=$vencimento\">e-mail <img src='../../../images/aaMsgNaoLida.gif' border='0' ></a>
 		<br>";
                     }
@@ -282,7 +282,7 @@ if ($go == 'ingressar') {
                         $boleto1 = $mes_ano;
                         $numdoc1 = mysql_result($qr, 0, "numdoc");
                         $envelope1 = "e-mail <img src=\"../../../images/aaMsgNaoLida.gif\" border=\"0\" >";
-                        echo "&nbsp;&nbsp;<a href=\"https://www.webcontrolempresas.com.br/inform/boleto/boleto.php?numdoc=$numdoc1\">$vencimento</a>&nbsp;&nbsp;
+                        echo "&nbsp;&nbsp;<a href=\"https://www.webcontrolempresas.com.br/inform/boleto/boleto.php?numdoc=$numdoc1\">Boleto $vencimento</a>&nbsp;&nbsp;
 		<a href=\"painel.php?pagina1=Franquias/b_boleto.php&go=email_multa&numdoc=$numdoc1&email=$email&vencimento=$vencimento\">$envelope1</a>";
                     }
                     ?>
@@ -691,7 +691,7 @@ Dpto. Financeiro WEB CONTROL EMPRESAS";
 	e seu acesso ao seu SITE e as PESQUISAS e SOLU&Ccedil;&Otilde;ES ser&aacute; AUTOM&Aacute;TICAMENTE LIBERADO. <br>
     <br>
 	<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vencimento : <a href='https://www.webcontrolempresas.com.br/inform/$link/boleto.php?numdoc=$numdoc&link_externo=sim'>$vencimento</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vencimento : <a href='https://www.webcontrolempresas.com.br/inform/$link/boleto.php?numdoc=$numdoc&link_externo=sim'>Acessar Boleto $vencimento</a>
     <br>
     <br><br>
     Dpto. Financeiro WEB CONTROL EMPRESAS";

@@ -40,7 +40,7 @@ function troca($value){
                 case 195 : $saidax .= 'A';
                     break; // Ã
                 case 201 : $saidax .= 'E';
-                    break; // É             
+                    break; // É				
                 case 202 : $saidax .= 'E';
                     break; // Ê
                 case 203 : $saidax .= 'E';
@@ -164,7 +164,6 @@ while ( $reg = mysql_fetch_array($qry) ){
         $WC_NumeroRPS = mysql_result($qry_lote_rps, 0, 'num_rps_WC');
 
         $DataEmissao     = date('Y-m-d').'T'.date('H:i:s');
-        
         //CONFIGURAÇÃO DO ARQUIVO XML PARA A ASSINATURA
         $idNFe  = date('YmdHi');
 
@@ -188,9 +187,7 @@ while ( $reg = mysql_fetch_array($qry) ){
         $RecepcionarLoteRps .= "            <InscricaoMunicipal>".$Certificado_IM."</InscricaoMunicipal>\n";
         $RecepcionarLoteRps .= "            <QuantidadeRps>1</QuantidadeRps>\n";
         $RecepcionarLoteRps .= "            <ListaRps>\n";
-
-        $Aliquota            = 5; // Alíquota de 5% conforme orientação da contabilidade
-
+        $Aliquota            = 5;
         $iss                 = $valor * $Aliquota / 100;
         $iss                 = number_format($iss, 2, ".", "");
         $aliq                = $Aliquota / 100;
@@ -280,11 +277,16 @@ while ( $reg = mysql_fetch_array($qry) ){
         $RecepcionarLoteRps = str_replace( array("\r\n", "\n", "\r","  "), '', $RecepcionarLoteRps );
 
         $arquivo = $numdoc.'_'.date('His').'xml';
+        
         $cria_arq = fopen($arquivo,"w");
         $inserindo = fputs($cria_arq,$RecepcionarLoteRps);
         
         $xml_enc = $RecepcionarLoteRps;
-
+        
+//        echo "<pre>";
+//        print_r( $xml_enc );
+//        die;
+        
         $oRps = new RPS( );
         $oRps->CnpjEmpresa = $Certificado_Cnpj;
         $oRps->aplicativo = 'producao';
@@ -348,7 +350,14 @@ while ( $reg = mysql_fetch_array($qry) ){
             $qr_INSERT = mysql_query($sql_INSERT, $con) or die("Erro SQL: $sql_INSERT");
             
             echo "<script>alert('Sua nota está em Processamento junto a Prefeitura. Clique no link abaixo para verificar sua liberação')</script>";
-            echo "<table align='center' width='100%'><tr><td><br><br><br><a href='https://webcontrolempresas.com.br/franquias/php/painel.php?pagina1=Franquias/b_notafiscal_gerar.php&numdoc=$numdoc&id_faturamento=$referencia'>Consultar Nota Fiscal</a></td></tr></table>";
+            echo "<table align='center' width='100%'>
+                     <tr>
+                        <td>
+                          <br><br><br>
+                          <a href='https://webcontrolempresas.com.br/franquias/php/painel.php?pagina1=Franquias/b_notafiscal_gerar.php&numdoc=$numdoc&id_faturamento=$referencia'>Consultar Nota Fiscal</a>
+                    .   </td>
+                     </tr>
+                  </table>";
             die;
 
         }
@@ -653,5 +662,6 @@ while ( $reg = mysql_fetch_array($qry) ){
 // Tratando o retorno da prefeitura
 echo "<pre>";
 print_r( $result );
+
 
 ?>
