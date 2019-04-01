@@ -8,7 +8,7 @@ if (!$con_virtual) {
 } else {
 	$databasex = mysql_select_db("dbsites",$con_virtual);
 	if (!$databasex) {
-		echo 'Erro na conexão com o Banco de dados<br>';
+		echo 'Erro na conexão com o Banco de dados - : [conexao_conecta_virtual] <br>';
 		echo mysql_error();
 	}
 }
