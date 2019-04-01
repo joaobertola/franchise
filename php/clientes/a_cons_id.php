@@ -889,8 +889,8 @@ if ($codloja > 0) {
         $ssql = "SELECT date_format(a.data_documento,'%d/%m/%Y') as documento, 
                             a.tipo_documento, b.motivo,
                             date_format(a.ultima_fatura,'%d/%m/%Y') as ultima 
-                     FROM pedidos_cancelamento a
-                     INNER JOIN motivo_cancel b ON a.id_mot_cancelamento = b.id
+                     FROM cs2.pedidos_cancelamento a
+                     INNER JOIN cs2.motivo_cancel b ON a.id_mot_cancelamento = b.id
                      WHERE codloja='$codloja'";
         $rs = mysql_query($ssql, $con);
         $line = mysql_num_rows($rs);
@@ -1219,8 +1219,8 @@ if ($codloja > 0) {
                         $ssql = "select date_format(a.data_documento,'%d/%m/%Y') as documento, a.tipo_documento, b.motivo,
                                             date_format(a.ultima_fatura,'%d/%m/%Y') as ultima,
                                             a.id_mot_cancelamento
-                                            from pedidos_cancelamento a
-                                            inner join motivo_cancel b on a.id_mot_cancelamento=b.id
+                                            from cs2.pedidos_cancelamento a
+                                            inner join cs2.motivo_cancel b on a.id_mot_cancelamento=b.id
                                             where codloja='$codloja'";
                         $rs = mysql_query($ssql, $con);
                         $line = mysql_num_rows($rs);
