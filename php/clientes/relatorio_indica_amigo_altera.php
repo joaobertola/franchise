@@ -519,7 +519,10 @@ if ($res4):
     }else if ($res4['status_indicacao'] == 'CT') {
         $status = 'Contador (Nao gera bonificacao)';
         $acao = 'da Tentativa de Contato';
-    }
+    }else if ($res4['status_indicacao'] == 'SA') {
+        $status = 'Segmento nao atendido';
+        $acao = 'da Tentativa de Contato';
+    }    
     ?>
     <h1>&Uacute;ltima Atualiza&ccedil;&atilde;o</h1>
     <table class="tblIndicacaoAtu" id="" border="1" width="50%" align="center" cellspacing="0"
@@ -654,6 +657,9 @@ if ($total > 0):
         }else if ($res4['status_indicacao'] == 'CT') {
             $status = 'Contador (Nao gera bonificacao)';
             $acao = 'da Tentativa de Contato';
+        }else if ($res4['status_indicacao'] == 'SA') {
+            $status = 'Segmento nao atendido';
+            $acao = 'da Tentativa de Contato';
         }
         ?>
         <table class="tblIndicacaoAtu tblHidden" id="" border="1" width="50%" align="center" cellspacing="0"
@@ -717,6 +723,7 @@ endif;
                         <label><input type="radio" name="rdStatus" value="CC"/> Associado Cancelou.</label>
                         <label><input type="radio" name="rdStatus" value="CA"/> Amigo Indicado Cancelou.</label>
                         <label><input type="radio" name="rdStatus" value="CT"/> Contador (N&atilde;o gera bonifica&ccedil;&atilde;o)</label>
+                        <label><input type="radio" name="rdStatus" value="SA"/>Segmento nao atendido.</label>
                     </td>
                 </tr>
                 <tr class="trHidden" style="display: none">
