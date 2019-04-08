@@ -74,22 +74,23 @@ if ($go=='ingressar') {
   if ($tipo=="b") $rfq = "and id_franquia='$id_franquia'";
   else $rfq="";
 
-  $sql = "SELECT b.codloja, a.logon, b.id_franquia, b.razaosoc, b.fone, b.cidade, b.uf, b.email 
-                FROM cs2.logon a 
-                INNER JOIN cs2.cadastro b ON a.codloja=b.codloja 
-                WHERE mid(logon,1,5)='$codigo' $rfq";
+  $sql = "SELECT 
+              b.codloja, a.logon, b.id_franquia, b.razaosoc, b.fone, b.cidade, b.uf, b.email 
+          FROM cs2.logon a 
+          INNER JOIN cs2.cadastro b ON a.codloja=b.codloja 
+          WHERE mid(logon,1,5)='$codigo' $rfq";
   $resulta = mysql_query($sql, $con) or die ("Erro ao selecionar o codigo");
   $linha = mysql_num_rows($resulta);
   if ($linha == 0) {
-            print "<script>alert('Cliente nao existe ou nao pertence a sua franquia!'); javascript: history.back();</script>";
+        print "<script>alert('Cliente nao existe ou nao pertence a sua franquia!'); javascript: history.back();</script>";
   } else {
-            $matriz = mysql_fetch_array($resulta);
-            $codloja = $matriz['codloja'];
-            $razaosoc = $matriz['razaosoc'];
-            $fone = $matriz['fone'];
-            $cidade = $matriz['cidade'];
-            $uf = $matriz['uf'];
-            $email = $matriz['email'];
+        $matriz = mysql_fetch_array($resulta);
+        $codloja = $matriz['codloja'];
+        $razaosoc = $matriz['razaosoc'];
+        $fone = $matriz['fone'];
+        $cidade = $matriz['cidade'];
+        $uf = $matriz['uf'];
+        $email = $matriz['email'];
   }
 ?>
 <table width=70% align="center">
@@ -119,12 +120,12 @@ if ($go=='ingressar') {
   <tr>
     <td class="subtitulodireita">Boletos Mensalidades:</td>
 <?php
-  $sql="  SELECT 
-                    vencimento, valor, numdoc, referencia, date_format(vencimento,'%d/%m/%Y') as venc2 ,
-                    date_format(vencimento_alterado,'%d/%m/%Y') as vencimento_alterado
-                FROM cs2.titulos 
-                WHERE codloja='$codloja' AND datapg IS NULL
-                ORDER BY vencimento ASC";
+  $sql="SELECT 
+            vencimento, valor, numdoc, referencia, date_format(vencimento,'%d/%m/%Y') as venc2 ,
+            date_format(vencimento_alterado,'%d/%m/%Y') as vencimento_alterado
+        FROM cs2.titulos 
+        WHERE codloja='$codloja' AND datapg IS NULL
+        ORDER BY vencimento ASC";
   $qr=mysql_query($sql,$con) or die ("\n erro no segundo\n".mysql_error()."\n\n");
   $nreg = mysql_num_rows($qr);
   if($nreg==0) {
@@ -556,17 +557,28 @@ Dpto. Financeiro WEB CONTROL EMPRESAS";
   $contato -> paraEmail      = $to; // Email que vai receber a mensagem
 
   $contato -> configHost     = "10.2.2.7"; // Endereço do seu SMTP
-  $contato -> configPort     = 25; // Porta usada pelo seu servidor. Padrão 25
+  $contato -> configPort     = 587; // Porta usada pelo seu servidor. Padrão 25
   $contato -> configUsuario  = "financeiro@webcontrolempresas.com.br"; // Login do email que ira utilizar
   $contato -> configSenha    = "infsys321"; // Senha do email
   $contato -> remetenteEmail = "financeiro@webcontrolempresas.com.br"; // E-mail que vai ser exibido no remetente da mensagem
   $contato -> remetenteNome  = "Web Control Empresas";    // Um nome para o remetente
   $contato -> assuntoEmail   = $assunto; // Assunto da mensagem
   $contato -> conteudoEmail  = $configuracao;// Conteudo da mensagem.
+  
   $contato -> confirmacao    = 1; // Se for 1 exibi a mensagem de confirmação
   $contato -> mensagem       = ""; // Mensagem de Confirmacao
   $contato -> erroMsg        = "[ $codloja ] Uma mensagem de erro aqui";// pode colocar uma mensagem de erro aqui!!
   $contato -> confirmacaoErro = 1; // Se voce colocar 1 ele exibi o erro que ocorreu no erro se for 0 não exibi o erro uso geralmente para verifiar se ta pegando.
+  
+  $contato -> SMTPSecure = 'tls';
+  $contato -> SMTPOptions = array( //configurar isso porque por padrao ele verifica, se confogirar isso ele nao verifica ssl
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+
   $contato -> enviar(); // envia a mensagem
 
   echo "<script>alert(\"E-mail enviado com sucesso!\");</script>";

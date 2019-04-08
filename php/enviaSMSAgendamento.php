@@ -1,5 +1,12 @@
 <?php
 
+error_reporting(E_ALL | E_STRICT);
+set_time_limit(30);
+header('Content-Type: application/json; charset=utf-8');
+header('Content-language: pt-br');
+
+global $con;
+
 // ABRE A CONEXÃO COM O BANCO DE DADOS
 $con = @mysql_pconnect("10.2.2.3", "csinform", "inform4416#scf");
 
@@ -15,7 +22,7 @@ $sql = "SELECT
         SUBSTR(REPLACE(REPLACE(REPLACE(REPLACE(fone2,'(',''),')',''),' ',''),'-',''),3,1) = 7)
         AND LENGTH(REPLACE(REPLACE(REPLACE(REPLACE(fone2,'(',''),')',''),' ',''),'-','')) > 9
         AND enviar_sms = 'S'
-        AND data_cadastro >= subdate(now(), interval 30 day)
+--      AND data_cadastro >= subdate(now(), interval 30 day)
         GROUP BY fone
         ";
 $res = mysql_query($sql);
@@ -42,6 +49,7 @@ for($i=1;$i<=$qtdFones;$i++){
     }else{
         $fones .= ',' . $result['fone'];
     }
+
     $fonesTotal .= ',' . $result['fone'];
 
 
@@ -57,8 +65,19 @@ for($i=1;$i<=$qtdFones;$i++){
             $id_sms_automatico = $arrCampanha['id'];
 
             $mensagem = $arrCampanha['mensagem'];
+            $mensagem_whatsApp = $arrCampanha['mensagem_whatsApp'];
 
-            enviaSms($fones, $mensagem);
+           // enviaSms($fones, $mensagem); // envia um bloco somente
+
+	   // Para WhatsApp tem que enviar um a um
+
+	   $array_fone = explode(',',$fones);
+	   $qtd_fone = count( $array_fone );
+	
+	   for( $i = 0; $i < $qtd_fone ; $i++ ){
+              enviaWhatsApp($array_fone[$i],$mensagem_whatsApp,$con);
+	   }
+	   
         }
 
         $fones = '';
@@ -77,7 +96,20 @@ for($i=1;$i<=$qtdFones;$i++){
 
             $mensagem = $arrCampanha['mensagem'];
 
-            enviaSms($fones, $mensagem);
+            $mensagem_whatsApp = $arrCampanha['mensagem_whatsApp'];
+
+           // enviaSms($fones, $mensagem); // envia um bloco somente
+
+           // Para WhatsApp tem que enviar um a um
+
+           $array_fone = explode(',',$fones);
+           $qtd_fone = count( $array_fone );
+
+           for( $i = 0; $i < $qtd_fone ; $i++ ){
+              enviaWhatsApp($array_fone[$i],$mensagem_whatsApp,$con);
+           }
+
+
         }
 
         $fones = '';
@@ -126,6 +158,51 @@ function enviaSms($fones, $mensagem){
     echo $result;
 
 }
+
+function enviaWhatsApp($fone, $mensagem, $con){
+
+   // CRIA UM ARRAY COM OS PARAMETROS PARA ENVIAR PARA O CURL
+   $fone = '41992806732';
+   // $mensagem = 'Teste Msg';
+   $args = array(
+		'srv'	  => 'SET_WHA_API',
+		'key'	  => 'd5f3088891e8fb174d07d3ec6eb04cc4570d8ea2',
+		'phone'   => '55'.$fone,
+		'sbj'	  => 'WEBCONTROL EMPRESAS',
+		'message' => utf8_encode($mensagem),
+		'b64' 	  => '0',
+		'debug'	  => '0'
+	        );
+
+   $args_json = trim(json_encode($args, JSON_FORCE_OBJECT));
+
+   // CURL PARA ENVIO DOS SMS
+   $handle = curl_init('http://api.wscep.com/wha_json');
+   curl_setopt($handle, CURLOPT_CUSTOMREQUEST, 'POST');
+   curl_setopt($handle, CURLOPT_POSTFIELDS, $args_json);
+   curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($handle, CURLOPT_TIMEOUT, 4);
+   curl_setopt($handle, CURLOPT_POST, true);
+   curl_setopt($handle, CURLOPT_USERAGENT, 'WC_SISTEMAS');
+   curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($args_json)));
+   $result = curl_exec($handle);
+   curl_close($handle);
+   $resultadoArr = json_decode($result, true);
+
+   print_r($resultadoArr);
+
+   $ret_resultado = $resultadoArr[0]['resultado'];
+   $ret_msg = $resultadoArr[0]['msg'];
+   $ret_phone = $resultadoArr[0]['phone'];
+   $ret_id_msg = $resultadoArr[0]['id_msg'];
+   $ret_data = $resultadoArr['data'];
+
+
+   $sqlf = "INSERT INTO apoio.sms_automatico_enviado(telefone,resultado,resultado_msg,id_msg_envio,data_envio) VALUES('$ret_phone','$ret_resultado','$ret_msg','$ret_id_msg','$ret_data')"; 
+   $res = mysql_query($sqlf,$con) or die("Erro SQL: $sqlf"); 
+   sleep(1);
+}
+
 
 // PERCORE AS CAMPNHAS ENVIA SMS E SALVA O LOG PARA OS TELEFONES ENCONTRADOS
 
