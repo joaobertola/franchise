@@ -1,7 +1,7 @@
 <br><br><br>
 <?php
-require_once('class.phpmailer.php');
-require_once('class.smtp.php');
+//require_once('class.phpmailer.php');
+//require_once('class.smtp.php');
 require_once('connect/sessao.php');
 
 $go   = $_POST['go'];
@@ -423,19 +423,19 @@ if ($go=='email_antecipa') {
     Exemplo: Pagamento da multa 10/05/2014, o &uacute;ltimo boleto a ser pago ser&aacute; 30/06/2014 (referente aos servi&ccedil;os do m&ecirc;s 05/2014).</p>
     <p>Antes de efetuar o pagamento do BOLETO DE MULTA CONTRATUAL, pense nas solu&ccedil;&otilde;es que sua empresa deixar&aacute; de usufruir por um valor MUITO BAIXO:</p>
 
-    <p><font color='blue'><b>1º SOLU&Ccedil;&Atilde;O:</b></font> DENTRO DO SEU PROPRIO SITE sua empresa poderá cadastrar todos os seus clientes, seu estoque, suas despesas e contas pagas, relat�rios de clientes e muito mais que voc� controla na sua empresa.<br>
+    <p><font color='blue'><b>1º SOLU&Ccedil;&Atilde;O:</b></font> DENTRO DO SEU PRÓPRIO SITE sua empresa poderá cadastrar todos os seus clientes, seu estoque, suas despesas e contas pagas, relatórios de clientes e muito mais que você controla na sua empresa.<br>
 
-    <p><font color='blue'><b>2º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PROPRIO SITE sua empresa poderá localizar qualquer cliente ou pessoa no Brasil, mesmo que seja somente pelo nome.<br>
+    <p><font color='blue'><b>2º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PRÓPRIO SITE sua empresa poderá localizar qualquer cliente ou pessoa no Brasil, mesmo que seja somente pelo nome.<br>
 
-    <p><font color='blue'><b>3º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PROPRIO SITE sua empresa poderá vender no credi�rio ou no boleto para qualquer cliente, e deixar de perder venda, pois muitos clientes n�o tem dinheiro, e nem cart�o, e sua empresa poder� emitir os boletos em 1 minuto.<br>
+    <p><font color='blue'><b>3º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PRÓPRIO SITE sua empresa poderá vender no crediário ou no boleto para qualquer cliente, e deixar de perder venda, pois muitos clientes não tem dinheiro, e nem cartão, e sua empresa poderá emitir os boletos em 1 minuto.<br>
 
-    <p><font color='blue'><b>4º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PROPRIO SITE sua empresa poderá parcelar a divida de todos os seus devedores, mandar cartinha de cobran�a, parcelar as dividas e facilitar para o devedor, e recuperar de forma inteligente o que o Sr j� perdeu ou est� perdendo.<br>
+    <p><font color='blue'><b>4º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PRÓPRIO SITE sua empresa poderá parcelar a divida de todos os seus devedores, mandar cartinha de cobrança, parcelar as dividas e facilitar para o devedor, e recuperar de forma inteligente o que o Sr já perdeu ou está perdendo.<br>
 
-    <p><font color='blue'><b>5º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PROPRIO SITE sua empresa poderá consultar qualquer pessoa, se ela tem problemas com cheque, ou com protesto no cart�rio, ou com nome com RESTRI��O NA PRA�A.<br>
+    <p><font color='blue'><b>5º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PRÓPRIO SITE sua empresa poderá consultar qualquer pessoa, se ela tem problemas com cheque, ou com protesto no cartório, ou com nome com RESTRIÇÃO NA PRAÇA.<br>
 
-    <p><font color='blue'><b>6º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PROPRIO SITE sua empresa poderá ter  e-mails, controle cont�bil (folha ponto, advert�ncia de funcion�rios, promiss�rias, recibos, holerite, contratos diversos), tamb�m poder� bloquear seus devedores e tamb�m encaminhar todos para protesto em qualquer cartorio caso o cliente ficar te devendo.<br>
+    <p><font color='blue'><b>6º SOLU&Ccedil;&Atilde;O: </b></font>DENTRO DO SEU PRÓPRIO SITE sua empresa poderá ter  e-mails, controle contábil (folha ponto, advertência de funcionários, promissórias, recibos, holerite, contratos diversos), também poderá bloquear seus devedores e também encaminhar todos para protesto em qualquer cartorio caso o cliente ficar te devendo.<br>
 
-    <p><font color='blue'><b>7º SOLU&Ccedil;&Atilde;O:</b></font> DENTRO DO SEU PROPRIO SITE sua empresa poderá alterar fotos e textos em seu site em apenas 1 minuto, isso quer dizer que o Sr (a) pode trocar as fotos, pode mudar os textos, pode mudar as promo��es a qualquer momento em seu Site, sem depender de programador nenhum !!! <br>
+    <p><font color='blue'><b>7º SOLU&Ccedil;&Atilde;O:</b></font> DENTRO DO SEU PROPRIO SITE sua empresa poderá alterar fotos e textos em seu site em apenas 1 minuto, isso quer dizer que o Sr (a) pode trocar as fotos, pode mudar os textos, pode mudar as promoções a qualquer momento em seu Site, sem depender de programador nenhum !!! <br>
 
     <p>Obrigado.
 
@@ -538,52 +538,54 @@ Dpto. Financeiro WEB CONTROL EMPRESAS";
   $assunto = $_POST['assunto'];
 
   $txt_tmp  = "$txt_msg_padrao_1";
-    $txt_tmp .= "                                  ";
+  $txt_tmp .= "                                  ";
   $txt_tmp .= "                                  ";
   $txt_tmp .= "                                  ";
   $txt_tmp .= "                                  ";
 
-    $configuracao = "$txt_tmp";
+  $configuracao = "$txt_tmp";
 
   $to = $_POST['para'];
   $from = $_POST['de'];
 
-  include_once('class.send.php');
+  // include_once('class.send.php');
+  require_once('libs/phpmailer/PHPMailerAutoload.php');
 
-  $assunto = utf8_encode(html_entity_decode($assunto));
-  # Enviando Email
-  $contato = new SendEmail();
-  $contato -> nomeEmail      = "Departamento Financeiro"; // Nome do Responsavel que vai receber o E-Mail
-  $contato -> paraEmail      = $to; // Email que vai receber a mensagem
+  require_once('libs/phpmailer/class.phpmailer.php');
 
-  $contato -> configHost     = "10.2.2.7"; // Endereço do seu SMTP
-  $contato -> configPort     = 587; // Porta usada pelo seu servidor. Padrão 25
-  $contato -> configUsuario  = "financeiro@webcontrolempresas.com.br"; // Login do email que ira utilizar
-  $contato -> configSenha    = "infsys321"; // Senha do email
-  $contato -> remetenteEmail = "financeiro@webcontrolempresas.com.br"; // E-mail que vai ser exibido no remetente da mensagem
-  $contato -> remetenteNome  = "Web Control Empresas";    // Um nome para o remetente
-  $contato -> assuntoEmail   = $assunto; // Assunto da mensagem
-  $contato -> conteudoEmail  = $configuracao;// Conteudo da mensagem.
-  
-  $contato -> confirmacao    = 1; // Se for 1 exibi a mensagem de confirmação
-  $contato -> mensagem       = ""; // Mensagem de Confirmacao
-  $contato -> erroMsg        = "[ $codloja ] Uma mensagem de erro aqui";// pode colocar uma mensagem de erro aqui!!
-  $contato -> confirmacaoErro = 1; // Se voce colocar 1 ele exibi o erro que ocorreu no erro se for 0 não exibi o erro uso geralmente para verifiar se ta pegando.
-  
-  $contato -> SMTPSecure = 'tls';
-  $contato -> SMTPOptions = array( //configurar isso porque por padrao ele verifica, se confogirar isso ele nao verifica ssl
-                    'ssl' => array(
-                        'verify_peer' => false,
-                        'verify_peer_name' => false,
-                        'allow_self_signed' => true
-                    )
-                );
+$mail = new PHPMailer(); 
+$mail -> IsSMTP(); 
+$mail -> IsHTML(true); 
+$mail -> CharSet  = 'utf-8';        // Define o charset da mensagem 
+$mail -> SMTPAuth = true;           // Permitir autenticação SMTP
 
-  $contato -> enviar(); // envia a mensagem
+$mail->Subject = utf8_decode($assunto);//assunto do email
 
-  echo "<script>alert(\"E-mail enviado com sucesso!\");</script>";
+$mail->Body = utf8_decode($configuracao);
 
-//  echo "<meta http-equiv=\"refresh\" content=\"0; url=painel.php?pagina1=Franquias/b_boleto.php \";>";
+$mail -> Host        = '10.2.2.7';             // Define o servidor SMTP    
+$mail -> Username    = "financeiro@webcontrolempresas.com.br";  // SMTP conta de usuário 
+$mail -> Password    = "infsys321";  // SMTP conta senha 
+$mail -> From        = 'financeiro@webcontrolempresas.com.br';
+$mail -> Port        = 587; // ou 25
+$mail -> SMTPSecure  = 'tls'; // insecure
+$mail -> SMTPOptions = array( //configurar isso porque por padrao ele verifica, se confogirar isso ele nao verifica ssl
+                          'ssl' => array(
+                                          'verify_peer' => false,
+                                          'verify_peer_name' => false,
+                                          'allow_self_signed' => true
+                                   )
+                       );
+$mail -> FromName = 'Departamento Financeiro';
+$mail -> AddAddress($to);  // Adiciona um "To" endereço 
+        
+if($mail->send()) {
+    echo "<script>alert(\"E-mail enviado com sucesso!\");</script>";
 
-}//fim go=enviaemail
+} else {
+    echo "<script>alert(\"FALHA no envio do email!\");</script>";
+
+}
+
+}
 ?>
