@@ -241,6 +241,8 @@ if ($id_franquia == 4 || $id_franquia == 163) {
                             $status = "<span style='color:#ff890b;'>Amigo Indicado Cancelou</span>";
                         } else if ($res['status_indicacao'] == 'CT') {
                             $status = "<span style='color:#ff890b;'>Contador ( Não gera bonificação)</span>";
+                        } else if ($res['status_indicacao'] == 'SA') {
+                            $status = "<span style='color:#ff890b;'>Segmento não atendido</span>";
                         }
                         
                         ?>
