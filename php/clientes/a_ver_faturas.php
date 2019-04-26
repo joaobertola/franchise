@@ -382,10 +382,10 @@ if (mysql_num_rows($res) == 0) {
     $param1 = '';
     $param2 = '';
 } else {
-    if ( mysql_result($res, 0, 'venc') != '' )
-        $param1 = mysql_result($res, 0, 'venc_alterado_view');
-    else
-        $param1 = mysql_result($res, 0, 'venc');
+    // if ( mysql_result($res, 0, 'venc') != '' )
+    //     $param1 = mysql_result($res, 0, 'venc_alterado_view');
+    // else
+    $param1 = mysql_result($res, 0, 'venc');
     $param2 = mysql_result($res, 0, 'valor');
 }
 
