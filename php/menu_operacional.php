@@ -33,9 +33,4 @@ function doBlink(){
 		<td align="center"><?php echo $i++; ?></td>
 		<td><a href="painel.php?pagina1=area_restrita/a_solicitacao_valores.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><font color="#00CC00"><b><blink>Requisições Financeiras</blink></b></font></a></td>
 	</tr>
-
-	<tr>
-		<td align="center"><?php echo $i++; ?></td>
-		<td><a href="painel.php?pagina1=area_restrita/a_solicitacao_valores.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><font color="#00CC00"><b><blink>kmnhbuggvkgh  ghv  jh </blink></b></font></a></td>
-	</tr>
 </body>
