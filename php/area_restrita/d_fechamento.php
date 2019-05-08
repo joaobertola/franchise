@@ -710,6 +710,7 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                     else
                         $material_public = material_public(401, 50000);
                 }
+                $material_public = '750.00';
             } else
                 $material_public = '0.00';
 
