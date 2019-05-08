@@ -584,7 +584,7 @@ if ($res4):
             </tr>
             <?php if ($res4['status_indicacao'] == 'VR' && ($id_franquia == 163 || $id_franquia == 4)) { ?>
                 <tr>
-                    <td>Fatura Ã  Bonificar:</td>
+                    <td>Fatura à Bonificar:</td>
                     <td colspan="2">
                         <select id="fatura_bonificar_vr" name="fatura_bonificar_vr" onchange='gravaFatBonificar(this.value, <?php echo $idIndicacaoNew ?>)'>
                             <option value="">Selecione</option>
