@@ -21,9 +21,11 @@ if($_REQUEST['fatBoni'] == 1){
 	$qr2 = mysql_query($sql_u,$con) or die ("\n 02: Erro ao pesquisar [atualiza_cobradora_titulos]\n".mysql_error()."\n\n");
 
 }else{
+	$id_func = isset($_REQUEST['id_func'] ) ? 'null' : $id_func;
 	$sql_u = "UPDATE base_web_control.indica_amigo_log
 			SET
-				num_doc = '$numdoc'
+				num_doc = '$numdoc',
+				id_funcionario = '$id_func'
 		  WHERE id = '$id'";
 	$qr2 = mysql_query($sql_u,$con) or die ("\n 02: Erro ao pesquisar [atualiza_cobradora_titulos]\n".mysql_error()."\n\n");
 }
