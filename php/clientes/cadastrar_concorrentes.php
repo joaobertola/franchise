@@ -4,7 +4,7 @@ require "connect/sessao_r.php";
 
 $con = @mysql_connect("10.2.2.3", "csinform", "inform4416#scf");
 
-$sql = "SELECT * FROM cs2.concorrente";
+$sql = "SELECT * FROM cs2.concorrente order by nome";
 
 $query = mysql_query( $sql, $con) or die(mysql_error());
 $result = array(); 
