@@ -39,8 +39,7 @@ if ($id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqui
 $protocolo = $_REQUEST ['protocolo'];
 $origem = $_REQUEST ['origem'];
 
-$sql = "SELECT id, nome FROM cs2.concorrente";
-
+$sql = "SELECT id, nome FROM cs2.concorrente ORDER BY nome";
 $query = mysql_query( $sql, $con) or die(mysql_error());
 $result = array(); 
 
