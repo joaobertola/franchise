@@ -13,10 +13,7 @@
             dataType: 'json',
             success: function(json) {
                 if (json != false) {
-
-                    // recebi retorno
-                    alert('adadsa');
-
+                    $("#tbodyResultNotas").empty();
                 } else {
                     console.log(data);
                 }
