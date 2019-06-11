@@ -28,7 +28,7 @@ $html = '<table style="width:100%">
     <th>Retorno</th> 
     <th>%</th> 
   </tr>
-  <tr><td colspan='3'><hr></td></tr>';
+  <tr><td colspan="3"><hr></td></tr>';
 while ($row = mysql_fetch_array($qry)) {
     $html .= "  <tr>
                 <td>".$row['qtd']."</td>
