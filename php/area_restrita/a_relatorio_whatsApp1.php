@@ -1,25 +1,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://www.webcontrolempresas.com.br/franquias/css/assets/js/bootstrap.min.js"></script>
 <script src="https://www.webcontrolempresas.com.br/franquias/css/assets/js/mask.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <script>
-    function ConsultaCampanha(campanha){
+
+    function ConsultaCampanha(campanha) {
         $.ajax({
             url: "area_restrita/a_relatorio_whatsApp2.php",
-            type: "POST",
+            method: "POST",
             data: {
                 'id_campanha': campanha
             },
             dataType: 'json',
-            success: function(json) {
-                if (json != false) {
-                    $("#tbodyResultNotas").empty();
-                } else {
-                    console.log(data);
-                }
+            success: function (data) {
+                $("#myModal").modal();
+                $(".modal-body").html(data);
             }
         });
     }
+
 </script>
 
 <link rel="stylesheet"
@@ -48,8 +50,9 @@ require "connect/sessao.php";
         $dti = substr($dti,6,4).'-'.substr($dti,3,2).'-'.substr($dti,0,2);
         $dtf = substr($dtf,6,4).'-'.substr($dtf,3,2).'-'.substr($dtf,0,2);
         $sqlComp = '';
-        if ( $dti != '' )  $sqlComp .= " AND b.data_envio >= '$dti' ";
-        if ( $dtf != '' )  $sqlComp .= " AND b.data_envio <= '$dtf' ";
+        if ( trim(str_replace('-','',$dti)) != '' )  $sqlComp .= " AND b.data_envio >= '$dti' ";
+        if ( trim(str_replace('-','',$dtf)) != '' )  $sqlComp .= " AND b.data_envio <= '$dtf' ";
+
 
         $sql = "SELECT 
                     DATE_FORMAT(b.inicio_envio,'%d/%m/%Y %H:%i:%s') AS inicio_envio,
@@ -69,6 +72,7 @@ require "connect/sessao.php";
                 FROM cs2.campanha_whatsApp_retorno a
                 INNER JOIN cs2.campanha_whatsApp_envio b ON a.id_campanha = b.id_campanha_retorno
                 WHERE telefone = '$fone' $sqlComp";
+
         $qry = mysql_query( $sql, $con) or die('Erro comando SQL :'.$sql);
         if ( mysql_num_rows( $qry ) > 0 ){
             ?>
@@ -138,6 +142,29 @@ require "connect/sessao.php";
         $qry = mysql_query( $sql, $con) or die('Erro comando SQL :'.$sql);
         if ( mysql_num_rows( $qry ) > 0 ){
             ?>
+
+
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+<!--                                <h4 class="modal-title">Cabeçalho</h4>-->
+                            </div>
+                            <div class="modal-body">
+                            </div>
+<!--                            <div class="modal-footer">-->
+<!--                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+<!--                            </div>-->
+                        </div>
+
+                    </div>
+                </div>
+
+
+
             <form id="frmViewFone" name="frmViewFone" method="#">
                 <table class="tblIndicaAmigo" id="tblIndicaAmigo" border="1" width="80%" align="center" cellspacing="0"
                style="border: 1px solid #D1D7DC; background-color:#FFFFFF">
@@ -175,9 +202,12 @@ require "connect/sessao.php";
                 <table class="tblIndicaAmigo" id="tblIndicaAmigo" width="80%" align="center" cellspacing="0">
                     <tr align="center">
                         <td colspan="5"><input type="button" name="retorno" value="Nova Consulta" onClick="history.back()"></td>
+
                     </tr>    
                 </table>
             </form>
+
+
                     <?php
             
         }
