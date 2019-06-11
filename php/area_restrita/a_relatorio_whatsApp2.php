@@ -22,7 +22,8 @@ $sql = "SELECT (SELECT COUNT(*) FROM cs2.campanha_whatsApp_retorno
         WHERE id_campanha = $campanha
         GROUP BY retorno";
 $qry = mysql_query( $sql, $con) or die('Erro comando SQL :'.$sql);
-$html = '<table style="width:100%">
+
+$html .= '<table style="width:100%">
   <tr>
     <th>Quantidade</th>
     <th>Retorno</th> 
@@ -38,8 +39,6 @@ while ($row = mysql_fetch_array($qry)) {
             ";
 //    print_r($row);
 }
-
 $html .= '</table>';
-//echo $html;
-//die();
+
 echo json_encode($html);
