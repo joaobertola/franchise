@@ -122,7 +122,7 @@ window.onload = function(){
 <form name="RelWhats" method="post" action="painel.php?pagina1=area_restrita/a_relatorio_whatsApp1.php">
 <table width="70%" align="center">
     <tr>
-        <td colspan="2" align="center" class="titulo">RELATORIO DE ENVIO WHATASAPP</td>
+        <td colspan="2" align="center" class="titulo">RELATORIO DE ENVIO WHATSAPP</td>
     </tr>
     <tr>
         <td width="173" class="subtitulodireita">&nbsp;</td>
