@@ -31,7 +31,7 @@
      if($_SESSION['id'] == '163') { ?>
         <tr>
             <td align="center"><?php echo $i++; ?></td>
-            <td ><a href="painel.php?pagina1=area_restrita/a_relatorio_whatsApp1.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');"><font color="#00CC00" style="font-weight:bold">Extrato Whatsapp</font></a></td>
+            <td ><a href="painel.php?pagina1=area_restrita/a_relatorio_whatsApp.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');"><font color="#00CC00" style="font-weight:bold">Extrato Whatsapp</font></a></td>
         </tr>
      <?php }
 
