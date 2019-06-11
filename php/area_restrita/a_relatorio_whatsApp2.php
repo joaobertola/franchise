@@ -9,12 +9,13 @@ $sql = "SELECT (SELECT COUNT(*) FROM cs2.campanha_whatsApp_retorno
                     count(*) AS qtd,
                     CASE retorno
                         WHEN 1 THEN 'Ainda não verificado'
-                        WHEN 2 THEN 'Aguardando envio da mensagem'
-                        WHEN 3 THEN 'Enviando mensagem'
-                        WHEN 4 THEN 'Mensagem Enviada'
-                        WHEN 5 THEN 'Mensagem Entregue'
-                        WHEN 6 THEN 'Número telefone Inválido'
+                        WHEN 2 THEN 'Aguardando envio das mensagens'
+                        WHEN 3 THEN 'Enviando mensagens'
+                        WHEN 4 THEN 'Mensagens Enviadas'
+                        WHEN 5 THEN 'Mensagens Entregues e NÃO LIDAS'
+                        WHEN 6 THEN 'Número Telefone Inválido'
                         WHEN 7 THEN 'Telefone Não possui WhatsApp'
+                        WHEN 8 THEN 'Mensagens Entregues e LIDAS'
                     END
                     AS retorno
                     FROM cs2.campanha_whatsApp_retorno
