@@ -12,6 +12,7 @@
         if($('#piechart').length > 0){
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.clearChart();
+            $('#piechart').remove();
         }
         $.ajax({
             url: "area_restrita/a_relatorio_whatsApp2.php",
@@ -31,15 +32,16 @@
     }
 
     function graficoWhatsPizza() {
-            var datatable = [];
-            datatable.push(['Mensagens', 'Percentual de mensagens']);
+        var datatable = [];
+        datatable.push(['Mensagens', 'Percentual de mensagens']);
         $.each(datawhats, function(index, value) {
             datatable.push([value.retorno,Number(value.qtd)]);
         });
         var data = google.visualization.arrayToDataTable(datatable);
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data);
-      }
+        var options = {'width':550};
+        chart.draw(data,options);
+    }
     
 </script>
 
