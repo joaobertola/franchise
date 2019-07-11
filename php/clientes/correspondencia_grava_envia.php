@@ -59,8 +59,8 @@ if ($email) {
     $mail->CharSet = 'utf-8';        // Define o charset da mensagem
     $mail->SMTPAuth = true;                // Permitir autentica����o SMTP
     $mail->Host = '10.2.2.7';             // Define o servidor SMTP
-    $mail->Username = "financeiro@webcontrolempresas.com.br";  // SMTP conta de usu��rio
-    $mail->Password = "infsys321";  // SMTP conta senha
+    $mail->Username = "administrativo@webcontrolempresas.com.br";  // SMTP conta de usu��rio
+    $mail->Password = "1874well";  // SMTP conta senha
     $mail->Subject = $assunto; // Define o assunto da mensagem
     $mail->From = 'financeiro@webcontrolempresas.com.br';
     $mail->FromName = 'Web Control Empresas'; // Adiciona um "From" endere��o
