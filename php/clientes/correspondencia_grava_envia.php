@@ -62,7 +62,7 @@ if ($email) {
     $mail->Username = "administrativo@webcontrolempresas.com.br";  // SMTP conta de usu��rio
     $mail->Password = "1874well";  // SMTP conta senha
     $mail->Subject = $assunto; // Define o assunto da mensagem
-    $mail->From = 'financeiro@webcontrolempresas.com.br';
+    $mail->From = 'administrativo@webcontrolempresas.com.br';
     $mail->FromName = 'Web Control Empresas'; // Adiciona um "From" endere��o
     //$mail->FromName = 'Web Control Empresas - Sistemas - Automação - Consultas - Sites'; // Adiciona um "From" endere��o
     $mail->AddAddress($email, '');  // Adiciona um "To" endere��o
