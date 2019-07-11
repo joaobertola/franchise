@@ -61,6 +61,13 @@ if ($email) {
     $mail->Host = '10.2.2.7';             // Define o servidor SMTP
     $mail->Username = "financeiro@webcontrolempresas.com.br";  // SMTP conta de usu��rio
     $mail->Password = "infsys321";  // SMTP conta senha
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
     $mail->Subject = $assunto; // Define o assunto da mensagem
     $mail->From = 'financeiro@webcontrolempresas.com.br';
     $mail->FromName = 'Web Control Empresas'; // Adiciona um "From" endere��o
