@@ -22,6 +22,7 @@
         </tr>
      <?php } 
    */
+     
     if($_SESSION['id'] == '163') { ?>
         <tr>
             <td align="center"><?php echo $i++; ?></td>
