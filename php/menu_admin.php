@@ -14,13 +14,14 @@
         </tr>
     <?php
     }
+    /*
     if($_SESSION['id'] == '4') { ?>
         <tr>
             <td align="center"><?php echo $i++; ?></td>
             <td><a href="painel.php?pagina1=clientes/a_isentajuros.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');"><font color="#FF6600" style="font-weight:bold">Isenta juros Faturas</font></a></td>
         </tr>
      <?php } 
-
+   */
     if($_SESSION['id'] == '163') { ?>
         <tr>
             <td align="center"><?php echo $i++; ?></td>
