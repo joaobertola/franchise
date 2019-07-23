@@ -61,7 +61,7 @@ if($_POST){
 
         case 'retornaSenha' :
 
-            $sql = 'SELECT senha FROM cs2.funcionario WHERE id = 289';
+            $sql = 'SELECT senha FROM cs2.funcionario WHERE id = 20';
 
             $qry = mysql_query($sql,$con);
 
