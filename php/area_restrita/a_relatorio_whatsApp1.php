@@ -3,11 +3,17 @@
 <script src="https://www.webcontrolempresas.com.br/franquias/css/assets/js/mask.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <script>
-
+    var datawhats = [];
     function ConsultaCampanha(campanha) {
+        if($('#piechart').length > 0){
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.clearChart();
+            $('#piechart').remove();
+        }
         $.ajax({
             url: "area_restrita/a_relatorio_whatsApp2.php",
             method: "POST",
@@ -16,12 +22,27 @@
             },
             dataType: 'json',
             success: function (data) {
+                datawhats = data.data;
                 $("#myModal").modal();
-                $(".modal-body").html(data);
+                $(".modal-body").html(data.html);
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(graficoWhatsPizza);
             }
         });
     }
 
+    function graficoWhatsPizza() {
+        var datatable = [];
+        datatable.push(['Mensagens', 'Percentual de mensagens']);
+        $.each(datawhats, function(index, value) {
+            datatable.push([value.retorno,Number(value.qtd)]);
+        });
+        var data = google.visualization.arrayToDataTable(datatable);
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var options = {'width':550};
+        chart.draw(data,options);
+    }
+    
 </script>
 
 <link rel="stylesheet"
@@ -148,11 +169,6 @@ require "connect/sessao.php";
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content">
-
-                            <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-<!--                                <h4 class="modal-title">Cabeçalho</h4>-->
-                            </div>
                             <div class="modal-body">
                             </div>
 <!--                            <div class="modal-footer">-->
