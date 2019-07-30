@@ -16,23 +16,25 @@ if ( ! $dataf )
 else
 	$dataf = data_mysql($dataf);
 
-
-$sql0 = "SELECT count(*) as qtd, a.id_cobradora, b.nome, d.fantasia
+$sql0 = "SELECT count(*) as qtd, sum(c.valorpg) as totalPago, a.id_cobradora, b.nome, d.fantasia
          FROM cs2.titulos_cobradora a 
          INNER JOIN cs2.funcionario b ON a.id_cobradora = b.id 
          INNER JOIN cs2.titulos c ON c.numdoc = a.numdoc
          INNER JOIN cs2.franquia d ON d.id = b.id_franqueado
+         INNER JOIN cs2.cadastro e ON c.codloja = e.codloja
          WHERE c.datapg BETWEEN '$datai' AND '$dataf'
+               AND e.contadorSN = 'N'
          GROUP BY id_cobradora
          ORDER BY qtd DESC";
 $qry0 = mysql_query($sql0,$con) or die($sql0);
 $linha_inicial = "";
 while ( $reg = mysql_fetch_array($qry0) ){
-	$id_cobradora = $reg['id_cobradora'];
-	$qtd          = $reg['qtd'];
-	$nome_cob     = $reg['nome'];
-	$fantasia     = $reg['fantasia'];
-	$linha_inicial .= "<tr><td colspan='2'>$qtd - $nome_cob ( $fantasia )</td></tr>";
+	$id_cobradora   = $reg['id_cobradora'];
+	$qtd            = $reg['qtd'];
+	$nome_cob       = $reg['nome'];
+	$fantasia       = $reg['fantasia'];
+	$totalPago      = 'R$ '.number_format($reg['totalPago'],2,',','.');
+	$linha_inicial .= "<tr><td width='90%'>$qtd - $nome_cob ( $fantasia )</td><td align='right'><span onclick=\"ver('$nome_cob - $totalPago')\">Ver</span></td></tr>";
 	
 	$sql = "SELECT  c.codloja, a.numdoc, b.nome, 
                         date_format(c.vencimento,'%d/%m/%Y') as vencimento, d.nomefantasia, 
