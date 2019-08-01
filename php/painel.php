@@ -69,6 +69,11 @@ jQuery(function($){
    
 });
 })(jQuery);
+
+function ver(valor){ 
+	alert(valor);
+}
+
 </script>
 
 </head>
