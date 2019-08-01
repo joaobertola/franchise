@@ -74,6 +74,7 @@ function ver(valor){
 	alert(valor);
 }
 
+
 </script>
 
 </head>
