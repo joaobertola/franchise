@@ -295,6 +295,7 @@ while ( $reg = mysql_fetch_array($qry) ){
         $oRps->Certificado_Usuario = $Certificado_User;
         $oRps->Certificado_Senha = $Certificado_Senha;
 
+
         $oRps->URLwebservice = 
                         array('producao' => 'https://isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
                               'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
