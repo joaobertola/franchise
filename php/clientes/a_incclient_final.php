@@ -297,10 +297,8 @@
 	   else if ( $codcons == 'A0207' ) $qtd = '5'; 		// 5 consultas para Pesquisa Personnalite
 	   else if ( $codcons == 'A0100' ) $qtd = '100'; 	// 100 consultas para Pesquisa BACEN
 	   else if ( $codcons == 'A0231' ) $qtd = '5000'; 	// 5000 consultas para Pesquisa LOCALIZA NOVOS CLIENTES
+	   else if ( $codcons == 'TM001' ) $qtd = '5000'; 	// 5000 Torpedo Marketing
 	   else if ( $codcons == 'WM001' ) $qtd = '5000'; 	// 5000 WhatsApp Marketing
-
-	   
-
 	   
 	   if ( $assinatura == '7' ) $qtd= '0';
 	   
