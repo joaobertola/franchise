@@ -1,4 +1,8 @@
 ﻿<?php
+
+/**
+ *  Comentario aqui
+ */
 error_reporting (E_ALL ^ E_NOTICE);
 session_start();
 if (!isset($_SESSION['random_key']) || strlen($_SESSION['random_key'])==0){
