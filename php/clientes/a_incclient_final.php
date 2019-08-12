@@ -359,7 +359,7 @@
 	$qry = mysql_query($sql, $con);
 	
 	// Cria uma conta de Email para o cliente novo;
-	verifica_email($franqueado,$codloja,$nomefantasia);
+	// verifica_email($franqueado,$codloja,$nomefantasia);
 	
 	grava_dados($insc, $Tipo, $razaosoc, $logradouro, $numero, $complemento, $bairro, $localidade, $uf, $cep, $email, $fone, $celular, $cpfsocio1, $socio1, $cpfsocio2, $socio2);
 	
