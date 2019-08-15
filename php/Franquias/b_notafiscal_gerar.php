@@ -145,7 +145,7 @@ while ( $reg = mysql_fetch_array($qry) ){
             $Certificado_User  = 'world click';
             $Certificado_Cnpj  = '13117948000173';
             $Certificado_IM    = '010106049109';
-            $Certificado_Senha = '@ktk261074';
+            $Certificado_Senha = '@KTK261074';
         }
         
     if ( $protocolo == '' ){
