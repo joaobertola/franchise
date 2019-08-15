@@ -194,6 +194,7 @@ class RPS
     protected function __loadCerts()
     {
         
+
         if( empty($this->CnpjEmpresa) ):
             echo '999 - CNPJ da empresa nao informado !';
             die;
@@ -203,15 +204,15 @@ class RPS
        
         $x509certdata = '';
 
-        $this->certName = '/var/www/html/franquias/php/Franquias/notafiscal/'.preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '.pfx';
+        $this->certName = 'Franquias/notafiscal/'.preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '.pfx';
         
         //monta o path completo com o nome da chave privada
-        $this->priKEY 	= '/var/www/html/franquias/php/Franquias/notafiscal/'. preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '_priKEY.pem';
+        $this->priKEY 	= 'Franquias/notafiscal/'. preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '_priKEY.pem';
         //monta o path completo com o nome da chave prublica
-        $this->pubKEY 	= '/var/www/html/franquias/php/Franquias/notafiscal/'. preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '_pubKEY.pem';
+        $this->pubKEY 	= 'Franquias/notafiscal/'. preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '_pubKEY.pem';
         //monta o path completo com o nome do certificado
         //(chave publica e privada) em formato pem
-        $this->certKEY 	= '/var/www/html/franquias/php/Franquias/notafiscal/'. preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '_certKEY.pem';
+        $this->certKEY 	= 'Franquias/notafiscal/'. preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '_certKEY.pem';
         
         //verificar se o nome do certificado e o path foram carregados
         //nas variaveis da classe
@@ -412,7 +413,8 @@ class RPS
             // Enable user error handling
             libxml_use_internal_errors(true);
             
-            $this->URLArqxsd = '/var/www/html/nfse/schemas/nfse_curitiba_pr.xsd';
+            // $this->URLArqxsd = '/var/www/html/nfse/schemas/nfse_curitiba_pr.xsd';
+            $this->URLArqxsd = '../nfse/schemas/nfse_curitiba_pr.xsd';
 	
             // validando o xml de retorno
             if ( !$dom->schemaValidate ( $this->URLArqxsd ) ):
@@ -1602,12 +1604,15 @@ SQLQUERY;
     {		
         try
         {
+
             
             # carrega os dados da empresa prestadora
             $this->__loadDadosEmpresa();
             
             # carrega os certificados
+
             $this->__loadCerts();
+            echo "dfgdfgdf";die;
 
             # assinar rps
             $this->__assinarRPS($returned_content);
