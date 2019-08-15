@@ -416,8 +416,8 @@ class RPS
             // Enable user error handling
             libxml_use_internal_errors(true);
             
-            // $this->URLArqxsd = '/var/www/html/nfse/schemas/nfse_curitiba_pr.xsd';
-            $this->URLArqxsd = '../nfse/schemas/nfse_curitiba_pr.xsd';
+            $this->URLArqxsd = '/var/www/html/nfse/schemas/nfse_curitiba_pr.xsd';
+            // $this->URLArqxsd = '../nfse/schemas/nfse_curitiba_pr.xsd';
 	
             // validando o xml de retorno
             if ( !$dom->schemaValidate ( $this->URLArqxsd ) ):
