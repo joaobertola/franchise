@@ -139,18 +139,18 @@ while ( $reg = mysql_fetch_array($qry) ){
             $Certificado_User  = 'wcsistemas';
             $Certificado_Cnpj  = '08745918000171';
             $Certificado_IM    = '05230906';
-            $Certificado_Senha = '@ktk261074';
+            $Certificado_Senha = 'WC20181974';
         }else{
             // WEBCONTROL
             $Certificado_User  = 'world click';
             $Certificado_Cnpj  = '13117948000173';
             $Certificado_IM    = '010106049109';
-            $Certificado_Senha = '@KTK261074';
+            $Certificado_Senha = 'WEBC20191974';
         }
         
     if ( $protocolo == '' ){
         
-        // NAO FOI GERADO A NOTA FISCAL..   GERANDO O XML E ENVIANDO A PREFEITURA
+        // NAO FOI GERADO A NOTA FISCAL.. GERANDO O XML E ENVIANDO A PREFEITURA
 
         # Buscando NUMERO DO LOTE e NUMERO DO RPS
         $sql_lote_rps = "SELECT numero_lote, numero_rps, num_lote_WC, num_rps_WC FROM cs2.nota_controle";

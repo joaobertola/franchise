@@ -194,7 +194,6 @@ class RPS
     protected function __loadCerts()
     {
         
-
         if( empty($this->CnpjEmpresa) ):
             echo '999 - CNPJ da empresa nao informado !';
             die;
@@ -205,6 +204,10 @@ class RPS
         $x509certdata = '';
 
         $this->certName = 'Franquias/notafiscal/'.preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '.pfx';
+
+        if ( ! file_exists( $this->certName )){
+            echo "Certificado DIGITAL nao existe na pasta";
+        }
         
         //monta o path completo com o nome da chave privada
         $this->priKEY 	= 'Franquias/notafiscal/'. preg_replace('/[^[:digit:]]/','',$this->CnpjEmpresa) . '_priKEY.pem';
@@ -1612,7 +1615,6 @@ SQLQUERY;
             # carrega os certificados
 
             $this->__loadCerts();
-            echo "dfgdfgdf";die;
 
             # assinar rps
             $this->__assinarRPS($returned_content);
