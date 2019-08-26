@@ -28,7 +28,7 @@ if (empty($go)) { ?>
                 <td width="25%" class="subtitulodireita">Faturamento</td>
                 <td width="50%" class="campoesquerda">
                     <?php 
-                    $sql_sel = "SELECT * FROM cs2.controle_faturamento ORDER BY data_emissao DESC LIMIT 15";
+                    $sql_sel = "SELECT * FROM cs2.controle_faturamento ORDER BY data_emissao DESC LIMIT 100";
                     $qry = mysql_query($sql_sel,$con) or die("Erro SQL: $sql_sel");
                     echo "<select name='id_faturamento' id='id_faturamento' style='width:42%'>";
                     while($rs = mysql_fetch_array($qry)) {?>
