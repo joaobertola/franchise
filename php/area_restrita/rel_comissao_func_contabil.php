@@ -141,6 +141,7 @@ $rstFuncionario = mysql_query($qryFuncionario, $con);
 
         });
 
+
     });
 
     $(window).load(function () {
