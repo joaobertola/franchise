@@ -35,9 +35,9 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         ) IS NULL,'Pendente Scan', 'Ativo')),IF(c.sitcli = 1, 'Bloqueado', IF(c.sitcli = 2, 'Cancelado',IF(c.sitcli = 4,'Bloqueio Virtual', 'Ativo')))),IF(c.contadorsn = 'S', ' - Contador', '')))) AS pendencia,
                         contadorsn,
                         IF(contadorsn = 'N' AND @pagoComissao = '0' AND @pendente = 'Ativo', @comissaoAfiliacao, 0) AS comissao_afiliacao,
-                                        IF(@pagoComissao = 1,@comissaoAfiliacao,0) AS valor_comissao_pago,
-                                        (SELECT IF(COUNT(*) > 0,1,0) FROM cs2.funcionario_bonus_afiliacao WHERE id_funcionario = f.id AND tipo_bonus = '20' AND DATE_FORMAT(referencia_bonus,'%Y-%m') = '$dataFiltro') AS pago_bonus20,
-                                        (SELECT IF(COUNT(*) > 0,1,0) FROM cs2.funcionario_bonus_afiliacao WHERE id_funcionario = f.id AND tipo_bonus = '25' AND DATE_FORMAT(referencia_bonus,'%Y-%m') = '$dataFiltro') AS pago_bonus25
+                        IF(@pagoComissao = 1,@comissaoAfiliacao,0) AS valor_comissao_pago,
+                        (SELECT IF(COUNT(*) > 0,1,0) FROM cs2.funcionario_bonus_afiliacao WHERE id_funcionario = f.id AND tipo_bonus = '20' AND DATE_FORMAT(referencia_bonus,'%Y-%m') = '$dataFiltro') AS pago_bonus20,
+                        (SELECT IF(COUNT(*) > 0,1,0) FROM cs2.funcionario_bonus_afiliacao WHERE id_funcionario = f.id AND tipo_bonus = '25' AND DATE_FORMAT(referencia_bonus,'%Y-%m') = '$dataFiltro') AS pago_bonus25
                     FROM cs2.cadastro c
                     INNER JOIN cs2.funcionario f
                     ON f.id_consultor_assistente = c.id_consultor
@@ -71,6 +71,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
             }
         </style>
         <div class='page-break'>
+        <br><br><br>
                 <table width='100%' border='0' cellpadding='0' cellspacing='0' style='margin-top: 5px;'>
                     <tr>
                         <td class='titulo' style='text-align: left !important;'>" . $nome . "</td>
@@ -98,9 +99,15 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                 }
                 $html .= "</tr>";
     $vr_pago_comissao = 0;
+    $vr_pgto_adesao = 0;
+    $qtd_afiliacao_contabil = 0;
     while ($arrAfiliacao = mysql_fetch_array($qryAfiliacao)) {
-        $vr_pago_comissao = $vr_pago_comissao + $arrAfiliacao['valor_comissao_pago'];
+        
         $checked = '';
+        $vr_pago_comissao = $vr_pago_comissao + $arrAfiliacao['valor_comissao_pago'];
+        $vr_pgto_adesao = $vr_pgto_adesao + $arrAfiliacao['vr_pgto_adesao'];
+        $qtd_afiliacao_contabil++;
+
         $comissaoAfiliacao = (float)$arrAfiliacao['comissao_afiliacao'];
         
         if ($arrAfiliacao['pago_comissao'] == 1) 
@@ -111,30 +118,48 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
             $pendencia = $pendencia . ' - Contador';
         }
         
-          $html .= '<tr>
-                    <td width="5%" class="corpoTabela">' . $arrAfiliacao['codigo'] . '</td>
-                    <td width="35%" class="corpoTabela">' . $arrAfiliacao['nomefantasia'] . '</td>
-                    <td width="10%" class="corpoTabela">' . $arrAfiliacao['data_afiliacao'] . '</td>
-                    <td width="30%" class="corpoTabela">R$' . number_format($arrAfiliacao['vr_pgto_adesao'],2,',','.') . '</td>
-                    <td width="30%" class="corpoTabela">R$' . number_format(($arrAfiliacao['vr_pgto_adesao']/2),2,',','.') . '</td>
-                    <td width="20%" class="corpoTabela">' . $pendencia . '</td>';
-          
-                    if ( $origem != 'CONTABIL')
-                        $html .= '<td width="20%" class="corpoTabela" align="center">';
-          
-                        if ( $origem != 'CONTABIL'){
+        if ( $origem != 'CONTABIL'){
+            $html .= '<tr>
+                        <td width="5%" class="corpoTabela">' . $arrAfiliacao['codigo'] . '</td>
+                        <td width="35%" class="corpoTabela">' . $arrAfiliacao['nomefantasia'] . '</td>
+                        <td width="10%" class="corpoTabela">' . $arrAfiliacao['data_afiliacao'] . '</td>
+                        <td width="30%" class="corpoTabela">R$' . number_format($arrAfiliacao['vr_pgto_adesao'],2,',','.') . '</td>
+                        <td width="30%" class="corpoTabela">R$' . number_format(($arrAfiliacao['vr_pgto_adesao']/2),2,',','.') . '</td>
+                        <td width="20%" class="corpoTabela">' . $pendencia . '</td>';
 
-                            $html .= ' 
-                            <input type="checkbox"
-                                   name="iptPagoComissao"
-                                   id="iptPagoComissao"
-                                   class="iptPagoComissao"
-                                   data-id_cadastro="' . $arrAfiliacao['codLoja'] . '"
-                                   data-valor_comissao="' . $arrAfiliacao['comissao_afiliacao'] . '"
-                                   ' . $checked . '>';
-                        }
-           $html .='</td>
-                  </tr>';
+                        if ( $origem != 'CONTABIL')
+                            $html .= '<td width="20%" class="corpoTabela" align="center">';
+
+                            if ( $origem != 'CONTABIL'){
+
+                                $html .= ' 
+                                <input type="checkbox"
+                                       name="iptPagoComissao"
+                                       id="iptPagoComissao"
+                                       class="iptPagoComissao"
+                                       data-id_cadastro="' . $arrAfiliacao['codLoja'] . '"
+                                       data-valor_comissao="' . $arrAfiliacao['comissao_afiliacao'] . '"
+                                       ' . $checked . '>';
+                            }
+            $html .='</td>
+                      </tr>';
+            
+        }else{
+            
+            if ( $pendencia == 'Ativo' ){
+                $html .= '<tr>
+                            <td width="5%" class="corpoTabela">' . $arrAfiliacao['codigo'] . '</td>
+                            <td width="35%" class="corpoTabela">' . $arrAfiliacao['nomefantasia'] . '</td>
+                            <td width="10%" class="corpoTabela">' . $arrAfiliacao['data_afiliacao'] . '</td>
+                            <td width="30%" class="corpoTabela">R$' . number_format($arrAfiliacao['vr_pgto_adesao'],2,',','.') . '</td>
+                            <td width="30%" class="corpoTabela">R$' . number_format(($arrAfiliacao['vr_pgto_adesao']/2),2,',','.') . '</td>
+                            <td width="20%" class="corpoTabela">' . $pendencia . '</td>';
+                $html .='</td>
+                          </tr>';
+            }else
+                $qtd_afiliacao_contabil--;
+            
+        }
 
         $totalAfiliacoes = $totalAfiliacoes + 1;
 
@@ -143,30 +168,29 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
             case 'Ativo':
 
                 $totalAtivos = $totalAtivos + 1;
-
                 break;
+            
             case 'Pendente Ctr':
 
                 $totalPendentes = $totalPendentes + 1;
                 $comissaoAfiliacao = 0;
-
                 break;
 
             case 'Pendente Scan':
 
                 $totalPendentes = $totalPendentes + 1;
                 $comissaoAfiliacao = 0;
-
                 break;
 
             case 'Cancelado':
 
                 $totalCancelados = $totalCancelados + 1;
-
                 break;
+            
             case 'Pendente Adesão':
 
                 $totalPendentesAdesao = $totalPendentesAdesao + 1;
+                break;
 
         }
 
@@ -206,49 +230,55 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
             $valorBonus25Pendente = 0;
             $valorBonus25Repassado = 500.00;
         }
-
-
-
     }
+    
     $totalRepassarAfiliacao = $comissaoAfiliacao + $valorBonus20 + $valorBonus25;
     $pendentesARepassar = $totalAfiliacoes - ($totalCancelados + $totalPendentes + $totalContadores + $totalPendentesAdesao + $totalPagos);
 
+    if ( $origem == 'CONTABIL'){
     $html .= '<td colspan="7" class="corpoTabela">&nbsp;</td>
                 <tr>
                     <td class="corpoTabela"
-                        colspan="7">Afiliações: ' . $totalAfiliacoes . ' | Cancelados: ' . $totalCancelados . ' | Pendentes à Pagar: ' . $pendentesARepassar . ' | Contadores: ' . $totalContadores . ' | Pendentes Adesão: ' . $totalPendentesAdesao . ' | Repassados ' . $totalPagos . '</td>
+                        colspan="7">Afiliações: ' . $qtd_afiliacao_contabil .' | Repassados ' . $totalPagos . '</td>
                 </tr>';
-    
-                if ( $totalAfiliacoes > 20 ){
+    }else{
+        $html .= '<td colspan="7" class="corpoTabela">&nbsp;</td>
+                    <tr>
+                        <td class="corpoTabela"
+                            colspan="7">Afiliações: ' . $totalAfiliacoes . ' | Cancelados: ' . $totalCancelados . ' | Pendentes à Pagar: ' . $pendentesARepassar . ' | Contadores: ' . $totalContadores . ' | Pendentes Adesão: ' . $totalPendentesAdesao . ' | Repassados ' . $totalPagos . '</td>
+                    </tr>';
+    }
+                $html .= '<tr>
+                    <td colspan="4" align="right" class="corpoTabela">Pendentes à Pagar</td>
+                    <td colspan="3"
+                        class="corpoTabela">R$ ' . number_format($totalPendenteAfiliacao, 2, ',', '.') . '</td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="right" class="corpoTabela">Total Repassados</td>
+                    <td colspan="3"
+                        class="corpoTabela">R$ ' . number_format($vr_pago_comissao, 2, ',', '.') . '</td>
+                </tr>
+                ';
+
+                if ( $totalAfiliacoes >= 20 ){
                 
                     $html .= '<tr data-id_funcionario="'.$idFuncionario.'"
                                  data-data_referencia="'.$dataFiltro.'">
-                                 <td colspan="4" align="right" class="corpoTabela">20 Afiliações</td>
+                                 <td colspan="4" align="right" class="corpoTabela">Premiação Especial - 20 Afiliações</td>
                                  <td colspan="2" class="corpoTabela">R$ ' . number_format($valorBonus20, 2, ',', '.') . '</td>
                                  <td colspan="1" class="corpoTabela"><input type="checkbox" name="iptPagoBonus20" id="iptPagoBonus20" class="iptPagoBonus20" '.$checked20.'/></td>
                               </tr>';
                 }
                 
-                if ( $totalAfiliacoes > 25 ){
+                if ( $totalAfiliacoes >= 25 ){
                     $html .= '<tr data-id_funcionario="'.$idFuncionario.'">
-                                 <td colspan="4" align="right" class="corpoTabela">25 Afiliações</td>
+                                 <td colspan="4" align="right" class="corpoTabela">Premiação Especial - 25 Afiliações</td>
                                  <td colspan="2" class="corpoTabela">R$ ' . number_format($valorBonus25, 2, ',', '.') . '</td>
                                  <td colspan="1" class="corpoTabela"><input type="checkbox" name="iptPagoBonus25" id="iptPagoBonus25" class="iptPagoBonus25" '.$checked25.'/></td>
                               </tr>';
                 }
-                
-                $html .= '<tr>
-                    <td colspan="4" align="right" class="corpoTabela">Pendentes à Pagar</td>
-                    <td colspan="3"
-                        class="corpoTabela">R$ ' . number_format($totalPendenteAfiliacao + $valorBonus20Pendente + $valorBonus25Pendente, 2, ',', '.') . '</td>
-                </tr>
-                <tr>
-                    <td colspan="4" align="right" class="corpoTabela">Total Repassados</td>
-                    <td colspan="3"
-                        class="corpoTabela">R$ ' . number_format(($vr_pago_comissao + $valorBonus25Repassado + $valorBonus20Repassado), 2, ',', '.') . '</td>
-                </tr>
 
-                </table>';
+               $html .= ' </table>';
 
 
     $sqlEquipamentos = "SELECT
@@ -453,7 +483,8 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                  ORDER BY total DESC, nome_consultor ASC;" ;
 
                  $resParticipacao = mysql_query($sqlParticipacao, $con);
-                 @$totalParticipacao = mysql_result($resParticipacao, 0 , 'total');
+                 $totalParticipacao = mysql_result($resParticipacao, 0 , 'total');
+                 $resultado_visitou = mysql_result($resParticipacao, 0 , 'resultado_visitou');
 
                  $html .= '
                         <table width="100%" border="1" cellpadding="0" cellspacing="0" style="margin-top: 5px; font-family: arial, sans-serif; font-size: 12px;">
@@ -532,10 +563,17 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
               </tr>';
     
     $html .= '</table>';
-    $html .= '<div style="text-align: right;">
-                 Sub Total à Repassar: R$ '.number_format( ($totalPagarSemFormat + $valorTotalCredito) - $valorTotalDebito,2,',','.').'
-              </div>';
-
+    
+    if ( $origem == 'CONTABIL'){
+        $html .= '<div style="text-align: right;">
+                     Sub Total à Repassar: R$ '.number_format( ($totalPagarSemFormat + $valorTotalCredito + $totalParticipacao) - $valorTotalDebito,2,',','.').'
+                  </div>';
+        
+    }else{
+        $html .= '<div style="text-align: right;">
+                     Sub Total à Repassar: R$ '.number_format( ($totalPagarSemFormat + $valorTotalCredito) - $valorTotalDebito,2,',','.').'
+                  </div>';
+    }
     $html .= '<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 5px;">
                 <tr>';
     
@@ -544,62 +582,91 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
     else
         $certifico = 'Certifico que foram realizadas as conferências.';
 
-    $totalcomissao        = ($totalPendenteAfiliacao + $valorBonus20Pendente + $valorBonus25Pendente);
-    $totalPercentComissao = (($valorTotalComissao * $comissaoEquipamento)/100);
-    $totalAdiantamento    = $valorTotalCredito - $valorTotalDebito;
+    if ( $origem == 'CONTABIL'){
         
-     $html .= '<td style="font-size: 16px">'.$certifico.'</td>
-               </tr>
-               <tr>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>Curitiba - PR, ______/ ______ / ______</td>
-                </tr>
-                <tr>
-                    <td width="30%"><br><br><br><br>______________________________________________________</td>
-                </tr>
-                <tr>
-                    <td class="corpoTabela">'.$nome.'</td>
-                </tr>
-            </table>
-            <div style="page-break-before: always;"></div>
-            <br>
-            <br>
-                <table width="100%" border="1" cellpadding="0" cellspacing="0" style="margin-top: 5px;">
-                    <thead>
-                        <tr>
-                            <td class="subtitulo">Descrição</td>
-                            <td class="subtitulo">Referência</td>
-                            <td class="subtitulo">Vencimentos</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="corpoTabela">Comissão afiliações</td>
-                            <td class="corpoTabela">'.$totalAfiliacoes.'</td>
-                            <td class="corpoTabela">' .$totalcomissao. '</td>
-                        </tr>
-                        <tr>
-                            <td class="corpoTabela">Comissão equipamentos '. number_format($comissaoEquipamento, 2, '.', '').'% de '.number_format($valorTotalComissao, 2, ',', '.').'</td>
-                            <td class="corpoTabela">'.$totalEquipamentos.'</td>
-                            <td class="corpoTabela">'.number_format($totalPercentComissao, 2, ',', '.'). '</td>
-                        </tr>
-                        <tr>
-                            <td class="corpoTabela">Vale adiantamento</td>
-                            <td class="corpoTabela">'.$countAdiantamento.'</td>
-                            <td class="corpoTabela">'.number_format($totalAdiantamento, 2, ',', '.').'</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">TOTAL:</td>
-                            <td class="corpoTabela">'.number_format(($totalcomissao + $totalPercentComissao) + $totalAdiantamento, 2, ',', '.').'</td>
-                        </tr>
-                    </tbody>
+        $totalcomissao        = ($totalPendenteAfiliacao);
+        $totalPercentComissao = (($valorTotalComissao * $comissaoEquipamento)/100);
+        $totalAdiantamento    = $valorTotalCredito - $valorTotalDebito;
+
+        $html .= '<td style="font-size: 16px">'.$certifico.'</td>
+                   </tr>
+                   <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Curitiba - PR, ______/ ______ / ______</td>
+                    </tr>
+                    <tr>
+                        <td width="30%"><br><br><br><br>______________________________________________________</td>
+                    </tr>
+                    <tr>
+                        <td class="corpoTabela">'.$nome.'</td>
+                    </tr>
                 </table>
+                <div style="page-break-before: always;"></div>
+                <br>
+                <br>
+                    <table width="100%" border="1" cellpadding="0" cellspacing="0" style="margin-top: 5px;">
+                        <thead>
+                            <tr>
+                                <td class="titulo" style="text-align: left !important;">' . $nome . '</td>
+                                <td class="titulo" colspan="2" style="text-align: center !important;"> Período: '.$dataI.' à '.$dataF.'</td>
+                            </tr>
+                            <tr>
+                                <td class="subtitulo">DESCRIÇÃO</td>
+                                <td class="subtitulo">REFERÊNCIA</td>
+                                <td class="subtitulo">VENCIMENTOS</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="corpoTabela">COMISSÃO AFILIAÇÕES (50% de R$ '.number_format($vr_pgto_adesao, 2, ',', '.').')</td>
+                                <td class="corpoTabela">'.$qtd_afiliacao_contabil.'</td>
+                                <td class="corpoTabela"> R$ ' .number_format($totalcomissao, 2, ',', '.'). '</td>
+                            </tr>
+                            <tr>
+                                <td class="corpoTabela">COMISSÃO EQUIPAMENTOS ('. number_format($comissaoEquipamento, 2, '.', '').'% de R$ '.number_format($valorTotalComissao, 2, ',', '.').')</td>
+                                <td class="corpoTabela">'.$totalEquipamentos.'</td>
+                                <td class="corpoTabela"> R$ '.number_format($totalPercentComissao, 2, ',', '.'). '</td>
+                            </tr>
+                            <tr>
+                                <td class="corpoTabela">VALE ADIANTAMENTO</td>
+                                <td class="corpoTabela">'.$countAdiantamento.'</td>
+                                <td class="corpoTabela"> R$ '.number_format($totalAdiantamento, 2, ',', '.').'</td>
+                            </tr>
+                            <tr>
+                                <td class="corpoTabela">PREMIAÇÃO VISITA REMUNERADA</td>
+                                <td class="corpoTabela">'.$resultado_visitou.'</td>
+                                <td class="corpoTabela"> R$ '.number_format($totalParticipacao, 2, ',', '.').'</td>
+                            </tr>
+                            ';
+                if ( $totalAfiliacoes >= 20 ){
+                
+                    $html .= '<tr>
+                                 <td class="corpoTabela">PREMIAÇÃO ESPECIAL - 20 AFILIAÇÕES</td>
+                                 <td class="corpoTabela">20</td>
+                                 <td class="corpoTabela">R$ ' . number_format($valorBonus20, 2, ',', '.') . '</td>
+                              </tr>';
+                }
+                
+                if ( $totalAfiliacoes >= 25 ){
+                    $html .= '<tr>
+                                 <td class="corpoTabela">PREMIAÇÃO ESPECIAL - 25 AFILIAÇÕES</td>
+                                 <td class="corpoTabela">25</td>
+                                 <td class="corpoTabela">R$ ' . number_format($valorBonus25, 2, ',', '.') . '</td>
+                              </tr>';
+                }
+                
+                            
+            $html .= '      <tr>
+                                <td colspan="2">Sub Total à Repassar:</td>
+                                <td class="corpoTabela"> R$ '.number_format(($totalcomissao + $totalPercentComissao + $totalParticipacao) + $totalAdiantamento  + $valorBonus20Pendente + $valorBonus25Pendente, 2, ',', '.').'</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-            <div style="page-break-before: always;"></div>
-            <input type="hidden" class="iptValorTotalSoma" value="'.$totalPagarSemFormat.'">
-';
-
+                <div style="page-break-before: always;"></div>
+                <input type="hidden"  class="iptValorTotalSoma;noprint" value="'.$totalPagarSemFormat.'">';
+    }
     echo $html;
 }
