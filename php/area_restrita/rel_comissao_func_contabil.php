@@ -1,12 +1,13 @@
 <?php
 /**
- * @file rel_comissao_func_contabil.php
+ * @file rel_comissao_func.php
  * @brief Arquivo Responsável pelo relatório de comissão
- * @author LUCIANO MANCINI
- * @date 23/08/2018
+ * @author ARLLON DIAS
+ * @date 06/01/2017
  * @version 1.0
  **/
 require_once('auxiliarTabelaComissao.php');
+
 
 if (empty($_POST['data2I']) || empty($_POST['data2F'])) { ?>
 
@@ -35,16 +36,16 @@ $strDataInicio = substr($strDataInicio, 6, 4) . '-' . substr($strDataInicio, 3, 
 $strDataFim = substr($strDataFim, 6, 4) . '-' . substr($strDataFim, 3, 2) . '-' . substr($strDataFim, 0, 2);
 
 $qryFuncionario = "SELECT
-                                        f.id,
-                                        f.nome AS nome,
-                                        fun.descricao
-                                   FROM cs2.funcionario f
-                                   INNER JOIN cs2.funcao fun
-                                   ON fun.id = f.id_funcao
-                                   WHERE IF('$id_funcionario' = '0',0=0,f.id = '$id_funcionario')
-                                   AND id_funcao = '$id_funcao'
-                                   AND f.ativo = '$ativo'
-                                   ORDER BY f.nome ASC";
+                        f.id,
+                        f.nome AS nome,
+                        fun.descricao
+                   FROM cs2.funcionario f
+                   INNER JOIN cs2.funcao fun
+                   ON fun.id = f.id_funcao
+                   WHERE IF('$id_funcionario' = '0',0=0,f.id = '$id_funcionario')
+                   AND id_funcao = '$id_funcao'
+                   AND f.ativo = '$ativo'
+                   ORDER BY f.nome ASC";
 $rstFuncionario = mysql_query($qryFuncionario, $con);
 ?>
 <button type="button" id="btnImprimir" class="btnImprimir pull-right" style="margin-top: 15px;">Imprimir Relatório
@@ -52,10 +53,12 @@ $rstFuncionario = mysql_query($qryFuncionario, $con);
 <div class="imprimir">
     <?php
     while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
-        geraHtml( $arrFuncionario['id'], $strDataInicio, $strDataFim, $ativo, $con, $arrFuncionario['nome'], $arrFuncionario['funcao'], 'CONTABIL');
+        geraHtml($arrFuncionario['id'], $strDataInicio, $strDataFim, $ativo, $con, $arrFuncionario['nome'], $arrFuncionario['funcao']);
     }
     ?>
-    <div class="exibirTotal"></div>
+    <div class="page-break exibirTotal hidden">
+
+    </div>
 </div>
 <script>
 
@@ -138,7 +141,6 @@ $rstFuncionario = mysql_query($qryFuncionario, $con);
 
         });
 
-
     });
 
     $(window).load(function () {
@@ -147,18 +149,12 @@ $rstFuncionario = mysql_query($qryFuncionario, $con);
         $('.totalAPagar').each(function () {
             console.log($(this).html());
             $('.exibirTotal').append($(this).html() + '<br>');
-
-
         });
-
         var valorTotal = 0;
-
         $('.iptValorTotalSoma').each(function () {
             valorTotal = valorTotal + parseFloat($(this).val());
         });
-        console.log('<tr><td class="corpoTabela" align="right">Sub Total</td><td class="corpoTabela totalFolha" align="right"></td>' + number_format(valorTotal, 2, ',', '.') + '</tr>');
         $('.exibirTotal').append('<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 5px;"><tr><td class="corpoTabela" align="">Sub Total</td><td class="corpoTabela totalFolha" align="right">' + number_format(valorTotal, 2, ',', '.') + '</td></tr></table>');
-
 
     });
 
