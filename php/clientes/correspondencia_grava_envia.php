@@ -162,15 +162,10 @@ if ($email) {
     $conteudoPag = str_replace(chr(92), "", $conteudoPag);
 
     $mail->Body = $conteudoPag; // Define o corpo da mensagem
-    print_r($mail);
-    die;
-    if ($mail->Send()) {
-        print_r($mail->Send());
-        die;
+    
+    if ($mail->send()) {
         echo "<script>alert('Mensagem enviada com sucesso');window.close()</script>";
     } else {
-        print_r(" entrou no else");
-        die;
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     }
 }
