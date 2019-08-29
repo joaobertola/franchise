@@ -74,8 +74,8 @@ if ($email) {
     // //$mail->FromName = 'Web Control Empresas - Sistemas - Automação - Consultas - Sites'; // Adiciona um "From" endere��o
     // $mail->AddAddress($email, '');  // Adiciona um "To" endere��o
 
-    require_once("PHPMailerAutoload.php");
-    require_once("class.phpmailer.php");
+    require_once("PHPMailer/PHPMailerAutoload.php");
+    require_once("PHPMailer/class.phpmailer.php");
 
     $mail = new PHPMailer();
     $mail->IsSMTP();
@@ -162,8 +162,9 @@ if ($email) {
     $conteudoPag = str_replace(chr(92), "", $conteudoPag);
 
     $mail->Body = $conteudoPag; // Define o corpo da mensagem
-    
-    if ($mail->send()) {
+    print_r($mail);
+    die;
+    if ($mail->Send()) {
         echo "<script>alert('Mensagem enviada com sucesso');window.close()</script>";
     } else {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
