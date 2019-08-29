@@ -162,6 +162,8 @@ if ($email) {
     $conteudoPag = str_replace(chr(92), "", $conteudoPag);
 
     $mail->Body = $conteudoPag; // Define o corpo da mensagem
+    print_r($mail);
+    die;
     if ($mail->Send()) {
         print_r($mail->Send());
         die;
