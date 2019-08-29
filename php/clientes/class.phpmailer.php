@@ -1196,11 +1196,14 @@ class PHPMailer
      */
     public function send()
     {
+        print_r("entrou no send");
         try {
             if (!$this->preSend()) {
+                print_r("entrou no try");
                 return false;
             }
             return $this->postSend();
+            print_r("entrou no postSend");
         } catch (phpmailerException $exc) {
             $this->mailHeader = '';
             $this->setError($exc->getMessage());
@@ -1209,6 +1212,7 @@ class PHPMailer
             }
             return false;
         }
+        die;
     }
 
     /**
