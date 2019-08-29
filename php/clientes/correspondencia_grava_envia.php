@@ -99,6 +99,8 @@ if ($email) {
             'allow_self_signed' => true
         )
     );
+    print_r($mail);
+    die;
 
 
 
