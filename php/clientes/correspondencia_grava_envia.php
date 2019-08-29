@@ -99,10 +99,6 @@ if ($email) {
             'allow_self_signed' => true
         )
     );
-    print_r($mail);
-    die;
-
-
 
 
     if ($escolha >= 6) {
@@ -167,8 +163,12 @@ if ($email) {
 
     $mail->Body = $conteudoPag; // Define o corpo da mensagem
     if ($mail->Send()) {
+        print_r($mail->Send());
+        die;
         echo "<script>alert('Mensagem enviada com sucesso');window.close()</script>";
     } else {
+        print_r(" entrou no else");
+        die;
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     }
 }
