@@ -1,4 +1,5 @@
 <?php
+ header("Content-type: text/html; charset=utf-8");
 //This page contains functions which generate the XML data for the chart.
 //Effectively, we've separated this part from each PHP page to simulate a
 //3-tier architecture. In real world, you could replace this by a COM 
@@ -13,7 +14,8 @@ function getSalesByYear(&$FC) {
 
     $strSQL = "SELECT Year(o.OrderDate) As SalesYear, ROUND(SUM(d.Quantity*p.UnitPrice),0) As Total, SUM(d.Quantity) as Quantity FROM FC_OrderDetails as d,FC_Orders as o,FC_Products as p WHERE o.OrderID=d.OrderID and d.ProductID=p.ProductID GROUP BY Year(o.OrderDate) ORDER BY Year(o.OrderDate)";
     $result = mysql_query($strSQL) or die(mysql_error());
-	
+    
+
     if ($result) {
         //Initialize datasets
         $FC->addDataset("Revenue",""); 
@@ -1219,7 +1221,42 @@ function getCategoryName($catId) {
     return $category;
 }
 
+
+/** NOVO MÉTODO PARA GRAFICOS FRANQUIA */
+    function grafico_franquia_novo_01($selecao, &$FC) {
+        $link = connectToDB();
+        $sql = " SELECT
+                    count(*) AS Average, 
+                    c.nome as Country 
+                 FROM cs2.cadastro a
+        INNER JOIN cs2.cons b ON a.codloja = b.codloja
+        INNER JOIN cs2.valcons c ON b.debito = c.codcons
+        WHERE $selecao 
+                b.amd between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                AND b.debito !='A0230' AND b.debito != 'A0232'
+        GROUP BY b.debito
+        ORDER BY Average";
+
+        $result = mysql_query($sql) or die($sql);
+
+        if($result) {
+            $i = 0;
+            while($ors = mysql_fetch_assoc($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+
+    }
+
+/** FIM NOVO MÉTODO PARA GRAFICOS FRANQUIA */
+
 /*  GRAFICO PARA PAGINA DE FRANQUIA */
+
 
 function grafico_franquia_01($selecao,&$FC) {
     // Function to connect to the DB
@@ -1232,6 +1269,8 @@ function grafico_franquia_01($selecao,&$FC) {
                             AND b.debito !='A0230' AND b.debito != 'A0232'
                     GROUP BY b.debito
                     ORDER BY Average";
+
+
     $result = mysql_query($strSQL) or die($strSQL);
     if ($result) {
         while($ors = mysql_fetch_array($result)) {

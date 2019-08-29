@@ -4,6 +4,8 @@
 // Function to connect to the DB
 function connectToDB() {
     @$link = mysql_connect ('10.2.2.3', 'csinform', 'inform4416#scf');
+    mysql_set_charset('utf8');
+
     if (!$link) {
         die('Could not connect: ' . mysql_error());
     }
@@ -16,6 +18,8 @@ function connectToDB() {
 
 function connectToDB_Virtual() {
     @$link = mysql_connect ('10.2.2.7', 'root', 'cntos43');
+    mysql_set_charset('utf8');
+
     if (!$link) {
         die('Could not connect: ' . mysql_error());
     }
