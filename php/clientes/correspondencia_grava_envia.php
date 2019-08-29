@@ -74,8 +74,8 @@ if ($email) {
     // //$mail->FromName = 'Web Control Empresas - Sistemas - Automação - Consultas - Sites'; // Adiciona um "From" endere��o
     // $mail->AddAddress($email, '');  // Adiciona um "To" endere��o
 
-    require_once("PHPMailer/PHPMailerAutoload.php");
-    require_once("PHPMailer/class.phpmailer.php");
+    require_once("PHPMailerAutoload.php");
+    require_once("class.phpmailer.php");
 
     $mail = new PHPMailer();
     $mail->IsSMTP();
