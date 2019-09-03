@@ -1253,6 +1253,885 @@ function getCategoryName($catId) {
 
     }
 
+    function grafico_franquia_novo_02($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = "SELECT count(*) Average, b.debito, concat( 
+                            case month(b.amd) 
+                             when 1 then 'Janeiro'
+                             when 2 then 'Fevereiro'        
+                             when 3 then 'Marco'        
+                             when 4 then 'Abril'        
+                             when 5 then 'Maio'        
+                             when 6 then 'Junho'        
+                             when 7 then 'Julho'
+                             when 8 then 'Agosto'
+                             when 9 then 'Setembro'
+                             when 10 then 'Outubro'        
+                             when 11 then 'Novembro'        
+                             when 12 then 'Dezembro'
+                           end ,'/',year(b.amd)) as Country 
+                        FROM cs2.cadastro a 
+                        INNER JOIN cs2.cons b ON a.codloja = b.codloja 
+                        WHERE $selecao 
+                              b.amd between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                              AND (b.debito ='A0230' or b.debito = 'A0232') 
+                        GROUP BY month(b.amd) , year(b.amd)
+                        ORDER BY b.amd";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_13($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = "SELECT count(*) Average1, sum(qtd_registro) as Average, b.tipo_consulta, 
+                        concat( 
+                            case month(b.data) 
+                                when 1 then 'Janeiro'
+                                when 2 then 'Fevereiro'        
+                                when 3 then 'Marco'        
+                                when 4 then 'Abril'        
+                                when 5 then 'Maio'        
+                                when 6 then 'Junho'        
+                                when 7 then 'Julho'
+                                when 8 then 'Agosto'
+                                when 9 then 'Setembro'
+                                when 10 then 'Outubro'        
+                                when 11 then 'Novembro'        
+                                when 12 then 'Dezembro'
+                            end ,
+                            '/',
+                            year(b.data)
+                        ) as Country 
+                    FROM cs2.cadastro a 
+                    INNER JOIN cs2.cons_localiza b ON a.codloja = b.codloja 
+                    WHERE $selecao 
+                          b.data between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                          AND (b.tipo_consulta ='A0231') 
+                    GROUP BY month(b.data) , year(b.data)
+                    ORDER BY b.data";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT sum(b.valor) as Average, concat( 
+                        case month(b.datapg) 
+                         when 1 then 'Janeiro'
+                         when 2 then 'Fevereiro'        
+                         when 3 then 'Marco'        
+                         when 4 then 'Abril'        
+                         when 5 then 'Maio'        
+                         when 6 then 'Junho'        
+                         when 7 then 'Julho'
+                         when 8 then 'Agosto'
+                         when 9 then 'Setembro'
+                         when 10 then 'Outubro'        
+                         when 11 then 'Novembro'        
+                         when 12 then 'Dezembro'
+                       end ,'/',year(b.datapg)
+                    ) as Country 
+                    FROM cs2.cadastro a
+                    INNER JOIN cs2.titulos_recebafacil b ON a.codloja = b.codloja
+                    Where $selecao 
+                    b.datapg between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    and b.tp_titulo = 1 and 
+                    ( b.valorpg > 0 ) AND ( b.descricao_repasse IS NULL )
+                    GROUP BY month(b.datapg) , year(b.datapg)
+                    ORDER BY b.datapg";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_04($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT sum(b.valor) as Average, concat( 
+                        case month(b.datapg) 
+                         when 1 then 'Janeiro'
+                         when 2 then 'Fevereiro'        
+                         when 3 then 'Marco'        
+                         when 4 then 'Abril'        
+                         when 5 then 'Maio'        
+                         when 6 then 'Junho'        
+                         when 7 then 'Julho'
+                         when 8 then 'Agosto'
+                         when 9 then 'Setembro'
+                         when 10 then 'Outubro'        
+                         when 11 then 'Novembro'        
+                         when 12 then 'Dezembro'
+                       end ,'/',year(b.datapg)
+                    ) as Country 
+                    FROM cs2.cadastro a
+                    INNER JOIN cs2.titulos_recebafacil b ON a.codloja = b.codloja
+                    Where $selecao 
+                    b.datapg between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    and ( b.tp_titulo = 2 or b.tp_titulo = 3 ) and 
+                    ( b.valorpg > 0 ) AND ( b.descricao_repasse IS NULL )
+                    GROUP BY month(b.datapg) , year(b.datapg)
+                    ORDER BY b.datapg";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_23($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT
+                        sum(valor)as Average,
+                        CONCAT( 
+                            CASE month(a.vencimento) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.vencimento)
+                        ) as Country 
+                    FROM base_web_control.carne a
+                    INNER JOIN cs2.cadastro b on a.id_cadastro = b.codloja
+                    INNER JOIN cs2.franquia c on b.id_franquia = c.id
+                    WHERE
+                        $selecao
+                        a.vencimento BETWEEN 
+                            CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') 
+                            AND 
+                            CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 0 DAY)),1,7),'-01')
+                    GROUP BY MONTH(a.vencimento), YEAR(a.vencimento)
+                    ORDER BY a.vencimento";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_05($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, concat( 
+                        case month(b.amd) 
+                         when 1 then 'Janeiro'
+                         when 2 then 'Fevereiro'        
+                         when 3 then 'Marco'        
+                         when 4 then 'Abril'        
+                         when 5 then 'Maio'        
+                         when 6 then 'Junho'        
+                         when 7 then 'Julho'
+                         when 8 then 'Agosto'
+                         when 9 then 'Setembro'
+                         when 10 then 'Outubro'        
+                         when 11 then 'Novembro'        
+                         when 12 then 'Dezembro'
+                       end ,'/',year(b.amd)
+                    ) as Country 
+                    FROM cs2.cadastro a
+                    INNER JOIN cs2.relacionamento_consumidor b ON a.codloja = b.codloja
+                    Where $selecao 
+                    b.amd between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY month(b.amd) , year(b.amd)
+                    ORDER BY b.amd";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_14($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = "SELECT count(*) Average, concat( 
+                        CASE MONTH(a.dt_cad) 
+                            WHEN 1 THEN 'Janeiro'
+                            WHEN 2 THEN 'Fevereiro'        
+                            WHEN 3 THEN 'Marco'        
+                            WHEN 4 THEN 'Abril'        
+                            WHEN 5 THEN 'Maio'        
+                            WHEN 6 THEN 'Junho'        
+                            WHEN 7 THEN 'Julho'
+                            WHEN 8 THEN 'Agosto'
+                            WHEN 9 THEN 'Setembro'
+                            WHEN 10 THEN 'Outubro'        
+                            WHEN 11 THEN 'Novembro'        
+                            WHEN 12 THEN 'Dezembro'
+                        end ,'/',year(a.dt_cad)) AS Country 
+                    FROM cs2.cadastro a
+                    WHERE $selecao 
+                          a.dt_cad between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 730 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY month(a.dt_cad) , year(a.dt_cad)
+                    ORDER BY a.dt_cad";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_06($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, concat( 
+                        case month(b.data_cadastro) 
+                         when 1 then 'Janeiro'
+                         when 2 then 'Fevereiro'        
+                         when 3 then 'Marco'        
+                         when 4 then 'Abril'        
+                         when 5 then 'Maio'        
+                         when 6 then 'Junho'        
+                         when 7 then 'Julho'
+                         when 8 then 'Agosto'
+                         when 9 then 'Setembro'
+                         when 10 then 'Outubro'        
+                         when 11 then 'Novembro'        
+                         when 12 then 'Dezembro'
+                       end ,'/',year(b.data_cadastro)
+                    ) as Country 
+                    FROM cs2.cadastro a
+                    INNER JOIN consulta.alertas b ON a.codloja = b.codloja
+                    Where $selecao 
+                    b.data_cadastro between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY month(b.data_cadastro) , year(b.data_cadastro)
+                    ORDER BY b.data_cadastro";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_15($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, 
+                        CONCAT( 
+                            CASE month(a.data_cadastro) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.data_cadastro)
+                        ) as Country 
+                    FROM base_web_control.cliente a
+                    inner join cs2.cadastro b on a.id_cadastro =  b.codloja
+                    WHERE $selecao 
+                        a.data_cadastro between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY month(a.data_cadastro) , year(a.data_cadastro)
+                    ORDER BY a.data_cadastro";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_16($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, 
+                        CONCAT( 
+                            CASE month(a.data_cadastro) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.data_cadastro)
+                        ) as Country 
+                    FROM base_web_control.produto a
+                    inner join cs2.cadastro b on a.id_cadastro =  b.codloja
+                    WHERE $selecao 
+                        a.data_cadastro between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY month(a.data_cadastro) , year(a.data_cadastro)
+                    ORDER BY a.data_cadastro";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_17($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, 
+                        CONCAT( 
+                            CASE month(a.data_venda) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.data_venda)
+                        ) as Country 
+                    FROM base_web_control.venda a
+                    inner join cs2.cadastro b on a.id_cadastro =  b.codloja
+                    WHERE $selecao 
+                        a.data_venda between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY month(a.data_venda) , year(a.data_venda)
+                    ORDER BY a.data_venda";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_18($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'c.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, 
+                        CONCAT( 
+                            CASE month(a.data_hora) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.data_hora)
+                        ) as Country 
+                    FROM base_web_control.venda_notas_eletronicas a
+                    INNER JOIN base_web_control.venda b ON a.id_venda = b.id
+                    inner join cs2.cadastro c on b.id_cadastro =  c.codloja
+                    WHERE $selecao 
+                        a.data_hora between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                        AND
+                            a.tipo_nota = 'NFE'
+                        AND 
+                            a.status = 5
+                    GROUP BY month(a.data_hora) , year(a.data_hora)
+                    ORDER BY a.data_hora";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    
+    function grafico_franquia_novo_19($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'c.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, 
+                        CONCAT( 
+                            CASE month(a.data_hora) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.data_hora)
+                        ) as Country 
+                    FROM base_web_control.venda_notas_eletronicas a
+                    INNER JOIN base_web_control.venda b ON a.id_venda = b.id
+                    inner join cs2.cadastro c on b.id_cadastro =  c.codloja
+                    WHERE $selecao 
+                        a.data_hora between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                        AND
+                            a.tipo_nota = 'NFC'
+                        AND 
+                            a.status = 5
+                    GROUP BY month(a.data_hora) , year(a.data_hora)
+                    ORDER BY a.data_hora";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_20($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'c.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, 
+                        CONCAT( 
+                            CASE month(a.data_hora) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.data_hora)
+                        ) as Country 
+                    FROM base_web_control.venda_notas_eletronicas a
+                    INNER JOIN base_web_control.venda b ON a.id_venda = b.id
+                    inner join cs2.cadastro c on b.id_cadastro =  c.codloja
+                    WHERE $selecao 
+                        a.data_hora between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                        AND
+                            a.tipo_nota = 'NFS' 
+                        AND 
+                            a.status = 5
+                    GROUP BY month(a.data_hora) , year(a.data_hora)
+                    ORDER BY a.data_hora";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_21($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'c.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT 
+                        count(*) as Average,
+                        CONCAT( 
+                            CASE month(a.data_compra) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.data_compra)
+                        ) as Country 
+                    FROM cs2.cadastro_equipamento a
+                    INNER JOIN cs2.cadastro_equipamento_descricao b ON a.id = b.id_cadastro_equipamento
+                    INNER JOIN cs2.cadastro c on a.codloja = c.codloja
+                    WHERE
+                        $selecao
+                        a.data_compra  between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY MONTH(a.data_compra), YEAR(a.data_compra)
+                    ORDER BY a.data_compra;";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+    
+    function grafico_franquia_novo_22($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+        
+        $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT
+                        FORMAT( sum(valor) / count(*), 2 ) as Average,
+                        CONCAT( 
+                            CASE month(a.vencimento) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.vencimento)
+                        ) as Country 
+                    FROM cs2.titulos a
+                    INNER JOIN cs2.cadastro b on a.codloja=b.codloja
+                    INNER JOIN cs2.franquia c on b.id_franquia = c.id
+                    WHERE
+                            $selecao
+                            mid(a.numdoc,1,1) <> '9'
+                        AND
+                            a.vencimento BETWEEN 
+                                CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') 
+                                AND 
+                                CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL -30 DAY)),1,7),'-01')
+                    GROUP BY MONTH(a.vencimento), YEAR(a.vencimento)
+                    ORDER BY a.vencimento";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_franquia_novo_08($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) as Average, concat( 
+                        case month(b.dt_envio_cartorio) 
+                         when 1 then 'Janeiro'
+                         when 2 then 'Fevereiro'        
+                         when 3 then 'Marco'        
+                         when 4 then 'Abril'        
+                         when 5 then 'Maio'        
+                         when 6 then 'Junho'        
+                         when 7 then 'Julho'
+                         when 8 then 'Agosto'
+                         when 9 then 'Setembro'
+                         when 10 then 'Outubro'        
+                         when 11 then 'Novembro'        
+                         when 12 then 'Dezembro'
+                       end ,'/',year(b.dt_envio_cartorio)
+                    ) as Country 
+                    FROM cs2.cadastro a
+                    INNER JOIN consulta.alertas b ON a.codloja = b.codloja
+                    Where $selecao 
+                    b.dt_envio_cartorio between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY month(b.dt_envio_cartorio) , year(b.dt_envio_cartorio)
+                    ORDER BY b.dt_envio_cartorio";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+    
+    function grafico_franquia_novo_09($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = " SELECT count(*) Average, b.debito,
+                        concat( 
+                            case month(b.amd) 
+                             when 1 then 'Janeiro'
+                             when 2 then 'Fevereiro'        
+                             when 3 then 'Marco'        
+                             when 4 then 'Abril'        
+                             when 5 then 'Maio'        
+                             when 6 then 'Junho'        
+                             when 7 then 'Julho'
+                             when 8 then 'Agosto'
+                             when 9 then 'Setembro'
+                             when 10 then 'Outubro'        
+                             when 11 then 'Novembro'        
+                             when 12 then 'Dezembro'
+                            end ,'/',year(b.amd)
+                        ) as Country
+        
+                    FROM cs2.cadastro a
+                    INNER JOIN cs2.cons b ON a.codloja = b.codloja
+                    WHERE $selecao 
+                            b.amd between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                            AND (mid(b.debito,1,3)='A04')
+                    GROUP BY month(b.amd) , year(b.amd)
+                    ORDER BY b.amd";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+    
+    function grafico_franquia_novo_10($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = "SELECT count(*) Average, 
+                        concat( 
+                            case month(b.data_hora) 
+                                when 1 then 'Janeiro'
+                                when 2 then 'Fevereiro'        
+                                when 3 then 'Marco'        
+                                when 4 then 'Abril'        
+                                when 5 then 'Maio'        
+                                when 6 then 'Junho'        
+                                when 7 then 'Julho'
+                                when 8 then 'Agosto'
+                                when 9 then 'Setembro'
+                                when 10 then 'Outubro'        
+                                when 11 then 'Novembro'        
+                                when 12 then 'Dezembro'
+                            end ,'/',year(b.data_hora)) as Country 
+                    FROM cs2.cadastro a 
+                    INNER JOIN contabil.acessos b ON a.codloja = b.id_cadastro 
+                    WHERE $selecao
+                          b.data_hora BETWEEN CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    GROUP BY MONTH(b.data_hora) , YEAR(b.data_hora)
+                    ORDER BY b.data_hora";
+        
+    //    echo "<pre>";
+    //    print_r( $strSQL );
+        
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
+    function grafico_virtualflex_novo($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB_Virtual();
+        $strSQL = " SELECT count(*) as Average, concat( 
+                        CASE month(fra_data_hora) 
+                         when 1  then 'Janeiro'
+                         when 2  then 'Fevereiro'        
+                         when 3  then 'Marco'        
+                         when 4  then 'Abril'        
+                         when 5  then 'Maio'        
+                         when 6  then 'Junho'        
+                         when 7  then 'Julho'
+                         when 8  then 'Agosto'
+                         when 9  then 'Setembro'
+                         when 10 then 'Outubro'        
+                         when 11 then 'Novembro'        
+                         when 12 then 'Dezembro'
+                       end ,'/',year(fra_data_hora)
+                    ) as Country 
+                    FROM dbsites.tbl_framecliente
+                    WHERE $selecao fra_codloja > 1
+                    GROUP BY month(fra_data_hora) , year(fra_data_hora)
+                    ORDER BY fra_data_hora";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+    
+
 /** FIM NOVO MÉTODO PARA GRAFICOS FRANQUIA */
 
 /*  GRAFICO PARA PAGINA DE FRANQUIA */
