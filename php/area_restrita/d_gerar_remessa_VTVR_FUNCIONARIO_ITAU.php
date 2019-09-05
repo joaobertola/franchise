@@ -1,11 +1,10 @@
 <?php
 
 	# Author:  Luciano Mancini
-	# M�dulo:  Remessa Funcion�rio - SALARIO - Banco Itau
-	# Finalidade: Gerar o arquivo de cr�dito a serem enviados ao Banco ITAU para os funcion�rios
+	# Módulo:  Remessa Funcionário - SALARIO - Banco Itau
+	# Finalidade: Gerar o arquivo de crédito a serem enviados ao Banco ITAU para os funcionários
 
 //	include("../../../validar2.php");
-
 //	global $conexao,$arquivo;
 //	conecex();
 
@@ -145,7 +144,6 @@
 			$conta_func    =  str_replace('/','',$conta_func);
 			$cpfcnpj_func  =  trim($registro['cpf']);
 			$nome_func     =  substr($registro['nome'],0,30);
-			$nome_func     =  limpa_str($nome_func);
 			$salario_func  =  $registro["vt"];
 			$vt_vr         =  $registro["vt"];
 			
