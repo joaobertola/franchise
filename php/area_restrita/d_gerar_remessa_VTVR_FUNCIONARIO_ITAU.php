@@ -54,8 +54,8 @@
 	//$Registro .= colocazeros('21199',12);             // 059 a 070 - N�mero da conta do cedente
 	$Registro .= colocazeros('62830',12);             // 059 a 070 - N�mero da conta do cedente
 	$Registro .= ' ';                                 // 071 a 071 - BRANCOS
-	$Registro .= '4';                                 // 072 a 072 - D�gito verificador da ag�ncia / conta
-	$Registro .= colocaespacosdir('WORLD CLICK DESENVOLVEDORA ',30);  // 073 a 102 - Nome do cedente
+	$Registro .= '2';                                 // 072 a 072 - D�gito verificador da ag�ncia / conta
+	$Registro .= colocaespacosdir('WEB CONTROL SISTEMAS DE AUTOM',30);  // 073 a 102 - Nome do cedente
 	//$Registro .= colocaespacosdir('WEB CONTROL EMPRESAS TECN INF LTDA',30);  // 073 a 102 - Nome do cedente
 	$Registro .= colocaespacosdir('BANCO ITAU',30);       // 103 a 132 - Nome do banco
 	$Registro .= colocaespacos('',10);                    // 133 a 142 - BRANCOS
@@ -117,8 +117,8 @@
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
 		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('WORLD CLICK DESENVOLVEDORA ',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		                            
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
@@ -145,6 +145,7 @@
 			$conta_func    =  str_replace('/','',$conta_func);
 			$cpfcnpj_func  =  trim($registro['cpf']);
 			$nome_func     =  substr($registro['nome'],0,30);
+			$nome_func     =  limpa_str($nome_func);
 			$salario_func  =  $registro["vt"];
 			$vt_vr         =  $registro["vt"];
 			
@@ -280,8 +281,8 @@
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
 		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('WORLD CLICK DESENVOLVEDORA ',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
 		$Registro .= colocaespacosdir('AV. CANDIDO DE ABREU',30);            // 143 a 172 - Endereco da empresa
@@ -439,8 +440,8 @@
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
 		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('WORLD CLICK DESENVOLVEDORA ',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
 		$Registro .= colocaespacosdir('AV. CANDIDO DE ABREU',30);            // 143 a 172 - Endereco da empresa
@@ -596,8 +597,8 @@
 		$Registro .= ' ';                                 // 058 a 058 - Em branco
 		$Registro .= colocazeros('62830',12);             // 059 a 070 - Conta debitada
 		$Registro .= ' ';                                 // 071 a 071 - Em branco
-		$Registro .= '4';                                 // 072 a 072 - DAC - Digito verificado da conta	
-		$Registro .= colocaespacos('WORLD CLICK DESENVOLVEDORA ',30);   // 073 a 102 - Nome da empresa debitada
+		$Registro .= '2';                                 // 072 a 072 - DAC - Digito verificado da conta	
+		$Registro .= colocaespacos('WEB CONTROL SISTEMAS DE AUTOM',30);   // 073 a 102 - Nome da empresa debitada
 		$Registro .= colocaespacos('',30);                // 103 a 132 - Finalidade do lote
 		$Registro .= colocaespacos('',10);                // 133 a 142 - Hist�rico de conta corrente
 		$Registro .= colocaespacosdir('AV. CANDIDO DE ABREU',30);            // 143 a 172 - Endereco da empresa
