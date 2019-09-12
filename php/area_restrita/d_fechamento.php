@@ -310,7 +310,7 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
 
             # buscando o valor de custo do correios
                         # Buscando o valor de custo
-            $sql13 = "SELECT vr_custo from cs2.valcons";
+            $sql13 = "SELECT vr_custo from cs2.valcons WHERE codcons = 'CBC'";
             $ql13 = mysql_query($sql13, $con);
             while ($array = mysql_fetch_array($ql13)) {
                 $custo_correio = $array['vr_custo'];
@@ -681,7 +681,7 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                 }
             }
 
-            # Material Publicit�rio 6 meses
+            # Material Publicitario 6 meses
             $sql = "SELECT DATEDIFF(now(), dt_cad) dias from cs2.franquia where id=$franqueado";
             $qr = mysql_query($sql, $con)or die("ERRO:  Segundo SQL  ==>  $sql");
             $campos = mysql_fetch_array($qr);
@@ -696,7 +696,7 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                     function material_public($faixa1, $faixa2) {
                         global $con;
                         $sql_mat = "SELECT valor FROM cs2.tabela_material_publicitario
-                WHERE faixa_inicio = $faixa1 AND faixa_final = $faixa2";
+                                    WHERE faixa_inicio = $faixa1 AND faixa_final = $faixa2";
                         $qry_mat = mysql_query($sql_mat, $con);
                         $valor = mysql_result($qry_mat, 0, 'valor');
                         mysql_free_result($qry_mat);
@@ -710,7 +710,6 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                     else
                         $material_public = material_public(401, 50000);
                 }
-                $material_public = '750.00';
             } else
                 $material_public = '0.00';
 
@@ -775,19 +774,19 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                             
                             //pega o extrato de boletos crediario/recupere pagos em banco
                             $sql15 = "select count(*) qtd, sum(valorpg) soma from cs2.titulos_recebafacil a
-                  inner join cs2.cadastro b on a.codloja = b.codloja
-                  where month(a.datapg) = '$mes_bloqueio' and Year(a.datapg) = '$ano_bloqueio' 
-                        and ( tp_titulo = '2' or tp_titulo = '3' )
-                        and id_franquia = '$franqueado'";
+                                      inner join cs2.cadastro b on a.codloja = b.codloja
+                                      where month(a.datapg) = '$mes_bloqueio' and Year(a.datapg) = '$ano_bloqueio' 
+                                        and ( tp_titulo = '2' or tp_titulo = '3' )
+                                        and id_franquia = '$franqueado'";
                             $qr15 = mysql_query($sql15, $con);
                             $qtd_1 = mysql_result($qr15, 0, "qtd");
                             $soma_1 = mysql_result($qr15, 0, "soma");
 
                             $sql16 = "select count(*) qtd, sum(valorpg) soma from cs2.titulos_recebafacil a
-                  inner join cs2.cadastro b on a.codloja = b.codloja
-                  where month(a.datapg) = '$mes_bloqueio' and Year(a.datapg) = '$ano_bloqueio' 
-                        and ( tp_titulo = '2' or tp_titulo = '3' )
-                        and id_franquia = '$franqueado' and descricao_repasse like '%CLIENTE RECEBEU O T%'";
+                                      inner join cs2.cadastro b on a.codloja = b.codloja
+                                      where month(a.datapg) = '$mes_bloqueio' and Year(a.datapg) = '$ano_bloqueio' 
+                                        and ( tp_titulo = '2' or tp_titulo = '3' )
+                                        and id_franquia = '$franqueado' and descricao_repasse like '%CLIENTE RECEBEU O T%'";
                             $qr16 = mysql_query($sql16, $con);
                             $qtd_2 = mysql_result($qr16, 0, "qtd");
                             $soma_2 = mysql_result($qr16, 0, "soma");
@@ -796,7 +795,6 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                             $Qtd_consCR = $qtd_1 - $qtd_2;
                             $Tot_CobradoCR = $soma_1 - $soma_2;
                             $Tot_GeralCR = ($Tot_CobradoCR * 2.5) / 100;
-                            //fim crediario / recupere
                             ?>
                             <tr class="titulo">
                                 <td colspan="3"><div align="left">A1) T&iacute;tulos Liquidados (Credi&aacute;rio/Recupere/Boleto) - <font color="#0000FF" style="font-size:10px">( Qtd Titulos : <?php echo " $Qtd_consCR - R$ ".number_format($Tot_CobradoCR, 2, ',', '.');?> x 2,5% )</font></div></td>
@@ -814,6 +812,7 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                                 <td class="total">Vr. Total</td>
                             </tr>
                             <?php
+                            
                             // busca o valor de custo da licenca
 
                             $sql_custo = "SELECT vr_custo FROM cs2.valcons WHERE codcons = 'LSOF'";
@@ -832,11 +831,11 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                                 $vrcuston = number_format($vrcusto, 2, ',', '.');
                                 $vrtoraln = number_format($vrtoral, 2, ',', '.');
                                 echo "<tr class=\"campoesquerda\">
-                    <td class=\"tabela\">$nomcons</td>
-                    <td align=center>$qtdcons</td>
-                    <td align=right>R$ $vrcuston</td>
-                    <td align=right>R$ $vrtoraln</td>
-                </tr>";
+                                            <td class=\"tabela\">$nomcons</td>
+                                            <td align=center>$qtdcons</td>
+                                            <td align=right>R$ $vrcuston</td>
+                                            <td align=right>R$ $vrtoraln</td>
+                                        </tr>";
                             }
 
                             $tot_localiza_novos_cliente = 0;
@@ -858,12 +857,12 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                             $custo = mysql_result($ql_custo, 0, 'vr_custo');
 
                             $sql_novos = "SELECT a.codloja, SUM(a.qtd_registro) as soma
-                      FROM cons_localiza a
-                      INNER JOIN logon b     ON a.codloja = b.codloja
-                      INNER JOIN cadastro c  ON a.codloja = c.codloja
-                      WHERE
-                           c.id_franquia = '$franqueado' AND a.data BETWEEN '$dt_inicio' AND '$dt_fim'
-                           GROUP BY a.codloja";
+                                          FROM cons_localiza a
+                                          INNER JOIN logon b     ON a.codloja = b.codloja
+                                          INNER JOIN cadastro c  ON a.codloja = c.codloja
+                                          WHERE
+                                             c.id_franquia = '$franqueado' AND a.data BETWEEN '$dt_inicio' AND '$dt_fim'
+                                             GROUP BY a.codloja";
                             $ql_novos = mysql_query($sql_novos, $con);
                             while ($array = mysql_fetch_array($ql_novos)) {
                                 $tot_localiza_novos_cliente += $array['soma'];
@@ -872,14 +871,14 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                             $soma_localiza = ( $custo * $tot_localiza_novos_cliente);
 
                             echo "<tr class=\"campoesquerda\">
-                    <td class=\"tabela\">Localiza Max - Novos Clientes</td>
-                    <td align=center>$tot_localiza_novos_cliente</td>
-                    <td align=right>R$ $custo</td>
-                    <td align=right>R$ $soma_localiza</td>
-                    
-                </tr>";
-                            $totconsrel = $totconsrel + $soma_localiza;
+                                    <td class=\"tabela\">Localiza Max - Novos Clientes</td>
+                                    <td align=center>$tot_localiza_novos_cliente</td>
+                                    <td align=right>R$ $custo</td>
+                                    <td align=right>R$ $soma_localiza</td>
 
+                                  </tr>";
+                            
+                            $totconsrel = $totconsrel + $soma_localiza;
 
                             // Cobrando POSTAGEM CORREIO - CREDIARIO/RECUPERE / BOLETO
 
@@ -888,19 +887,20 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                             $custo = mysql_result($ql_custo, 0, 'vr_custo');
 
                             $sql_novos = "SELECT DISTINCT(a.chavebol), a.codloja FROM cs2.titulos_recebafacil a
-                      INNER JOIN cadastro b ON a.codloja = b.codloja
-                      WHERE a.data_impresso BETWEEN '$dt_inicio' AND '$dt_fim'
+                                          INNER JOIN cadastro b ON a.codloja = b.codloja
+                                          WHERE a.data_impresso BETWEEN '$dt_inicio' AND '$dt_fim'
                             and b.id_franquia = $franqueado";
                             $ql_novos = mysql_query($sql_novos, $con);
                             $qtd_boleto = mysql_num_rows($ql_novos);
                             $tot_boleto = $qtd_boleto * $custo;
 
                             echo "<tr class=\"campoesquerda\">
-                    <td class=\"tabela\">Postagem Correio - Cred/Rec/Bol</td>
-                    <td align=center>$qtd_boleto</td>
-                    <td align=right>R$ $custo</td>
-                    <td align=right>R$ $tot_boleto</td>
-                </tr>";
+                                    <td class=\"tabela\">Postagem Correio - Cred/Rec/Bol</td>
+                                    <td align=center>$qtd_boleto</td>
+                                    <td align=right>R$ $custo</td>
+                                    <td align=right>R$ $tot_boleto</td>
+                                  </tr>";
+                            
                             $totconsrel = $totconsrel + $tot_boleto;
 
                             // Cobrando Encaminhamento para Protesto
@@ -927,53 +927,53 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                         <td align=right>R$ $custo</td>
                         <td align=right>R$ $soma_localiza</td>
             </tr>";
-                            $totconsrel = $totconsrel + $soma_localiza;
+        $totconsrel = $totconsrel + $soma_localiza;
 
-                            // Cobrando .... Recomende o Cliente
+        // Cobrando .... Recomende o Cliente
 
-                            $sql_custo = "SELECT vr_custo FROM cs2.valcons WHERE codcons = 'T0002'";
-                            $ql_custo = mysql_query($sql_custo, $con);
-                            $custo = mysql_result($ql_custo, 0, 'vr_custo');
+        $sql_custo = "SELECT vr_custo FROM cs2.valcons WHERE codcons = 'T0002'";
+        $ql_custo = mysql_query($sql_custo, $con);
+        $custo = mysql_result($ql_custo, 0, 'vr_custo');
 
-                            $sql_novos = "SELECT count(*) as soma, a.codloja FROM cs2.relacionamento_consumidor a
+        $sql_novos = "SELECT count(*) as soma, a.codloja FROM cs2.relacionamento_consumidor a
                       INNER JOIN cadastro b ON a.codloja = b.codloja
                       WHERE a.amd BETWEEN '$dt_inicio' AND '$dt_fim'
                             and b.id_franquia = $franqueado";
-                            $tot_localiza_novos_cliente = 0;
-                            $ql_novos = mysql_query($sql_novos, $con);
-                            while ($array = mysql_fetch_array($ql_novos)) {
-                                $tot_localiza_novos_cliente += $array['soma'];
-                            }
+        $tot_localiza_novos_cliente = 0;
+        $ql_novos = mysql_query($sql_novos, $con);
+        while ($array = mysql_fetch_array($ql_novos)) {
+            $tot_localiza_novos_cliente += $array['soma'];
+        }
 
-                            $soma_localiza = ( $custo * $tot_localiza_novos_cliente);
+        $soma_localiza = ( $custo * $tot_localiza_novos_cliente);
 
-                            echo "<tr class=\"campoesquerda\">
+        echo "<tr class=\"campoesquerda\">
                     <td class=\"tabela\">Recomende o Cliente</td>
                     <td align=center>$tot_localiza_novos_cliente</td>
                     <td align=right>R$ $custo</td>
                     <td align=right>R$ $soma_localiza</td>
                 </tr>";
-                            $totconsrel = $totconsrel + $soma_localiza;
+        $totconsrel = $totconsrel + $soma_localiza;
 
-                            //Continuacao...
+        //Continuacao...
 
-                            echo "<tr class=\"campoesquerda\">
+        echo "<tr class=\"campoesquerda\">
                     <td class=\"tabela\">Custo Licenças - Softwares/Soluções</td>
                     <td align=center>$fatot</td>
                     <td align=right>R$ $custo_licenca</td>
                     <td align=right>R$ $total_licenca</td>
                     
                 </tr>";
-                            $totconsrel = $totconsrel + $total_licenc;
+        $totconsrel = $totconsrel + $total_licenc;
+        
+        $sql_custo = "SELECT vr_custo, nome FROM cs2.valcons WHERE codcons = 'TBE01'";
+        $ql_custo = mysql_query($sql_custo, $con);
+        $custo = mysql_result($ql_custo, 0, 'vr_custo');
+        $texto = mysql_result($ql_custo, 0, 'nome');
 
-                            $sql_custo = "SELECT vr_custo, nome FROM cs2.valcons WHERE codcons = 'TBE01'";
-                            $ql_custo = mysql_query($sql_custo, $con);
-                            $custo = mysql_result($ql_custo, 0, 'vr_custo');
-                            $texto = mysql_result($ql_custo, 0, 'nome');
+        // TITULOS LIQUIDADOS NO ESTABELECIMENTO
 
-                            // TITULOS LIQUIDADOS NO ESTABELECIMENTO
-
-                            $sql4 = "SELECT count(*) qtd_bx from titulos_recebafacil a
+        $sql4 = "SELECT count(*) qtd_bx from titulos_recebafacil a
                  INNER JOIN cadastro b ON a.codloja = b.codloja
                  WHERE 
                   a.valorpg > 0 
@@ -981,19 +981,85 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
                   AND a.descricao_repasse = 'CLIENTE RECEBEU O TITULO NO ESTABELECIMENTO'
                   AND b.id_franquia = '$franqueado'";
 
-                            $qry_sql4 = mysql_query($sql4, $con);
-                            $qtd_cliente_baixa = mysql_result($qry_sql4, 0, 'qtd_bx');
-                            $tot_cliente_baixa = number_format($qtd_cliente_baixa * $custo, 2, ',', '.');
-                            echo "<tr class=\"campoesquerda\">
+        $qry_sql4 = mysql_query($sql4, $con);
+        $qtd_cliente_baixa = mysql_result($qry_sql4, 0, 'qtd_bx');
+        $tot_cliente_baixa = $qtd_cliente_baixa * $custo;
+        $tot_cliente_baixa_view = number_format($tot_cliente_baixa, 2, ',', '.');
+        echo "<tr class=\"campoesquerda\">
                     <td class=\"tabela\">$texto</td>
                     <td align=center>$qtd_cliente_baixa</td>
                     <td align=right>R$ $custo</td>
-                    <td align=right>R$ $tot_cliente_baixa</td>
+                    <td align=right>R$ $tot_cliente_baixa_view</td>
                 </tr>";
-                            $totconsrel = $totconsrel + $qtd_cliente_baixa;
-                            ?>
-                        </table>
-                        <table class="bodyText" width="750">
+        $totconsrel = $totconsrel + $tot_cliente_baixa;
+        
+        // TORPEDO MARKETING
+        
+        $sql_custo = "SELECT vr_custo, nome FROM cs2.valcons WHERE codcons = 'TM001'";
+        $ql_custo = mysql_query($sql_custo, $con);
+        $custo = mysql_result($ql_custo, 0, 'vr_custo');
+        $texto = mysql_result($ql_custo, 0, 'nome');
+                
+        $sql4 = "SELECT id_cadastro, listas FROM base_web_control.torpedo_campanha
+                 WHERE status_campanha = 'E' AND dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59'";
+        $qry_sql4 = mysql_query($sql4, $con);
+        while ($array_lista = mysql_fetch_array($qry_sql4)) {
+            $id_cadastro = $array_lista['id_cadastro'];
+            $listas = $array_lista['listas'];
+            $dados = unserialize($listas);
+            $id_cliente = $dados[0];
+            $sql5 = "SELECT count(*) AS qtd FROM base_web_control.torpedo_lista a
+                     INNER JOIN base_web_control.torpedo_lista_telefones b ON a.id = b.id_lista
+                     WHERE a.id = $id_cliente";
+            $qry_sql5 = mysql_query($sql5, $con);
+            $qtd_torpedos += mysql_result($qry_sql5,0,'qtd');
+        }
+        $tot_torpedo = $qtd_torpedos * $custo;
+        $tot_torpedo_view = number_format($tot_torpedo, 2, ',', '.');
+
+        echo "<tr class=\"campoesquerda\">
+                    <td class=\"tabela\">$texto</td>
+                    <td align=center>$qtd_torpedos</td>
+                    <td align=right>R$ $custo</td>
+                    <td align=right>R$ $tot_torpedo_view</td>
+                </tr>";
+        $totconsrel = $totconsrel + $tot_torpedo;
+        
+        // WHATSAPP MARKETING
+        
+        $sql_custo = "SELECT vr_custo, nome FROM cs2.valcons WHERE codcons = 'WM001'";
+        $ql_custo = mysql_query($sql_custo, $con);
+        $custo = mysql_result($ql_custo, 0, 'vr_custo');
+        $texto = mysql_result($ql_custo, 0, 'nome');
+                
+        $sql4 = "SELECT id_cadastro, listas FROM base_web_control.whatsapp_campanha
+                 WHERE status_campanha = 'E' AND dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59'";
+        $qry_sql4 = mysql_query($sql4, $con);
+        while ($array_lista = mysql_fetch_array($qry_sql4)) {
+            $id_cadastro = $array_lista['id_cadastro'];
+            $listas     = $array_lista['listas'];
+            $dados      = unserialize($listas);
+            $id_cliente = $dados[0];
+            $sql5 = "SELECT count(*) AS qtd FROM base_web_control.whatsapp_lista a
+                     INNER JOIN base_web_control.whatsapp_lista_telefones b ON a.id = b.id_lista
+                     WHERE a.id = $id_cliente";
+            $qry_sql5 = mysql_query($sql5, $con);
+            $qtd_whatsapp += mysql_result($qry_sql5,0,'qtd');
+        }
+        $tot_whatsapp = $qtd_whatsapp * $custo;
+        $tot_whatsappView = number_format($tot_whatsapp, 2, ',', '.');
+
+        echo "<tr class=\"campoesquerda\">
+                    <td class=\"tabela\">$texto</td>
+                    <td align=center>$qtd_whatsapp</td>
+                    <td align=right>R$ $custo</td>
+                    <td align=right>R$ $tot_whatsappView</td>
+                </tr>";
+        $totconsrel = $totconsrel + $tot_whatsapp;
+        
+        ?>
+    </table>
+    <table class="bodyText" width="750">
                             <tr>
                                 <td class="total"><div align="left">Total de Custos das Solu&ccedil;&otilde;es e Pesquisas</div></td>
                                 <td align="right" class="total"><div align="right"><?php
@@ -1042,7 +1108,7 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
 
                         <table width="750">
                             <tr>
-                                <td class="titulo"><div align="left">C) Custo Cobran&ccedil;a Banc&aacute;ria + Postagem Correio  <font style="font-size:10px">( Total de Clientes : <?php echo $fatot; ?> x R$ <?php echo number_format($custo_correio,2,',','.'); ?> )</font></div></td>
+                                <td class="titulo"><div align="left">C) Custo Cobran&ccedil;a Banc&aacute;ria + Postagem Correio + Conf. Gr&aacute;fica<font style="font-size:10px">( Total de Clientes : <?php echo $fatot; ?> x R$ <?php echo number_format($custo_correio,2,',','.'); ?> )</font></div></td>
                                 <td align="right" class="titulo"><div align="right"><?php echo "R$ ".$cusbolcorrn; ?></div></td>
                             </tr>
                             <tr>
