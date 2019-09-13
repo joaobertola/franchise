@@ -1705,10 +1705,12 @@ function getCategoryName($catId) {
                         a.data_venda between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
                     GROUP BY month(a.data_venda) , year(a.data_venda)
                     ORDER BY a.data_venda";
-        $strSQL = "SELECT valor AS Average, 
-       dados AS Country 
-FROM cs2.grafico_desempenho
-ORDER BY data";
+                    
+        $strSQL = "SELECT a.valor AS Average, 
+                          a.dados AS Country 
+                   FROM cs2.grafico_desempenho a
+                   WHERE 1=1 $selecao
+                   ORDER BY a.data";
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
