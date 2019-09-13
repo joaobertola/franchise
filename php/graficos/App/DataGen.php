@@ -643,6 +643,11 @@ function getAvgShipTimeXML_Vendas($intYear, $numCountries, $addJSLinks, $forData
 				FROM base_web_control.venda
 				GROUP BY month(data_venda) , year(data_venda)
 				LIMIT 12";
+
+    $strSQL = "SELECT valor AS Average, 
+       dados AS Country 
+FROM cs2.grafico_desempenho
+ORDER BY data";
     $result = mysql_query($strSQL) or die(mysql_error());
     if ($result) {
         while($ors = mysql_fetch_array($result)) {
