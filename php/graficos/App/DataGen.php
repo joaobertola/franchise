@@ -2158,6 +2158,7 @@ function grafico_franquia_01($selecao,&$FC) {
                 GROUP BY b.debito
                 ORDER BY Average";
     */
+                
     $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
                 WHERE a.id_grafico = '1' $selecao";
     if ( $selecao == '' )
