@@ -1680,6 +1680,7 @@ function getCategoryName($catId) {
         
         // Function to connect to the DB
         $link = connectToDB();
+        /*
         $strSQL = " SELECT count(*) as Average, 
                         CONCAT( 
                             CASE month(a.data_venda) 
@@ -1705,7 +1706,7 @@ function getCategoryName($catId) {
                         a.data_venda between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
                     GROUP BY month(a.data_venda) , year(a.data_venda)
                     ORDER BY a.data_venda";
-                    
+		*/
         $strSQL = "SELECT a.valor AS Average, 
                           a.dados AS Country 
                    FROM cs2.grafico_desempenho a
@@ -2148,13 +2149,13 @@ function grafico_franquia_01($selecao,&$FC) {
     // Function to connect to the DB
     $link = connectToDB();
 	$strSQL = " SELECT count(*) Average, c.nome as Country FROM cs2.cadastro a
-                    INNER JOIN cs2.cons b ON a.codloja = b.codloja
-                    INNER JOIN cs2.valcons c ON b.debito = c.codcons
-                    WHERE $selecao 
-                            b.amd between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
-                            AND b.debito !='A0230' AND b.debito != 'A0232'
-                    GROUP BY b.debito
-                    ORDER BY Average";
+                INNER JOIN cs2.cons b ON a.codloja = b.codloja
+                INNER JOIN cs2.valcons c ON b.debito = c.codcons
+                WHERE $selecao 
+                        b.amd between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                        AND b.debito !='A0230' AND b.debito != 'A0232'
+                GROUP BY b.debito
+                ORDER BY Average";
 
 
     $result = mysql_query($strSQL) or die($strSQL);
@@ -2300,6 +2301,7 @@ function grafico_franquia_15($intYear, $selecao, $addJSLinks, $forDataURL, &$FC)
     
     // Function to connect to the DB
     $link = connectToDB();
+    /*
     $strSQL = " SELECT count(*) as Average, 
                     CONCAT( 
                         CASE month(a.data_cadastro) 
@@ -2325,6 +2327,12 @@ function grafico_franquia_15($intYear, $selecao, $addJSLinks, $forDataURL, &$FC)
                     a.data_cadastro between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
                 GROUP BY month(a.data_cadastro) , year(a.data_cadastro)
                 ORDER BY a.data_cadastro";
+	*/
+    $strSQL = " SELECT sum(valor) as Average, dados  AS Country FROM cs2.grafico_desempenho
+                WHERE id_grafico = '15' $selecao
+                GROUP BY data
+                ORDER BY data ASC
+                LIMIT 12";
     $result = mysql_query($strSQL) or die($strSQL);
     if ($result) {
         while ($ors = mysql_fetch_array($result)) {
