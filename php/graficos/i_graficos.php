@@ -42,7 +42,6 @@ if ($_REQUEST['franqueado']) {
                 <td align="center" class="titulo">
                     <?php if (($tipo == "a") || ($tipo == "c") || ($tipo == "d")) { ?>
                         <select name="franqueado" onChange="ir()">
-                            <option value="" selected>... Selecione ...</option>
                             <?php if ($tipo == "a") { ?>
 
                                 <?php if ($_REQUEST['franqueado'] == 9999999) { ?>
