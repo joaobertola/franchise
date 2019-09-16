@@ -2147,6 +2147,7 @@ function getCategoryName($catId) {
 
 function grafico_franquia_01($selecao,&$FC) {
     // Function to connect to the DB
+    /*
     $link = connectToDB();
 	$strSQL = " SELECT count(*) Average, c.nome as Country FROM cs2.cadastro a
                 INNER JOIN cs2.cons b ON a.codloja = b.codloja
@@ -2156,7 +2157,16 @@ function grafico_franquia_01($selecao,&$FC) {
                         AND b.debito !='A0230' AND b.debito != 'A0232'
                 GROUP BY b.debito
                 ORDER BY Average";
+    */
+    $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
+                WHERE a.id_grafico = '1' $selecao";
+    if ( $selecao == '' )
+        $strSQL .= " GROUP BY a.data ";
+	else
+    	$strSQL .= " GROUP BY a.id_franquia, a.dados ";
 
+	$strSQL .= " ORDER BY a.data ASC
+                LIMIT 12";
 
     $result = mysql_query($strSQL) or die($strSQL);
     if ($result) {
