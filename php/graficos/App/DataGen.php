@@ -2328,10 +2328,10 @@ function grafico_franquia_15($intYear, $selecao, $addJSLinks, $forDataURL, &$FC)
                 GROUP BY month(a.data_cadastro) , year(a.data_cadastro)
                 ORDER BY a.data_cadastro";
 	*/
-    $strSQL = " SELECT sum(valor) as Average, dados  AS Country FROM cs2.grafico_desempenho
-                WHERE id_grafico = '15' $selecao
-                GROUP BY data
-                ORDER BY data ASC
+    $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
+                WHERE a.id_grafico = '15' $selecao
+                GROUP BY a.data
+                ORDER BY a.data ASC
                 LIMIT 12";
     $result = mysql_query($strSQL) or die($strSQL);
     if ($result) {
