@@ -1251,7 +1251,6 @@ function getCategoryName($catId) {
 
             return $arr;
         }
-
     }
 
     function grafico_franquia_novo_02($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
@@ -1707,11 +1706,15 @@ function getCategoryName($catId) {
                     GROUP BY month(a.data_venda) , year(a.data_venda)
                     ORDER BY a.data_venda";
 		*/
-        $strSQL = "SELECT a.valor AS Average, 
-                          a.dados AS Country 
-                   FROM cs2.grafico_desempenho a
-                   WHERE 1=1 $selecao
-                   ORDER BY a.data";
+	    $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
+	                WHERE a.id_grafico = '17' $selecao";
+	    if ( $selecao == '' )
+	        $strSQL .= " GROUP BY a.data ";
+		else
+	    	$strSQL .= " GROUP BY a.id_franquia, a.dados ";
+
+		$strSQL .= " ORDER BY a.data ASC
+	                LIMIT 12";
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
@@ -1721,7 +1724,6 @@ function getCategoryName($catId) {
                 $arr[$i]['color'] = '#0000ff';
                 $i++;
             }
-
             return $arr;
         }
     }
@@ -2158,7 +2160,7 @@ function grafico_franquia_01($selecao,&$FC) {
                 GROUP BY b.debito
                 ORDER BY Average";
     */
-                
+
     $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
                 WHERE a.id_grafico = '1' $selecao";
     if ( $selecao == '' )
