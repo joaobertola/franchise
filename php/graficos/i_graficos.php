@@ -194,7 +194,7 @@ if ($_REQUEST['franqueado']) {
             <tr>
                 <td class="campoesquerda">
                     <?php
-                    $url = "graficos/App/Grafico_Franquia_19.php&franqueado=$id_franquia&id_franquia_session={$_SESSION['id']}";
+                    $url = "graficos/App/Grafico_Franquia_19.php?franqueado=$id_franquia&id_franquia_session={$_SESSION['id']}";
                     echo "<a href=\"$url\" class=\"bodyText\" onfocus=\"mostrar('aguarde');return true;\">Gr&aacute;fico de Notas Fiscais ( NFC-e )</a>";
                     ?>
                 </td>
