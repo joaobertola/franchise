@@ -1734,6 +1734,7 @@ function getCategoryName($catId) {
         
         // Function to connect to the DB
         $link = connectToDB();
+        /*
         $strSQL = " SELECT count(*) as Average, 
                         CONCAT( 
                             CASE month(a.data_hora) 
@@ -1764,6 +1765,18 @@ function getCategoryName($catId) {
                             a.status = 5
                     GROUP BY month(a.data_hora) , year(a.data_hora)
                     ORDER BY a.data_hora";
+		*/
+	    $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
+	                WHERE a.id_grafico = '18' $selecao";
+
+	    if ( $selecao == '' )
+	        $strSQL .= " GROUP BY a.data ";
+		else
+	    	$strSQL .= " GROUP BY a.id_franquia, a.dados ";
+
+		$strSQL .= " ORDER BY a.data ASC
+	                LIMIT 12";
+
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
@@ -1785,6 +1798,7 @@ function getCategoryName($catId) {
         
         // Function to connect to the DB
         $link = connectToDB();
+        /*
         $strSQL = " SELECT count(*) as Average, 
                         CONCAT( 
                             CASE month(a.data_hora) 
@@ -1815,6 +1829,18 @@ function getCategoryName($catId) {
                             a.status = 5
                     GROUP BY month(a.data_hora) , year(a.data_hora)
                     ORDER BY a.data_hora";
+		*/
+	    $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
+	                WHERE a.id_grafico = '19' $selecao";
+
+	    if ( $selecao == '' )
+	        $strSQL .= " GROUP BY a.data ";
+		else
+	    	$strSQL .= " GROUP BY a.id_franquia, a.dados ";
+
+		$strSQL .= " ORDER BY a.data ASC
+	                LIMIT 12";
+
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
@@ -1835,6 +1861,7 @@ function getCategoryName($catId) {
         
         // Function to connect to the DB
         $link = connectToDB();
+        /*
         $strSQL = " SELECT count(*) as Average, 
                         CONCAT( 
                             CASE month(a.data_hora) 
@@ -1865,6 +1892,18 @@ function getCategoryName($catId) {
                             a.status = 5
                     GROUP BY month(a.data_hora) , year(a.data_hora)
                     ORDER BY a.data_hora";
+		*/
+	    $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
+	                WHERE a.id_grafico = '20' $selecao";
+
+	    if ( $selecao == '' )
+	        $strSQL .= " GROUP BY a.data ";
+		else
+	    	$strSQL .= " GROUP BY a.id_franquia, a.dados ";
+
+		$strSQL .= " ORDER BY a.data ASC
+	                LIMIT 12";
+
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
