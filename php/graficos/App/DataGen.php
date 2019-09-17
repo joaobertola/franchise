@@ -1841,6 +1841,8 @@ function getCategoryName($catId) {
 		$strSQL .= " ORDER BY a.data ASC
 	                LIMIT 12";
 
+echo $strSQL;
+
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
