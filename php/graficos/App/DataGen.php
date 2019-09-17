@@ -1850,8 +1850,6 @@ function getCategoryName($catId) {
                 $arr[$i]['color'] = '#0000ff';
                 $i++;
             }
-            print_r( $arr );
-            
             return $arr;
         }
     }
