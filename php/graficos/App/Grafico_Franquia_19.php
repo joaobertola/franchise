@@ -52,11 +52,11 @@ include("DataGen.php");
                     $nome_franquia = nome_franquia($idfranquia);
                 }
                 #Define Charts Parameter
-                $strParam = "caption=Notas Fiscal ( NFC-e );subCaption=$nome_franquia - últimos 12 Meses;yAxisName=;xAxisName=;palette=1;animation=" . getAnimationState() . ";showValues=1;formatNumberScale=5;numberSuffix=; labelDisplay=ROTATE;numDivLines=5;slantLabels=1";
+                $strParam = "caption=Notas Fiscal ( NF-e );subCaption=$nome_franquia - últimos 12 Meses;yAxisName=;xAxisName=;palette=1;animation=" . getAnimationState() . ";showValues=1;formatNumberScale=5;numberSuffix=; labelDisplay=ROTATE;numDivLines=5;slantLabels=1";
                 # Set Chart Parameter
                 $FC->setChartParams($strParam);
                 # Get average shiping time xml
-                $res = grafico_franquia_novo_19($intYear, $selecao, true, false, $FC);
+                $res = grafico_franquia_novo_18($intYear, $selecao, true, false, $FC);
                 $i = 0;
 
                 foreach ($res as $key) {
@@ -93,7 +93,7 @@ include("DataGen.php");
                         ]);
 
                         var options = {
-                            title: "Gráfico de Pesquisas - NFC-e emitidas nos últimos 12 meses",
+                            title: "Gráfico de Pesquisas - NF-e emitidas nos últimos 12 meses",
                             width: 1500,
                             height: 800,
                             bar: {
