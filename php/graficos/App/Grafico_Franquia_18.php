@@ -93,8 +93,8 @@ include("DataGen.php");
                         ]);
 
                         var options = {
-                            title: "Gráfico de Pesquisas",
-                            width: 1700,
+                            title: "Gráfico de Pesquisas - NF-e emitidas nos últimos 12 meses",
+                            width: 1500,
                             height: 800,
                             bar: {
                                 groupWidth: "95%"

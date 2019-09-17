@@ -93,7 +93,7 @@ include("DataGen.php");
                         ]);
 
                         var options = {
-                            title: "Gráfico de Pesquisas",
+                            title: "Gráfico de Pesquisas - Vendas Realizadas nos últimos 12 Meses",
                             width: 1700,
                             height: 800,
                             bar: {
