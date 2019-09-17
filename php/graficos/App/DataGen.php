@@ -1841,8 +1841,6 @@ function getCategoryName($catId) {
 		$strSQL .= " ORDER BY a.data ASC
 	                LIMIT 12";
 
-echo $strSQL;
-
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
@@ -1852,7 +1850,8 @@ echo $strSQL;
                 $arr[$i]['color'] = '#0000ff';
                 $i++;
             }
-
+            print_r( $arr );
+            
             return $arr;
         }
     }
