@@ -115,8 +115,8 @@ if (isset($id)) {
             where mid(b.logon,1,5)='$codigo' $frq limit 1";
 }
 
-//echo "<pre>".$comando;
-//die;
+///echo "<pre>".$comando;
+///die;
 
 $res = mysql_query($comando, $con);
 $linhas = mysql_num_rows($res);
