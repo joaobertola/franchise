@@ -1452,6 +1452,7 @@ function getCategoryName($catId) {
                             CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') 
                             AND 
                             CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 0 DAY)),1,7),'-01')
+                        AND id_cadastro NOT IN(764,23096)
                     GROUP BY MONTH(a.vencimento), YEAR(a.vencimento)
                     ORDER BY a.vencimento";
         $result = mysql_query($strSQL) or die($strSQL);
