@@ -148,7 +148,7 @@ $qry_sql = mysql_query($sql_digitalizado, $con) or die("Erro SQL: $sql_digitaliz
                                     <img src='http://contrato.webcontrolempresas.com.br/inform/<?= $xarq ?>' width="100%" height="100%">
                                     <?php
                                 } else {
-                                    echo "<input type='hidden' name='endereco_foto[]' value='http://contrato.webcontrolempresas.com.br/inform/$xarq'>";
+                                    echo "<input  name='endereco_foto[]' value='http://contrato.webcontrolempresas.com.br/inform/$xarq'>";
                                     
                                     $xarq = str_replace('contrato/','',$xarq);
                                     shell_exec("rm -rf  /var/www/html/franquias/php/$xarq");
