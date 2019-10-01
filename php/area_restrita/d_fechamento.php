@@ -1034,7 +1034,8 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
         $texto = mysql_result($ql_custo, 0, 'nome');
                 
         $sql4 = "SELECT id_cadastro, listas FROM base_web_control.whatsapp_campanha
-                 WHERE status_campanha = 'E' AND dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59'";
+                 INNER JOIN cs2.cadastro b ON a.id_cadastro = b.codloja
+                 WHERE status_campanha = 'E' AND dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59' AND b.id_franquia = '$franqueado' ";
         $qry_sql4 = mysql_query($sql4, $con);
         while ($array_lista = mysql_fetch_array($qry_sql4)) {
             $id_cadastro = $array_lista['id_cadastro'];
