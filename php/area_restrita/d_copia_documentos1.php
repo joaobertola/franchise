@@ -148,12 +148,15 @@ $qry_sql = mysql_query($sql_digitalizado, $con) or die("Erro SQL: $sql_digitaliz
                                     <img src='http://contrato.webcontrolempresas.com.br/inform/<?= $xarq ?>' width="100%" height="100%">
                                     <?php
                                 } else {
+
                                     echo "<input type='hidden' name='endereco_foto[]' value='http://contrato.webcontrolempresas.com.br/inform/$xarq'>";
                                     
                                     $xarq = str_replace('contrato/','',$xarq);
                                     shell_exec("rm -rf  /var/www/html/franquias/php/$xarq");
                                     shell_exec("rm -rf  /var/www/html/franquias/arq_tmp/$xarq");
-                                    $ret = shell_exec("wget $arquivo");
+
+                                    $ret = shell_exec("wget $arquivo /var/www/html/franquias/php/arq_tmp/$xarq");
+                                    
                                     shell_exec("mv /var/www/html/franquias/php/$xarq /var/www/html/franquias/php/arq_tmp/");
                                     $file = 'https://www.webcontrolempresas.com.br/franquias/php/arq_tmp/'.$xarq; 
                                     echo '<iframe src="'.$file.'" width="800" height="600"></iframe>';
