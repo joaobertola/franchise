@@ -40,7 +40,7 @@ function troca($value){
                 case 195 : $saidax .= 'A';
                     break; // Ã
                 case 201 : $saidax .= 'E';
-                    break; // É				
+                    break; // É             
                 case 202 : $saidax .= 'E';
                     break; // Ê
                 case 203 : $saidax .= 'E';
@@ -88,7 +88,7 @@ $sql = "SELECT
              a.valor, a.vencimento, date_format(a.vencimento,'%d/%m/%Y') as venc,
              b.cnpj_empresa_faturar, b.insc, b.codloja, b.razaosoc, b.email,
              b.end, b.numero, b.bairro, b.cidade, b.uf, b.cep, b.fone,
-             c.protocolo,
+             c.protocolo, c.status,
              mid(logon,1,5) as logon
         FROM cs2.titulos a
         INNER JOIN cs2.cadastro b ON a.codloja = b.codloja
@@ -120,6 +120,7 @@ while ( $reg = mysql_fetch_array($qry) ){
     $venc                 = $reg['venc'];
     $valor                = $reg['valor'];
     $logon                = trim($reg['logon']);
+    $status               = trim($reg['status']);
     
     #buscando codigo da cidade
     $sql_cidade = " SELECT CONCAT(a.id_estado,a.sigla) AS id_cidade
@@ -134,23 +135,24 @@ while ( $reg = mysql_fetch_array($qry) ){
         exit;
     }
 
-        if ( $cnpj_empresa_faturar == '08745918000171' ){
-            // WC
-            $Certificado_User  = 'wcsistemas';
-            $Certificado_Cnpj  = '08745918000171';
-            $Certificado_IM    = '05230906';
-            $Certificado_Senha = 'WC20181974';
-        }else{
-            // WEBCONTROL
-            $Certificado_User  = 'world click';
-            $Certificado_Cnpj  = '13117948000173';
-            $Certificado_IM    = '010106049109';
-            $Certificado_Senha = 'WEBC20191974';
-        }
+    if ( $cnpj_empresa_faturar == '08745918000171' ){
+        // WC
+        $Certificado_User  = 'wcsistemas';
+        $Certificado_Cnpj  = '08745918000171';
+        $Certificado_IM    = '05230906';
+        $Certificado_Senha = 'WC20181974';
+    }else{
+
+        // WEBCONTROL
+        $Certificado_User  = 'world click';
+        $Certificado_Cnpj  = '13117948000173';
+        $Certificado_IM    = '010106049109';
+        $Certificado_Senha = 'WEBC20191974';
+    }
         
     if ( $protocolo == '' ){
         
-        // NAO FOI GERADO A NOTA FISCAL.. GERANDO O XML E ENVIANDO A PREFEITURA
+        // NAO FOI GERADO A NOTA FISCAL..   GERANDO O XML E ENVIANDO A PREFEITURA
 
         # Buscando NUMERO DO LOTE e NUMERO DO RPS
         $sql_lote_rps = "SELECT numero_lote, numero_rps, num_lote_WC, num_rps_WC FROM cs2.nota_controle";
@@ -295,7 +297,6 @@ while ( $reg = mysql_fetch_array($qry) ){
         $oRps->Certificado_Usuario = $Certificado_User;
         $oRps->Certificado_Senha = $Certificado_Senha;
 
-
         $oRps->URLwebservice = 
                         array('producao' => 'https://isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
                               'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
@@ -386,6 +387,10 @@ while ( $reg = mysql_fetch_array($qry) ){
                              );
 
         $result = $oRps->ConsultarSituacaoLoteRps();
+        
+//        echo "<pre>";
+//        print_r( $result );
+//        die;
         
         $xml = simplexml_load_string( $result );
         
@@ -631,7 +636,8 @@ while ( $reg = mysql_fetch_array($qry) ){
                     // CHAMANDO O LINK PARA VER A NOTA
                     
                     echo "<script>alert(\"Nota Fiscal processada com sucesso!\");</script>";
-                    echo "<meta http-equiv=\"refresh\" content=\"0; url= painel.php?pagina1=Franquias/b_notafiscal_new.php&go=ingressar&id_faturamento=$referencia&cliente=$logon\";>";
+                    if ( $referencia != '' )
+                        echo "<meta http-equiv=\"refresh\" content=\"0; url= painel.php?pagina1=Franquias/b_notafiscal_new.php&go=ingressar&id_faturamento=$referencia&cliente=$logon\";>";
                     
                     break;
 

@@ -182,6 +182,9 @@ switch($_REQUEST['acao']){
 	case '1':
 		if( ($_SESSION['id'] == 163) or ($_SESSION['id'] == 46) or ($_SESSION['id'] == 4) or ($_SESSION['id'] == 1204) ) {
 			
+			$sql_libera_acesso = "UPDATE cs2.logon SET sitlog = 0 where codloja='{$_REQUEST['codloja']}'";
+			$qry_libera_acesso = mysql_query ($sql_libera_acesso, $con);
+
 			$sql_p = "UPDATE cs2.cadastro 
 						  SET pendencia_contrato = '$pendencia_contrato'
 					 WHERE codloja = '{$_REQUEST['codloja']}'";
