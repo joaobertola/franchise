@@ -1,5 +1,8 @@
 <?php
 
+// Alteracoes:
+// 16/08/2019 - Corrigido o envio de email - TLS (Luciano)
+
 global $conexao, $arquivo, $origem_arquivo;
 
 global $erro ,$QUITADO, $TIT_REG, $TIT_REGM, $TIT_NREG, $TIT_NREGM, $RECEBA_F, $RECEBA_A, $cont_nao, $cont_liq;
@@ -10,8 +13,6 @@ $nomedb="consulta";
 $conexao=@mysql_pconnect("10.2.2.3",$usermy,$passwordmy)or die ("Prezado Cliente, <br><br> Estamos em manuten&ccedil;&atilde;o em Nosso Banco de Dados, dentro de instantes a conex&atilde;o ser&aacute; estabelecida novamente. <br><br>Atenciosamente, <br><br>Departamento de TI.");
 $bd=mysql_select_db($nomedb,$conexao) or die("Nao foi posivel selecionar o banco de dados contate o administrador erro 30");
 
-include("class.phpmailer.php");
-    
 function espaco($espa,$quant){
     $aux=$espa;
     $tamanho=strlen($espa);
@@ -429,9 +430,9 @@ if( $processado_nexxera ){
       if ($dir <> '.' && $dir <> '..') {
 
          $nome_arquivo = $diretorio . '/' . $dir;
-     $nome_arquivo = str_replace('/','',$nome_arquivo);
+         $nome_arquivo = str_replace('/','',$nome_arquivo);
          if ( substr($nome_arquivo,0,7) == 'cob237_'){
-        processa_arquivo('/home/skyunix/inbox/'.$nome_arquivo);
+            processa_arquivo('/home/skyunix/inbox/'.$nome_arquivo);
             die;
          }
       }
@@ -825,23 +826,41 @@ function processa_arquivo($arquivo){
     shell_exec("mv $arquivo /var/www/html/franquias/php/area_restrita/nexxera/retorno/");
 
     try {
-        $mail = new PHPMailer();
-        $mail->IsSendmail(); // telling the class to use SendMail transport
-        $mail->IsSMTP(); //ENVIAR VIA SMTP
-        $mail->Host = "10.2.2.7"; //SERVIDOR DE SMTP 
-        $mail->SMTPAuth = true; //ATIVA O SMTP AUTENTICADO
-        $mail->Username = "cpd@webcontrolempresas.com.br"; //EMAIL PARA SMTP AUTENTICADO
-        $mail->Password = "#9%kxP*-11"; //SENHA DO EMAIL PARA SMTP AUTENTICADO
-        $mail->From = "cpd@webcontrolempresas.com.br"; //E-MAIL DO REMETENTE 
-        $mail->FromName = "CPD - WEBCONTROL"; //NOME DO REMETENTE
-        $mail->AddAddress("administrativo@webcontrolempresas.com.br","Administrativo - WEBCONTROL"); //E-MAIL DO DESINAT�RIO, NOME DO DESINAT�RIO 
-        $mail->AddBCC('luciano@webcontrolempresas.com.br', 'Luciano Mancini - Diretor de Tecnologia');
-        $mail->WordWrap = 50; // ATIVAR QUEBRA DE LINHA
-        $mail->IsHTML(true); //ATIVA MENSAGEM NO FORMATO HTML
-        $mail->Subject = "Retorno Cobranca BRADESCO"; //ASSUNTO DA MENSAGEM
-        $mail->Body = $saida; //MENSAGEM NO FORMATO HTML
-        $mail->Send();
+        
+        include_once ('/var/www/html/webcontrol/classes/EnviaEmailPHPMailer.class.php');
+
+        mb_internal_encoding("UTF-8");
+
+        $enviaEmail = new EnviaEmailPHPMailer();
+
+        if($enviaEmail->EnviaEmail(
+                'cpd@webcontrolempresas.com.br',
+                '#9%kxP*-11',
+                'administrativo@webcontrolempresas.com.br',
+                'Retorno Cobranca BRADESCO',
+                $saida,
+                ''
+        )){
+                echo json_encode(array('retorno' => 1));
+        } else {
+                echo json_encode(array('retorno' => 0));
+        }
+
+        if($enviaEmail->EnviaEmail(
+                'cpd@webcontrolempresas.com.br',
+                '#9%kxP*-11',
+                'luciano@webcontrolempresas.com.br',
+                'Retorno Cobranca BRADESCO',
+                $saida,
+                ''
+        )){
+                echo json_encode(array('retorno' => 1));
+        } else {
+                echo json_encode(array('retorno' => 0));
+        }
+        
         echo "ATENCAO >>  Este relatorio foi enviado para o EMAIL : administrativo@webcontrolempresas.com.br</p>\n";
+        
     } catch (phpmailerException $e) {
         echo $e->errorMessage(); //Pretty error messages from PHPMailer
     } catch (Exception $e) {
