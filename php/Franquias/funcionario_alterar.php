@@ -151,7 +151,7 @@ $idFuncao = mysql_result($qry, 0, 'id_funcao');
     jQuery(function ($) {
         $("#id_data_admissao").mask("99/99/9999");
         $("#id_data_demissao").mask("99/99/9999");
-        $('input[name=iptPlaca]').mask('aaa-9999');
+        $('input[name=iptPlaca]').mask('aaa-????');
     });
 
     (function ($) {
