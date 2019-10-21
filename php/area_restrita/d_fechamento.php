@@ -1000,11 +1000,11 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
         $custo = mysql_result($ql_custo, 0, 'vr_custo');
         $texto = mysql_result($ql_custo, 0, 'nome');
                 
-        $sql4 = "SELECT id_cadastro, listas FROM base_web_control.torpedo_campanha
-                 WHERE status_campanha = 'E' AND dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59'";
+        $sql4 = "SELECT a.listas FROM base_web_control.torpedo_campanha a
+                 INNER JOIN cs2.cadastro b ON a.id_cadastro = b.codloja
+                 WHERE b.id_franquia = '$franqueado' AND status_campanha = 'E' AND dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59' AND b.id_franquia = '$franqueado'";
         $qry_sql4 = mysql_query($sql4, $con);
         while ($array_lista = mysql_fetch_array($qry_sql4)) {
-            $id_cadastro = $array_lista['id_cadastro'];
             $listas = $array_lista['listas'];
             $dados = unserialize($listas);
             $id_cliente = $dados[0];
@@ -1032,8 +1032,9 @@ where b.id_franquia = '$franqueado' and a.franqueado = 'S'";
         $custo = mysql_result($ql_custo, 0, 'vr_custo');
         $texto = mysql_result($ql_custo, 0, 'nome');
                 
-        $sql4 = "SELECT id_cadastro, listas FROM base_web_control.whatsapp_campanha
-                 WHERE status_campanha = 'E' AND dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59'";
+        $sql4 = "SELECT listas FROM base_web_control.whatsapp_campanha a
+                 INNER JOIN cs2.cadastro b ON a.id_cadastro = b.codloja
+                 WHERE b.id_franquia = '$franqueado' AND a.status_campanha = 'E' AND a.dt_last_update BETWEEN '$ano_bloqueio-$mes_bloqueio-01 00:00:01' AND '$ano_bloqueio-$mes_bloqueio-31 23:59:59' AND b.id_franquia = '$franqueado' ";
         $qry_sql4 = mysql_query($sql4, $con);
         while ($array_lista = mysql_fetch_array($qry_sql4)) {
             $id_cadastro = $array_lista['id_cadastro'];

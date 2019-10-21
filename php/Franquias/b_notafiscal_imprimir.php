@@ -26,7 +26,7 @@ if ( $link_externo == 'SIM'){
 $sql = "SELECT * FROM cs2.titulos_notafiscal WHERE FIND_IN_SET( numdoc, '$numdoc')";
 $qry = mysql_query($sql,$conexao) or die('Erro SQL 01:'.$sql);
 if (mysql_num_rows($qry) > 0 ){
-    
+   
     $html = "<html>
                  <head>
                      <meta charset='UTF-8'>
@@ -34,7 +34,6 @@ if (mysql_num_rows($qry) > 0 ){
                      <style>
                          body{margin-top: 0; font-family: arial; font-size: 10px}
                          .text-center{text-align: center}
-
                          table{ border-color: #000; border-spacing: 0; border-collapse: collapse; font-size:12px;}
                          table tr td{padding:3px !important;}
                          #tbl-principal{width: 800px}
@@ -116,13 +115,18 @@ if (mysql_num_rows($qry) > 0 ){
 
             $Descricao = $InfRps->getElementsByTagName ( "Discriminacao" )->item ( 0 )->nodeValue;
 
+            $ValorIssRetido = trim($Valores->getElementsByTagName ( "ValorIssRetido" )->item ( 0 )->nodeValue);
+            
+            $ValorliquidoNfse = trim($Valores->getElementsByTagName ( "ValorLiquidoNfse" )->item ( 0 )->nodeValue);
+            $ValorliquidoNfse = number_format($ValorliquidoNfse, 2, ',', '.');
+            
             $ValorServicos = trim($Valores->getElementsByTagName ( "ValorServicos" )->item ( 0 )->nodeValue);
             $total = number_format($ValorServicos, 2, ',', '.');
 
-            $IssRetido = trim($Valores->getElementsByTagName ( "Aliquota" )->item ( 0 )->nodeValue) * 100;
-            $Perc_ISS = trim($Valores->getElementsByTagName ( "Aliquota" )->item ( 0 )->nodeValue) * 100;
+            $IssRetido = trim($Valores->getElementsByTagName ( "IssRetido" )->item ( 0 )->nodeValue);
+            $Perc_ISS = trim($Valores->getElementsByTagName ( "IssRetido" )->item ( 0 )->nodeValue);
 
-            $IssRetido = number_format($IssRetido, 2, ',', '.') ;
+            $IssRetido = number_format($IssRetido, 2, ',', '.');
 
             $valor_deducoes = '0,00';
             $base_calculo = $total;
@@ -130,7 +134,7 @@ if (mysql_num_rows($qry) > 0 ){
 
             $valorIss = ( $ValorServicos * $Perc_ISS ) / 100;
 
-            $valor_iss = number_format($valorIss, 2, ',', '.');;
+            $valor_iss = number_format($valorIss, 2, ',', '.');
             $credito_iptu = '0,00';
 
             $Prestador = $InfRps->getElementsByTagName ( "Prestador" )->item ( 0 );
@@ -152,7 +156,7 @@ if (mysql_num_rows($qry) > 0 ){
             $emp_email = 'administrativo@webcontrolempresas.com.br';
 
             $Servicos = $InfRps->getElementsByTagName ( "Servico" )->item ( 0 );
-            $descriminacao = trim($Servicos->getElementsByTagName ( "Discriminacao" )->item ( 0 )->nodeValue);
+            
             $Valores = $Servicos->getElementsByTagName ( "Valores" )->item ( 0 );
 
             $Tomador = $InfRps->getElementsByTagName ( "Tomador" )->item ( 0 );
@@ -182,10 +186,23 @@ if (mysql_num_rows($qry) > 0 ){
             $cli_email = trim($Contato->getElementsByTagName ( "Email" )->item ( 0 )->nodeValue);
 
             $descriminacao = trim($Servicos->getElementsByTagName ( "Discriminacao" )->item ( 0 )->nodeValue);
+            if ( $ValorIssRetido > 0 ){
+                $descriminacao .= '<br><br>ISS RETIDO : R$ '.number_format($ValorIssRetido, 2, ',', '.');                
+            }
 
-            $cod_atividade = '1505 - Cadastro, elabora&ccedil;&atilde;o de ficha cadastral, renova&ccedil;&atilde;o cadastral e congeneres, inclus&atilde;o ou exclus&atilde;o no Cadastro de Emitentes de Cheques sem Fundos - CCF ou em quaisquer outros bancos cadastrais.';
-
-            $info = 'Documento Emitido por ME ou EPP optante pelo Simples Nacional.<br>Nao gera direito a credito de IPI.';
+            if ( $emp_cnpj == '08.745.918/0001-71' ){
+                $cod_atividade = '17 22 - Cobrança em geral.';
+            }else{
+                $cod_atividade = '15 05 - Cadastro, elabora&ccedil;&atilde;o de ficha cadastral, renova&ccedil;&atilde;o cadastral e congeneres, inclus&atilde;o ou exclus&atilde;o no Cadastro de Emitentes de Cheques sem Fundos - CCF ou em quaisquer outros bancos cadastrais.';
+            }
+            
+            $info = '';
+            
+            if ( $ValorIssRetido > 0 ){
+                $info = 'O ISS desta NFS-e será RETIDO pelo Tomador do Serviço<br>';
+            }
+            $info .= 'Documento Emitido por ME ou EPP optante pelo Simples Nacional.';
+            $info .= '<br>Nao gera direito a credito de IPI.';
 
             $html .= "
                     <table border='1' cellspacing='0' id='tbl-principal'>
@@ -306,7 +323,7 @@ if (mysql_num_rows($qry) > 0 ){
                             </td>
                         </tr>
                         <tr>
-                            <td colspan='3' class='text-center'><strong>VALOR TOTAL DA NOTA - R$ $total</strong></td>
+                            <td colspan='3' class='text-center'><strong>VALOR TOTAL DA NOTA - R$ $ValorliquidoNfse</strong></td>
                         </tr>
                         <tr>
                             <td colspan='3'>

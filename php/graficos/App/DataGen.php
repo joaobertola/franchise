@@ -1452,6 +1452,7 @@ function getCategoryName($catId) {
                             CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') 
                             AND 
                             CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 0 DAY)),1,7),'-01')
+                        AND id_cadastro NOT IN(764,23096)
                     GROUP BY MONTH(a.vencimento), YEAR(a.vencimento)
                     ORDER BY a.vencimento";
         $result = mysql_query($strSQL) or die($strSQL);
@@ -1631,7 +1632,7 @@ function getCategoryName($catId) {
     function grafico_franquia_novo_16($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
     
         $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
-        
+        /*
         // Function to connect to the DB
         $link = connectToDB();
         $strSQL = " SELECT count(*) as Average, 
@@ -1659,6 +1660,17 @@ function getCategoryName($catId) {
                         a.data_cadastro between CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
                     GROUP BY month(a.data_cadastro) , year(a.data_cadastro)
                     ORDER BY a.data_cadastro";
+		*/
+	    $strSQL = " SELECT sum(a.valor) as Average, a.dados AS Country FROM cs2.grafico_desempenho a
+	                WHERE a.id_grafico = '16' $selecao";
+	    if ( $selecao == '' )
+	        $strSQL .= " GROUP BY a.data ";
+		else
+	    	$strSQL .= " GROUP BY a.id_franquia, a.dados ";
+
+		$strSQL .= " ORDER BY a.data ASC
+	                LIMIT 12";
+	                
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
