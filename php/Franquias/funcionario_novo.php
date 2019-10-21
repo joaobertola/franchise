@@ -35,7 +35,7 @@ $resFuncoes = mysql_query($sqlFuncoes, $con);
     jQuery(function ($) {
         $("#id_data_admissao").mask("99/99/9999");
         $("#id_data_demissao").mask("99/99/9999");
-        $('input[name=iptPlaca]').mask('aaa-9a99');
+     #   $('input[name=iptPlaca]').mask('aaa-9a99');
     });
 
     (function ($) {
