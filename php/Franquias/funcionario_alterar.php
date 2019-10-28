@@ -151,7 +151,7 @@ $idFuncao = mysql_result($qry, 0, 'id_funcao');
     jQuery(function ($) {
         $("#id_data_admissao").mask("99/99/9999");
         $("#id_data_demissao").mask("99/99/9999");
-        $('input[name=iptPlaca]').mask('aaa-9a99');
+        //$('input[name=iptPlaca]').mask('aaa-9999');
     });
 
     (function ($) {
@@ -544,7 +544,6 @@ $idFuncao = mysql_result($qry, 0, 'id_funcao');
                     <option value="Uno Mille" <?php echo $veiculo == 'Uno Mille' ? 'selected' : '' ?>>Uno Mille</option>
                     <option value="Palio Fire" <?php echo $veiculo == 'Palio Fire' ? 'selected' : '' ?>>Palio Fire</option>
                     <option value="Pegeout" <?php echo $veiculo == 'Pegeout' ? 'selected' : '' ?>>Pegeout</option>
-                    <option value="GOL" <?php echo $veiculo == 'GOL' ? 'selected' : '' ?>>GOL</option>
                 </select>
             </td>
 
