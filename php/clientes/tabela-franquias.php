@@ -142,6 +142,9 @@ while ($rs = mysql_fetch_array($qry)) {
     } else if ($codcons == 'TM001') {
         $TM001_valor = $rs['valor'];
         $TM001_nome = $rs['nome'];
+    } else if ($codcons == 'WM001') {
+        $WM001_valor = $rs['valor'];
+        $WM001_nome = $rs['nome'];
     } else if ($codcons == 'LE001') {
         $LE001_valor = $rs['valor'];
         $LE001_nome = $rs['nome'];
@@ -460,6 +463,10 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         <tr>
                             <td>Torpedos Marketing Celular</td>
                             <td>R$ <?= $TM001_valor ?> / unidade</td>
+                        </tr>
+                        <tr>
+                            <td>WhatsApp Marketing</td>
+                            <td>R$ <?= $WM001_valor ?> / unidade</td>
                         </tr>
                         <tr>
                             <td>Lista de Empresas por Segmento</td>
