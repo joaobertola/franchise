@@ -11,7 +11,7 @@ $sql = "SELECT codcons, nome, valor FROM cs2.valcons WHERE
                  'A0208', 'A0301', 'A0406', 'A0408', 'A0405', 'A0407', 'A0410', 'A0400', 'A0401', 
                  'A0404', 'A0403', 'A0402', 'AB201', 'T0001', 'T0002','B201', 'C201', 'B201', 'U0200',
                  'U0201','U0202','U0301','A0710','A0208', 'D201', 'E201', 'A0302' , 'A0711' , 'A0115' , 
-                 'A0231', 'SIT', 'LVTC', 'EM001', 'TM001', 'EM001','LE001', 'CREPR'
+                 'A0231', 'SIT', 'LVTC', 'EM001', 'TM001', 'EM001','LE001', 'CREPR','WM001'
                  ) ORDER BY codcons ASC ";
 $qry = mysql_query($sql);
 while ($rs = mysql_fetch_array($qry)) {
