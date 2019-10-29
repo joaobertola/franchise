@@ -106,7 +106,7 @@ for($i=0;$i<$total;$i++){
 
                         $lista_erro .= "$conf_pgto : $erro -> ID : $codloja  - $nome - $bco - $age - $cta<br>";
                         # registrando ESTORNO
-                        $descricao = "ESTORNO DE DEPOSITO (Inconsist�ncia de Dados Banc�rios)";
+                        $descricao = "ESTORNO DE DEPOSITO (Inconsistencia de Dados Bancarios)";
                         $sql_insert = " INSERT INTO cs2.contacorrente_funcionario
                                             ( 
                                             id_func, data_pgto, operacao, descricao, valor_pgto
