@@ -458,7 +458,8 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         ca.nome AS nome_consultor,
                         COUNT(cv.id) AS qtd_visitas,
                         SUM(IFNULL(cv.resultado_visitou,0)) AS resultado_visitou,
-                        SUM(IFNULL(cv.resultado_demonstrou,0)) AS resultado_demonstrou,
+                        -- SUM(IFNULL(cv.resultado_demonstrou,0)) AS resultado_demonstrou,
+                        SUM( if(cv.filhos_visitou = '1;1;1;1;1;1;1;1', 1 ,0)) AS resultado_demonstrou,
                         SUM(IFNULL(cv.resultado_levousuper,0)) AS resultado_levousuper,
                         SUM(IFNULL(cv.resultado_ligougerente,0)) AS resultado_ligougerente,
                         SUM(IFNULL(cv.resultado_cartaovisita,0)) AS resultado_cartaovisita,
@@ -641,7 +642,6 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                             </tr>
                             ';
                 if ( $totalAfiliacoes >= 20 ){
-                
                     $html .= '<tr>
                                  <td class="corpoTabela">PREMIAÇÃO ESPECIAL - 20 AFILIAÇÕES</td>
                                  <td class="corpoTabela">20</td>
