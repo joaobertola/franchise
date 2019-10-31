@@ -434,54 +434,60 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
 
             $sqlParticipacao = "SELECT
                     aux.nome_consultor,
+                    aux.data_inicio,
                     aux.qtd_visitas,
                     aux.resultado_visitou,
                     aux.resultado_demonstrou,
                     aux.resultado_levousuper,
                     aux.resultado_ligougerente,
+                    aux.resultado_mousepad,
+                    aux.paralelo_sistemas,
                     aux.id_consultor,
                     aux.resultado_cartaovisita,
                     (
-                       (aux.resultado_visitou * 1) +
-                       (aux.resultado_demonstrou * 4) +
-                       (aux.resultado_levousuper * 3) +
-                       (aux.resultado_ligougerente * 1) +
-                       (aux.resultado_cartaovisita * 1)
+                    (aux.resultado_visitou * 1) +
+                    (aux.resultado_demonstrou * 4) +
+                    (aux.resultado_levousuper * 3) +
+                    (aux.resultado_ligougerente * 1) +
+                    (aux.resultado_cartaovisita * 1)
                     ) AS total,
                     aux.id_consultor AS id,
                     aux.total_visitas,
-                    aux.total_cartoes
+                    aux.total_cartoes             
 
                 FROM (
+                SELECT
+                    ca.nome AS nome_consultor,
+                    ca.data_inicio AS data_inicio,
+                    COUNT(cv.id) AS qtd_visitas,
+                    SUM(IFNULL(cv.resultado_visitou,0)) AS resultado_visitou,
+                    SUM(IF(cv.filhos_visitou = '1;1;1;1;1;1;1;1', 1, 0)) AS resultado_demonstrou,
+                    SUM(IFNULL(cv.resultado_levousuper,0)) AS resultado_levousuper,
+                    SUM(IFNULL(cv.resultado_ligougerente,0)) AS resultado_ligougerente,
+                    SUM(IFNULL(cv.resultado_mousepad,0)) AS resultado_mousepad,
+                    SUM(IFNULL(cv.paralelo_sistemas,0)) AS paralelo_sistemas,
+                    SUM(IFNULL(cv.resultado_cartaovisita,0)) AS resultado_cartaovisita,
+                    SUM(IFNULL(cv.qtd_cartoes,0)) AS total_cartoes,
+                    ca.id AS id_consultor,
+                    SUM(IF(cv.resultado_visitou != 0 AND cv.resultado_visitou IS NOT NULL,1,
+                    IF(cv.resultado_demonstrou != 0 AND cv.resultado_demonstrou IS NOT NULL,1,
+                    IF(cv.resultado_levousuper != 0 AND cv.resultado_levousuper IS NOT NULL,1,
+                    IF(cv.resultado_mousepad != 0 AND cv.resultado_mousepad IS NOT NULL,1,
+                    IF(cv.resultado_ligougerente != 0 AND cv.resultado_ligougerente IS NOT NULL,1,0)))))) AS total_visitas
 
-                    SELECT
-                        ca.nome AS nome_consultor,
-                        COUNT(cv.id) AS qtd_visitas,
-                        SUM(IFNULL(cv.resultado_visitou,0)) AS resultado_visitou,
-                        -- SUM(IFNULL(cv.resultado_demonstrou,0)) AS resultado_demonstrou,
-                        SUM( if(cv.filhos_visitou = '1;1;1;1;1;1;1;1', 1 ,0)) AS resultado_demonstrou,
-                        SUM(IFNULL(cv.resultado_levousuper,0)) AS resultado_levousuper,
-                        SUM(IFNULL(cv.resultado_ligougerente,0)) AS resultado_ligougerente,
-                        SUM(IFNULL(cv.resultado_cartaovisita,0)) AS resultado_cartaovisita,
-                        SUM(IFNULL(cv.qtd_cartoes,0)) AS total_cartoes,
-                        ca.id AS id_consultor,
-                        SUM(IF(cv.resultado_visitou != 0 AND cv.resultado_visitou IS NOT NULL,1,
-                        IF(cv.resultado_demonstrou != 0 AND cv.resultado_demonstrou IS NOT NULL,1,
-                        IF(cv.resultado_levousuper != 0 AND cv.resultado_levousuper IS NOT NULL,1,
-                        IF(cv.resultado_cartaovisita != 0 AND cv.resultado_cartaovisita IS NOT NULL,1,
-                        IF(cv.resultado_ligougerente != 0 AND cv.resultado_ligougerente IS NOT NULL,1,0)))))) AS total_visitas
                     FROM cs2.consultores_assistente ca
-                    LEFT JOIN cs2.controle_comercial_visitas cv
-                    ON cv.id_consultor = ca.id
-                    LEFT JOIN cs2.funcionario AS f
-                    ON f.id_consultor_assistente = ca.id
-                    AND CONCAT(cv.data_agendamento) BETWEEN '$strDataInicio' AND '$strDataFim'
-                    WHERE FIND_IN_SET(ca.id_franquia ,1)
+                    LEFT JOIN cs2.controle_comercial_visitas cv ON cv.id_consultor = ca.id
+                    LEFT JOIN cs2.funcionario AS f ON f.id_consultor_assistente = ca.id
+                    WHERE FIND_IN_SET(ca.id_franquia , 1)
+                    AND cv.data_agendamento BETWEEN '2019-09-26' AND '2019-10-25'
                     AND f.id = '$idFuncionario'
+                    AND ca.situacao = 0
+                    AND ca.tipo_cliente = 0
+                    AND ca.tipo_funcionario = 'I'
+                    AND NOT (vizinhos <=> 'on')
                     GROUP BY ca.id
                     ORDER BY ca.nome) AS aux
-
-                 ORDER BY total DESC, nome_consultor ASC;" ;
+                 ORDER BY total DESC, nome_consultor ASC";
 
                  $resParticipacao = mysql_query($sqlParticipacao, $con);
                  $totalParticipacao = mysql_result($resParticipacao, 0 , 'total');
