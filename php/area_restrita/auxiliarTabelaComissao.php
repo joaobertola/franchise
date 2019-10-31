@@ -479,7 +479,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         LEFT JOIN cs2.controle_comercial_visitas cv ON cv.id_consultor = ca.id
                         LEFT JOIN cs2.funcionario AS f ON f.id_consultor_assistente = ca.id
                         WHERE FIND_IN_SET(ca.id_franquia , 1)
-                            AND cv.data_agendamento BETWEEN '2019-09-26' AND '2019-10-25'
+                            AND cv.data_agendamento BETWEEN base_web_control.fn_get_mes_inicio_filtro() - INTERVAL 1 MONTH AND base_web_control.fn_get_mes_inicio_filtro()                            
                             AND f.id = '$idFuncionario'
                             AND ca.situacao = 0
                             AND ca.tipo_cliente = 0
