@@ -1,13 +1,12 @@
 <?php
 /**
- * @file rel_comissao_func.php
+ * @file rel_comissao_func_contabil.php
  * @brief Arquivo Responsável pelo relatório de comissão
- * @author ARLLON DIAS
- * @date 06/01/2017
+ * @author LUCIANO MANCINI
+ * @date 23/08/2018
  * @version 1.0
  **/
 require_once('auxiliarTabelaComissao.php');
-
 
 if (empty($_POST['data2I']) || empty($_POST['data2F'])) { ?>
 
@@ -48,17 +47,15 @@ $qryFuncionario = "SELECT
                    ORDER BY f.nome ASC";
 $rstFuncionario = mysql_query($qryFuncionario, $con);
 ?>
-<button type="button" id="btnImprimir" class="btnImprimir pull-right" style="margin-top: 15px;">Imprimir Relatório
+<button type="button" id="btnImprimir" class="btnImprimir pull-right noprint" style="margin-top: 15px;">Imprimir Relatório
 </button>
 <div class="imprimir">
     <?php
     while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
-        geraHtml($arrFuncionario['id'], $strDataInicio, $strDataFim, $ativo, $con, $arrFuncionario['nome'], $arrFuncionario['funcao']);
+        geraHtml( $arrFuncionario['id'], $strDataInicio, $strDataFim, $ativo, $con, $arrFuncionario['nome'], $arrFuncionario['funcao'], 'CONTABIL');
     }
     ?>
-    <div class="page-break exibirTotal hidden">
-
-    </div>
+    <div class="exibirTotal"></div>
 </div>
 <script>
 
@@ -150,12 +147,18 @@ $rstFuncionario = mysql_query($qryFuncionario, $con);
         $('.totalAPagar').each(function () {
             console.log($(this).html());
             $('.exibirTotal').append($(this).html() + '<br>');
+
+
         });
+
         var valorTotal = 0;
+
         $('.iptValorTotalSoma').each(function () {
             valorTotal = valorTotal + parseFloat($(this).val());
         });
-        $('.exibirTotal').append('<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 5px;"><tr><td class="corpoTabela" align="">Sub Total</td><td class="corpoTabela totalFolha" align="right">' + number_format(valorTotal, 2, ',', '.') + '</td></tr></table>');
+        
+        // $('.exibirTotal').append('<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 5px;"><tr><td class="corpoTabela" align="">Sub Total</td><td class="corpoTabela totalFolha" align="right">' + number_format(valorTotal, 2, ',', '.') + '</td></tr></table>');
+
 
     });
 
@@ -183,6 +186,5 @@ $rstFuncionario = mysql_query($qryFuncionario, $con);
 
         });
     })
-
 
 </script>
