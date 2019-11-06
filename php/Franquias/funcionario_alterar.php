@@ -544,6 +544,7 @@ $idFuncao = mysql_result($qry, 0, 'id_funcao');
                     <option value="Uno Mille" <?php echo $veiculo == 'Uno Mille' ? 'selected' : '' ?>>Uno Mille</option>
                     <option value="Palio Fire" <?php echo $veiculo == 'Palio Fire' ? 'selected' : '' ?>>Palio Fire</option>
                     <option value="Pegeout" <?php echo $veiculo == 'Pegeout' ? 'selected' : '' ?>>Pegeout</option>
+                    <option value="Gol" <?php echo $veiculo == 'Gol' ? 'selected' : '' ?>>Gol</option>
                 </select>
             </td>
 
