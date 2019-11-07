@@ -1,7 +1,7 @@
 <script language="javascript">
     
 function deletar(idReg,idRegLog){
-    if (confirm("Confirma a EXCLUSÃƒO deste Registro ?")) {
+    if (confirm("Confirma a EXCLUSÃO deste Registro ?")) {
     } else {
         return false
     }
@@ -352,7 +352,7 @@ if ($id_franquia == 4 || $id_franquia == 247 || $id_franquia == 163) {
     }
 
 </style>
-<h1>Controle de Indica&ccedil;&atilde;o</h1>
+<h1>Controle de Indicação</h1>
 <form id="frmAlterarIndicacao" name="frmAlterarIndicacao" method="post"
       action="clientes/relatorio_indica_amigo_salva.php">
     <input type="hidden" name="action" value="atualizaAgendadora">
@@ -360,12 +360,12 @@ if ($id_franquia == 4 || $id_franquia == 247 || $id_franquia == 163) {
            style="border: 1px solid #D1D7DC; background-color:#FFFFFF">
         <tbody>
             <tr>
-                <td width="30%"><strong>ID Indica&ccedil;&atilde;o:</strong></td>
+                <td width="30%"><strong>ID Indicação:</strong></td>
                 <td><?= $idIndicacao ?></td>
         <input type="hidden" id="iptIdCadastro" value="<?= $res['id_cadastro'] ?>">
         </tr>
         <tr>
-            <td><strong>Data Indica&ccedil;&atilde;o:</strong></td>
+            <td><strong>Data Indicação:</strong></td>
             <td><?= date("d/m/Y", strtotime($res['dt_creation'])) ?></td>
         </tr>
         <tr>
@@ -524,7 +524,7 @@ if ($res4):
         $acao = 'da Tentativa de Contato';
     }    
     ?>
-    <h1>&Uacute;ltima Atualiza&ccedil;&atilde;o</h1>
+    <h1>Última Atualização</h1>
     <table class="tblIndicacaoAtu" id="" border="1" width="50%" align="center" cellspacing="0"
            style="border: 1px solid #D1D7DC; background-color:#FFFFFF">
         <tbody>
@@ -546,13 +546,13 @@ if ($res4):
             if ($res4['status_indicacao'] == 'VR') {
                 ?>
                 <tr>
-                    <td><strong>C&oacute;digo do Novo Cliente:</strong></td>
+                    <td><strong>Código do Novo Cliente:</strong></td>
                     <td colspan="2"><?= $res4['cod_cliente_vr'] . ' - ' . $res4['pendencia_contratual'] . $dt_regularizacao ?></td>
                 </tr>
             <?php }
             ?>
             <tr>
-                <td><strong>Descri&ccedil;&atilde;o:</strong></td>
+                <td><strong>Descrição:</strong></td>
                 <td><?= $res4['desc_nota'] ?></td>
                 <td>
                     <?php if ($res4['status_indicacao'] == 'VR' && $id_franquia == 163) { ?>
@@ -713,7 +713,7 @@ endif;
                     <td><strong>Novo Status:</strong></td>
                     <td>
                         <label><input type="radio" name="rdStatus" value="VR"/> Venda Realizada.</label>
-                        <label><input type="radio" name="rdStatus" value="SI"/> N&atilde;o tem Interesse.</label>
+                        <label><input type="radio" name="rdStatus" value="SI"/> Não tem Interesse.</label>
                         <label><input type="radio" name="rdStatus" value="RE"/> Reagendamento.</label>
                         <label><input type="radio" name="rdStatus" value="SC"/> Sem Contato.</label>
                         <label><input type="radio" name="rdStatus" value="JC"/> Já era Cliente.</label>
@@ -722,8 +722,8 @@ endif;
                         <label><input type="radio" name="rdStatus" value="TE"/> Telefone(s) Errado(s).</label><br>
                         <label><input type="radio" name="rdStatus" value="CC"/> Associado Cancelou.</label>
                         <label><input type="radio" name="rdStatus" value="CA"/> Amigo Indicado Cancelou.</label>
-                        <label><input type="radio" name="rdStatus" value="CT"/> Contador (N&atilde;o gera bonifica&ccedil;&atilde;o)</label>
-                        <label><input type="radio" name="rdStatus" value="SA"/>Segmento nao atendido.</label>
+                        <label><input type="radio" name="rdStatus" value="CT"/> Contador (Não gera bonificação)</label>
+                        <label><input type="radio" name="rdStatus" value="SA"/> Segmento não atendido.</label>
                     </td>
                 </tr>
                 <tr class="trHidden" style="display: none">
@@ -747,7 +747,7 @@ endif;
                 </tr>
                 <tr class="trHidden" style="display: none">
 
-                    <td><strong>Fat. Ã¡ Bonificar:</strong></td>
+                    <td><strong>Fat. á Bonificar:</strong></td>
                     <td>
                         <select id="fatura_bonificar" name="fatura_bonificar" disabled="disabled"><?php ?>
                             <?php
@@ -803,7 +803,7 @@ endif;
             success: function (data) {
                 if (data.existe == 1) {
 
-                    alert('AtenÃ§Ã£o, jÃ¡ existe uma bonificaÃ§Ã£o relacionada a este cÃ³digo! ID: ' + data.id);
+                    alert('Atenção, já existe uma bonificação relacionada a este código! ID: ' + data.id);
                     location.href = "../php/painel.php?pagina1=clientes/relatorio_indica_amigo_altera.php&idIndicacao=<?php echo $_GET['idIndicacao'] ?>";
                 }
             }
