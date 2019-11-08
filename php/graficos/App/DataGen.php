@@ -2860,7 +2860,7 @@ function grafico_franquia_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) 
         // Function to connect to the DB
         $link = connectToDB();
         $strSQL = "SELECT 
-                        sum(transmissao_aceitos) AS Average,
+                        sum(total_emails_enviados) AS Average,
                         CONCAT( 
                             CASE month(a.dt_creation) 
                                 WHEN 1 THEN 'Janeiro'
