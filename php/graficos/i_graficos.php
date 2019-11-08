@@ -255,7 +255,15 @@ if ($_REQUEST['franqueado']) {
                     echo "<a href=\"$url\" class=\"bodyText\" onfocus=\"mostrar('aguarde');return true;\">Gr&aacute;fico de Virtual Flex</a>";
                     ?>
                 </td>
-            </tr>  
+            </tr>
+            <tr>
+                <td class="campoesquerda">
+                    <?php
+                    $url = "graficos/App/Grafico_Franquia_27.php?franqueado=$id_franquia&id_franquia_session={$_SESSION['id']}";
+                    echo "<a href=\"$url\" class=\"bodyText\" onfocus=\"mostrar('aguarde');return true;\">Gr&aacute;fico Email Marketing</a>";
+                    ?>
+                </td>
+            </tr> 
             <tr>
                 <td class="campoesquerda">
                     <?php
