@@ -2174,7 +2174,7 @@ function getCategoryName($catId) {
                     ) as Country 
                     FROM dbsites.tbl_framecliente
                     WHERE $selecao fra_codloja > 1
-                    AND  fra.data_hora BETWEEN CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
+                    AND  fra_data_hora BETWEEN CONCAT( MID( (SELECT SUBDATE(NOW(), INTERVAL 365 DAY)),1,7),'-01') AND NOW()
                     GROUP BY month(fra_data_hora) , year(fra_data_hora)
                     ORDER BY fra_data_hora";
         $result = mysql_query($strSQL) or die($strSQL);
