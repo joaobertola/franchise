@@ -2155,7 +2155,7 @@ function getCategoryName($catId) {
 
     function grafico_virtualflex_novo($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
         // Function to connect to the DB
-        $link = connectToDB_Virtual();
+        $link = connectToDB();
         $strSQL = " SELECT count(*) as Average, concat( 
                         CASE month(fra_data_hora) 
                          when 1  then 'Janeiro'
@@ -2851,6 +2851,136 @@ function grafico_franquia_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) 
     }
     mysql_close($link);
 }
+
+    function grafico_whatsAppMarketing($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = "SELECT 
+                        COUNT(*) AS Average,
+                        CONCAT( 
+                            CASE month(a.dt_creation) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.dt_creation)
+                        ) as Country 
+
+                   FROM base_web_control.whatsapp_transacao a
+                   INNER JOIN cs2.cadastro b ON a.id_cadastro = b.codloja
+                   WHERE
+                        $selecao
+                        a.dt_creation BETWEEN SUBDATE(NOW(), INTERVAL 365 DAY) AND NOW()
+                   GROUP BY YEAR(a.dt_creation), MONTH(a.dt_creation)";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+            return $arr;
+        }
+    }
+
+    function grafico_torpedoMarketing($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
+    
+        $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        
+        // Function to connect to the DB
+        $link = connectToDB();
+        $strSQL = "SELECT 
+                        COUNT(*) AS Average,
+                        CONCAT( 
+                            CASE month(a.dt_creation) 
+                                WHEN 1 THEN 'Janeiro'
+                                WHEN 2 THEN 'Fevereiro'        
+                                WHEN 3 THEN 'Marco'        
+                                WHEN 4 THEN 'Abril'        
+                                WHEN 5 THEN 'Maio'        
+                                WHEN 6 THEN 'Junho'        
+                                WHEN 7 THEN 'Julho'
+                                WHEN 8 THEN 'Agosto'
+                                WHEN 9 THEN 'Setembro'
+                                WHEN 10 THEN 'Outubro'        
+                                WHEN 11 THEN 'Novembro'        
+                                WHEN 12 THEN 'Dezembro'
+                            end ,
+                            '/',
+                            year(a.dt_creation)
+                        ) as Country 
+
+                   FROM base_web_control.whatsapp_transacao a
+                   INNER JOIN cs2.cadastro b ON a.id_cadastro = b.codloja
+                   WHERE
+                        $selecao
+                        a.dt_creation BETWEEN SUBDATE(NOW(), INTERVAL 365 DAY) AND NOW()
+                   GROUP BY YEAR(a.dt_creation), MONTH(a.dt_creation)";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+            return $arr;
+        }
+    }
+
+    function grafico_emailMarketing($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
+        // Function to connect to the DB
+        $link = connectToDB_Virtual();
+        $strSQL = " SELECT count(*) as Average, concat( 
+                        CASE month(fra_data_hora) 
+                         when 1  then 'Janeiro'
+                         when 2  then 'Fevereiro'        
+                         when 3  then 'Marco'        
+                         when 4  then 'Abril'        
+                         when 5  then 'Maio'        
+                         when 6  then 'Junho'        
+                         when 7  then 'Julho'
+                         when 8  then 'Agosto'
+                         when 9  then 'Setembro'
+                         when 10 then 'Outubro'        
+                         when 11 then 'Novembro'        
+                         when 12 then 'Dezembro'
+                       end ,'/',year(fra_data_hora)
+                    ) as Country 
+                    FROM dbsites.tbl_framecliente
+                    WHERE $selecao fra_codloja > 1
+                    GROUP BY month(fra_data_hora) , year(fra_data_hora)
+                    ORDER BY fra_data_hora";
+        $result = mysql_query($strSQL) or die($strSQL);
+        if ($result) {
+            $i = 0;
+            while($ors = mysql_fetch_array($result)) {
+                $arr[$i]['Average'] = $ors['Average'];
+                $arr[$i]['Country'] = $ors['Country'];
+                $arr[$i]['color'] = '#0000ff';
+                $i++;
+            }
+
+            return $arr;
+        }
+    }
+
 
 function grafico_virtualflex($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
     // Function to connect to the DB
