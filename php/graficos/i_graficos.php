@@ -259,6 +259,14 @@ if ($_REQUEST['franqueado']) {
             <tr>
                 <td class="campoesquerda">
                     <?php
+                    $url = "graficos/App/Grafico_Franquia_26.php?franqueado=$id_franquia&id_franquia_session={$_SESSION['id']}";
+                    echo "<a href=\"$url\" class=\"bodyText\" onfocus=\"mostrar('aguarde');return true;\">Gr&aacute;fico Torpedo Marketing</a>";
+                    ?>
+                </td>
+            </tr> 
+            <tr>
+                <td class="campoesquerda">
+                    <?php
                     $url = "graficos/App/Grafico_Franquia_25.php?franqueado=$id_franquia&id_franquia_session={$_SESSION['id']}";
                     echo "<a href=\"$url\" class=\"bodyText\" onfocus=\"mostrar('aguarde');return true;\">Gr&aacute;fico WhatsApp Marketing</a>";
                     ?>

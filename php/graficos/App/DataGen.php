@@ -2909,18 +2909,18 @@ function grafico_franquia_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) 
                         COUNT(*) AS Average,
                         CONCAT( 
                             CASE month(a.dt_creation) 
-                                WHEN 1 THEN 'Janeiro'
-                                WHEN 2 THEN 'Fevereiro'        
-                                WHEN 3 THEN 'Marco'        
-                                WHEN 4 THEN 'Abril'        
-                                WHEN 5 THEN 'Maio'        
-                                WHEN 6 THEN 'Junho'        
-                                WHEN 7 THEN 'Julho'
-                                WHEN 8 THEN 'Agosto'
-                                WHEN 9 THEN 'Setembro'
-                                WHEN 10 THEN 'Outubro'        
-                                WHEN 11 THEN 'Novembro'        
-                                WHEN 12 THEN 'Dezembro'
+                                WHEN 1 THEN 'Jan'
+                                WHEN 2 THEN 'Fev'        
+                                WHEN 3 THEN 'Mar'        
+                                WHEN 4 THEN 'Abr'        
+                                WHEN 5 THEN 'Mai'        
+                                WHEN 6 THEN 'Jun'        
+                                WHEN 7 THEN 'Jul'
+                                WHEN 8 THEN 'Agoo'
+                                WHEN 9 THEN 'Set'
+                                WHEN 10 THEN 'Out'        
+                                WHEN 11 THEN 'Nov'        
+                                WHEN 12 THEN 'Dez'
                             end ,
                             '/',
                             year(a.dt_creation)
