@@ -2991,44 +2991,6 @@ function grafico_franquia_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) 
         }
     }
 
-    function grafico_emailMarketing($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
-        // Function to connect to the DB
-        $link = connectToDB_Virtual();
-        $strSQL = " SELECT count(*) as Average, concat( 
-                        CASE month(fra_data_hora) 
-                         when 1  then 'Janeiro'
-                         when 2  then 'Fevereiro'        
-                         when 3  then 'Marco'        
-                         when 4  then 'Abril'        
-                         when 5  then 'Maio'        
-                         when 6  then 'Junho'        
-                         when 7  then 'Julho'
-                         when 8  then 'Agosto'
-                         when 9  then 'Setembro'
-                         when 10 then 'Outubro'        
-                         when 11 then 'Novembro'        
-                         when 12 then 'Dezembro'
-                       end ,'/',year(fra_data_hora)
-                    ) as Country 
-                    FROM dbsites.tbl_framecliente
-                    WHERE $selecao fra_codloja > 1
-                    GROUP BY month(fra_data_hora) , year(fra_data_hora)
-                    ORDER BY fra_data_hora";
-        $result = mysql_query($strSQL) or die($strSQL);
-        if ($result) {
-            $i = 0;
-            while($ors = mysql_fetch_array($result)) {
-                $arr[$i]['Average'] = $ors['Average'];
-                $arr[$i]['Country'] = $ors['Country'];
-                $arr[$i]['color'] = '#0000ff';
-                $i++;
-            }
-
-            return $arr;
-        }
-    }
-
-
 function grafico_virtualflex($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) {
     // Function to connect to the DB
     $link = connectToDB_Virtual();
