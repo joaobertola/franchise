@@ -256,7 +256,14 @@ if ($_REQUEST['franqueado']) {
                     ?>
                 </td>
             </tr>  
-
+            <tr>
+                <td class="campoesquerda">
+                    <?php
+                    $url = "graficos/App/Grafico_Franquia_25.php?franqueado=$id_franquia&id_franquia_session={$_SESSION['id']}";
+                    echo "<a href=\"$url\" class=\"bodyText\" onfocus=\"mostrar('aguarde');return true;\">Gr&aacute;fico WhatsApp Marketing</a>";
+                    ?>
+                </td>
+            </tr> 
             <tr>
                 <td colspan="2" class="titulo">&nbsp;</td>
             </tr>
