@@ -1119,7 +1119,7 @@ if ($codloja > 0) {
                 if (mysql_num_rows($qry) > 0) {
                     while ($reg = mysql_fetch_array($qry)) {
                         $id = $reg['id'];
-                        $tx = $reg['tp_imagem'] . ' ' . $reg['data_consultoria'] . ' ' . $reg['consultora'];
+                        $tx = $reg['tp_imagem'] . ' ' . $reg['data_consultoria'] . ' ' . trim($reg['consultora']);
                         $saida .= "<a href=javascript:abrir('clientes/mostra_documento.php?id=$id');>$tx</a><br>";
                     }
                 }
