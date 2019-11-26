@@ -138,7 +138,9 @@ $qry_sql = mysql_query($sql_digitalizado, $con) or die("Erro SQL: $sql_digitaliz
                             $arquivo = 'http://contrato.webcontrolempresas.com.br/inform/' . $xarq;
 
                             if ($xarq == '') {
-                                echo "<img src='area_restrita/d_copia_documentos_ver.php?id=" . $registro['id'] . " width='100%' height='100%'>";
+                                ?>
+                                    <img src="area_restrita/d_copia_documentos_ver.php?id=<?= $registro['id'] ?>" width="100%" height="100%">
+                                <?php
                             } else {
                                 if ($tipo_arq == '.JPG') {
                                     $enderecofoto[] .= 'http://contrato.webcontrolempresas.com.br/inform/' . $registro['caminho_imagem'];
