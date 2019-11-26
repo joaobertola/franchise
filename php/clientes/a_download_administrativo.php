@@ -116,7 +116,7 @@
     </tr>
     <tr>
         <td>&nbsp;</td>
-        <td bgcolor="#FF33CC"><b>&nbsp;&nbsp;<a href="../php/clientes/documentos/ROTEIRO_DE_CONFERENCIAS_PARA_O_CADASTRO_DO_CLIENTE_11102018.pdf" target="_blank">Roteiro de Confer&ecirc;ncia</a></b></td>
+        <td bgcolor="#FF33CC"><b>&nbsp;&nbsp;<a href="../php/clientes/documentos/ROTEIRO_DE_CONFERENCIA_PARA_CADASTRO_DE_NOVO_ASSOCIADO_26112019.pdf" target="_blank">Roteiro de Confer&ecirc;ncia</a></b></td>
     </tr>
     <tr>
         <td>&nbsp;</td>
