@@ -2954,7 +2954,7 @@ function grafico_franquia_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) 
         $strSQL = "SELECT 
                         COUNT(*) AS Average,
                         CONCAT( 
-                            CASE month(a.dt_creation) 
+                            CASE month(a.dh_entrada) 
                                 WHEN 1 THEN 'Janeiro'
                                 WHEN 2 THEN 'Fevereiro'        
                                 WHEN 3 THEN 'Marco'        
@@ -2969,15 +2969,17 @@ function grafico_franquia_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) 
                                 WHEN 12 THEN 'Dezembro'
                             end ,
                             '/',
-                            year(a.dt_creation)
+                            year(a.dh_entrada)
                         ) as Country 
 
-                   FROM base_web_control.whatsapp_transacao a
-                   INNER JOIN cs2.cadastro b ON a.id_cadastro = b.codloja
+                   FROM base_web_control.torpedo_campanha_lista a
+				   INNER JOIN base_web_control.torpedo_campanha b ON a.id_campanha = b.id
+                   INNER JOIN cs2.cadastro c ON b.id_cadastro = c.codloja
                    WHERE
-                        $selecao
-                        a.dt_creation BETWEEN SUBDATE(NOW(), INTERVAL 365 DAY) AND NOW()
-                   GROUP BY YEAR(a.dt_creation), MONTH(a.dt_creation)";
+                   		$selecao
+                        a.dh_entrada BETWEEN SUBDATE(NOW(), INTERVAL 365 DAY) AND NOW()
+                   GROUP BY YEAR(a.dh_entrada), MONTH(a.dh_entrada)";
+
         $result = mysql_query($strSQL) or die($strSQL);
         if ($result) {
             $i = 0;
