@@ -34,7 +34,7 @@ require "connect/sessao.php";
   </tr>
   <tr>
     <td class="subtituloesquerda">&nbsp;</td>
-    <td class="subtituloesquerda" colspan="2"><a href="clientes/tabela_precoequipamentos.php" target="_blank"><font color="#009900"> 4 - Tabela Preço de Equipamentos</font></a></td>
+    <td class="subtituloesquerda" colspan="2"><a href="#" onclick="window.open('clientes/tabela_precoequipamentos.php')"><font color="#009900"> 4 - Tabela Preço de Equipamentos</font></a></td>
   </tr>
     
    <!--
