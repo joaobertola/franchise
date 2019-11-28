@@ -170,6 +170,6 @@ $qry = mysql_query($sql, $con);
 <script>
        this.print();
        $(document).ready(function(){
-           window.close();
+        //    window.close();
        })
 </script>
