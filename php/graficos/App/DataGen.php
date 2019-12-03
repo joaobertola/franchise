@@ -2951,7 +2951,7 @@ function grafico_franquia_03($intYear, $selecao, $addJSLinks, $forDataURL,&$FC) 
         
         // Function to connect to the DB
         $link = connectToDB();
-        echo "<pre>".$strSQL = "SELECT 
+        $strSQL = "SELECT 
                         COUNT(*) AS Average,
                         CONCAT( 
                             CASE month(a.dh_entrada) 

@@ -45,6 +45,8 @@ include("DataGen.php");
                 $FC = new FusionCharts("Column3D", $comprimento, $largura, " ");
                 $FC->setSWFPath("FusionCharts/");
 
+                $idfranquia = $_REQUEST['franqueado'];
+
                 if (($idfranquia == '9999999') or (empty($idfranquia))) {
                     $nome_franquia = 'Todas as Franquias';
                 } else {
