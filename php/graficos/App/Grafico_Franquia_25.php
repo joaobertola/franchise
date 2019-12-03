@@ -44,15 +44,16 @@ include("DataGen.php");
 
                 $FC = new FusionCharts("Column3D", $comprimento, $largura, " ");
                 $FC->setSWFPath("FusionCharts/");
-
+                $selecao = '';
                 $idfranquia = $_REQUEST['franqueado'];
 
-                if (($idfranquia == '9999999') or (empty($idfranquia))) {
+                if (($idfranquia == '9999999' or $idfranquia == '163' ) or (empty($idfranquia))) {
                     $nome_franquia = 'Todas as Franquias';
                 } else {
                     $selecao = " a.id_franquia = $idfranquia AND ";
                     $nome_franquia = nome_franquia($idfranquia);
                 }
+
                 #Define Charts Parameter
                 $strParam = "caption=Gráfico - WhatsApp Marketing;subCaption=$nome_franquia;yAxisName=;xAxisName=;palette=1;animation=" . getAnimationState() . ";showValues=1;formatNumberScale=5;numberSuffix=; labelDisplay=ROTATE;numDivLines=5;slantLabels=1";
                 # Set Chart Parameter
