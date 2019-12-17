@@ -306,7 +306,8 @@ if ( $atz_tabela == 'SIM' ){
 			}
 			$limite = 40;
 			$string2 = $nomefantasia;
-			$sizeName2 = strlen($string2);		
+			$sizeName2 = strlen($string2);	
+
 			echo "<tr class='subtitulodireita_2' height=\"30\" style='font-size:9px'";
 			if (($a%2) == 0) {
 				echo "bgcolor=\"#E5E5E5\">";
@@ -375,6 +376,7 @@ if ( $atz_tabela == 'SIM' ){
 
 	$soma = FloatFormat($soma,2);
 	$soma = number_format($soma, 2, ',', '.');
+	$soma2 = number_format($soma2, 2, ',', '.');
   	 echo "
 		<tr height=\"20\" class=\"subtitulodireita\">
 			<td colspan='3'><font color=red><b>$texto_boleto_multa</b></font></td>
