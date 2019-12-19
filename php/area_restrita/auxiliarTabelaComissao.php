@@ -479,7 +479,8 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         LEFT JOIN cs2.controle_comercial_visitas cv ON cv.id_consultor = ca.id
                         LEFT JOIN cs2.funcionario AS f ON f.id_consultor_assistente = ca.id
                         WHERE FIND_IN_SET(ca.id_franquia , 1)
-                            AND cv.data_agendamento BETWEEN base_web_control.fn_get_mes_inicio_filtro() - INTERVAL 1 MONTH AND base_web_control.fn_get_mes_inicio_filtro()                            
+                            -- AND cv.data_agendamento BETWEEN base_web_control.fn_get_mes_inicio_filtro() - INTERVAL 1 MONTH AND base_web_control.fn_get_mes_inicio_filtro()
+                            AND cv.data_agendamento BETWEEN '$strDataInicio 00:00:00' AND '$strDataFim 23:59:59'
                             AND f.id = '$idFuncionario'
                             AND ca.situacao = 0
                             AND ca.tipo_cliente = 0
@@ -490,11 +491,29 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                      ) AS aux
                 ORDER BY total DESC, nome_consultor ASC";
 
-                $resParticipacao = mysql_query($sqlParticipacao, $con);
-                $totalParticipacao = mysql_result($resParticipacao, 0 , 'total');
-                $resultado_visitou = mysql_result($resParticipacao, 0 , 'resultado_visitou');
+               // echo "<pre>";
+               // print_r( $sqlParticipacao );
+               // die;
 
-                // Bonificacao de visinhos
+                $resParticipacao = mysql_query($sqlParticipacao, $con);
+                // $totalParticipacao = mysql_result($resParticipacao, 0 , 'total');
+
+                $resultado_visitou = mysql_result($resParticipacao, 0 , 'resultado_visitou');
+                $resultado_demonstrou = mysql_result($resParticipacao, 0 , 'resultado_demonstrou') * 4;
+                $resultado_levousuper = mysql_result($resParticipacao, 0 , 'resultado_levousuper') * 3;
+                $resultado_ligougerente = mysql_result($resParticipacao, 0 , 'resultado_ligougerente');
+                $resultado_cartaovisita = mysql_result($resParticipacao, 0 , 'resultado_cartaovisita');
+
+                /*
+                echo "Visitou: $resultado_visitou<br>
+                      Vizinhos: ".mysql_result($resParticipacao, 0 , 'resultado_visitou')."<br>".
+                      "Demonstrou: ".mysql_result($resParticipacao, 0 , 'resultado_demonstrou')."<br>".
+                      "Super: ".mysql_result($resParticipacao, 0 , 'resultado_levousuper')."<br>".
+                      "Ligou Gerente: ".mysql_result($resParticipacao, 0 , 'resultado_ligougerente')."<br>".
+                      "Cartao Visita: " .mysql_result($resParticipacao, 0 , 'resultado_cartaovisita')."<br><br>";
+                */
+                
+                // Vizinhos
 
                 $sqlBonViz = "SELECT ca.id AS id_consultor,  
                         ca.nome AS nome_consultor,
@@ -522,7 +541,8 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                 FROM cs2.consultores_assistente ca
                 LEFT JOIN cs2.controle_comercial_visitas cv2
                 ON cv2.id_consultor = ca.id
-                AND CONCAT(cv2.data_agendamento, cv2.hora_agendamento) BETWEEN base_web_control.fn_get_mes_inicio_filtro() - INTERVAL 1 MONTH AND base_web_control.fn_get_mes_inicio_filtro()
+             -- AND CONCAT(cv2.data_agendamento, cv2.hora_agendamento) BETWEEN base_web_control.fn_get_mes_inicio_filtro() - INTERVAL 1 MONTH AND base_web_control.fn_get_mes_inicio_filtro()
+                AND cv2.data_agendamento BETWEEN '$strDataInicio 00:00:00' AND '$strDataFim 23:59:59'
                 LEFT JOIN cs2.funcionario AS f ON f.id_consultor_assistente = ca.id
                 WHERE FIND_IN_SET(ca.id_franquia , 1)
                     AND ca.situacao = 0
@@ -532,14 +552,24 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                     AND cv2.vizinhos = 'on'
                     GROUP BY ca.id
                     ORDER BY ca.nome";
-                 
+
                 $resParticipacao = mysql_query($sqlBonViz, $con);
-                $totalParticipacao +=
-                          mysql_result($resParticipacao, 0 , 'resultado_visitou') +
-                        ( mysql_result($resParticipacao, 0 , 'resultado_demonstrou') * 4 ) +
-                        ( mysql_result($resParticipacao, 0 , 'resultado_levousuper') * 3 ) +
-                          mysql_result($resParticipacao, 0 , 'resultado_ligougerente')+
-                          mysql_result($resParticipacao, 0 , 'resultado_cartaovisita');
+                $resultado_vizinho = mysql_result($resParticipacao, 0 , 'resultado_visitou');
+                $resultado_vizinho_gerente = mysql_result($resParticipacao, 0 , 'resultado_ligougerente');
+                $resultado_demonstrou += mysql_result($resParticipacao, 0 , 'resultado_demonstrou') * 4;
+                $resultado_levousuper += mysql_result($resParticipacao, 0 , 'resultado_levousuper') * 3;
+                $resultado_cartaovisita += mysql_result($resParticipacao, 0 , 'resultado_cartaovisita');
+
+                /*
+                echo "Visitou: $resultado_visitou<br>".
+                      "Vizinhos: ".mysql_result($resParticipacao, 0 , 'resultado_visitou')."<br>".
+                      "Demonstrou: ".mysql_result($resParticipacao, 0 , 'resultado_demonstrou')."<br>".
+                      "Super: ".mysql_result($resParticipacao, 0 , 'resultado_levousuper')."<br>".
+                      "Ligou Gerente: ".mysql_result($resParticipacao, 0 , 'resultado_ligougerente')."<br>".
+                      "Cartao Visita: " .mysql_result($resParticipacao, 0 , 'resultado_cartaovisita');
+                */
+
+                $totalParticipacao = $resultado_visitou + $resultado_demonstrou + $resultado_levousuper + $resultado_ligougerente + $resultado_vizinho + $resultado_vizinho_gerente + $resultado_cartaovisita;
 
                  $html .= '
                         <table width="100%" border="1" cellpadding="0" cellspacing="0" style="margin-top: 5px; font-family: arial, sans-serif; font-size: 12px;">
