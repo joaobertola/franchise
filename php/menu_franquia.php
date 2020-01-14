@@ -20,10 +20,10 @@ function doBlink(){
 	<?php
 	if ( $id_franquia != 1205 && $id_franquia != 25 ) {
 	?>
-		<!-- <tr>
+		<tr>
 			<td align="center"><?php echo $i++; ?></td>
 			<td><a href="painel.php?pagina1=clientes/a_incclient.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');">Inclusão no cadastro de clientes</a></td>
-		</tr> -->
+		</tr>
 	<?php
 	}
 	?>
