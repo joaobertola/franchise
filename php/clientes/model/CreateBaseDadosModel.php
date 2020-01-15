@@ -36,7 +36,7 @@ class CreateBaseDadosModel
 
     function useDataBase() {
         $data_base_name = $this->create_base_dados->getDatabase();
-        $conn = new PDO("mysql:host=localhost", 'root', '');
+        $conn = new PDO("mysql:host=10.2.2.3", 'csinform', 'inform4416#scf');
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     }
