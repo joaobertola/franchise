@@ -161,7 +161,7 @@ class CreateBaseDadosModel
             $data_base_name = $this->create_base_dados->getDatabase();
             $sql = "use $data_base_name";
             $conn->exec($sql);
-            $sql = "CREATE TABLE IF NOT EXISTS `.agendamento_tarefa_log`
+            $sql = "CREATE TABLE IF NOT EXISTS `agendamento_tarefa_log`
             (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `id_cadastro` INT(11) NULL DEFAULT NULL,
@@ -185,7 +185,7 @@ class CreateBaseDadosModel
             $data_base_name = $this->create_base_dados->getDatabase();
             $sql = "use $data_base_name";
             $conn->exec($sql);
-            $sql = "CREATE TABLE IF NOT EXISTS `.assistencia_tecnica`
+            $sql = "CREATE TABLE IF NOT EXISTS `assistencia_tecnica`
             (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `id_cadastro` INT(11) NULL DEFAULT NULL,
@@ -224,7 +224,7 @@ class CreateBaseDadosModel
             $data_base_name = $this->create_base_dados->getDatabase();
             $sql = "use $data_base_name";
             $conn->exec($sql);
-            $sql = "CREATE TABLE IF NOT EXISTS `.assistencia_tecnica_conclusao`
+            $sql = "CREATE TABLE IF NOT EXISTS `assistencia_tecnica_conclusao`
             (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `id_cadastro` INT(11) NULL DEFAULT NULL,
@@ -253,7 +253,7 @@ class CreateBaseDadosModel
             $data_base_name = $this->create_base_dados->getDatabase();
             $sql = "use $data_base_name";
             $conn->exec($sql);
-            $sql = "CREATE TABLE IF NOT EXISTS `.assistencia_tecnica_garantia`
+            $sql = "CREATE TABLE IF NOT EXISTS `assistencia_tecnica_garantia`
             (
                 `id` INT(11) NOT NULL AUTO_INCREMENT,
                 `nome` VARCHAR(125) NULL DEFAULT NULL,
