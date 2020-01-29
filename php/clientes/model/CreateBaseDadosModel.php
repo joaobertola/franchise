@@ -66,7 +66,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ACESSO FILIAÇÃO criada com sucesso.<br>");
+            ////print("Tabela ACESSO FILIAÇÃO criada com sucesso.<br>");
         } catch (PDOException $e) { 
             echo "Error".$e->getMessage();
         }
@@ -99,7 +99,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AGENDA criada com sucesso.<br>");
+            ////print("Tabela AGENDA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -122,7 +122,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AGENDA USUÁRIO PARCEIRO criada com sucesso.<br>");
+            ////print("Tabela AGENDA USUÁRIO PARCEIRO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -149,7 +149,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AGENDAMENTO TAREFA criada com sucesso.<br>");
+            ////print("Tabela AGENDAMENTO TAREFA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -173,7 +173,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AGENDAMENTO TAREFA LOG criada com sucesso.<br>");
+            ////print("Tabela AGENDAMENTO TAREFA LOG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -212,7 +212,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ASSISTENCIA TECNICA criada com sucesso.<br>");
+            ////print("Tabela ASSISTENCIA TECNICA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -241,7 +241,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ASSISTENCIA_TECNICA_CONCLUSAO criada com sucesso.<br>");
+            ////print("Tabela ASSISTENCIA_TECNICA_CONCLUSAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -262,7 +262,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ASSISTENCIA_TECNICA_GARANTIA criada com sucesso.<br>");
+            ////print("Tabela ASSISTENCIA_TECNICA_GARANTIA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -286,7 +286,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ASSISTENCIA_TECNICA_MARCAS criada com sucesso.<br>");
+            ////print("Tabela ASSISTENCIA_TECNICA_MARCAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -311,7 +311,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ASSISTENCIA_TECNICA_OBSERVACOES criada com sucesso.<br>");
+            ////print("Tabela ASSISTENCIA_TECNICA_OBSERVACOES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -337,7 +337,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ASSISTENCIA_TECNICA_PRODUTOS criada com sucesso.<br>");
+            ////print("Tabela ASSISTENCIA_TECNICA_PRODUTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -358,7 +358,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ASSISTENCIA_TECNICA_VOLTAGEM criada com sucesso.<br>");
+            ////print("Tabela ASSISTENCIA_TECNICA_VOLTAGEM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -388,7 +388,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ATENDIMENTO criada com sucesso.<br>");
+            ////print("Tabela ATENDIMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -418,7 +418,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ATENDIMENTO_FORNECEDOR criada com sucesso.<br>");
+            ////print("Tabela ATENDIMENTO_FORNECEDOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -448,7 +448,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ATENDIMENTO_FUNCIONARIO criada com sucesso.<br>");
+            ////print("Tabela ATENDIMENTO_FUNCIONARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -469,7 +469,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ATENDIMENTO_TIPO criada com sucesso.<br>");
+            ////print("Tabela ATENDIMENTO_TIPO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -499,7 +499,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ATENDIMENTO_TRANSPORTADORA criada com sucesso.<br>");
+            ////print("Tabela ATENDIMENTO_TRANSPORTADORA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -539,7 +539,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AUTORIZACAO_CIELO criada com sucesso.<br>");
+            ////print("Tabela AUTORIZACAO_CIELO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -562,7 +562,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AUX_VENDA_FATURADO_IMPRESSAO criada com sucesso.<br>");
+            ////print("Tabela AUX_VENDA_FATURADO_IMPRESSAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -591,7 +591,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AUXILIAR_ENVIO_SMS criada com sucesso.<br>");
+            ////print("Tabela AUXILIAR_ENVIO_SMS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -611,7 +611,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela AUCILIAR_IMPORTACAO_PRODUTO criada com sucesso.<br>");
+            ////print("Tabela AUCILIAR_IMPORTACAO_PRODUTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -634,7 +634,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela BANCO criada com sucesso.<br>");
+            ////print("Tabela BANCO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -660,7 +660,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela BOLETO_DOC criada com sucesso.<br>");
+            ////print("Tabela BOLETO_DOC criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -832,7 +832,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CADASTRO criada com sucesso.<br>");
+            ////print("Tabela CADASTRO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -856,7 +856,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CADASTRO_AUT_NOTAS criada com sucesso.<br>");
+            ////print("Tabela CADASTRO_AUT_NOTAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -879,7 +879,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CADASTRO_CONTROLE criada com sucesso.<br>");
+            ////print("Tabela CADASTRO_CONTROLE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -914,7 +914,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CADASTRO_CONVENIO_BANCARIO criada com sucesso.<br>");
+            ////print("Tabela CADASTRO_CONVENIO_BANCARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1047,7 +1047,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CADASTRO_IMPOSTO_PADRAO criada com sucesso.<br>");
+            ////print("Tabela CADASTRO_IMPOSTO_PADRAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1246,7 +1246,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CADASTRO_IMPOSTO_PADRAO_HIST criada com sucesso.<br>");
+            ////print("Tabela CADASTRO_IMPOSTO_PADRAO_HIST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1270,7 +1270,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARGO criada com sucesso.<br>");
+            ////print("Tabela CARGO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1310,7 +1310,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARNE criada com sucesso.<br>");
+            ////print("Tabela CARNE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1338,7 +1338,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARRINHO criada com sucesso.<br>");
+            ////print("Tabela CARRINHO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1364,7 +1364,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARTAOFID_CARTAO criada com sucesso.<br>");
+            ////print("Tabela CARTAOFID_CARTAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1400,7 +1400,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARTAOFID_CONFIG criada com sucesso.<br>");
+            ////print("Tabela CARTAOFID_CONFIG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1431,7 +1431,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARTAOFID_HISTORICO criada com sucesso.<br>");
+            ////print("Tabela CARTAOFID_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1458,7 +1458,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARTAOFID_MODELO criada com sucesso.<br>");
+            ////print("Tabela CARTAOFID_MODELO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1486,7 +1486,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CARTAOFID_PEDIDO_GRAFICA criada com sucesso.<br>");
+            ////print("Tabela CARTAOFID_PEDIDO_GRAFICA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1519,7 +1519,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CATALOGO criada com sucesso.<br>");
+            ////print("Tabela CATALOGO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1543,7 +1543,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CEST criada com sucesso.<br>");
+            ////print("Tabela CEST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1564,7 +1564,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela cest criada com sucesso.<br>");
+            ////print("Tabela cest criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1586,7 +1586,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CEST2 criada com sucesso.<br>");
+            ////print("Tabela CEST2 criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1608,7 +1608,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CFOP criada com sucesso.<br>");
+            ////print("Tabela CFOP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1630,7 +1630,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CIDADE criada com sucesso.<br>");
+            ////print("Tabela CIDADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1668,7 +1668,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLASSIFICACAO criada com sucesso.<br>");
+            ////print("Tabela CLASSIFICACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1699,7 +1699,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLASSIFICACAO_ALTERACAO_VALORES criada com sucesso.<br>");
+            ////print("Tabela CLASSIFICACAO_ALTERACAO_VALORES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1721,7 +1721,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLASSIFICACAO_BANCODEIMAGENS criada com sucesso.<br>");
+            ////print("Tabela CLASSIFICACAO_BANCODEIMAGENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1750,7 +1750,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLASSIFICACAO_CONTAS criada com sucesso.<br>");
+            ////print("Tabela CLASSIFICACAO_CONTAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1772,7 +1772,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLASSIFICACAO_SUB criada com sucesso.<br>");
+            ////print("Tabela CLASSIFICACAO_SUB criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1808,7 +1808,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLASSIFICACOES_REMOVIDAS criada com sucesso.<br>");
+            ////print("Tabela CLASSIFICACOES_REMOVIDAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1828,7 +1828,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLI_RECEBAFACIL criada com sucesso.<br>");
+            ////print("Tabela CLI_RECEBAFACIL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1919,7 +1919,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE criada com sucesso.<br>");
+            ////print("Tabela CLIENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1942,7 +1942,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE_AGENDAMENTOS criada com sucesso.<br>");
+            ////print("Tabela CLIENTE_AGENDAMENTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1966,7 +1966,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE_DOCUMENTO criada com sucesso.<br>");
+            ////print("Tabela CLIENTE_DOCUMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -1988,7 +1988,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE_DOCUMENTOS criada com sucesso.<br>");
+            ////print("Tabela CLIENTE_DOCUMENTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2025,7 +2025,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE_FORMA_PAGAMENTO criada com sucesso.<br>");
+            ////print("Tabela CLIENTE_FORMA_PAGAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2070,7 +2070,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE_OPTICA criada com sucesso.<br>");
+            ////print("Tabela CLIENTE_OPTICA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2096,7 +2096,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE_VEICULO criada com sucesso.<br>");
+            ////print("Tabela CLIENTE_VEICULO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2125,7 +2125,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTE_VEICULOS criada com sucesso.<br>");
+            ////print("Tabela CLIENTE_VEICULOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2214,7 +2214,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CLIENTES_REMOVIDOS criada com sucesso.<br>");
+            ////print("Tabela CLIENTES_REMOVIDOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2241,7 +2241,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CM_COMANDA criada com sucesso.<br>");
+            ////print("Tabela CM_COMANDA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2275,7 +2275,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CM_HISTORICO criada com sucesso.<br>");
+            ////print("Tabela CM_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2302,7 +2302,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CM_MESA criada com sucesso.<br>");
+            ////print("Tabela CM_MESA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2328,7 +2328,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CM_PRODUCAO criada com sucesso.<br>");
+            ////print("Tabela CM_PRODUCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2359,7 +2359,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CM_RESERVA criada com sucesso.<br>");
+            ////print("Tabela CM_RESERVA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2382,7 +2382,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CM_RESERVA_MESA criada com sucesso.<br>");
+            ////print("Tabela CM_RESERVA_MESA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2402,7 +2402,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CNAE criada com sucesso.<br>");
+            ////print("Tabela CNAE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2424,7 +2424,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CNAE_ISSQN criada com sucesso.<br>");
+            ////print("Tabela CNAE_ISSQN criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2446,7 +2446,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela COMPARTILHAMENTO criada com sucesso.<br>");
+            ////print("Tabela COMPARTILHAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2481,7 +2481,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela COMPROMISSO criada com sucesso.<br>");
+            ////print("Tabela COMPROMISSO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2504,7 +2504,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONFERENCIA_ESTOQUE criada com sucesso.<br>");
+            ////print("Tabela CONFERENCIA_ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2531,7 +2531,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONFERENCIA_ESTOQUE_ITENS criada com sucesso.<br>");
+            ////print("Tabela CONFERENCIA_ESTOQUE_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2555,7 +2555,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONFERENCIA_ESTOQUE_ITENS_TEMP criada com sucesso.<br>");
+            ////print("Tabela CONFERENCIA_ESTOQUE_ITENS_TEMP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2587,7 +2587,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTA_CORRENTE criada com sucesso.<br>");
+            ////print("Tabela CONTA_CORRENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2618,7 +2618,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTA_CORRENTE_MOVIMENTACAO criada com sucesso.<br>");
+            ////print("Tabela CONTA_CORRENTE_MOVIMENTACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2640,7 +2640,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTADOR_CLIENTE criada com sucesso.<br>");
+            ////print("Tabela CONTADOR_CLIENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2664,7 +2664,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTAS_COMPROVANTE criada com sucesso.<br>");
+            ////print("Tabela CONTAS_COMPROVANTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2696,7 +2696,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTAS_EMPRESA criada com sucesso.<br>");
+            ////print("Tabela CONTAS_EMPRESA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2754,7 +2754,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTAS_PAGAR criada com sucesso.<br>");
+            ////print("Tabela CONTAS_PAGAR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2812,7 +2812,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTAS_PAGAR_BKP criada com sucesso.<br>");
+            ////print("Tabela CONTAS_PAGAR_BKP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2839,7 +2839,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTAS_PAGAR_TPDOC criada com sucesso.<br>");
+            ////print("Tabela CONTAS_PAGAR_TPDOC criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2861,7 +2861,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CONTROLE_NOTAFISCAL criada com sucesso.<br>");
+            ////print("Tabela CONTROLE_NOTAFISCAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2888,7 +2888,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CREDENCIADORA_CARTAO criada com sucesso.<br>");
+            ////print("Tabela CREDENCIADORA_CARTAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2910,7 +2910,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CREDENCIADORAS_FIXAS criada com sucesso.<br>");
+            ////print("Tabela CREDENCIADORAS_FIXAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2935,7 +2935,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CREDENCIADORAS_FIXAS_IGNORAR criada com sucesso.<br>");
+            ////print("Tabela CREDENCIADORAS_FIXAS_IGNORAR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2958,7 +2958,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela CST criada com sucesso.<br>");
+            ////print("Tabela CST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -2988,7 +2988,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela DADOS_AVALIACAO criada com sucesso.<br>");
+            ////print("Tabela DADOS_AVALIACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3016,7 +3016,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela DESCRICAO_CONTAS_PAGAR criada com sucesso.<br>");
+            ////print("Tabela DESCRICAO_CONTAS_PAGAR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3037,7 +3037,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela DESCRICAO_CONTAS_PAGAR_PADRAO criada com sucesso.<br>");
+            ////print("Tabela DESCRICAO_CONTAS_PAGAR_PADRAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3068,7 +3068,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela DOCUMENTOS_ARQUIVADO criada com sucesso.<br>");
+            ////print("Tabela DOCUMENTOS_ARQUIVADO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3094,7 +3094,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela DOCUMENTOS_PASTA criada com sucesso.<br>");
+            ////print("Tabela DOCUMENTOS_PASTA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3118,7 +3118,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ENCAMINHAMENTO criada com sucesso.<br>");
+            ////print("Tabela ENCAMINHAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3151,7 +3151,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ENCAMINHAMENTO_ENDERECO criada com sucesso.<br>");
+            ////print("Tabela ENCAMINHAMENTO_ENDERECO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3178,7 +3178,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ENCAMINHAMENTO_PRODUTOS criada com sucesso.<br>");
+            ////print("Tabela ENCAMINHAMENTO_PRODUTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3202,7 +3202,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ENCAMINHAMENTO_TIPO criada com sucesso.<br>");
+            ////print("Tabela ENCAMINHAMENTO_TIPO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3226,7 +3226,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ENVIO_SMS_BOLETO criada com sucesso.<br>");
+            ////print("Tabela ENVIO_SMS_BOLETO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3248,7 +3248,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ESTADO criada com sucesso.<br>");
+            ////print("Tabela ESTADO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3269,7 +3269,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ESTADO_CIVIL criada com sucesso.<br>");
+            ////print("Tabela ESTADO_CIVIL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3291,7 +3291,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ESTADOS criada com sucesso.<br>");
+            ////print("Tabela ESTADOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3312,7 +3312,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ESTOQUE criada com sucesso.<br>");
+            ////print("Tabela ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3344,7 +3344,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ESTOQUE_APOIO criada com sucesso.<br>");
+            ////print("Tabela ESTOQUE_APOIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3387,7 +3387,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ESTOQUE_APOIO_ criada com sucesso.<br>");
+            ////print("Tabela ESTOQUE_APOIO_ criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3420,7 +3420,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ESTOQUE_PRODUTO criada com sucesso.<br>");
+            ////print("Tabela ESTOQUE_PRODUTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3441,7 +3441,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela EXCLUSAO_INFO criada com sucesso.<br>");
+            ////print("Tabela EXCLUSAO_INFO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3463,7 +3463,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela EXCLUSAO_INFO_RELACIONADOS criada com sucesso.<br>");
+            ////print("Tabela EXCLUSAO_INFO_RELACIONADOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3492,7 +3492,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FILA_TAREFAS criada com sucesso.<br>");
+            ////print("Tabela FILA_TAREFAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3517,7 +3517,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FINANCEIRO_APOIO criada com sucesso.<br>");
+            ////print("Tabela FINANCEIRO_APOIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3548,7 +3548,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FINANCEIRO_FUNCIONARIO_BANCO criada com sucesso.<br>");
+            ////print("Tabela FINANCEIRO_FUNCIONARIO_BANCO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3574,7 +3574,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FINANCEIRO_FUNCIONARIO_VALOR criada com sucesso.<br>");
+            ////print("Tabela FINANCEIRO_FUNCIONARIO_VALOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3603,7 +3603,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FLUXO_CAIXA criada com sucesso.<br>");
+            ////print("Tabela FLUXO_CAIXA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3637,7 +3637,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORMA_PAGAMENTO criada com sucesso.<br>");
+            ////print("Tabela FORMA_PAGAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3659,7 +3659,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORMA_PAGAMENTO_BANDEIRA criada com sucesso.<br>");
+            ////print("Tabela FORMA_PAGAMENTO_BANDEIRA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3682,7 +3682,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORMA_PAGAMENTO_CLIENTE criada com sucesso.<br>");
+            ////print("Tabela FORMA_PAGAMENTO_CLIENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3712,7 +3712,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORMA_PAGAMENTO_ECOMMERCE criada com sucesso.<br>");
+            ////print("Tabela FORMA_PAGAMENTO_ECOMMERCE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3773,7 +3773,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORNECEDOR criada com sucesso.<br>");
+            ////print("Tabela FORNECEDOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3803,7 +3803,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORNECEDOR_BANCO criada com sucesso.<br>");
+            //print("Tabela FORNECEDOR_BANCO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3830,7 +3830,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORNECEDOR_PEDIDO criada com sucesso.<br>");
+            //print("Tabela FORNECEDOR_PEDIDO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3859,7 +3859,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORNECEDOR_PEDIDO_ITEM criada com sucesso.<br>");
+            //print("Tabela FORNECEDOR_PEDIDO_ITEM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3885,7 +3885,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORNECEDOR_PRODUTO criada com sucesso.<br>");
+            //print("Tabela FORNECEDOR_PRODUTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3910,7 +3910,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORNECEDOR_SERVICO criada com sucesso.<br>");
+            //print("Tabela FORNECEDOR_SERVICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -3936,7 +3936,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FORNECEDOR_TRANSPORTADORA criada com sucesso.<br>");
+            //print("Tabela FORNECEDOR_TRANSPORTADORA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4017,7 +4017,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FUNCIONARIO criada com sucesso.<br>");
+            //print("Tabela FUNCIONARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4091,7 +4091,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FUNCIONARIO2 criada com sucesso.<br>");
+            //print("Tabela FUNCIONARIO2 criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4119,7 +4119,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FUNCIONARIO_AGENDAMENTO criada com sucesso.<br>");
+            //print("Tabela FUNCIONARIO_AGENDAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4143,7 +4143,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FUNCIONARIO_COMISSAO criada com sucesso.<br>");
+            //print("Tabela FUNCIONARIO_COMISSAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4165,7 +4165,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FUNCIONARIO_FUNCAO criada com sucesso.<br>");
+            //print("Tabela FUNCIONARIO_FUNCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4199,7 +4199,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela FUNCIONARIO_HORARIO_TRABALHO criada com sucesso.<br>");
+            //print("Tabela FUNCIONARIO_HORARIO_TRABALHO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4244,7 +4244,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE criada com sucesso.<br>");
+            //print("Tabela GRADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4270,7 +4270,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE_ARRUMAR_ESTOQUE criada com sucesso.<br>");
+            //print("Tabela GRADE_ARRUMAR_ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4296,7 +4296,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE_ATRIBUTO criada com sucesso.<br>");
+            //print("Tabela GRADE_ATRIBUTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4323,7 +4323,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE_ATRIBUTO_VALOR criada com sucesso.<br>");
+            //print("Tabela GRADE_ATRIBUTO_VALOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4345,7 +4345,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE_ATRIBUTO_FOTO criada com sucesso.<br>");
+            //print("Tabela GRADE_ATRIBUTO_FOTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4382,7 +4382,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE_HISTORICO criada com sucesso.<br>");
+            //print("Tabela GRADE_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4423,7 +4423,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE_PROMOCAO criada com sucesso.<br>");
+            //print("Tabela GRADE_PROMOCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4452,7 +4452,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRADE_SAIDA_ESTOQUE criada com sucesso.<br>");
+            //print("Tabela GRADE_SAIDA_ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4473,7 +4473,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela GRAU_INSTRUCAO criada com sucesso.<br>");
+            //print("Tabela GRAU_INSTRUCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4496,7 +4496,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela HISTORICO_DOC_FISCAIS criada com sucesso.<br>");
+            //print("Tabela HISTORICO_DOC_FISCAIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4517,7 +4517,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela HORARIO_TRABALHO criada com sucesso.<br>");
+            //print("Tabela HORARIO_TRABALHO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4551,7 +4551,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela IBPTAX criada com sucesso.<br>");
+            //print("Tabela IBPTAX criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4577,7 +4577,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela IMPORTACAO criada com sucesso.<br>");
+            //print("Tabela IMPORTACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4616,7 +4616,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela INDICA_AMIGO criada com sucesso.<br>");
+            //print("Tabela INDICA_AMIGO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4644,7 +4644,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela INDICA_AMIGO_LOG criada com sucesso.<br>");
+            //print("Tabela INDICA_AMIGO_LOG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4676,7 +4676,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LANCAMENTOS_EMPRESAS criada com sucesso.<br>");
+            //print("Tabela LANCAMENTOS_EMPRESAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4706,7 +4706,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LIMITE_FUNCIONARIO criada com sucesso.<br>");
+            //print("Tabela LIMITE_FUNCIONARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4736,7 +4736,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LINK criada com sucesso.<br>");
+            //print("Tabela LINK criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4761,7 +4761,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_ACESSO_OFFLINE criada com sucesso.<br>");
+            //print("Tabela LOG_ACESSO_OFFLINE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4790,7 +4790,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_ACOES_NOTASFISCAIS criada com sucesso.<br>");
+            //print("Tabela LOG_ACOES_NOTASFISCAIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4815,7 +4815,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_DADOS_CADASTRO criada com sucesso.<br>");
+            //print("Tabela LOG_DADOS_CADASTRO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4841,7 +4841,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_ENVIA_EMAIL criada com sucesso.<br>");
+            //print("Tabela LOG_ENVIA_EMAIL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4864,7 +4864,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_ERRO_SESSAO criada com sucesso.<br>");
+            //print("Tabela LOG_ERRO_SESSAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4891,7 +4891,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_ESTOQUE criada com sucesso.<br>");
+            //print("Tabela LOG_ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4915,7 +4915,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_MENSAGE_ATENCAO criada com sucesso.<br>");
+            //print("Tabela LOG_MENSAGE_ATENCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4938,7 +4938,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_MONITORAMENTO criada com sucesso.<br>");
+            //print("Tabela LOG_MONITORAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4962,7 +4962,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_SYNC_LOJA criada com sucesso.<br>");
+            //print("Tabela LOG_SYNC_LOJA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -4990,7 +4990,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_SYNC_LOJA_ITENS criada com sucesso.<br>");
+            //print("Tabela LOG_SYNC_LOJA_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5020,7 +5020,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela LOG_WEB_CONTROL criada com sucesso.<br>");
+            //print("Tabela LOG_WEB_CONTROL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5051,7 +5051,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_CAMPANHA criada com sucesso.<br>");
+            //print("Tabela MAILMKT_CAMPANHA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5076,7 +5076,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_CAMPANHA_AGENDAMENTO criada com sucesso.<br>");
+            //print("Tabela MAILMKT_CAMPANHA_AGENDAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5098,7 +5098,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_CAMPANHA_FIXA criada com sucesso.<br>");
+            //print("Tabela MAILMKT_CAMPANHA_FIXA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5121,7 +5121,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_CAMPANHA_FIXA_IGNORAR criada com sucesso.<br>");
+            //print("Tabela MAILMKT_CAMPANHA_FIXA_IGNORAR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5150,7 +5150,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_CONFIG criada com sucesso.<br>");
+            //print("Tabela MAILMKT_CONFIG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5172,7 +5172,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_CONFIG_MASTER criada com sucesso.<br>");
+            //print("Tabela MAILMKT_CONFIG_MASTER criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5200,7 +5200,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_LISTA criada com sucesso.<br>");
+            //print("Tabela MAILMKT_LISTA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5224,7 +5224,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_LISTA_EMAILS criada com sucesso.<br>");
+            //print("Tabela MAILMKT_LISTA_EMAILS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5255,7 +5255,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MAILMKT_LOG criada com sucesso.<br>");
+            //print("Tabela MAILMKT_LOG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5288,7 +5288,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST criada com sucesso.<br>");
+            //print("Tabela MANIFEST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5311,7 +5311,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_CONDUTOR criada com sucesso.<br>");
+            //print("Tabela MANIFEST_CONDUTOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5339,7 +5339,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_DOCUMENTOS criada com sucesso.<br>");
+            //print("Tabela MANIFEST_DOCUMENTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5373,7 +5373,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_REBOQUE criada com sucesso.<br>");
+            //print("Tabela MANIFEST_REBOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5395,7 +5395,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_UF_PERCURSO criada com sucesso.<br>");
+            //print("Tabela MANIFEST_UF_PERCURSO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5429,7 +5429,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_VEICTRACAO criada com sucesso.<br>");
+            //print("Tabela MANIFEST_VEICTRACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5461,7 +5461,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_INFORMACOES criada com sucesso.<br>");
+            //print("Tabela MANIFEST_INFORMACOES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5485,7 +5485,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_INFORMACOES criada com sucesso.<br>");
+            //print("Tabela MANIFEST_INFORMACOES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5507,7 +5507,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_INFORMACOES_CONDUTOR criada com sucesso.<br>");
+            //print("Tabela MANIFEST_INFORMACOES_CONDUTOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5529,7 +5529,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MANIFEST_MODAL_REBOQUE criada com sucesso.<br>");
+            //print("Tabela MANIFEST_MODAL_REBOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5553,7 +5553,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MARCAS criada com sucesso.<br>");
+            //print("Tabela MARCAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5580,7 +5580,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MATRIZ_FILIAL criada com sucesso.<br>");
+            //print("Tabela MATRIZ_FILIAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5604,7 +5604,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MATRIZ_FILIAL_HISTORICO criada com sucesso.<br>");
+            //print("Tabela MATRIZ_FILIAL_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5630,7 +5630,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MATRIZ_PERMISSAO_MODULO criada com sucesso.<br>");
+            //print("Tabela MATRIZ_PERMISSAO_MODULO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5656,7 +5656,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MENSAGENS criada com sucesso.<br>");
+            //print("Tabela MENSAGENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5680,7 +5680,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MERCADO_LIVRE_PRODUTO criada com sucesso.<br>");
+            //print("Tabela MERCADO_LIVRE_PRODUTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5702,7 +5702,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MODALIDADE_CALCULO criada com sucesso.<br>");
+            //print("Tabela MODALIDADE_CALCULO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5724,7 +5724,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MODALIDADE_CALCULO_ST criada com sucesso.<br>");
+            //print("Tabela MODALIDADE_CALCULO_ST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5753,7 +5753,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MODELO_CONTRATO criada com sucesso.<br>");
+            //print("Tabela MODELO_CONTRATO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5778,7 +5778,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MODULO criada com sucesso.<br>");
+            //print("Tabela MODULO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5801,7 +5801,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MODULOS criada com sucesso.<br>");
+            //print("Tabela MODULOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5826,7 +5826,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MOVIMENTO_TITULO_RECEBAFACIL criada com sucesso.<br>");
+            //print("Tabela MOVIMENTO_TITULO_RECEBAFACIL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5849,7 +5849,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela MUNICIPIO_RF criada com sucesso.<br>");
+            //print("Tabela MUNICIPIO_RF criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5870,7 +5870,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NCM criada com sucesso.<br>");
+            //print("Tabela NCM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5933,7 +5933,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -5957,7 +5957,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_COBRANCA criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_COBRANCA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6005,7 +6005,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6036,7 +6036,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS_COFINS criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS_COFINS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6066,7 +6066,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS_COFINSST criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS_COFINSST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6111,7 +6111,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS_ICMS criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS_ICMS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6138,7 +6138,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS_II criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS_II criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6171,7 +6171,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS_IPI criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS_IPI criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6200,7 +6200,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS_PIS criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS_PIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6229,7 +6229,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_DEVOLUCAO_ITENS_PISST criada com sucesso.<br>");
+            //print("Tabela NF_DEVOLUCAO_ITENS_PISST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6284,7 +6284,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_ENTRADA criada com sucesso.<br>");
+            //print("Tabela NF_ENTRADA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6344,7 +6344,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_ENTRADA_ESTOQUE criada com sucesso.<br>");
+            //print("Tabela NF_ENTRADA_ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6392,7 +6392,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_ENTRADA_ESTOQUE_ITENS criada com sucesso.<br>");
+            //print("Tabela NF_ENTRADA_ESTOQUE_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6433,7 +6433,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_ENTRADA_ITENS criada com sucesso.<br>");
+            //print("Tabela NF_ENTRADA_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6457,7 +6457,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_ENTRADA_XML criada com sucesso.<br>");
+            //print("Tabela NF_ENTRADA_XML criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6483,7 +6483,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_INUTILIZADAS criada com sucesso.<br>");
+            //print("Tabela NF_INUTILIZADAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6506,7 +6506,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_MUNICIPIO_RF criada com sucesso.<br>");
+            //print("Tabela NF_MUNICIPIO_RF criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6529,7 +6529,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_NATUREZA criada com sucesso.<br>");
+            //print("Tabela NF_NATUREZA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6550,7 +6550,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_PAISES criada com sucesso.<br>");
+            //print("Tabela NF_PAISES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6579,7 +6579,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_SERVICO_ASSINADAS criada com sucesso.<br>");
+            //print("Tabela NF_SERVICO_ASSINADAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6613,7 +6613,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_COFINS criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_COFINS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6646,7 +6646,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_ITENS_COFINSST criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_ITENS_COFINSST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6694,7 +6694,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_ITENS_ICMS criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_ITENS_ICMS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6724,7 +6724,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_ITENS_II criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_ITENS_II criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6760,7 +6760,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_ITENS_IPI criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_ITENS_IPI criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6792,7 +6792,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_ITENS_PIS criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_ITENS_PIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6824,7 +6824,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_ITENS_PISST criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_ITENS_PISST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6881,7 +6881,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NF_TRIBUTOS_VENDA criada com sucesso.<br>");
+            //print("Tabela NF_TRIBUTOS_VENDA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6922,7 +6922,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_CUPOM_FISCAL criada com sucesso.<br>");
+            //print("Tabela NFE_CUPOM_FISCAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6944,7 +6944,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_EXIGIBILIDADE criada com sucesso.<br>");
+            //print("Tabela NFE_EXIGIBILIDADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -6990,7 +6990,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_ICMS_INTERESTADUAIS criada com sucesso.<br>");
+            //print("Tabela NFE_ICMS_INTERESTADUAIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7011,7 +7011,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_ICMS_INTERESTADUAIS_CLIENTE criada com sucesso.<br>");
+            //print("Tabela NFE_ICMS_INTERESTADUAIS_CLIENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7035,7 +7035,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_ICMS_SITUACAO_TRIBUTARIA criada com sucesso.<br>");
+            //print("Tabela NFE_ICMS_SITUACAO_TRIBUTARIA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7057,7 +7057,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_LISTA_SERVICO criada com sucesso.<br>");
+            //print("Tabela NFE_LISTA_SERVICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7080,7 +7080,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_MODALIDADE criada com sucesso.<br>");
+            //print("Tabela NFE_MODALIDADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7102,7 +7102,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_MOTIVO_DESONERACAO_ICMS criada com sucesso.<br>");
+            //print("Tabela NFE_MOTIVO_DESONERACAO_ICMS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7137,7 +7137,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_MUNICIPIO criada com sucesso.<br>");
+            //print("Tabela NFE_MUNICIPIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7162,7 +7162,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_MVAT criada com sucesso.<br>");
+            //print("Tabela NFE_MVAT criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7184,7 +7184,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_ORIGEM criada com sucesso.<br>");
+            //print("Tabela NFE_ORIGEM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7204,7 +7204,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PAISES criada com sucesso.<br>");
+            //print("Tabela NFE_PAISES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7235,7 +7235,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_COFINS criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_COFINS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7266,7 +7266,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_COFINSST criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_COFINSST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7310,7 +7310,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_ICMS criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_ICMS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7337,7 +7337,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_II criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_II criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7370,7 +7370,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_IPI criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_IPI criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7411,7 +7411,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_ISSQN criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_ISSQN criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7431,7 +7431,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_Opcoes criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_Opcoes criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7460,7 +7460,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_PIS criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_PIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7489,7 +7489,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_PRODUTO_PISST criada com sucesso.<br>");
+            //print("Tabela NFE_PRODUTO_PISST criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7512,7 +7512,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_SITUACAO_TRIBUTARIA criada com sucesso.<br>");
+            //print("Tabela NFE_SITUACAO_TRIBUTARIA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7534,7 +7534,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_TIPO_ESPECIFICO criada com sucesso.<br>");
+            //print("Tabela NFE_TIPO_ESPECIFICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7562,7 +7562,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_TRANSPORTADORA criada com sucesso.<br>");
+            //print("Tabela NFE_TRANSPORTADORA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7586,7 +7586,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_UF criada com sucesso.<br>");
+            //print("Tabela NFE_UF criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7614,7 +7614,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFE_SERVER criada com sucesso.<br>");
+            //print("Tabela NFE_SERVER criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7637,7 +7637,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFS_SITUACAO_TRIBUTARIA criada com sucesso.<br>");
+            //print("Tabela NFS_SITUACAO_TRIBUTARIA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7661,7 +7661,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NFS_ERROS criada com sucesso.<br>");
+            //print("Tabela NFS_ERROS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7699,7 +7699,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NOTA_CREDITO criada com sucesso.<br>");
+            //print("Tabela NOTA_CREDITO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7725,7 +7725,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NOTA_CREDITO_HISTORICO criada com sucesso.<br>");
+            //print("Tabela NOTA_CREDITO_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7773,7 +7773,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NOTA_FISCAL criada com sucesso.<br>");
+            //print("Tabela NOTA_FISCAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7833,7 +7833,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NOTA_FISCAL_TMP criada com sucesso.<br>");
+            //print("Tabela NOTA_FISCAL_TMP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7871,7 +7871,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela NOTAS_PROMISSORIAS criada com sucesso.<br>");
+            //print("Tabela NOTAS_PROMISSORIAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7892,7 +7892,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela OAUTHS_CLIENTS criada com sucesso.<br>");
+            //print("Tabela OAUTHS_CLIENTS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7918,7 +7918,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela OAUTHS_TOKENS criada com sucesso.<br>");
+            //print("Tabela OAUTHS_TOKENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7953,7 +7953,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ORCAMENTO criada com sucesso.<br>");
+            //print("Tabela ORCAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -7987,7 +7987,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ORCAMENTO_CLIENTE criada com sucesso.<br>");
+            //print("Tabela ORCAMENTO_CLIENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8012,7 +8012,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ORCAMENTO_ITENS criada com sucesso.<br>");
+            //print("Tabela ORCAMENTO_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8035,7 +8035,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ORDEM_SERVICO criada com sucesso.<br>");
+            //print("Tabela ORDEM_SERVICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8058,7 +8058,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ORDEM_SERVICO_ITENS criada com sucesso.<br>");
+            //print("Tabela ORDEM_SERVICO_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8084,7 +8084,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ORDEM_SERVICO_TIPO criada com sucesso.<br>");
+            //print("Tabela ORDEM_SERVICO_TIPO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8106,7 +8106,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela ORIGEM criada com sucesso.<br>");
+            //print("Tabela ORIGEM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8132,7 +8132,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PAGAMENTO_NOTAS criada com sucesso.<br>");
+            //print("Tabela PAGAMENTO_NOTAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8154,7 +8154,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PAIS criada com sucesso.<br>");
+            //print("Tabela PAIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8175,7 +8175,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PARCELA criada com sucesso.<br>");
+            //print("Tabela PARCELA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8198,7 +8198,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PARCELA_USUARIO criada com sucesso.<br>");
+            //print("Tabela PARCELA_USUARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8232,7 +8232,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela POSTO_REGISTROS criada com sucesso.<br>");
+            //print("Tabela POSTO_REGISTROS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8254,7 +8254,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRO_PARAMETRO criada com sucesso.<br>");
+            //print("Tabela PRO_PARAMETRO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8278,7 +8278,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRO_PARAMETRO_VALOR criada com sucesso.<br>");
+            //print("Tabela PRO_PARAMETRO_VALOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8300,7 +8300,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRO_VALOR criada com sucesso.<br>");
+            //print("Tabela PRO_VALOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8425,7 +8425,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO criada com sucesso.<br>");
+            //print("Tabela PRODUTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8547,7 +8547,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO2 criada com sucesso.<br>");
+            //print("Tabela PRODUTO2 criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8610,7 +8610,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_APOIO criada com sucesso.<br>");
+            //print("Tabela PRODUTO_APOIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8644,7 +8644,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_ARRUMAR_ESTOQUE criada com sucesso.<br>");
+            //print("Tabela PRODUTO_ARRUMAR_ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8679,7 +8679,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_ARRUMAR_ESTOQUE_TMP criada com sucesso.<br>");
+            //print("Tabela PRODUTO_ARRUMAR_ESTOQUE_TMP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8702,7 +8702,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_BENEFICIO_FISCAL criada com sucesso.<br>");
+            //print("Tabela PRODUTO_BENEFICIO_FISCAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8724,7 +8724,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_BUSCA_PREVENDA criada com sucesso.<br>");
+            //print("Tabela PRODUTO_BUSCA_PREVENDA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8748,7 +8748,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_BUSCA_PREVENDA_ORDEM criada com sucesso.<br>");
+            //print("Tabela PRODUTO_BUSCA_PREVENDA_ORDEM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8773,7 +8773,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_COMBNF criada com sucesso.<br>");
+            //print("Tabela PRODUTO_COMBNF criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8795,7 +8795,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_CONFIGURACOES_COMERCIAL criada com sucesso.<br>");
+            //print("Tabela PRODUTO_CONFIGURACOES_COMERCIAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8817,7 +8817,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_CONTABIL criada com sucesso.<br>");
+            //print("Tabela PRODUTO_CONTABIL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8840,7 +8840,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_FORNECEDOR criada com sucesso.<br>");
+            //print("Tabela PRODUTO_FORNECEDOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8863,7 +8863,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_FOTO criada com sucesso.<br>");
+            //print("Tabela PRODUTO_FOTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8899,7 +8899,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_ICMS criada com sucesso.<br>");
+            //print("Tabela PRODUTO_ICMS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8936,7 +8936,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_INFO_NUTRICIONAIS criada com sucesso.<br>");
+            //print("Tabela PRODUTO_INFO_NUTRICIONAIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8956,7 +8956,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_NUM_PARCELAS_AUX criada com sucesso.<br>");
+            //print("Tabela PRODUTO_NUM_PARCELAS_AUX criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -8978,7 +8978,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTO_PEDIDO_EQUIPAMENTO criada com sucesso.<br>");
+            //print("Tabela PRODUTO_PEDIDO_EQUIPAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9053,7 +9053,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_APOIO criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_APOIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9078,7 +9078,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_COMPOSICAO criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_COMPOSICAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9198,7 +9198,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_DELETADOS criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_DELETADOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9229,7 +9229,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_DETALHES criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_DETALHES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9254,7 +9254,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_DETALHES_AGRUPAGEM criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_DETALHES_AGRUPAGEM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9278,7 +9278,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_DETALHES_DIMENSOES_CAIXA criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_DETALHES_DIMENSOES_CAIXA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9302,7 +9302,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_DETALHES_DIMENSOES_PALETE criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_DETALHES_DIMENSOES_PALETE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9326,7 +9326,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_DETALHES_DIMENSOES_UNIDADE criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_DETALHES_DIMENSOES_UNIDADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9446,7 +9446,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_EXCLUIDOS criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_EXCLUIDOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9567,7 +9567,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_RECICLAGEM criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_RECICLAGEM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9687,7 +9687,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PRODUTOS_REMOVIDOS criada com sucesso.<br>");
+            //print("Tabela PRODUTOS_REMOVIDOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9715,7 +9715,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PROMOCAO_KIT criada com sucesso.<br>");
+            //print("Tabela PROMOCAO_KIT criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9746,7 +9746,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PROMOCAO_KIT_GRADE criada com sucesso.<br>");
+            //print("Tabela PROMOCAO_KIT_GRADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9775,7 +9775,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PROMOCAO_MIX criada com sucesso.<br>");
+            //print("Tabela PROMOCAO_MIX criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9799,7 +9799,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PROMOCAO_MIX_DESCONTO criada com sucesso.<br>");
+            //print("Tabela PROMOCAO_MIX_DESCONTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9827,7 +9827,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PROMOCAO_MIX_TEMPO criada com sucesso.<br>");
+            //print("Tabela PROMOCAO_MIX_TEMPO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9859,7 +9859,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela PROMOCAO_QUANTIDADE criada com sucesso.<br>");
+            //print("Tabela PROMOCAO_QUANTIDADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9882,7 +9882,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela RELATORIO_ESTOQUE_MENSAL criada com sucesso.<br>");
+            //print("Tabela RELATORIO_ESTOQUE_MENSAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9908,7 +9908,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela RELATORIO_ESTOQUE_MENSAL_PRODUTOS criada com sucesso.<br>");
+            //print("Tabela RELATORIO_ESTOQUE_MENSAL_PRODUTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9937,7 +9937,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela RELATORIO_CAMPOS criada com sucesso.<br>");
+            //print("Tabela RELATORIO_CAMPOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9959,7 +9959,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela RELATORIO_TABELAS criada com sucesso.<br>");
+            //print("Tabela RELATORIO_TABELAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -9994,7 +9994,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela REMETENTE criada com sucesso.<br>");
+            //print("Tabela REMETENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10017,7 +10017,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela SEQUENCIA_ASSISTENCIA criada com sucesso.<br>");
+            //print("Tabela SEQUENCIA_ASSISTENCIA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10040,7 +10040,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela SEQUENCIA_ORCAMENTO criada com sucesso.<br>");
+            //print("Tabela SEQUENCIA_ORCAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10063,7 +10063,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela SEQUENCIA_ORDEM_SERVICO criada com sucesso.<br>");
+            //print("Tabela SEQUENCIA_ORDEM_SERVICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10086,7 +10086,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela SEQUENCIA_PEDIDO criada com sucesso.<br>");
+            //print("Tabela SEQUENCIA_PEDIDO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10109,7 +10109,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela SETOR criada com sucesso.<br>");
+            //print("Tabela SETOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10140,7 +10140,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela SOLICITACAO_REATIVACAO criada com sucesso.<br>");
+            //print("Tabela SOLICITACAO_REATIVACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10168,7 +10168,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela SUGESTAO criada com sucesso.<br>");
+            //print("Tabela SUGESTAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10188,7 +10188,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TABELA_CODIGO_ANP criada com sucesso.<br>");
+            //print("Tabela TABELA_CODIGO_ANP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10218,7 +10218,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TABELA_NCM criada com sucesso.<br>");
+            //print("Tabela TABELA_NCM criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10241,7 +10241,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TABELA_NCM_VIGENTE criada com sucesso.<br>");
+            //print("Tabela TABELA_NCM_VIGENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10305,7 +10305,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TEST_APOIO criada com sucesso.<br>");
+            //print("Tabela TEST_APOIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10326,7 +10326,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TIPO_ENTRADA criada com sucesso.<br>");
+            //print("Tabela TIPO_ENTRADA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10349,7 +10349,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TIPO_LOG criada com sucesso.<br>");
+            //print("Tabela TIPO_LOG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10370,7 +10370,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TIPO_RESIDÊNCIA criada com sucesso.<br>");
+            //print("Tabela TIPO_RESIDÊNCIA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10392,7 +10392,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TIPO_UNIDADE_TMP criada com sucesso.<br>");
+            //print("Tabela TIPO_UNIDADE_TMP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10417,7 +10417,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TIPOS_LANCAMENTOS criada com sucesso.<br>");
+            //print("Tabela TIPOS_LANCAMENTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10474,7 +10474,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TITULOS criada com sucesso.<br>");
+            //print("Tabela TITULOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10499,7 +10499,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TITULOS_MOVIMENTACAO criada com sucesso.<br>");
+            //print("Tabela TITULOS_MOVIMENTACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10571,7 +10571,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TITULOS_RECEBAFACIL criada com sucesso.<br>");
+            //print("Tabela TITULOS_RECEBAFACIL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10602,7 +10602,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TITULOS_RECEBAFACIL_HISTORICO criada com sucesso.<br>");
+            //print("Tabela TITULOS_RECEBAFACIL_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10632,7 +10632,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TITULOS_RETORNO criada com sucesso.<br>");
+            //print("Tabela TITULOS_RETORNO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10653,7 +10653,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10673,7 +10673,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS_AFILIACOES criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS_AFILIACOES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10696,7 +10696,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS_AFILIACOES1 criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS_AFILIACOES1 criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10716,7 +10716,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS_AFILIACOES_COMPARAR criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS_AFILIACOES_COMPARAR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10736,7 +10736,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS_ATENDIMENTO criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS_ATENDIMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10756,7 +10756,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS_CANCELAMENTOS criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS_CANCELAMENTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10776,7 +10776,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS_EQUIPAMENTOS criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS_EQUIPAMENTOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10796,7 +10796,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_DATAS_TESTE criada com sucesso.<br>");
+            //print("Tabela TMP_DATAS_TESTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10815,7 +10815,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_FAT_BONIFICADA criada com sucesso.<br>");
+            //print("Tabela TMP_FAT_BONIFICADA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10838,7 +10838,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_GRAFICO_AFILIACOES criada com sucesso.<br>");
+            //print("Tabela TMP_GRAFICO_AFILIACOES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10859,7 +10859,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_GRAFICO_AFILIACOES_CONSULTOR criada com sucesso.<br>");
+            //print("Tabela TMP_GRAFICO_AFILIACOES_CONSULTOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10882,7 +10882,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_GRAFICO_CANCELADOS criada com sucesso.<br>");
+            //print("Tabela TMP_GRAFICO_CANCELADOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10906,7 +10906,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_IMP_CLASSIFICACAO criada com sucesso.<br>");
+            //print("Tabela TMP_IMP_CLASSIFICACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10953,7 +10953,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_IMP_CLIENTE criada com sucesso.<br>");
+            //print("Tabela TMP_IMP_CLIENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -10979,7 +10979,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_IMP_ESTOQUE criada com sucesso.<br>");
+            //print("Tabela TMP_IMP_ESTOQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11022,7 +11022,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_IMP_FORNECEDOR criada com sucesso.<br>");
+            //print("Tabela TMP_IMP_FORNECEDOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11065,7 +11065,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_IMP_PRODUTO criada com sucesso.<br>");
+            //print("Tabela TMP_IMP_PRODUTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11085,7 +11085,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_MESES_LABEL criada com sucesso.<br>");
+            //print("Tabela TMP_MESES_LABEL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11108,7 +11108,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_PRODUTO_AUX criada com sucesso.<br>");
+            //print("Tabela TMP_PRODUTO_AUX criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11141,7 +11141,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_RANKING_AGENDAMENTO_DIARIO criada com sucesso.<br>");
+            //print("Tabela TMP_RANKING_AGENDAMENTO_DIARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11164,7 +11164,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_RANKING_ATENDIMENTO criada com sucesso.<br>");
+            //print("Tabela TMP_RANKING_ATENDIMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11208,7 +11208,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_RANKING_GERAL criada com sucesso.<br>");
+            //print("Tabela TMP_RANKING_GERAL criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11241,7 +11241,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_SPED_150 criada com sucesso.<br>");
+            //print("Tabela TMP_SPED_150 criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11263,7 +11263,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_SPED_190 criada com sucesso.<br>");
+            //print("Tabela TMP_SPED_190 criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11285,7 +11285,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TMP_SPED_UNIDADE criada com sucesso.<br>");
+            //print("Tabela TMP_SPED_UNIDADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11316,7 +11316,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_CAMPANHA criada com sucesso.<br>");
+            //print("Tabela TORPEDO_CAMPANHA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11341,7 +11341,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_CAMPANHA_AGENDAMENTO criada com sucesso.<br>");
+            //print("Tabela TORPEDO_CAMPANHA_AGENDAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11372,7 +11372,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_CAMPANHA_BKP_EXCLUIDOS criada com sucesso.<br>");
+            //print("Tabela TORPEDO_CAMPANHA_BKP_EXCLUIDOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11394,7 +11394,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_CAMPANHA_FIXA criada com sucesso.<br>");
+            //print("Tabela TORPEDO_CAMPANHA_FIXA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11417,7 +11417,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_CAMPANHA_FIXA_IGNORAR criada com sucesso.<br>");
+            //print("Tabela TORPEDO_CAMPANHA_FIXA_IGNORAR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11445,7 +11445,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_CAMPANHA_LISTA criada com sucesso.<br>");
+            //print("Tabela TORPEDO_CAMPANHA_LISTA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11473,7 +11473,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_LISTA criada com sucesso.<br>");
+            //print("Tabela TORPEDO_LISTA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11497,7 +11497,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_LISTA_TELEFONES criada com sucesso.<br>");
+            //print("Tabela TORPEDO_LISTA_TELEFONES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11527,7 +11527,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_LISTA_LOG criada com sucesso.<br>");
+            //print("Tabela TORPEDO_LISTA_LOG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11549,7 +11549,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_MASTER criada com sucesso.<br>");
+            //print("Tabela TORPEDO_MASTER criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11576,7 +11576,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TORPEDO_USER criada com sucesso.<br>");
+            //print("Tabela TORPEDO_USER criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11624,7 +11624,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TRANSPORTADORA criada com sucesso.<br>");
+            //print("Tabela TRANSPORTADORA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11656,7 +11656,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TRANSPORTADORA_PLACA criada com sucesso.<br>");
+            //print("Tabela TRANSPORTADORA_PLACA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11679,7 +11679,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela TRIBUTACAO criada com sucesso.<br>");
+            //print("Tabela TRIBUTACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11706,7 +11706,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela UNIDADE criada com sucesso.<br>");
+            //print("Tabela UNIDADE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11728,7 +11728,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela UNIDADE_FRACIONAMENTO criada com sucesso.<br>");
+            //print("Tabela UNIDADE_FRACIONAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11750,7 +11750,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela USERS criada com sucesso.<br>");
+            //print("Tabela USERS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11786,7 +11786,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela USUARIO criada com sucesso.<br>");
+            //print("Tabela USUARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11815,7 +11815,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VALE_PRESENTE criada com sucesso.<br>");
+            //print("Tabela VALE_PRESENTE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11839,7 +11839,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VALE_PRESENTE_HISTORICO criada com sucesso.<br>");
+            //print("Tabela VALE_PRESENTE_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11867,7 +11867,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VALE_PRESENTE_NEW criada com sucesso.<br>");
+            //print("Tabela VALE_PRESENTE_NEW criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11894,7 +11894,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VALOR criada com sucesso.<br>");
+            //print("Tabela VALOR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11924,7 +11924,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VALOR_EXTRA_CAIXA criada com sucesso.<br>");
+            //print("Tabela VALOR_EXTRA_CAIXA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11957,7 +11957,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VALOR_INICIAL_CAIXA criada com sucesso.<br>");
+            //print("Tabela VALOR_INICIAL_CAIXA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -11987,7 +11987,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VALOR_SANGRIA criada com sucesso.<br>");
+            //print("Tabela VALOR_SANGRIA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12064,7 +12064,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA criada com sucesso.<br>");
+            //print("Tabela VENDA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12093,7 +12093,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_ADIANTAMENTO criada com sucesso.<br>");
+            //print("Tabela VENDA_ADIANTAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12120,7 +12120,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_CONSIGNACAO_DEVOLUCAO criada com sucesso.<br>");
+            //print("Tabela VENDA_CONSIGNACAO_DEVOLUCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12151,7 +12151,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_DEVOLUCAO criada com sucesso.<br>");
+            //print("Tabela VENDA_DEVOLUCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12197,7 +12197,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_INFORMACOES criada com sucesso.<br>");
+            //print("Tabela VENDA_INFORMACOES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12246,7 +12246,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_ITENS criada com sucesso.<br>");
+            //print("Tabela VENDA_ITENS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12293,7 +12293,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_ITENS_AUTOMOVEIS criada com sucesso.<br>");
+            //print("Tabela VENDA_ITENS_AUTOMOVEIS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12327,7 +12327,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_ITENS_DEVOLUCAO criada com sucesso.<br>");
+            //print("Tabela VENDA_ITENS_DEVOLUCAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12349,7 +12349,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_JUROS_PARCELAMENTO criada com sucesso.<br>");
+            //print("Tabela VENDA_JUROS_PARCELAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12388,7 +12388,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_LOCACAO criada com sucesso.<br>");
+            //print("Tabela VENDA_LOCACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12414,7 +12414,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_NFSE_INFORMACOES criada com sucesso.<br>");
+            //print("Tabela VENDA_NFSE_INFORMACOES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12454,7 +12454,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_NOTAS_ELETRONICAS criada com sucesso.<br>");
+            //print("Tabela VENDA_NOTAS_ELETRONICAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12491,7 +12491,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_NOTAS_ELETRONICAS_LIXO criada com sucesso.<br>");
+            //print("Tabela VENDA_NOTAS_ELETRONICAS_LIXO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12546,7 +12546,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_OPTICA criada com sucesso.<br>");
+            //print("Tabela VENDA_OPTICA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12583,7 +12583,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_PAGAMENTO criada com sucesso.<br>");
+            //print("Tabela VENDA_PAGAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12607,7 +12607,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_PAGAMENTO_CHEQUE criada com sucesso.<br>");
+            //print("Tabela VENDA_PAGAMENTO_CHEQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12647,7 +12647,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_PAGAMENTO_ECOMMERCE criada com sucesso.<br>");
+            //print("Tabela VENDA_PAGAMENTO_ECOMMERCE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12668,7 +12668,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_PARCELAS criada com sucesso.<br>");
+            //print("Tabela VENDA_PARCELAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12700,7 +12700,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDA_PGTO_TEMP criada com sucesso.<br>");
+            //print("Tabela VENDA_PGTO_TEMP criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12730,7 +12730,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VENDAS_FUNCIONARIO criada com sucesso.<br>");
+            //print("Tabela VENDAS_FUNCIONARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12751,7 +12751,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VIEW_VENDA_PARCELAS criada com sucesso.<br>");
+            //print("Tabela VIEW_VENDA_PARCELAS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12775,7 +12775,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela VP_HISTORICO criada com sucesso.<br>");
+            //print("Tabela VP_HISTORICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12796,7 +12796,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WC_MENU criada com sucesso.<br>");
+            //print("Tabela WC_MENU criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12819,7 +12819,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WC_PERMISSAO_MENU criada com sucesso.<br>");
+            //print("Tabela WC_PERMISSAO_MENU criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12841,7 +12841,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WC_SUBMENU criada com sucesso.<br>");
+            //print("Tabela WC_SUBMENU criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12865,7 +12865,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_CONFIGURACOES_SISTEMA criada com sucesso.<br>");
+            //print("Tabela WEBC_CONFIGURACOES_SISTEMA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12891,7 +12891,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_GRUPO_USUARIOS criada com sucesso.<br>");
+            //print("Tabela WEBC_GRUPO_USUARIOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12916,7 +12916,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_GRUPO_USUARIOS_CADASTRO criada com sucesso.<br>");
+            //print("Tabela WEBC_GRUPO_USUARIOS_CADASTRO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12939,7 +12939,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_MODULO criada com sucesso.<br>");
+            //print("Tabela WEBC_MODULO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12963,7 +12963,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_PERMISSAO criada com sucesso.<br>");
+            //print("Tabela WEBC_PERMISSAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -12988,7 +12988,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_PERMISSAO_GRUPO_USUARIOS criada com sucesso.<br>");
+            //print("Tabela WEBC_PERMISSAO_GRUPO_USUARIOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13015,7 +13015,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_PERMISSAO_MODULO criada com sucesso.<br>");
+            //print("Tabela WEBC_PERMISSAO_MODULO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13039,7 +13039,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_PERMISSAO_USUARIO criada com sucesso.<br>");
+            //print("Tabela WEBC_PERMISSAO_USUARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13063,7 +13063,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_POSTO_BOMBA criada com sucesso.<br>");
+            //print("Tabela WEBC_POSTO_BOMBA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13089,7 +13089,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_POSTO_BOMBA_BICO criada com sucesso.<br>");
+            //print("Tabela WEBC_POSTO_BOMBA_BICO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13115,7 +13115,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_POSTO_TANQUE criada com sucesso.<br>");
+            //print("Tabela WEBC_POSTO_TANQUE criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13137,7 +13137,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_SITUACAO criada com sucesso.<br>");
+            //print("Tabela WEBC_SITUACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13161,7 +13161,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_SUB_MODULO criada com sucesso.<br>");
+            //print("Tabela WEBC_SUB_MODULO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13184,7 +13184,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_TIPO_PERMISSAO_USUARIO criada com sucesso.<br>");
+            //print("Tabela WEBC_TIPO_PERMISSAO_USUARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13207,7 +13207,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_TIPO_VENDA criada com sucesso.<br>");
+            //print("Tabela WEBC_TIPO_VENDA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13249,7 +13249,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_USUARIO criada com sucesso.<br>");
+            //print("Tabela WEBC_USUARIO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13273,7 +13273,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_VFX_SYNCLOJA criada com sucesso.<br>");
+            //print("Tabela WEBC_VFX_SYNCLOJA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13298,7 +13298,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_VISUALIZACAO_IMEDIATA criada com sucesso.<br>");
+            //print("Tabela WEBC_VISUALIZACAO_IMEDIATA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13320,7 +13320,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WEBC_VISUALIZACAO_IMEDIATA_DADOS criada com sucesso.<br>");
+            //print("Tabela WEBC_VISUALIZACAO_IMEDIATA_DADOS criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13352,7 +13352,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_CAMPANHA criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_CAMPANHA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13377,7 +13377,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_CAMPANHA_AGENDAMENTO criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_CAMPANHA_AGENDAMENTO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13399,7 +13399,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_CAMPANHA_FIXA criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_CAMPANHA_FIXA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13422,7 +13422,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_CAMPANHA_FIXA_IGNORAR criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_CAMPANHA_FIXA_IGNORAR criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13450,7 +13450,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_LISTA criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_LISTA criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13474,7 +13474,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_LISTA_TELEFONES criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_LISTA_TELEFONES criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13504,7 +13504,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_LOG criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_LOG criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13526,7 +13526,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_MASTER criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_MASTER criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13556,7 +13556,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_TRANSACAO criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_TRANSACAO criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
@@ -13583,7 +13583,7 @@ class CreateBaseDadosModel
             DEFAULT CHARACTER SET = utf8
             COLLATE = utf8_bin;";
             $conn->exec($sql);
-            print("Tabela WHATSAPP_USER criada com sucesso.<br>");
+            //print("Tabela WHATSAPP_USER criada com sucesso.<br>");
         } catch (PDOException $e) { }
     }
 
