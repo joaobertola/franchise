@@ -21,7 +21,7 @@ $usuario = $_REQUEST['usuario'];
 $id = '';
 $nome = '';
 
-$sql  = "SELECT id,nome FROM cs2.funcionario WHERE senha = '$usuario'";
+$sql  = "SELECT id,nome FROM cs2.funcionario WHERE senha = '$usuario' AND ativo = 'S'";
 $qry  = mysql_query($sql,$con);
 while ($row = mysql_fetch_assoc($qry)) {
     $id = $row['id'];
