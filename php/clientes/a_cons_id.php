@@ -197,7 +197,7 @@ $command = "select a.codcons, b.nome, a.valorcons, b.vr_custo, c.qtd from valcon
             left join bonificadas c on a.codloja = c.codloja  and a.codcons = c.tpcons
             where a.codloja=$codloja and a.codcons<>'A0409'";
 $result = mysql_query($command, $con);
-$linhas = mysql_num_rows($result);
+@$linhas = mysql_num_rows($result);
 $linhas1 = $linhas + 3;
 
 //tratamento para agencia e conta corrente
@@ -377,7 +377,7 @@ if ($codloja > 0) {
         var id = array[0] - 1;
         var nome = array[1];
         $('#nome_usuario').text(nome);
-        if (nome){
+        if (id > 0){
             var data = new Date();
             var dia = data.getDate();
             var mes = data.getMonth();
@@ -389,6 +389,8 @@ if ($codloja > 0) {
             var ano4 = data.getFullYear();
             var datas = strzero(dia, 2) + '/' + (resultado) + '/' + ano4;
             document.form.dt_regularizacao.value = datas;
+        } else {
+            alert('Senha inválida!');
         }
     }
 
