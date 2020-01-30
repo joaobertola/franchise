@@ -4,12 +4,17 @@ require "connect/sessao_r.php";
 
 $id_franquia = $_SESSION['id'];
 
+// echo "<pre>";
+// print_r($_REQUEST);
+// die();
+
 if ( $id_franquia == 163 or $id_franquia == 46 or $id_franquia == 59 )
     $id_franquia = 1;
 
 $data_agenda = $_REQUEST['data_agenda'];
 $data_agenda = substr($data_agenda,6,4).'-'.substr($data_agenda,3,2).'-'.substr($data_agenda,0,2);
  
+$id_funcionario         = $_REQUEST['id_funcionario_conferencia'];
 $assitente              = $_REQUEST['assitente'];
 $id_assistente_grava    = $_REQUEST['id_assistente_grava'];
 $id_consultor           = $_REQUEST['id_consultor'];
@@ -143,6 +148,22 @@ if ( empty($protocolo) ){
     $qry_insert = mysql_query( $sql_insert,$con) or die("Falha ao gravar o registro.");
 
     $protocolo = mysql_insert_id($con);
+
+    // Grava VISITA LOG
+
+    $insert_visita_log = " INSERT INTO cs2.visitas_log
+                        (
+                            id_funcionario , id_visita , data_hora
+                        )
+                        VALUES  
+                        ( 
+                            $id_funcionario,{$_REQUEST["protocolo"]},NOW()
+                        )";
+    $qry_insert_visita_log = mysql_query( $insert_visita_log,$con) or die("Falha ao gravar o registro.");
+
+    mysql_insert_id($con);
+
+    // Fim Grava VISITA LOG
     
         echo "<script>alert(\"Registro gravado com sucesso, anote o NÚMERO DA VISITA : [  $protocolo  ]!\");</script>";
     echo "<meta http-equiv=\"refresh\" content=\"0; url= painel.php?pagina1=clientes/a_controle_visitas1aa.php\";>";
@@ -238,6 +259,26 @@ if ( empty($protocolo) ){
     $b_rel_datai      = $_REQUEST['b_rel_datai'];
     $b_rel_dataf      = $_REQUEST['b_rel_dataf'];
     $b_rel_franquia   = $_REQUEST['b_rel_franquia'];
+
+    // Grava VISITA LOG
+
+    // $update_visita_log = " UPDATE cs2.visitas_log SET id_funcionario = {$id_funcionario} , id_visita = {$_REQUEST["protocolo"]}, data_hora = NOW()";
+    // $qry_update_visita_log = mysql_query( $update_visita_log,$con) or die("Falha ao gravar o registro.");
+    // mysql_insert_id($con);
+
+    $insert_visita_log = " INSERT INTO cs2.visitas_log
+                        (
+                            id_funcionario , id_visita , data_hora
+                        )
+                        VALUES  
+                        ( 
+                            $id_funcionario,{$_REQUEST["protocolo"]},NOW()
+                        )";
+    $qry_insert_visita_log = mysql_query( $insert_visita_log,$con) or die("Falha ao gravar o registro.");
+
+    mysql_insert_id($con);
+
+    // Fim Grava VISITA LOG
 
     echo "<script>alert(\"Registro ALTERADO com sucesso !\");</script>";
 

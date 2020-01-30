@@ -1,5 +1,5 @@
 <?php
-    error_reporting(0);
+error_reporting(0);
 ?>
 <style type="text/css">
     h1 {
@@ -10,12 +10,15 @@
         margin: 30px 50px 0;
     }
 
-    form input, select {
+    form input,
+    select {
         font-family: Arial;
         font-size: 8pt;
     }
 
-    form input#numero, form input#uf, form input#cep {
+    form input#numero,
+    form input#uf,
+    form input#cep {
         float: left;
         width: 75px;
     }
@@ -30,22 +33,22 @@
 require "connect/sessao.php";
 require "connect/sessao_r.php";
 
-$id_franquia = $_REQUEST ['b_rel_franquia'];
-$idFranquiaAux = $_SESSION ['id'];
+$id_franquia = $_REQUEST['b_rel_franquia'];
+$idFranquiaAux = $_SESSION['id'];
 
 if ($id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franquia == 247)
     $id_franquia = 1;
 
-$protocolo = $_REQUEST ['protocolo'];
-$origem = $_REQUEST ['origem'];
+$protocolo = $_REQUEST['protocolo'];
+$origem = $_REQUEST['origem'];
 
 $sql = "SELECT id, nome FROM cs2.concorrente ORDER BY nome";
-$query = mysql_query( $sql, $con) or die(mysql_error());
-$result = array(); 
+$query = mysql_query($sql, $con) or die(mysql_error());
+$result = array();
 
 
-while($row = mysql_fetch_array($query)) {
-   $result[] = $row;
+while ($row = mysql_fetch_array($query)) {
+    $result[] = $row;
 }
 
 // echo "<pre>";
@@ -72,91 +75,91 @@ $sql_pesquisa = "SELECT
 $qry_pesquisa = mysql_query($sql_pesquisa, $con) or die("Erro MYSQL");
 if (mysql_num_rows($qry_pesquisa) > 0) {
     while ($reg = mysql_fetch_array($qry_pesquisa)) {
-        $registro ++;
-        $data_cadastro = $reg ['data_cadastro'];
-        $data_agendamento = $reg ['data_agendamento'];
-        $hora_agendamento = substr($reg ['hora_agendamento'], 0, 5);
-        $assitente_comercial = $reg ['assitente_comercial'];
-        $id_consultor = $reg ['id_consultor'];
-        $empresa = $reg ['empresa'];
-        $endereco = $reg ['endereco'];
-        $bairro = $reg ['bairro'];
-        $cidade = $reg ['cidade'];
-        $ponto_referencia = $reg ['ponto_referencia'];
-        $fone1 = $reg ['fone1'];
-        $fone2 = $reg ['fone2'];
-        $responsavel = $reg ['responsavel'];
-        $status_venda = $reg ['status_venda'];
-        $data_venda = $reg ['data_venda'];
-        $codigo_cliente = $reg ['codigo_cliente'];
-        $id_assistente = $reg ['id_assistente'];
-        $ocorrencia = $reg ['ocorrencia'];
-        $observacao = $reg ['observacao'];
-        $resultado_visitou = $reg ['resultado_visitou'] == 1 ? 'checked="checked"' : '';
-        $cep = $reg ['cep'];
-        $numero = $reg ['numero'];
-        $uf = $reg ['uf'];
-        $qtdCartoes = $reg ['qtd_cartoes'];
-        $agendarFuturo = $reg ['agendar_futuro'];
-        $email = $reg ['email'];
-        $sms = $reg ['enviar_sms'];
+        $registro++;
+        $data_cadastro = $reg['data_cadastro'];
+        $data_agendamento = $reg['data_agendamento'];
+        $hora_agendamento = substr($reg['hora_agendamento'], 0, 5);
+        $assitente_comercial = $reg['assitente_comercial'];
+        $id_consultor = $reg['id_consultor'];
+        $empresa = $reg['empresa'];
+        $endereco = $reg['endereco'];
+        $bairro = $reg['bairro'];
+        $cidade = $reg['cidade'];
+        $ponto_referencia = $reg['ponto_referencia'];
+        $fone1 = $reg['fone1'];
+        $fone2 = $reg['fone2'];
+        $responsavel = $reg['responsavel'];
+        $status_venda = $reg['status_venda'];
+        $data_venda = $reg['data_venda'];
+        $codigo_cliente = $reg['codigo_cliente'];
+        $id_assistente = $reg['id_assistente'];
+        $ocorrencia = $reg['ocorrencia'];
+        $observacao = $reg['observacao'];
+        $resultado_visitou = $reg['resultado_visitou'] == 1 ? 'checked="checked"' : '';
+        $cep = $reg['cep'];
+        $numero = $reg['numero'];
+        $uf = $reg['uf'];
+        $qtdCartoes = $reg['qtd_cartoes'];
+        $agendarFuturo = $reg['agendar_futuro'];
+        $email = $reg['email'];
+        $sms = $reg['enviar_sms'];
         $vizinhos = $reg['vizinhos'];
 
-        $resultado_demonstra = $reg ['resultado_demonstrou'];
-        $resultado_demonstrou = $reg ['resultado_demonstrou'] == 1 ? 'checked="checked"' : '';
-        $resultado_levousuper = $reg ['resultado_levousuper'] == 1 ? 'checked="checked"' : '';
-        $resultado_ligougerente = $reg ['resultado_ligougerente'] == 1 ? 'checked="checked"' : '';
-        $resultado_cartaovisita = $reg ['resultado_cartaovisita'] == 1 ? 'checked="checked"' : '';
-        $resultado_paralelo = $reg ['paralelo_sistemas'] == 1 ? 'checked="checked"' : '';
-        $resultado_mousepad = $reg ['resultado_mousepad'] == 1 ? 'checked="checked"' : '';
-        $id_concorrente     = $reg ['id_concorrente'];
-        $nome_concorrente    = $reg ['nome_concorrente'];
+        $resultado_demonstra = $reg['resultado_demonstrou'];
+        $resultado_demonstrou = $reg['resultado_demonstrou'] == 1 ? 'checked="checked"' : '';
+        $resultado_levousuper = $reg['resultado_levousuper'] == 1 ? 'checked="checked"' : '';
+        $resultado_ligougerente = $reg['resultado_ligougerente'] == 1 ? 'checked="checked"' : '';
+        $resultado_cartaovisita = $reg['resultado_cartaovisita'] == 1 ? 'checked="checked"' : '';
+        $resultado_paralelo = $reg['paralelo_sistemas'] == 1 ? 'checked="checked"' : '';
+        $resultado_mousepad = $reg['resultado_mousepad'] == 1 ? 'checked="checked"' : '';
+        $id_concorrente     = $reg['id_concorrente'];
+        $nome_concorrente    = $reg['nome_concorrente'];
 
-        $array_filho = explode(';', $reg ['filhos_visitou']);
-        $filho_cadcli = $array_filho [0] == 1 ? 'checked="checked"' : '';
-        $filho_cadpro = $array_filho [1] == 1 ? 'checked="checked"' : '';
-        $filho_frentecx = $array_filho [2] == 1 ? 'checked="checked"' : '';
-        $filho_emis_bol = $array_filho [3] == 1 ? 'checked="checked"' : '';
-        $filho_conscred = $array_filho [4] == 1 ? 'checked="checked"' : '';
-        $filho_parc_deb = $array_filho [5] == 1 ? 'checked="checked"' : '';
-        $filho_negativa = $array_filho [6] == 1 ? 'checked="checked"' : '';
-        $filho_listamark = $array_filho [7] == 1 ? 'checked="checked"' : '';
+        $array_filho = explode(';', $reg['filhos_visitou']);
+        $filho_cadcli = $array_filho[0] == 1 ? 'checked="checked"' : '';
+        $filho_cadpro = $array_filho[1] == 1 ? 'checked="checked"' : '';
+        $filho_frentecx = $array_filho[2] == 1 ? 'checked="checked"' : '';
+        $filho_emis_bol = $array_filho[3] == 1 ? 'checked="checked"' : '';
+        $filho_conscred = $array_filho[4] == 1 ? 'checked="checked"' : '';
+        $filho_parc_deb = $array_filho[5] == 1 ? 'checked="checked"' : '';
+        $filho_negativa = $array_filho[6] == 1 ? 'checked="checked"' : '';
+        $filho_listamark = $array_filho[7] == 1 ? 'checked="checked"' : '';
 
-        $triplicar_vendas = $reg ['triplicar_vendas'];
-        $cad_cliente = $reg ['cad_cliente'];
-        $prod_estoque = $reg ['prod_estoque'];
-        $boletos = $reg ['boletos'];
-        $nota_fiscal = $reg ['nota_fiscal'];
-        $site = $reg ['site'];
-        $frente_caixa = $reg ['frente_caixa'];
+        $triplicar_vendas = $reg['triplicar_vendas'];
+        $cad_cliente = $reg['cad_cliente'];
+        $prod_estoque = $reg['prod_estoque'];
+        $boletos = $reg['boletos'];
+        $nota_fiscal = $reg['nota_fiscal'];
+        $site = $reg['site'];
+        $frente_caixa = $reg['frente_caixa'];
     }
 }
 
 $fone1Cad = preg_replace("/[^0-9]/", "", $fone1);
 $fone2Cad = preg_replace("/[^0-9]/", "", $fone2);
 
-if ( trim($fone2Cad) == '')
+if (trim($fone2Cad) == '')
     $fone2Cad = $fone1Cad;
 
 $sql_cad = "SELECT
                     codloja
-            FROM cs2.cadastro"; 
-            
-$sql_cad.= " WHERE (fone = '$fone1Cad' OR fone = '$fone2Cad') AND sitcli = 0 AND id_franquia != 2";
+            FROM cs2.cadastro";
 
-$sql_cad.= " ORDER BY codLoja DESC LIMIT 1";                                    
-$sql_sel.= " ORDER BY id DESC LIMIT 1";
+$sql_cad .= " WHERE (fone = '$fone1Cad' OR fone = '$fone2Cad') AND sitcli = 0 AND id_franquia != 2";
 
-$qry_cad = mysql_query($sql_cad,$con);
+$sql_cad .= " ORDER BY codLoja DESC LIMIT 1";
+$sql_sel .= " ORDER BY id DESC LIMIT 1";
+
+$qry_cad = mysql_query($sql_cad, $con);
 $codloja = mysql_fetch_array($qry_cad);
 
 $sql_login = "SELECT
                     login
             FROM base_web_control.webc_usuario
             WHERE id_cadastro = $codloja[0]
-            ORDER BY id DESC LIMIT 1";  
+            ORDER BY id DESC LIMIT 1";
 
-$qry_login = mysql_query($sql_login,$con);
+$qry_login = mysql_query($sql_login, $con);
 
 $login = mysql_fetch_array($qry_login);
 
@@ -172,11 +175,10 @@ $login = mysql_fetch_array($qry_login);
 <script type="text/javascript" src="../js/jquery.meio.mask.js"></script>
 
 <script language="javascript">
-
     function apontarAgendamento() {
         $('#data_agenda').attr('style', 'border: 5px solid #f00');
         $('#hora').attr('style', 'border: 5px solid #f00');
-        setTimeout(function () {
+        setTimeout(function() {
             $('#data_agenda').removeAttr('style');
             $('#hora').removeAttr('style');
         }, 3000);
@@ -185,7 +187,7 @@ $login = mysql_fetch_array($qry_login);
     function apontarContato() {
         $('#fone1').attr('style', 'border: 5px solid #f00');
         $('#fone2').attr('style', 'border: 5px solid #f00');
-        setTimeout(function () {
+        setTimeout(function() {
             $('#fone1').removeAttr('style');
             $('#fone2').removeAttr('style');
         }, 3000);
@@ -303,8 +305,7 @@ $login = mysql_fetch_array($qry_login);
     }
 
 
-    function maiusculo(obj)
-    {
+    function maiusculo(obj) {
         obj.value = obj.value.toUpperCase();
     }
 
@@ -349,31 +350,24 @@ $login = mysql_fetch_array($qry_login);
 
     function grava_Registro2() {
         d = document.form;
-<?php
-if ($origem == '1')
-    echo "d.action = 'painel.php?pagina1=clientes/a_controle_visitas_grava2.php';";
-else
-    echo "d.action = 'painel.php?pagina1=clientes/a_controle_visitas_grava.php';";
-?>
+        <?php
+        if ($origem == '1')
+            echo "d.action = 'painel.php?pagina1=clientes/a_controle_visitas_grava2.php';";
+        else
+            echo "d.action = 'painel.php?pagina1=clientes/a_controle_visitas_grava.php';";
+        ?>
         d.submit();
     }
 
-    window.onload = function () {
+    window.onload = function() {
         inicia_cadastro('<?= $status_venda ?>', '<?= $resultado_demonstra ?>');
     }
 </script>
 
 <form name="form" method="post" action="#">
-    <input type="hidden" name="b_rel_assistente"
-           value="<?= $_REQUEST['b_rel_assistente'] ?>"> <input type="hidden"
-           name="b_rel_consultor" value="<?= $_REQUEST['b_rel_consultor'] ?>"> <input
-           type="hidden" name="b_rel_datai" value="<?= $_REQUEST['b_rel_datai'] ?>">
-    <input type="hidden" name="b_rel_dataf"
-           value="<?= $_REQUEST['b_rel_dataf'] ?>"> <input type="hidden"
-           name="b_rel_franquia" value="<?= $_REQUEST['b_rel_franquia'] ?>">
-    <table border="0" width="850px" align="center" cellpadding="0"
-           cellspacing="2"
-           style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
+    <input type="hidden" name="b_rel_assistente" value="<?= $_REQUEST['b_rel_assistente'] ?>"> <input type="hidden" name="b_rel_consultor" value="<?= $_REQUEST['b_rel_consultor'] ?>"> <input type="hidden" name="b_rel_datai" value="<?= $_REQUEST['b_rel_datai'] ?>">
+    <input type="hidden" name="b_rel_dataf" value="<?= $_REQUEST['b_rel_dataf'] ?>"> <input type="hidden" name="b_rel_franquia" value="<?= $_REQUEST['b_rel_franquia'] ?>">
+    <table border="0" width="850px" align="center" cellpadding="0" cellspacing="2" style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
         <tr>
             <td colspan="2" class="titulo"><br>SISTEMA&nbsp;&nbsp;DE&nbsp;&nbsp;CONTROLE&nbsp;&nbsp;COMERCIAL</td>
         </tr>
@@ -384,8 +378,7 @@ else
         <tr>
             <td class="subtitulodireita">N&uacute;mero da Visita</td>
             <td class="subtitulopequeno"><?= $protocolo ?>
-                <input type="hidden" id="protocolo" name="protocolo"
-                       value="<?= $protocolo ?>" /></td>
+                <input type="hidden" id="protocolo" name="protocolo" value="<?= $protocolo ?>" /></td>
         </tr>
         <tr>
             <td class="subtitulodireita">Data do Cadastro</td>
@@ -397,147 +390,90 @@ else
                 <table border=1>
                     <tr>
                         <td width="200">Triplicar suas Vendas</td>
-                        <td><input type="radio" name="triplicar_venda"
-                                   id="triplicar_venda" value="1"
-                                   <?php if ($triplicar_vendas == '1') echo "checked"; ?>>Sim <input
-                                   type="radio" name="triplicar_venda" id="triplicar_venda"
-                                   value="2" <?php if ($triplicar_vendas == '2') echo "checked"; ?>>Nao
+                        <td><input type="radio" name="triplicar_venda" id="triplicar_venda" value="1" <?php if ($triplicar_vendas == '1') echo "checked"; ?>>Sim <input type="radio" name="triplicar_venda" id="triplicar_venda" value="2" <?php if ($triplicar_vendas == '2') echo "checked"; ?>>Nao
                         </td>
                     </tr>
                     <tr>
                         <td width="200">Cadastros de Clientes</td>
-                        <td><input type="radio" name="cad_cliente" value="1"
-                                   <?php if ($cad_cliente == '1') echo "checked"; ?>>Sim <input
-                                   type="radio" name="cad_cliente" value="2"
-                                   <?php if ($cad_cliente == '2') echo "checked"; ?>>Nao</td>
+                        <td><input type="radio" name="cad_cliente" value="1" <?php if ($cad_cliente == '1') echo "checked"; ?>>Sim <input type="radio" name="cad_cliente" value="2" <?php if ($cad_cliente == '2') echo "checked"; ?>>Nao</td>
                     </tr>
                     <tr>
                         <td width="200">Cadastro de Produto e Estoque</td>
-                        <td><input type="radio" name="prod_estoque" value="1"
-                                   <?php if ($prod_estoque == '1') echo "checked"; ?>>Sim <input
-                                   type="radio" name="prod_estoque" value="2"
-                                   <?php if ($prod_estoque == '2') echo "checked"; ?>>Nao</td>
+                        <td><input type="radio" name="prod_estoque" value="1" <?php if ($prod_estoque == '1') echo "checked"; ?>>Sim <input type="radio" name="prod_estoque" value="2" <?php if ($prod_estoque == '2') echo "checked"; ?>>Nao</td>
                     </tr>
                     <tr>
                         <td width="200">Emissão de Boletos ou Carnê Crediário</td>
-                        <td><input type="radio" name="boletos" value="1"
-                                   <?php if ($boletos == '1') echo "checked"; ?>>Sim <input
-                                   type="radio" name="boletos" value="2"
-                                   <?php if ($boletos == '2') echo "checked"; ?>>Nao</td>
+                        <td><input type="radio" name="boletos" value="1" <?php if ($boletos == '1') echo "checked"; ?>>Sim <input type="radio" name="boletos" value="2" <?php if ($boletos == '2') echo "checked"; ?>>Nao</td>
                     </tr>
                     <tr>
                         <td width="200">Frente de Caixa</td>
-                        <td><input type="radio" name="frente_caixa" value="1"
-                                   <?php if ($frente_caixa == '1') echo "checked"; ?>>Sim <input
-                                   type="radio" name="frente_caixa" value="2"
-                                   <?php if ($frente_caixa == '2') echo "checked"; ?>>Nao</td>
+                        <td><input type="radio" name="frente_caixa" value="1" <?php if ($frente_caixa == '1') echo "checked"; ?>>Sim <input type="radio" name="frente_caixa" value="2" <?php if ($frente_caixa == '2') echo "checked"; ?>>Nao</td>
                     </tr>
                     <tr>
                         <td width="200">Emissão de Nota Fiscal</td>
-                        <td><input type="radio" name="nota_fiscal" value="1"
-                                   <?php if ($nota_fiscal == '1') echo "checked"; ?>>Sim <input
-                                   type="radio" name="nota_fiscal" value="2"
-                                   <?php if ($nota_fiscal == '2') echo "checked"; ?>>Nao</td>
+                        <td><input type="radio" name="nota_fiscal" value="1" <?php if ($nota_fiscal == '1') echo "checked"; ?>>Sim <input type="radio" name="nota_fiscal" value="2" <?php if ($nota_fiscal == '2') echo "checked"; ?>>Nao</td>
                     </tr>
                     <tr>
                         <td width="200">Site na Internet</td>
-                        <td><input type="radio" name="site" value="1"
-                                   <?php if ($site == '1') echo "checked"; ?>>Sim <input
-                                   type="radio" name="site" value="2"
-                                   <?php if ($site == '2') echo "checked"; ?>>Nao</td>
+                        <td><input type="radio" name="site" value="1" <?php if ($site == '1') echo "checked"; ?>>Sim <input type="radio" name="site" value="2" <?php if ($site == '2') echo "checked"; ?>>Nao</td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
             <td class="subtitulodireita">Fone 1 (Fixo)</td>
-            <td class="subtitulopequeno"><input style="float: left;" name="fone1" type="text"
-                                                id="fone1" size="22" maxlength="13"
-                                                onFocus="this.className = 'boxover'"
-                                                onKeyPress="soNumero(); formatar('##-####-####', this)"
-                                                value="<?= $fone1 ?>" />
-                <?php if (!empty($login[0])): ?>
-                    <p style="color: red; float: left; margin: 0px;"><?php echo "Cliente já afiliado: ".$login[0] ?></p>
-                <?php endif ?> 
+            <td class="subtitulopequeno"><input style="float: left;" name="fone1" type="text" id="fone1" size="22" maxlength="13" onFocus="this.className = 'boxover'" onKeyPress="soNumero(); formatar('##-####-####', this)" value="<?= $fone1 ?>" />
+                <?php if (!empty($login[0])) : ?>
+                    <p style="color: red; float: left; margin: 0px;"><?php echo "Cliente já afiliado: " . $login[0] ?></p>
+                <?php endif ?>
             </td>
- 
-      
+
+
         </tr>
         <tr>
             <td class="subtitulodireita">Fone 2 (Celular)</td>
-            <td class="subtitulopequeno"><input type="text" name="fone2"
-                                                id="fone2" size="22" maxlength="13"
-                                                onFocus="this.className = 'boxover'"
-                                                onKeyPress="soNumero();
-                                                        formatar('##-####-####', this)"
-                                                value="<?= $fone2 ?>" /></td>
+            <td class="subtitulopequeno"><input type="text" name="fone2" id="fone2" size="22" maxlength="13" onFocus="this.className = 'boxover'" onKeyPress="soNumero();
+                                                        formatar('##-####-####', this)" value="<?= $fone2 ?>" /></td>
         </tr>
         <tr>
             <td class="subtitulodireita">Respons&aacute;vel</td>
-            <td class="subtitulopequeno"><input type="text" name="responsavel"
-                                                id="responsavel" size="75" maxlength="200"
-                                                onFocus="this.className = 'boxover'"
-                                                onBlur="maiusculo(this); this.className = 'boxnormal'"
-                                                value="<?= $responsavel ?>" /></td>
+            <td class="subtitulopequeno"><input type="text" name="responsavel" id="responsavel" size="75" maxlength="200" onFocus="this.className = 'boxover'" onBlur="maiusculo(this); this.className = 'boxnormal'" value="<?= $responsavel ?>" /></td>
         </tr>
         <tr>
             <td class="subtitulodireita">Email</td>
-            <td class="subtitulopequeno"><input type="text" name="email"
-                                                id="email" onFocus="this.className = 'boxover'" value="<?= $email ?>" />
+            <td class="subtitulopequeno"><input type="text" name="email" id="email" onFocus="this.className = 'boxover'" value="<?= $email ?>" />
             </td>
         </tr>
         <tr>
             <td class="subtitulodireita">Empresa</td>
-            <td class="subtitulopequeno"><input name="empresa" type="text"
-                                                id="empresa" size="75" maxlength="60"
-                                                onFocus="this.className = 'boxover'"
-                                                onBlur="maiusculo(this);
-                                                        this.className = 'boxnormal'"
-                                                value="<?= $empresa ?>" /></td>
+            <td class="subtitulopequeno"><input name="empresa" type="text" id="empresa" size="75" maxlength="60" onFocus="this.className = 'boxover'" onBlur="maiusculo(this);
+                                                        this.className = 'boxnormal'" value="<?= $empresa ?>" /></td>
         </tr>
         <tr>
             <td class="subtitulodireita">CEP</td>
-            <td class="subtitulopequeno"><input name="cep_agendamento"
-                                                type="text" value="<?php echo $cep ?>" id="cep_agendamento"
-                                                maxlength="9" onchange="verificaEndereco()"
-                                                onKeyPress="return MM_formtCep(event, this, '#####-###');" /></td>
+            <td class="subtitulopequeno"><input name="cep_agendamento" type="text" value="<?php echo $cep ?>" id="cep_agendamento" maxlength="9" onchange="verificaEndereco()" onKeyPress="return MM_formtCep(event, this, '#####-###');" /></td>
         </tr>
         </tr>
         <tr>
             <td class="subtitulodireita">Endere&ccedil;o</td>
-            <td class="subtitulopequeno"><input name="endereco" type="text"
-                                                id="endereco" size="75" maxlength="100"
-                                                onFocus="this.className = 'boxover'"
-                                                onBlur="maiusculo(this);
-                                                        this.className = 'boxnormal'"
-                                                value="<?= $endereco ?>" /></td>
+            <td class="subtitulopequeno"><input name="endereco" type="text" id="endereco" size="75" maxlength="100" onFocus="this.className = 'boxover'" onBlur="maiusculo(this);
+                                                        this.className = 'boxnormal'" value="<?= $endereco ?>" /></td>
         </tr>
         <tr>
             <td class="subtitulodireita">N&ordm;</td>
-            <td class="subtitulopequeno"><input name="numero" type="text"
-                                                id="numero" size="75" value="<?php echo $numero ?>" maxlength="10"
-                                                onFocus="this.className = 'boxover'"
-                                                onBlur="maiusculo(this);
+            <td class="subtitulopequeno"><input name="numero" type="text" id="numero" size="75" value="<?php echo $numero ?>" maxlength="10" onFocus="this.className = 'boxover'" onBlur="maiusculo(this);
                                                         this.className = 'boxnormal'" /></td>
         </tr>
         </tr>
         <tr>
             <td class="subtitulodireita">Bairro</td>
-            <td class="subtitulopequeno"><input name="bairro" type="text"
-                                                id="bairro" size="75" maxlength="60"
-                                                onFocus="this.className = 'boxover'"
-                                                onBlur="maiusculo(this);
-                                                        this.className = 'boxnormal'"
-                                                value="<?= $bairro ?>" /></td>
+            <td class="subtitulopequeno"><input name="bairro" type="text" id="bairro" size="75" maxlength="60" onFocus="this.className = 'boxover'" onBlur="maiusculo(this);
+                                                        this.className = 'boxnormal'" value="<?= $bairro ?>" /></td>
         </tr>
         <tr>
             <td class="subtitulodireita">Cidade</td>
-            <td class="subtitulopequeno"><input name="cidade" type="text"
-                                                id="cidade" size="75" maxlength="50"
-                                                onFocus="this.className = 'boxover'"
-                                                onBlur="maiusculo(this);
-                                                        this.className = 'boxnormal'"
-                                                value="<?= $cidade ?>" /></td>
+            <td class="subtitulopequeno"><input name="cidade" type="text" id="cidade" size="75" maxlength="50" onFocus="this.className = 'boxover'" onBlur="maiusculo(this);
+                                                        this.className = 'boxnormal'" value="<?= $cidade ?>" /></td>
         </tr>
         <tr>
             <td class="subtitulodireita">UF</td>
@@ -580,33 +516,26 @@ else
                         Paulo</option>
                     <option value="SE" <?php echo $uf == 'SE' ? 'selected' : '' ?>>Sergipe</option>
                     <option value="TO" <?php echo $uf == 'TO' ? 'selected' : '' ?>>Tocantins</option>
-                </select> <font color="#FF0000">(*)</font></td>
+                </select>
+                <font color="#FF0000">(*)</font>
+            </td>
         </tr>
         <tr>
             <td class="subtitulodireita">Ponto de Referencia</td>
-            <td class="subtitulopequeno"><input name="ponto_referencia"
-                                                type="text" id="ponto_referencia" size="75" maxlength="100"
-                                                onFocus="this.className = 'boxover'"
-                                                onBlur="maiusculo(this);
-                                                        this.className = 'boxnormal'"
-                                                value="<?= $ponto_referencia ?>" /></td>
+            <td class="subtitulopequeno"><input name="ponto_referencia" type="text" id="ponto_referencia" size="75" maxlength="100" onFocus="this.className = 'boxover'" onBlur="maiusculo(this);
+                                                        this.className = 'boxnormal'" value="<?= $ponto_referencia ?>" /></td>
         </tr>
 
 
         <tr>
             <td class="subtitulodireita">Observa&ccedil;&otilde;es</td>
-            <td class="subtitulopequeno"><textarea
-                    style="resize: none; width: 68%" name="observacao" id="observacao"
-                    rows="5" onFocus="this.className = 'boxover'"
-                    onBlur="maiusculo(this);
+            <td class="subtitulopequeno"><textarea style="resize: none; width: 68%" name="observacao" id="observacao" rows="5" onFocus="this.className = 'boxover'" onBlur="maiusculo(this);
                             this.className = 'boxnormal'"><?= $observacao ?>
                 </textarea></td>
         </tr>
         <tr>
             <td class="subtitulodireita"></td>
-            <td class="subtitulopequeno"><input type="checkbox"
-                                                name="agendarFuturo" id="agendarFuturo"
-                                                <?php echo $agendarFuturo == 'S' ? 'checked' : '' ?>>Agendar em outra
+            <td class="subtitulopequeno"><input type="checkbox" name="agendarFuturo" id="agendarFuturo" <?php echo $agendarFuturo == 'S' ? 'checked' : '' ?>>Agendar em outra
                 oportunidade</td>
         </tr>
 
@@ -619,33 +548,28 @@ else
                 echo "<select name='id_assistente_grava' style='width:42%'>";
                 echo "<option value='0'>Selecione</option>";
                 while ($rs = mysql_fetch_array($qry)) {
-                    if ($rs ['situacao'] == "0") {
+                    if ($rs['situacao'] == "0") {
                         $sit = "Ativo";
-                    } elseif ($rs ['situacao'] == "1") {
+                    } elseif ($rs['situacao'] == "1") {
                         $sit = "Bloqueado";
                     }
-                    if ($id_assistente == $rs ['id']) {
-                        ?>
-                <option value="<?= $rs['id'] ?>" selected><?= $rs['nome'] ?> - <?= $sit ?></option>
-            <?php } else { ?>
-                <option
-                    value="<?= $rs['id'] ?>"><?= $rs['nome'] ?> - <?= $sit ?></option>
-                    <?php
+                    if ($id_assistente == $rs['id']) {
+                ?>
+                        <option value="<?= $rs['id'] ?>" selected><?= $rs['nome'] ?> - <?= $sit ?></option>
+                    <?php } else { ?>
+                        <option value="<?= $rs['id'] ?>"><?= $rs['nome'] ?> - <?= $sit ?></option>
+                <?php
+                    }
                 }
-            }
-            echo "</select>"
-            ?>
-        </td>
+                echo "</select>"
+                ?>
+            </td>
         </tr>
         <tr>
             <td class="subtitulodireita">Data do Agendamento</td>
             <td class="subtitulopequeno">
-                <input name="data_agenda" type="text"
-                                                id="data_agenda" size="15" maxlength="10"
-                                                onFocus="this.className = 'boxover'"
-                                                onKeyPress="return MM_formtCep(event, this, '##/##/####');"
-                                                onBlur="this.className = 'boxnormal'" value="<?= $data_agendamento ?>" />
-                <input type="checkbox" name="flagVizinhos" id="flagVizinhos" <?php echo $vizinhos == 'on' ? 'checked' : '' ?>/>Vizinhos
+                <input name="data_agenda" type="text" id="data_agenda" size="15" maxlength="10" onFocus="this.className = 'boxover'" onKeyPress="return MM_formtCep(event, this, '##/##/####');" onBlur="this.className = 'boxnormal'" value="<?= $data_agendamento ?>" />
+                <input type="checkbox" name="flagVizinhos" id="flagVizinhos" <?php echo $vizinhos == 'on' ? 'checked' : '' ?> />Vizinhos
             </td>
         </tr>
         <tr>
@@ -659,230 +583,299 @@ else
                 echo "<select name='id_consultor' style='width:42%'>";
                 echo "  <option value='0' selected>SELECIONE O CONSULTOR</option>";
                 while ($rs = mysql_fetch_array($qry)) {
-                    if ($rs ['situacao'] == "0") {
+                    if ($rs['situacao'] == "0") {
                         $sit = "Ativo";
-                    } elseif ($rs ['situacao'] == "1") {
+                    } elseif ($rs['situacao'] == "1") {
                         $sit = "Bloqueado";
                     }
-                    if ($id_consultor == $rs ['id']) {
-                        ?>
-                <option value="<?= $rs['id'] ?>" selected><?= $rs['nome'] ?> - <?= $sit ?></option>
-            <?php } else { ?>
-                <option
-                    value="<?= $rs['id'] ?>"><?= $rs['nome'] ?> - <?= $sit ?></option>
-                    <?php
+                    if ($id_consultor == $rs['id']) {
+                ?>
+                        <option value="<?= $rs['id'] ?>" selected><?= $rs['nome'] ?> - <?= $sit ?></option>
+                    <?php } else { ?>
+                        <option value="<?= $rs['id'] ?>"><?= $rs['nome'] ?> - <?= $sit ?></option>
+                <?php
+                    }
                 }
-            }
-            echo "</select>";
-            ?>
-        </td>
+                echo "</select>";
+                ?>
+            </td>
         </tr>
         <tr>
             <td class="subtitulodireita">Hora</td>
-            <td class="subtitulopequeno"><input name="hora" type="text" id="hora"
-                                                size="10" maxlength="5" onFocus="this.className = 'boxover'"
-                                                onKeyPress="soNumero();" OnKeyUp="Mascara_Hora(this.value)"
-                                                value="<?= $hora_agendamento ?>" /></td>
+            <td class="subtitulopequeno"><input name="hora" type="text" id="hora" size="10" maxlength="5" onFocus="this.className = 'boxover'" onKeyPress="soNumero();" OnKeyUp="Mascara_Hora(this.value)" value="<?= $hora_agendamento ?>" /></td>
 
             <?php if ($idFranquiaAux == 163 || $idFranquiaAux == 4) { ?>
 
 
 
 
-            <tr>
-                <td class="subtitulodireita">Enviar SMS</td>
-                <td class="subtitulopequeno"><input name="sms" type="radio" id="sms"
-                                                    checked value="S" <?php echo $sms == 'S' ? 'checked' : '' ?> /> Sim
-                    <input name="sms" type="radio" id="sms" value="N"
-                           <?php echo $sms == 'S' ? '' : 'checked' ?> /> Não</td>
-            </tr>
-        <?php } ?>
         <tr>
-            <td colspan="2" class="subtitulopequeno">&nbsp;</td>
+            <td class="subtitulodireita">Enviar SMS</td>
+            <td class="subtitulopequeno"><input name="sms" type="radio" id="sms" checked value="S" <?php echo $sms == 'S' ? 'checked' : '' ?> /> Sim
+                <input name="sms" type="radio" id="sms" value="N" <?php echo $sms == 'S' ? '' : 'checked' ?> /> Não</td>
         </tr>
-        <tr>
-            <td colspan="2" class="titulo">RESULTADO DO AGENDAMENTO</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="subtitulopequeno">&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="subtitulodireita">Status</td>
-            <td class="subtitulopequeno">
-                <label style="cursor: pointer" id="datafinalizacao"> <input type="radio" name="status" value="S"
-                                                                            id='divum' onclick="mostrar(this)" <?php if ($status_venda == "S") { ?> checked <?php } ?> /> &nbsp;VENDA   REALIZADA</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label  style="cursor: pointer"> <input type="radio" name="status" value="N" id='divdois' onclick="mostrar(this)"
-                                                       <?php if ($status_venda == "N") { ?> checked <?php } ?> />&nbsp;N&Atilde;O TEM INTERESSE </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label style="cursor: pointer"> <input type="radio" name="status" value="P" id="divtres" onclick="mostrar(this)"
-                                                       <?php if ($status_venda == "P") { ?> checked <?php } ?> />&nbsp;VISITA PENDENTE </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label style="cursor: pointer"> <input type="radio" name="status" value="R" id="divquatro" onclick="apontarAgendamento()"
-                                                       <?php if ($status_venda == "R") { ?> checked <?php } ?> />&nbsp;REAGENDAMENTO </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </br>
-                <label style="cursor: pointer"> <input type="radio" name="status" value="RL" id="divcinco" onclick="apontarContato()"
-                                                       <?php if ($status_venda == "RL") { ?> checked <?php } ?> />&nbsp;RETORNAR LIGAÇÃO</label>
-                </br>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <div id="div_data" style="display: none">
-                    <table border="0" width="850px" align="center" cellpadding="0"
-                           cellspacing="2"
-                           style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
-                        <tr>
-                            <td width="30%" class="subtitulodireita"><span id='data_texto'></span>
-                            </td>
-                            <td width="70%" class="subtitulopequeno"><input type="text"
-                                                                            name="data_venda" id="data_venda" value="<?= $data_venda ?>"
-                                                                            onFocus="this.className = 'boxover'"
-                                                                            onKeyPress="return MM_formtCep(event, this, '##/##/####');"
-                                                                            onBlur="this.className = 'boxnormal'" maxlength="10" /></td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <div id="div_codigo" style="display: none">
-                    <table border="0" width="850px" align="center" cellpadding="0"
-                           cellspacing="2"
-                           style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
-                        <tr>
-                            <td class="subtitulodireita" width="30%">C&oacute;digo do Cliente</td>
-                            <td class="subtitulopequeno" width="70%"><input type="text"
-                                                                            name="codigo_cliente" id="codigo_cliente"
-                                                                            value="<?= $codigo_cliente ?>" onFocus="this.className = 'boxover'"
-                                                                            onKeyPress="soNumero();" onBlur="this.className = 'boxnormal'" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <div id="div_ocorrencia" style="display: none">
-                    <table border="0" width="850px" align="center" cellpadding="0"
-                           cellspacing="2"
-                           style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
-                        <tr>
-                            <td class="subtitulodireita" width="30%">Motivo do N&Atilde;O
-                                INTERESSE</td>
-                            <td class="subtitulopequeno" width="70%" style="text-align: left">
-                                <textarea name="ocorrencia" wrap=physical style="width: 99%"
-                                          rows="3"
-                                          onKeyDown="textCounter(this.form.ocorrencia, this.form.remLen, 160);"
-                                          onKeyUp="textCounter(this.form.ocorrencia, this.form.remLen, 160);"><?= $ocorrencia ?></textarea>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
+    <?php } ?>
+    <tr>
+        <td colspan="2" class="subtitulopequeno">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="titulo">RESULTADO DO AGENDAMENTO</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="subtitulopequeno">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="subtitulodireita">Status</td>
+        <td class="subtitulopequeno">
+            <label style="cursor: pointer" id="datafinalizacao"> <input type="radio" name="status" value="S" id='divum' onclick="mostrar(this)" <?php if ($status_venda == "S") { ?> checked <?php } ?> /> &nbsp;VENDA REALIZADA</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label style="cursor: pointer"> <input type="radio" name="status" value="N" id='divdois' onclick="mostrar(this)" <?php if ($status_venda == "N") { ?> checked <?php } ?> />&nbsp;N&Atilde;O TEM INTERESSE </label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label style="cursor: pointer"> <input type="radio" name="status" value="P" id="divtres" onclick="mostrar(this)" <?php if ($status_venda == "P") { ?> checked <?php } ?> />&nbsp;VISITA PENDENTE </label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label style="cursor: pointer"> <input type="radio" name="status" value="R" id="divquatro" onclick="apontarAgendamento()" <?php if ($status_venda == "R") { ?> checked <?php } ?> />&nbsp;REAGENDAMENTO </label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </br>
+            <label style="cursor: pointer"> <input type="radio" name="status" value="RL" id="divcinco" onclick="apontarContato()" <?php if ($status_venda == "RL") { ?> checked <?php } ?> />&nbsp;RETORNAR LIGAÇÃO</label>
+            </br>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div id="div_data" style="display: none">
+                <table border="0" width="850px" align="center" cellpadding="0" cellspacing="2" style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
+                    <tr>
+                        <td width="30%" class="subtitulodireita"><span id='data_texto'></span>
+                        </td>
+                        <td width="70%" class="subtitulopequeno"><input type="text" name="data_venda" id="data_venda" value="<?= $data_venda ?>" onFocus="this.className = 'boxover'" onKeyPress="return MM_formtCep(event, this, '##/##/####');" onBlur="this.className = 'boxnormal'" maxlength="10" /></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div id="div_codigo" style="display: none">
+                <table border="0" width="850px" align="center" cellpadding="0" cellspacing="2" style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
+                    <tr>
+                        <td class="subtitulodireita" width="30%">C&oacute;digo do Cliente</td>
+                        <td class="subtitulopequeno" width="70%"><input type="text" name="codigo_cliente" id="codigo_cliente" value="<?= $codigo_cliente ?>" onFocus="this.className = 'boxover'" onKeyPress="soNumero();" onBlur="this.className = 'boxnormal'" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div id="div_ocorrencia" style="display: none">
+                <table border="0" width="850px" align="center" cellpadding="0" cellspacing="2" style="border: 1px solid #D1D7DC; background-color: #FFFFFF">
+                    <tr>
+                        <td class="subtitulodireita" width="30%">Motivo do N&Atilde;O
+                            INTERESSE</td>
+                        <td class="subtitulopequeno" width="70%" style="text-align: left">
+                            <textarea name="ocorrencia" wrap=physical style="width: 99%" rows="3" onKeyDown="textCounter(this.form.ocorrencia, this.form.remLen, 160);" onKeyUp="textCounter(this.form.ocorrencia, this.form.remLen, 160);"><?= $ocorrencia ?></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
 
-        <?php
-        $display = '"';
-//  echo 'ID FRANQUIA: ' . $id_franquia;
-        if ($idFranquiaAux != 163 && $idFranquiaAux != 4 && $idFranquiaAux != 1) {
-            $display = 'style="display: none"';
-        }
-        ?>
+    <?php // AQUI ANIMAL
+    $display = '"';
+    $senha_verificada = false;
+    //  echo 'ID FRANQUIA: ' . $id_franquia;
+    if ($idFranquiaAux != 163 && $idFranquiaAux != 4 && $idFranquiaAux != 1 || !$senha_verificada) {
+        $display = 'style="display: none"';
+    }
+    ?>
 
-        <tr <?php echo $display; ?>>
-            <td colspan="2" class="titulo">RESULTADO DA CONFER&Ecirc;NCIA</td>
-        </tr>
-        <tr <?php echo $display; ?>>
-            <td colspan="2" class="subtitulopequeno">&nbsp;</td>
-        </tr>
-        <tr <?php echo $display; ?>>
-            <td colspan="2" class="subtitulopequeno">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                    type="checkbox" name="resultado_visitou" id="resultado_visitou"
-                    <?php echo $resultado_visitou; ?>> Visitou no Hor&aacute;rio
-                Agendado ?<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                    type="checkbox" name="paralelo_sistemas" id="paralelo_sistemas"
-                    <?php echo $resultado_paralelo; ?>> Paralelo Entre Sistemas ?<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                    type="checkbox" name="resultado_demonstrou"
-                    id="resultado_demonstrou" onclick="mostrar_filhos(this)"
-                    <?php echo $resultado_demonstrou; ?>> Demonstrou no Computador todas
-                as Solu&ccedil;&otilde;es ?<br>
-                <div id="div_demonstrou" style="display: none">
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_cadcli"
-                               <?php echo $filho_cadcli; ?>> Cadastro de Clientes
-                    </div>
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_cadpro"
-                               <?php echo $filho_cadpro; ?>> Cadastro de Produtos/Estoque<br>
-                    </div>
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_frentecx"
-                               <?php echo $filho_frentecx; ?>> Frente de Caixa<br>
-                    </div>
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_emis_bol"
-                               <?php echo $filho_emis_bol; ?>> Emissão de Boletos<br>
-                    </div>
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_conscred"
-                               <?php echo $filho_conscred; ?>> Consulta de Crédito<br>
-                    </div>
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_parc_deb"
-                               <?php echo $filho_parc_deb; ?>> Parcelamento de Débito para
-                        devedores<br>
-                    </div>
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_negativa"
-                               <?php echo $filho_negativa; ?>> Negativação de Devedores<br>
-                    </div>
-                    <div style='margin-left: 50px;'>
-                        <input type="checkbox" name="filho_listamark"
-                               <?php echo $filho_listamark; ?>> Lista Marketing - Clientes da
-                        Rua ou Bairro
-                    </div>
-                </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                    type="checkbox" name="resultado_levousuper"
-                    id="resultado_levousuper" <?php echo $resultado_levousuper; ?>>
-                Levou a Super Pasta Preta - Equipamentos ?<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                    type="checkbox" name="resultado_ligougerente"
-                    id="resultado_ligougerente" <?php echo $resultado_ligougerente; ?>>
-                Ligou para o Gerente ? <br> 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                    type="checkbox" name="resultado_mousepad"
-                    id="resultado_mousepad" <?php echo $resultado_mousepad; ?>>
-                Mouse PAD? <br> <br>
-                <label style="padding-left: 30px;">Concorrente: </label>
-                <select name="id_concorrente">
-                    <option value="0">Sem Sistema</option>
-                    <?php foreach ($result as $value): ?>
-                        <option value="<?php echo $value['id'] ?>" <?php echo ($value['id'] == $id_concorrente)? 'selected="selected"':"" ?> ><?php echo $value['nome'] ?></option>
-                    <?php endforeach ?>
-                </select>
-                <a href="painel.php?pagina1=clientes/cadastrar_concorrentes.php" style="padding-left: 10px">Adicionar Concorrente</a>
-                <br> <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                    type="checkbox" name="resultado_cartaovisita"
-                    id="resultado_cartaovisita" <?php echo $resultado_cartaovisita; ?>><font
-                    color="red"> Cartões de Visita dos Vizinhos</font> <input
-                    type="number" name="iptQtdCartoes" id="iptQtdCartoes"
-                    value="<?php echo $qtdCartoes ?>"><br> <br>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center"><input name="Gravar" type="button"
-                                                  value="   Gravar  " onClick="valida_dados2();" /> <input
-                                                  type='button' value='       Voltar        ' style='cursor: pointer'
-                                                  onClick="document.location = 'painel.php?pagina1=clientes/a_controle_visitas3.php'" />
-                <input type='button' value='       Fechar        '
-                       style='cursor: pointer' onClick="window.close()" /></td>
-        </tr>
+    <tr>
+        <td colspan="2" class="titulo">RESULTADO DA CONFER&Ecirc;NCIA</td>
+    </tr>
+    <tr id="btn_formulario_conferencia">
+        <td>
+            <a href="javascript:void(0);" onclick="openFormSenha();" style="background:#eee;color:#000;border:1px #ccc solid;padding:1px;">Alterar</a>
+        </td>
+    </tr>
+    <tr>
+        <td id="formulario_verifica_senha" style="display:none;">
+            <form action="a_controle_visitas_altera.php" method="POST">
+                <label for="senha_digitada">Digite sua senha</label>
+                <input type="password" name="senha_digitada" id="senha_digitada">
+                <input type="submit" value="OK">
+            </form>
+        </td>
+    </tr>
+    <tr id="senha_invalida" style="display:none;color:red;">
+        <td>Senha inválida!</td>
+    </tr>
+    <tr <?php echo $display; ?> class="exibe_formulario_conferencia">
+        <td colspan="2" class="subtitulopequeno">&nbsp;</td>
+    </tr>
+    <tr <?php echo $display; ?> class="exibe_formulario_conferencia">
+        <td colspan="2" class="subtitulopequeno">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="resultado_visitou" id="resultado_visitou" <?php echo $resultado_visitou; ?>> Visitou no Hor&aacute;rio
+            Agendado ?<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="paralelo_sistemas" id="paralelo_sistemas" <?php echo $resultado_paralelo; ?>> Paralelo Entre Sistemas ?<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="resultado_demonstrou" id="resultado_demonstrou" onclick="mostrar_filhos(this)" <?php echo $resultado_demonstrou; ?>> Demonstrou no Computador todas
+            as Solu&ccedil;&otilde;es ?<br>
+            <input type="hidden" name="id_funcionario_conferencia" id="id_funcionario_conferencia">
+            <div id="div_demonstrou" style="display: none">
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_cadcli" <?php echo $filho_cadcli; ?>> Cadastro de Clientes
+                </div>
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_cadpro" <?php echo $filho_cadpro; ?>> Cadastro de Produtos/Estoque<br>
+                </div>
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_frentecx" <?php echo $filho_frentecx; ?>> Frente de Caixa<br>
+                </div>
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_emis_bol" <?php echo $filho_emis_bol; ?>> Emissão de Boletos<br>
+                </div>
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_conscred" <?php echo $filho_conscred; ?>> Consulta de Crédito<br>
+                </div>
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_parc_deb" <?php echo $filho_parc_deb; ?>> Parcelamento de Débito para
+                    devedores<br>
+                </div>
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_negativa" <?php echo $filho_negativa; ?>> Negativação de Devedores<br>
+                </div>
+                <div style='margin-left: 50px;'>
+                    <input type="checkbox" name="filho_listamark" <?php echo $filho_listamark; ?>> Lista Marketing - Clientes da
+                    Rua ou Bairro
+                </div>
+            </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="resultado_levousuper" id="resultado_levousuper" <?php echo $resultado_levousuper; ?>>
+            Levou a Super Pasta Preta - Equipamentos ?<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="resultado_ligougerente" id="resultado_ligougerente" <?php echo $resultado_ligougerente; ?>>
+            Ligou para o Gerente ? <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="resultado_mousepad" id="resultado_mousepad" <?php echo $resultado_mousepad; ?>>
+            Mouse PAD? <br> <br>
+            <label style="padding-left: 30px;">Concorrente: </label>
+            <select name="id_concorrente">
+                <option value="0">Sem Sistema</option>
+                <?php foreach ($result as $value) : ?>
+                    <option value="<?php echo $value['id'] ?>" <?php echo ($value['id'] == $id_concorrente) ? 'selected="selected"' : "" ?>><?php echo $value['nome'] ?></option>
+                <?php endforeach ?>
+            </select>
+            <a href="painel.php?pagina1=clientes/cadastrar_concorrentes.php" style="padding-left: 10px">Adicionar Concorrente</a>
+            <br> <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="resultado_cartaovisita" id="resultado_cartaovisita" <?php echo $resultado_cartaovisita; ?>>
+            <font color="red"> Cartões de Visita dos Vizinhos</font> <input type="number" name="iptQtdCartoes" id="iptQtdCartoes" value="<?php echo $qtdCartoes ?>"><br> <br>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center"><input name="Gravar" type="button" value="   Gravar  " onClick="valida_dados2();" /> <input type='button' value='       Voltar        ' style='cursor: pointer' onClick="document.location = 'painel.php?pagina1=clientes/a_controle_visitas3.php'" />
+            <input type='button' value='       Fechar        ' style='cursor: pointer' onClick="window.close()" /></td>
+    </tr>
     </table>
 </form>
+
+<script>
+    function openFormSenha() {
+        $('#formulario_verifica_senha').css('display', 'block');
+    }
+</script>
+
+<?php
+
+// AQUI COMEÇA VALIDAÇÃO SENHA
+$servername = '10.2.2.3';
+$username = "csinform";
+$password = "inform4416#scf";
+$dbname = 'cs2';
+
+if (!$con = mysql_connect($servername, $username, $password)) {
+    echo 'Não foi possível conectar ao mysql';
+    exit;
+}
+
+if (!mysql_select_db($dbname, $con)) {
+    echo 'Não foi possível selecionar o banco de dados';
+    exit;
+}
+
+if (isset($_POST['senha_digitada'])) {
+
+    $id = '';
+
+    // Create connection
+    $senha_digitada = $_POST['senha_digitada'];
+    $sql = "SELECT * FROM cs2.funcionario WHERE senha = '{$_POST['senha_digitada']}' and ativo = 'S'";
+    $query = mysql_query($sql, $con) or die('erro');
+    while ($row = mysql_fetch_assoc($query)) {
+        $id = $row['id'];
+    }
+
+    if($id > 0) {
+
+?>
+    <script>
+        $('.exibe_formulario_conferencia').show();
+        $('#btn_formulario_conferencia').hide();
+        $('#senha_invalida').hide();
+        $('#id_funcionario_conferencia').val(<?=$id?>);
+    </script>
+<?php
+    } else { 
+?>        
+    <script>
+        $('#formulario_verifica_senha').css('display', 'block');
+        $('#senha_invalida').show();
+    </script>
+<?php        
+    } } // AQUI TERMINA VALIDAÇÃO SENHA
+?>
+
+<!-- EXIBE TABELA COM OS DADOS DOS ÚLTIMOS FUNCIONÁRIOS QUE FIZERAM ALGUMA ALTERAÇÃO NESSE "ATUALIZADO" SISTEMA -->
+<?php
+
+$id = '';
+$nome = '';
+$data_hora = '';
+
+$sql = "
+        SELECT * FROM cs2.visitas_log vl
+        INNER JOIN cs2.funcionario f ON f.id = vl.id_funcionario
+        WHERE id_visita = $protocolo
+    ";
+$query = mysql_query($sql, $con) or die('erro');
+?>
+
+<table width="850px" align="center" cellpadding="0" cellspacing="2" style="border: 1px solid #D1D7DC; background-color: #FFFFFF; margin-top:20px;">
+    
+    <tr>
+        <td colspan="3">&nbsp;</td>
+    </tr> 
+
+    <tr>
+        <td colspan="3" style="text-align:center;"><h2>Últimas Alterações</h2><hr></td>
+    </tr>    
+
+    <tr>
+        <td>#</td>
+        <td>Nome</td>
+        <td>Data e Hora</td>
+    </tr>
+
+<?php
+while ($row = mysql_fetch_assoc($query)) {
+    $id = $row['id'];
+    $nome = $row['nome'];
+    $data_hora = $row['data_hora'];
+
+    if($id > 0) {
+        echo "<tr>";
+        echo "<td>".$id."</td>";
+        echo "<td>".$nome."</td>";
+        echo "<td>".$data_hora."</td>";
+        echo "</tr>";
+        echo "<tr><td colspan='3'><hr></td></tr>";
+    }
+}
+?>
+</table>
+<!-- FIM EXIBE TABELA COM OS DADOS DOS ÚLTIMOS FUNCIONÁRIOS QUE FIZERAM ALGUMA ALTERAÇÃO NESSE "ATUALIZADO" SISTEMA -->
