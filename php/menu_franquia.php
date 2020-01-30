@@ -109,6 +109,11 @@ function doBlink(){
 			<td align="center"><?php echo $i++; ?></td>
 			<td><a href="painel.php?pagina1=area_restrita/d_equipamentos0.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><font color="#BA55D3"><b>Controle Produtos/Equipamentos</a></b></td>
 		</tr>
+		
+		<tr>
+			<td align="center"><?php echo $i++; ?></td>
+			<td><a href="painel.php?pagina1=area_restrita/m_anunciantes.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><b>Anunciantes</a></b></td>
+		</tr>
 
         <?php if ( $id_franquia != 1205 ) {?>
 		<tr class="menu">
