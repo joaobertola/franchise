@@ -861,6 +861,10 @@ $query = mysql_query($sql, $con) or die('erro');
         <td>Data e Hora</td>
     </tr>
 
+    <tr>
+        <td colspan="3"><hr></td>
+    </tr>
+
 <?php
 while ($row = mysql_fetch_assoc($query)) {
     $id = $row['id'];
