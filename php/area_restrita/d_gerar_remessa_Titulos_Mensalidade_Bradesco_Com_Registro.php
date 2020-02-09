@@ -792,9 +792,9 @@
         $registros = str_replace("`",'',$registros);
         
         $sql_grava = "INSERT INTO cs2.titulos_processamento_nexxera
-                        (data_processamento,hora_processamento,nome_arquivo_processado,registros_arquivo,texto_processamento,banco,envio_retorno,empresa,link_confirmacao_registro_tabela)
+                        (data_processamento,hora_processamento,nome_arquivo_processado,registros_arquivo,texto_processamento,banco,envio_retorno,empresa,link_confirmacao_registro_tabela,sql_processamento_envio)
                       VALUES
-                        ( NOW(), NOW(), '$arquivo', '$registros', '$result', '237', 'E', 'WC','$url')
+                        ( NOW(), NOW(), '$arquivo', '$registros', '$result', '237', 'E', 'WC','$url','$sql_grava_data_envio_lote')
                       ";
         $qry_grava = mysql_query($sql_grava,$conexao);
 
