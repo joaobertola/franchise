@@ -1146,6 +1146,7 @@ switch ($tp_rel){
                 case '13':
                 case '17':
                 case '18':
+                case '28':  // incluido Auxiliar de Conferencia - Pedido Danillo
                     include('rel_comissao_13_17_18.php');
                     break;
                 
