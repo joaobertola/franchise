@@ -395,7 +395,7 @@ $resFuncoes = mysql_query($sqlFuncoes, $con);
                 <input name="iptPlaca" id="iptPlaca"
                     type="text" style="width:20%"
                     onFocus="this.className='boxover'" onBlur="this.className='boxnormal'"
-                    maxlength="3"/>
+                    maxlength="10"/>
             </td>
         </tr>
 
