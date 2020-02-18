@@ -804,7 +804,7 @@ if (isset($_POST['senha_digitada'])) {
 
     // Create connection
     $senha_digitada = $_POST['senha_digitada'];
-    $sql = "SELECT * FROM cs2.funcionario WHERE senha = '{$_POST['senha_digitada']}' and ativo = 'S'";
+    $sql = "SELECT * FROM cs2.funcionario WHERE senha = '{$_POST['senha_digitada']}' and ativo = 'S' and senha != ''";
     $query = mysql_query($sql, $con) or die('erro');
     while ($row = mysql_fetch_assoc($query)) {
         $id = $row['id'];
