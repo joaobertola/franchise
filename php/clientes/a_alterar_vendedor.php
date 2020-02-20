@@ -11,6 +11,7 @@ require "../connect/conexao_conecta.php";
 require "../connect/funcoes.php";
 
 $id_franquia = $_POST['id_franquia'];
+
 if ($id_franquia == 4 || $id_franquia == 163 || $id_franquia == 247) {
     $id_franquia = 1;
 }
@@ -22,10 +23,8 @@ if ($_POST) {
 
         $id_consultor = $_POST['id_consultor'];
         $codigo = $_POST['codigo'];
-
         $sql = "UPDATE cs2.cadastro_equipamento SET id_consultor = '$id_consultor' WHERE id = '$id'";
         $qry_insert = mysql_query( $sql,$con) or die("Falha ao gravar o registro.");
-
         ?>
         <script>
             window.history.go(-3);
@@ -34,10 +33,9 @@ if ($_POST) {
 
         $arr = mysql_fetch_array($qry_insert);
     }
-
 }
-?>
 
+?>
 
 <script type="text/javascript" src="../../../inform/js/prototype.js"></script>
 <script language="javascript">
@@ -80,16 +78,20 @@ if ($_POST) {
 <form name="form1" method="post" action="" enctype="multipart/form-data">
     <table border="0" align="center" width="700">
         <tr>
-            <td colspan="2" class="titulo"><br>ALTERAR VENDEDOR</td>
+            <td class="titulo">PEDIDO:</td>
+            <td class="titulo"><?php echo $_REQUEST['id']; ?></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="titulo"><br>Alterar para o Consultor (a)</td>
         </tr>
         <tr>
             <td class="subtitulodireita">Consultor</td>
             <td class="subtitulopequeno">
                 <?php
 
-                $sql_teste = "SELECT * FROM cs2.funcionario WHERE id_franqueado = '$id_franquia'
-                  AND ativo  = 'S' ORDER nome";
-                $qry_insert = mysql_query( $sql_teste, $con) or die("Falha ao gravar o registro.");
+                $sql_teste = "SELECT * FROM cs2.funcionario
+                              WHERE id_franqueado = '$id_franquia' AND ativo  = 'S' ORDER BY nome";
+                $qry_insert = mysql_query( $sql_teste, $con) or die("Falha ao selecionar o registro.");
                 echo "<select name='id_consultor' id='id_consultor' style='width:65%'>";
                 ?>
                 <option value="">Selecionar</option>
@@ -98,15 +100,15 @@ if ($_POST) {
                     if ($arrItemFunc['ativo'] == "0") {
                         $sit = "Ativo";
                     } elseif ($rs['ativo'] == "1") {
-                        $arrItemFunc = "Bloqueado";
+                        $arrItemFunc = " - Bloqueado";
                     } elseif ($rs['ativo'] == "2") {
-                        $arrItemFunc = "Cancelado";
+                        $arrItemFunc = " - Cancelado";
                     }
                     ?>
                     <?php if ($_REQUEST['id_consultor'] == $arrItemFunc['id']) { ?>
-                        <option value="<?= $arrItemFunc['id'] ?>" selected><?= $arrItemFunc['nome'] ?> - <?= $sit ?></option>
+                        <option value="<?= $arrItemFunc['id'] ?>" selected><?= $arrItemFunc['nome'] ?><?php echo $sit; ?></option>
                     <?php } else { ?>
-                        <option value="<?= $arrItemFunc['id'] ?>"><?= $arrItemFunc['nome'] ?> - <?= $sit ?></option>
+                        <option value="<?= $arrItemFunc['id'] ?>"><?= $arrItemFunc['nome'] ?><?php echo $sit; ?></option>
                     <?php } ?>
                 <?php } ?>
                 </select>
