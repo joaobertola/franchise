@@ -16,4 +16,5 @@ echo $sql_u = "UPDATE cs2.solicitacao_valores
 		  WHERE id = '$id_pedido'";
 $qr2 = mysql_query($sql_u,$con) or die('Erro Mysql : '.$sql_u);
 
+
 ?>
