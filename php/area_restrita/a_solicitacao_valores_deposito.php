@@ -1,20 +1,20 @@
 <?php
 
-require "../connect/conexao_conecta.php";
+$conn = new PDO("mysql:host=10.2.2.3", 'csinform', 'inform4416#scf');
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$id_pedido   = $_REQUEST['id_pedido'];
-$dt_deposito = $_REQUEST['data_deposito'];
+$npedido     = $_REQUEST['id_pedido'];
+$dt_deposito = trim($_REQUEST['data_deposito']);
 
-if ( trim($dt_deposito) == '' )
-    $dt_deposito = 'NULL';
-else
+$sql = "UPDATE cs2.solicitacao_valores";
+
+if ( $dt_deposito == '' )
+    $sql .= " SET data_deposito = 'NULL' ";
+else{
     $dt_deposito = substr($dt_deposito,6,4).'-'.substr($dt_deposito,3,2).'-'.substr($dt_deposito,0,2);
-
-echo $sql_u = "UPDATE cs2.solicitacao_valores
-			SET
-				data_deposito = '$dt_deposito'
-		  WHERE id = '$id_pedido'";
-$qr2 = mysql_query($sql_u,$con) or die('Erro Mysql : '.$sql_u);
-
+    $sql .= " SET data_deposito = '$dt_deposito' ";
+}
+$sql .= " WHERE id = '$npedido'";
+$conn->exec($sql);
 
 ?>
