@@ -522,6 +522,12 @@ if ($res4):
     }else if ($res4['status_indicacao'] == 'SA') {
         $status = 'Segmento nao atendido';
         $acao = 'da Tentativa de Contato';
+    }else if ($res4['status_indicacao'] == 'AD') {
+        $status = 'Associado desconhece a indicação';
+        $acao = 'da Tentativa de Contato';
+    }else if ($res4['status_indicacao'] == 'ID') {
+        $status = 'Indicação desconhece Associado';
+        $acao = 'da Tentativa de Contato';
     }    
     ?>
     <h1>Última Atualização</h1>
@@ -660,6 +666,12 @@ if ($total > 0):
         }else if ($res4['status_indicacao'] == 'SA') {
             $status = 'Segmento nao atendido';
             $acao = 'da Tentativa de Contato';
+        }else if ($res4['status_indicacao'] == 'AD') {
+            $status = 'Associado desconhece a indicação';
+            $acao = 'da Tentativa de Contato';
+        }else if ($res4['status_indicacao'] == 'ID') {
+            $status = 'Indicação desconhece Associado';
+            $acao = 'da Tentativa de Contato';
         }
         ?>
         <table class="tblIndicacaoAtu tblHidden" id="" border="1" width="50%" align="center" cellspacing="0"
@@ -703,7 +715,7 @@ endif;
 ?>
 <?php if ($res4['status_indicacao'] != 'VR') { ?>
     <h1>Atualizar</h1>
-    <table class="tblAtualizar" id="tblAtualizar" border="1" width="50%" align="center" cellspacing="0"
+    <table class="tblAtualizar" id="tblAtualizar" border="1" width="70%" align="center" cellspacing="0"
            style="border: 1px solid #D1D7DC; background-color:#FFFFFF">
         <form name="frmNovoStatus" method="post">
             <input type="hidden" name="txtIdIndicacao" size="10" value="<?= $idIndicacao ?>"/>
@@ -712,18 +724,32 @@ endif;
                 <tr>
                     <td><strong>Novo Status:</strong></td>
                     <td>
-                        <label><input type="radio" name="rdStatus" value="VR"/> Venda Realizada.</label>
-                        <label><input type="radio" name="rdStatus" value="SI"/> Não tem Interesse.</label>
-                        <label><input type="radio" name="rdStatus" value="RE"/> Reagendamento.</label>
-                        <label><input type="radio" name="rdStatus" value="SC"/> Sem Contato.</label>
-                        <label><input type="radio" name="rdStatus" value="JC"/> Já era Cliente.</label>
-                        <label><input type="radio" name="rdStatus" value="AC"/> Auto Indicou.</label>
-                        <label><input type="radio" name="rdStatus" value="RP"/> Repetido.</label>
-                        <label><input type="radio" name="rdStatus" value="TE"/> Telefone(s) Errado(s).</label><br>
-                        <label><input type="radio" name="rdStatus" value="CC"/> Associado Cancelou.</label>
-                        <label><input type="radio" name="rdStatus" value="CA"/> Amigo Indicado Cancelou.</label>
-                        <label><input type="radio" name="rdStatus" value="CT"/> Contador (Não gera bonificação)</label>
-                        <label><input type="radio" name="rdStatus" value="SA"/> Segmento não atendido.</label>
+                        <table width="100%">
+                            <tr>
+                               <td><label><input type="radio" name="rdStatus" value="VR"/> Venda Realizada.</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="SI"/> Não tem Interesse.</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="RE"/> Reagendamento.</label></td>
+                            </tr>
+                            <tr>
+                               <td><label><input type="radio" name="rdStatus" value="SC"/> Sem Contato.</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="JC"/> Já era Cliente.</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="AC"/> Auto Indicou.</label></td>
+                            </tr>
+                            <tr>
+                               <td><label><input type="radio" name="rdStatus" value="RP"/> Repetido.</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="TE"/> Telefone(s) Errado(s).</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="CC"/> Associado Cancelou.</label></td>
+                            </tr>
+                            <tr>
+                               <td><label><input type="radio" name="rdStatus" value="CA"/> Amigo Indicado Cancelou.</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="CT"/> Contador (Não gera bonificação)</label></td>
+                               <td><label><input type="radio" name="rdStatus" value="SA"/> Segmento não atendido.</label></td>
+                            </tr>
+                            <tr>
+                               <td><label><input type="radio" name="rdStatus" value="AD"/> Associado desconhece a indicação</label></td>
+                                <td><label><input type="radio" name="rdStatus" value="ID"/> Segmento não atendido.</label></td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr class="trHidden" style="display: none">
