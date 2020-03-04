@@ -747,7 +747,7 @@ endif;
                             </tr>
                             <tr>
                                <td><label><input type="radio" name="rdStatus" value="AD"/> Associado desconhece a indicação</label></td>
-                                <td><label><input type="radio" name="rdStatus" value="ID"/> Segmento não atendido.</label></td>
+                                <td><label><input type="radio" name="rdStatus" value="ID"/> Indicação desconhece Associado.</label></td>
                             </tr>
                         </table>
                     </td>

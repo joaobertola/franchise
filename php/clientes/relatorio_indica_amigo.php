@@ -153,7 +153,9 @@ if ($id_franquia == 4 || $id_franquia == 163) {
                         <option value="CC">Associado Cancelou.</option>
                         <option value="CA">Amigo Indicado Cancelou.</option>
                         <option value="CT">Contador (Não gera bonificação).</option>
-
+                        <option value="SA">Segmento não atendido.</option>
+                        <option value="AD">Associado desconhece a indicação</option>
+                        <option value="ID">Segmento não atendido.</option>
                     </select>
                 <label for="iptSearch">Busca Avançada</label>
                 <input type="text" name="iptSearch" id="iptSearch">
@@ -243,6 +245,10 @@ if ($id_franquia == 4 || $id_franquia == 163) {
                             $status = "<span style='color:#ff890b;'>Contador ( Não gera bonificação)</span>";
                         } else if ($res['status_indicacao'] == 'SA') {
                             $status = "<span style='color:#ff890b;'>Segmento não atendido</span>";
+                        } else if ($res['status_indicacao'] == 'AD') {
+                            $status = "<span style='color:#ff890b;'>Associado desconhece a indicação</span>";
+                        } else if ($res['status_indicacao'] == 'ID') {
+                            $status = "<span style='color:#ff890b;'>Indicação desconhece Associado</span>";
                         }
                         
                         ?>
