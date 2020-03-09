@@ -413,11 +413,23 @@ function Grava_Acesso_WebControl($codloja,$nomefantasia,$cpfsocio1,$email,$login
 				)
 			 VALUES
 			 	( 
-			 	'$codloja' , '$id_usuario', 'B', '00000000000', 'CLIENTE BALCAO', 'CLIENTE BALCAO', '1' ,
-				'CLIENTE BALCAO', 'CLIENTE BALCAO', 'CLIENTE BALCAO', '$uf'
+			 	    '$codloja' , '$id_usuario', 'B', '00000000000', 'CLIENTE BALCAO', 'CLIENTE BALCAO', '1',
+				    'CLIENTE BALCAO', 'CLIENTE BALCAO', 'CLIENTE BALCAO', '$uf'
 				)";
 	mysql_query($sql2, $con);
-	
+
+	$sql2 = "INSERT INTO base_web_control.produto
+	            (descricao,id_cadastro, id_usuario,data_cadastro,id_classificacao,custo,custo_medio_venda,id_unidade,vender_estoque_zerado,prod_serv,data_alteracao,deletar,id_cfop)
+		     VALUES 
+		        ('GORJETA','$codloja','$id_usuario',NOW(),'0','0.00','0.00','2','S','P',NOW(),'N','5102')";
+    $qry2 = mysql_query($sql2, $con);
+	$id_produto = mysql_insert_id();
+
+	$sql2 = "INSERT INTO base_web_control.nfe_Produto_ICMS(id_produto,orig,CST)
+	         VALUES('$id_produto','0','400')";
+
+    $qry2 = mysql_query($sql2, $con);
+
 }
 
 
