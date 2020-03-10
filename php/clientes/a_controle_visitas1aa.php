@@ -310,6 +310,18 @@ if ($id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqui
                 return false;
             }
 
+            if ( trim(d.data_agenda.value) != "" ) {
+                if ( d.email.value == '' ){
+                    alert("Favor inserir o email para agendamento!");
+                    return false;
+                }
+                if ( d.fone2.value == '' ){
+                    alert("Favor inserir o número do telefone Celular para agendamento!");
+                    return false;
+                }
+
+            }
+
         }
 //    else if (d.cep_agendamento.value == ""){
 //        alert("O campo " + d.cep_agendamento.name + " deve ser preenchido+++!");
