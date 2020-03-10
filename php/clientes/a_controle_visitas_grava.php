@@ -145,11 +145,17 @@ if ( empty($protocolo) ){
     
     
 
-    $qry_insert = mysql_query( $sql_insert,$con) or die("Falha ao gravar o registro.");
+    $qry_insert = mysql_query( $sql_insert,$con) or die("Falha ao gravar o registro 001.");
 
-    $protocolo = mysql_insert_id($con);
+    $protocolo = trim($_REQUEST["protocolo"]);
+
+    if ( $protocolo == '' )
+        $protocolo = mysql_insert_id($con);
 
     // Grava VISITA LOG
+
+    if ( $id_funcionario == '' )
+        $id_funcionario = 0;
 
     $insert_visita_log = " INSERT INTO cs2.visitas_log
                         (
@@ -157,9 +163,9 @@ if ( empty($protocolo) ){
                         )
                         VALUES  
                         ( 
-                            $id_funcionario,{$_REQUEST["protocolo"]},NOW()
+                            $id_funcionario,'$protocolo',NOW()
                         )";
-    $qry_insert_visita_log = mysql_query( $insert_visita_log,$con) or die("Falha ao gravar o registro.");
+    $qry_insert_visita_log = mysql_query( $insert_visita_log,$con) or die("Falha ao gravar o registro 002. : $insert_visita_log ");
 
     mysql_insert_id($con);
 
@@ -167,6 +173,7 @@ if ( empty($protocolo) ){
     
         echo "<script>alert(\"Registro gravado com sucesso, anote o NÚMERO DA VISITA : [  $protocolo  ]!\");</script>";
     echo "<meta http-equiv=\"refresh\" content=\"0; url= painel.php?pagina1=clientes/a_controle_visitas1aa.php\";>";
+
 }else{
     # ALTERACAO DE REGISTRO
 
