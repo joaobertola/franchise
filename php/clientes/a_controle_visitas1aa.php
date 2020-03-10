@@ -311,13 +311,15 @@ if ($id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqui
             }
         }
 
-        if ( trim(d.data_agenda.value) != "" ) {
+        if ( d.data_agenda.value != "" ) {
+
             if ( d.email.value == '' ){
+
                 alert("Favor inserir o email para agendamento!");
                 return false;
             }
             if ( d.fone2.value == '' ){
-                alert("Favor inserir o número do telefone Celular para agendamento!");
+                alert("Favor inserir o número do telefone celular para agendamento!");
                 return false;
             }
         }
