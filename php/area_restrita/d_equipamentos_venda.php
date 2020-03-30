@@ -542,6 +542,7 @@ $acao = $_REQUEST['acao'];
                                     <option value="5">CART&Atilde;O D&Eacute;BITO</option>
                                     <option value="4">BOLETO</option>
                                     <option value="6">ANTECIPA&Ccedil;&Atilde;O</option>
+                                    <option value="7">TRANSFER&Ecirc;NCIA</option>
                                 </select>
                             </td>
                             <td>

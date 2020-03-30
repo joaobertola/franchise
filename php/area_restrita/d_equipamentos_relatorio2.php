@@ -415,6 +415,7 @@ switch ($tp_rel){
                                     WHEN '4' THEN 'BOLETO'
                                     WHEN '5' THEN 'CARTAO DE DEBITO'
                                     WHEN '6' THEN 'ANTECIPACAO'
+                                    WHEN '7' THEN 'TRANSFERENCIA'
                                 END as pgto,
                                 devol_doc,
                                 DATE_FORMAT(dt_conf_recebimento,'%d/%m/%Y') as dt_conf_recebimento
