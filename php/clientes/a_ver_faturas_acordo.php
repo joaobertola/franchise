@@ -21,9 +21,10 @@ $data_atual = date("Y-m-d");
         z-index: 8888;
         display: none;
     }
+
     #modal-manual-sms {
         position: fixed;
-        width:400px;
+        width: 400px;
         height: auto;
         background-color: white;
         z-index: 9999;
@@ -35,6 +36,7 @@ $data_atual = date("Y-m-d");
         display: none;
         padding-bottom: 10px;
     }
+
     #modal-manual-sms textarea {
         position: relative;
         margin: 5px auto;
@@ -43,9 +45,10 @@ $data_atual = date("Y-m-d");
         top: 0;
         left: 0;
     }
+
     #modal-sms {
         position: fixed;
-        width:400px;
+        width: 400px;
         height: 150px;
         background-color: white;
         z-index: 9999;
@@ -56,7 +59,9 @@ $data_atual = date("Y-m-d");
         box-shadow: 5px 5px 5px black;
         display: none;
     }
-    #modal-sms button, #modal-manual-sms button {
+
+    #modal-sms button,
+    #modal-manual-sms button {
         position: relative;
         width: 250px;
         height: 25px;
@@ -64,7 +69,14 @@ $data_atual = date("Y-m-d");
         background-color: #0a6aa1;
         color: white;
     }
-    #close-modal-sms { text-align: right; padding-top: 8px; font-size: 16px; color: #555; }
+
+    #close-modal-sms {
+        text-align: right;
+        padding-top: 8px;
+        font-size: 16px;
+        color: #555;
+    }
+
     #close-modal-sms span {
         margin-right: 5px;
         padding: 3px 3px;
@@ -73,7 +85,6 @@ $data_atual = date("Y-m-d");
     }
 </style>
 <script language="javascript">
-
     // MODAL BOLETO SMS
 
     var smsId;
@@ -93,26 +104,26 @@ $data_atual = date("Y-m-d");
         modal_digitar.style.display = 'none';
 
         $.ajax({
-            url: "../../inform/boleto/boleto.php?numdoc="+smsId+"&barcode",
+            url: "../../inform/boleto/boleto.php?numdoc=" + smsId + "&barcode",
             type: "POST",
-            success: function (data) {
+            success: function(data) {
                 //alert(data);
                 barcode = data;
                 $.ajax({
                     url: "sms/enviaBoletoSMS.php",
                     type: "POST",
                     data: {
-                        'action':'digitarCodBarraSMS',
-                        'barcode':barcode,
-                        'smsId':smsId,
-                        'smsNumber':smsNumber,
-                        'dt_vencimento':smsVencimento,
-                        'valor':smsValor,
-                        'codLoja_SMS':codLoja_SMS,
-                        'nomeFantaia_SMS':nomeFantaia_SMS,
+                        'action': 'digitarCodBarraSMS',
+                        'barcode': barcode,
+                        'smsId': smsId,
+                        'smsNumber': smsNumber,
+                        'dt_vencimento': smsVencimento,
+                        'valor': smsValor,
+                        'codLoja_SMS': codLoja_SMS,
+                        'nomeFantaia_SMS': nomeFantaia_SMS,
                         'txtSmsManual': txtSmsManual
                     },
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data);
                         alert(data);
                     }
@@ -124,25 +135,25 @@ $data_atual = date("Y-m-d");
     function enviarCodBarraSMS() {
         //alert(smsId);
         $.ajax({
-            url: "../../inform/boleto/boleto.php?numdoc="+smsId+"&barcode",
+            url: "../../inform/boleto/boleto.php?numdoc=" + smsId + "&barcode",
             type: "POST",
-            success: function (data) {
+            success: function(data) {
                 //alert(data);
                 barcode = data;
                 $.ajax({
                     url: "sms/enviaBoletoSMS.php",
                     type: "POST",
                     data: {
-                        'action':'enviarCodBarraSMS',
-                        'barcode':barcode,
-                        'smsId':smsId,
-                        'smsNumber':smsNumber,
-                        'dt_vencimento':smsVencimento,
-                        'valor':smsValor,
-                        'codLoja_SMS':codLoja_SMS,
-                        'nomeFantaia_SMS':nomeFantaia_SMS
+                        'action': 'enviarCodBarraSMS',
+                        'barcode': barcode,
+                        'smsId': smsId,
+                        'smsNumber': smsNumber,
+                        'dt_vencimento': smsVencimento,
+                        'valor': smsValor,
+                        'codLoja_SMS': codLoja_SMS,
+                        'nomeFantaia_SMS': nomeFantaia_SMS
                     },
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data);
                         alert(data);
                     }
@@ -161,22 +172,20 @@ $data_atual = date("Y-m-d");
     }
 
     function alerta() {
-        if (confirm("CONFIRMA O CANCELAMENTO DO RECEBIMENTO DE TÍTULO ?")) {
-        } else {
+        if (confirm("CONFIRMA O CANCELAMENTO DO RECEBIMENTO DE TÍTULO ?")) {} else {
             return false
         }
     }
 
     function alerta_desconto() {
-        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {
-        } else {
+        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {} else {
             return false
         }
     }
 
     function afixar(form, idDiv, nboleto, cliente, sitcli) {
 
-        if ( sitcli == 2 ){
+        if (sitcli == 2) {
             alert('Cliente CANCELADO !!! ');
             abort;
         }
@@ -207,8 +216,7 @@ $data_atual = date("Y-m-d");
     function valida_user(nboleto, codloja) {
         frm = document.form;
 
-        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {
-        } else {
+        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {} else {
             return false
         }
 
@@ -257,7 +265,7 @@ $data_atual = date("Y-m-d");
                 'numdoc': $('#numdoc_titulo').val(),
                 'data_vencimento': $('#vencimento_atual').val()
             },
-            success: function (data) {
+            success: function(data) {
                 if (data == 1) {
                     //location.reload();
                     console.log(data);
@@ -269,44 +277,117 @@ $data_atual = date("Y-m-d");
     }
 
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.mask-data').mask('00/00/0000');
 
         var total = 0;
         //Chama a função com click em qualquer checkbox
         $(':checkbox').click(function() {
 
-          //Atribui o valor do input p/ variável 'valor'
-          var valor = parseFloat($(this).val());
-          //Se o checkbox for marcado ele soma se não subtrai
-          if ($(this).is(":checked")) {
-            total += valor;
-          } else {
-            total -= valor;
-          }
-
-          if ( total > 0 ){
-            if (document.getElementById('escolha').style.display == 'none') {
-                document.getElementById('escolha').style.display = '';
+            //Atribui o valor do input p/ variável 'valor'
+            var valor = parseFloat($(this).val());
+            //Se o checkbox for marcado ele soma se não subtrai
+            if ($(this).is(":checked")) {
+                total += valor;
+            } else {
+                total -= valor;    
             }
-          }else{
-             if (document.getElementById('escolha').style.display == '') {
-                document.getElementById('escolha').style.display = 'none';
-            }
-          }
 
-         //Atribui o valor ao input
-          $("#evento_value").val( total );
+            if (total > 0) {
+                if (document.getElementById('escolha').style.display == 'none') {
+                    document.getElementById('escolha').style.display = '';
+                }
+            } else {
+                if (document.getElementById('escolha').style.display == '') {
+                    document.getElementById('escolha').style.display = 'none';
+                }
+            }
+
+            //Atribui o valor ao input
+            $("#evento_value").val(total);
         });
 
+       
+        $('#iptParcelas').change(function() {
+            var value = parseInt($(this).val());
+            if (value > 0) {
+                let html='';
+                let data;
+                var total_valor_parcela =$('#evento_value').val() / value;
+                total_valor_parcela = total_valor_parcela.toString().split('.');
+                total_valor_parcela[1] = total_valor_parcela[1].substr(0,2)
+                total_valor_parcela = total_valor_parcela.join(',');
+                $('.data_vencimento').each(function(index, el){
+                    data = $(el).text();
+                });
+                if($('#escolha tbody').find('.parcelas_new').length){
+                        $('#escolha tbody .parcelas_new').remove();
+                    }
+                let pai = document.getElementById("botao_confirmar").parentNode
+                for (let index = 1; index <= value; index++) {
+                    data = data.split('/');
+                    data[1] = (parseInt(data[1]) + 1).toString();
+                    data[1] = data[1].length == 1 ? "0"+data[1] : data[1];
+                    data = data.join('/');
 
+                    var tr = document.createElement("tr");
+                    tr.classList.add("parcelas_new");
+
+
+                    var td_data = document.createElement("td");
+                    td_data.setAttribute("align","left");
+                    var b_data = document.createElement("b");
+                    var b_text_data = document.createTextNode("Nova data de vencimento: ");
+                    var td_text_data = document.createTextNode(data);
+                    b_data.appendChild(b_text_data);
+                    td_data.appendChild(b_data);
+                    td_data.appendChild(td_text_data);
+
+
+                    var td_valor = document.createElement("td");
+                    td_valor.setAttribute("align","center");
+                    var b_valor = document.createElement("b");
+                    var b_text_valor = document.createTextNode("Valor da parcela: ");
+                    var td_text_valor = document.createTextNode(total_valor_parcela);
+                    b_valor.appendChild(b_text_valor);
+                    td_valor.appendChild(b_valor)
+                    td_valor.appendChild(td_text_valor);
+
+
+                    tr.appendChild(td_data);
+                    tr.appendChild(td_valor);
+                    console.log(tr);
+                    pai.insertBefore(tr, document.getElementById("botao_confirmar"));
+                    
+                }
+
+                    
+                    //    $('#escolha tbody').insertBefore(html, $('#botao_confirmar').children);
+                       remove_when_uncheked()
+                // reciever_parcelar
+            } else {
+                $('#escolha tbody .parcelas_new').remove();
+                remove_when_uncheked()
+            }
+        });
+        function remove_when_uncheked(){
+            $(':checkbox').click(function() {
+                //Atribui o valor do input p/ variável 'valor'
+                var valor = parseFloat($(this).val());
+                //Se o checkbox for marcado ele soma se não subtrai
+                if (!$(this).is(":checked")) {
+                    if($('#escolha tbody').find('.parcelas_new').length){
+                        $('#escolha tbody .parcelas_new').remove();
+                        $('#iptParcelas option:eq(0)').prop('selected', true);
+                    }
+                }
+            });
+        }
 
     });
-
 </script>
 
 <script language="javascript">
-
     function geraNotificacao(p_codloja, p_soma) {
 
         if (p_soma == '0') {
@@ -318,11 +399,9 @@ $data_atual = date("Y-m-d");
 
     function grava_cobradora(boleto, option) {
 
-        if (window.XMLHttpRequest)
-        {// code for IE7+, Firefox, Chrome, Opera, Safari
+        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
-        } else
-        {// code for IE6, IE5
+        } else { // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.open("GET", "clientes/atualiza_cobradora_titulos.php?cobradora=" + option + "&numdoc=" + boleto, true);
@@ -363,7 +442,7 @@ if ($linha > 0) {
     $celular_n_mask = $matriz['celular'];
     $email = $matriz['email'];
     $sitcli = $matriz['sitcli'];
-//  $operadora = ver_operadora($celular);
+    //  $operadora = ver_operadora($celular);
     $celular = mascara_celular($matriz['celular']);
 }
 
@@ -422,16 +501,16 @@ $linhas1 = $linhas + 3;
             </tr>
 ";
 
-    $celular_ddd = substr($celular_n_mask,0,2);
-    $celular_digito_9 = substr($celular_n_mask,2,1);
-    $celular_number = substr($celular_n_mask,3,8);
+    $celular_ddd = substr($celular_n_mask, 0, 2);
+    $celular_digito_9 = substr($celular_n_mask, 2, 1);
+    $celular_number = substr($celular_n_mask, 3, 8);
 
     $celular_valid = true;
 
-    if($celular_digito_9 != 9){
+    if ($celular_digito_9 != 9) {
         $celular_valid = false;
         $celular_n_mask = 0;
-    }else if(strlen($celular_number) < 8){
+    } else if (strlen($celular_number) < 8) {
         $celular_valid = false;
         $celular_n_mask = 0;
     }
@@ -469,10 +548,10 @@ $linhas1 = $linhas + 3;
         if ($_SESSION['id'] != 163) // SOMENTE PARA O WELLINGTON
             $ativo = " disabled='disabled' ";
 
-        if (( $referencia <> 'MULTA' ) or ( $referencia == 'MULTA' and $dtpagamento <> '' )) {
+        if (($referencia <> 'MULTA') or ($referencia == 'MULTA' and $dtpagamento <> '')) {
 
             /* condicao para mostra o pagamento com juros */
-            
+
             $date = date("d/m/Y", time());
             $vencimento = $matriz['vencimento'];
 
@@ -483,37 +562,35 @@ $linhas1 = $linhas + 3;
             } else {
                 $dif = diferenca_entre_datas($date, $vencimentof, 'DD/MM/AAAA');
             }
-            
+
             $txt_valorcobrado = '';
             $teste_multa = 0;
             if ($dif > 0) {
 
                 $nvalor = str_replace(',', '.', $valor);
-                $multa = ($nvalor+$valor_acrescimo) * 0.02 ; // 2%
-                
-                $encargos = ( ( $nvalor + $valor_acrescimo) * 0.0015 ) * $dif;
+                $multa = ($nvalor + $valor_acrescimo) * 0.02; // 2%
+
+                $encargos = (($nvalor + $valor_acrescimo) * 0.0015) * $dif;
                 $xencargos = number_format($encargos, 2, ',', '.');
 
                 $encargos = number_format($encargos, 2);
 
-                $_valor = ( $nvalor + $multa + $encargos + $valor_acrescimo );
+                $_valor = ($nvalor + $multa + $encargos + $valor_acrescimo);
 
                 $multa = number_format($multa, 2, ',', '.');
                 $valor_cobrado = number_format($_valor, 2, ',', '.');
-                
             } else {
-                
-                $valor_cobrado = number_format($valor+$valor_acrescimo, 2, ',', '.');
-                
+
+                $valor_cobrado = number_format($valor + $valor_acrescimo, 2, ',', '.');
             }
-            
+
             /* ****************************************** */
 
             $valor_original = number_format($valor_original, 2, ',', '.');
             $dtpagamento = $matriz['dtpagamento'];
             $valorpg = $matriz['valorpg'];
             $origem = $matriz['referencia'];
-            if ( $origem == 'BOL' )
+            if ($origem == 'BOL')
                 $origem = 'Mensalidade';
 
             if (!$valorpg)
@@ -528,7 +605,7 @@ $linhas1 = $linhas + 3;
             echo "<td><input name='selecao[]' type='checkbox' value='$valor' /></td>";
 
             echo "<td align='center'><u><a href='../../inform/boleto/boleto.php?numdoc=$boleto'><font color='blue'>$boleto</font></a></u></td>
-                     <td align='center'>$venc_original</td>";
+                     <td align='center' class='data_vencimento'>$venc_original</td>";
 
             // Col 2
             if ($venc_alterado != '')
@@ -549,7 +626,7 @@ $linhas1 = $linhas + 3;
             echo "  <td align='center'><font color='#0000e6'>$valor_acrescimo</font></td>";
 
             // Col 6
-            echo"   <td align='center'>";
+            echo "   <td align='center'>";
 
             // Col 7
             echo "<td align='center'>$origem</td>
@@ -569,22 +646,21 @@ $linhas1 = $linhas + 3;
             <td colspan='3' class='subtitulodireita'>Soma Total do(s) registro(s) selecionado(s)</td>
             <td colspan='6' class='subtitulopequeno'><input type='text' disabled id='evento_value'></td>
         </tr>
-    <table>
+        <table id="reciever_parcelar">
 
-    <table id="escolha" align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText' style="display:none;">
-        <tr> 
-            <td>Qtd de Parcelas</td>
-            <td>
-                <select id="iptParcelas" name="iptParcelas">
-                   <option value="0">Selecione...</option>
-                   <option value="1">Receber na próxima fatura</option>
-                   <option value="2">Parcelar em 2 vezes</option>
-                   <option value="3">Parcelar em 3 vezes</option>
-                </select>
-            </td>
-        </tr>
-        <tr> 
-            <td colspan="2"><input type='button' value='Confirme o parcelamento' onclick='Confirmar_Parcelamento()'></td>
-        </tr>
-    </div>
-
+            <table id="escolha" align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText' style="display:none;">
+                <tr>
+                    <td>Qtd de Parcelas</td>
+                    <td>
+                        <select id="iptParcelas" name="iptParcelas">
+                            <option value="0">Selecione...</option>
+                            <option value="1">Receber na próxima fatura</option>
+                            <option value="2">Parcelar em 2 vezes</option>
+                            <option value="3">Parcelar em 3 vezes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="botao_confirmar">
+                    <td colspan="2"><input type='button' value='Confirme o parcelamento' onclick='Confirmar_Parcelamento()'></td>
+                </tr>
+                </div>
