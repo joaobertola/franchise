@@ -1,0 +1,590 @@
+<?php
+require "connect/sessao.php";
+require "connect/funcoes.php";
+
+$codloja    = $_REQUEST['codloja'];
+$data_atual = date("Y-m-d");
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="<?= 'http://' . $_SERVER["SERVER_NAME"] ?>/franquias/css/assets/js/bootstrap.min.js"></script>
+<script src="<?= 'http://' . $_SERVER["SERVER_NAME"] ?>/franquias/css/assets/js/mask.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<style>
+    #fundo-modal-sms {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-color: #000;
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        z-index: 8888;
+        display: none;
+    }
+    #modal-manual-sms {
+        position: fixed;
+        width:400px;
+        height: auto;
+        background-color: white;
+        z-index: 9999;
+        top: 30%;
+        left: 35%;
+        text-align: center;
+        border-radius: 7px;
+        box-shadow: 5px 5px 5px black;
+        display: none;
+        padding-bottom: 10px;
+    }
+    #modal-manual-sms textarea {
+        position: relative;
+        margin: 5px auto;
+        width: 300px;
+        height: 150px;
+        top: 0;
+        left: 0;
+    }
+    #modal-sms {
+        position: fixed;
+        width:400px;
+        height: 150px;
+        background-color: white;
+        z-index: 9999;
+        top: 30%;
+        left: 35%;
+        text-align: center;
+        border-radius: 7px;
+        box-shadow: 5px 5px 5px black;
+        display: none;
+    }
+    #modal-sms button, #modal-manual-sms button {
+        position: relative;
+        width: 250px;
+        height: 25px;
+        margin: 10px auto;
+        background-color: #0a6aa1;
+        color: white;
+    }
+    #close-modal-sms { text-align: right; padding-top: 8px; font-size: 16px; color: #555; }
+    #close-modal-sms span {
+        margin-right: 5px;
+        padding: 3px 3px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+</style>
+<script language="javascript">
+
+    // MODAL BOLETO SMS
+
+    var smsId;
+    var smsNumber;
+    var smsVencimento;
+    var smsValor;
+    var codLoja_SMS;
+    var nomeFantaia_SMS;
+
+    function digitarCodBarraSMS() {
+        var fundo_modal = document.getElementById('fundo-modal-sms');
+        var modal = document.getElementById('modal-sms');
+        var modal_digitar = document.getElementById('modal-manual-sms');
+        var txtSmsManual = document.getElementById('txtSmsManual').value;
+        fundo_modal.style.display = 'none';
+        modal.style.display = 'none';
+        modal_digitar.style.display = 'none';
+
+        $.ajax({
+            url: "../../inform/boleto/boleto.php?numdoc="+smsId+"&barcode",
+            type: "POST",
+            success: function (data) {
+                //alert(data);
+                barcode = data;
+                $.ajax({
+                    url: "sms/enviaBoletoSMS.php",
+                    type: "POST",
+                    data: {
+                        'action':'digitarCodBarraSMS',
+                        'barcode':barcode,
+                        'smsId':smsId,
+                        'smsNumber':smsNumber,
+                        'dt_vencimento':smsVencimento,
+                        'valor':smsValor,
+                        'codLoja_SMS':codLoja_SMS,
+                        'nomeFantaia_SMS':nomeFantaia_SMS,
+                        'txtSmsManual': txtSmsManual
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        alert(data);
+                    }
+                });
+            }
+        });
+    }
+
+    function enviarCodBarraSMS() {
+        //alert(smsId);
+        $.ajax({
+            url: "../../inform/boleto/boleto.php?numdoc="+smsId+"&barcode",
+            type: "POST",
+            success: function (data) {
+                //alert(data);
+                barcode = data;
+                $.ajax({
+                    url: "sms/enviaBoletoSMS.php",
+                    type: "POST",
+                    data: {
+                        'action':'enviarCodBarraSMS',
+                        'barcode':barcode,
+                        'smsId':smsId,
+                        'smsNumber':smsNumber,
+                        'dt_vencimento':smsVencimento,
+                        'valor':smsValor,
+                        'codLoja_SMS':codLoja_SMS,
+                        'nomeFantaia_SMS':nomeFantaia_SMS
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        alert(data);
+                    }
+                });
+            }
+        });
+    }
+
+    function closeModalSms() {
+        var fundo_modal = document.getElementById('fundo-modal-sms');
+        var modal = document.getElementById('modal-sms');
+        var modal_digitar = document.getElementById('modal-manual-sms');
+        fundo_modal.style.display = 'none';
+        modal.style.display = 'none';
+        modal_digitar.style.display = 'none';
+    }
+
+    function alerta() {
+        if (confirm("CONFIRMA O CANCELAMENTO DO RECEBIMENTO DE TÍTULO ?")) {
+        } else {
+            return false
+        }
+    }
+
+    function alerta_desconto() {
+        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {
+        } else {
+            return false
+        }
+    }
+
+    function afixar(form, idDiv, nboleto, cliente, sitcli) {
+
+        if ( sitcli == 2 ){
+            alert('Cliente CANCELADO !!! ');
+            abort;
+        }
+
+        div = document.getElementById(idDiv);
+
+        $('#botaoOK').removeAttr('onClick');
+        $('#botaoOK').attr("onClick", "valida_user('" + nboleto + "','" + cliente + "')");
+
+        if (div.style.display == 'none') {
+            div.style.display = 'block';
+        } else {
+            div.style.display = 'none';
+        }
+    }
+
+    function limpar(form, idDiv) {
+        document.form.dt_regularizacao.value = null;
+        document.form.senha_user.value = null;
+        $('#nome_usuario').text('');
+        div = document.getElementById(idDiv);
+        if (div.style.display == 'none')
+            div.style.display = 'block';
+        else
+            div.style.display = 'none';
+    }
+
+    function valida_user(nboleto, codloja) {
+        frm = document.form;
+
+        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {
+        } else {
+            return false
+        }
+
+        var usuario = frm.senha_user.value;
+        if (usuario == '') {
+            alert('Favor informar a senha para autorizacao');
+            exit;
+        }
+        var req = new XMLHttpRequest();
+        req.open('GET', "connect/valida_user.php?usuario=" + usuario, false);
+        req.send(null);
+        if (req.status != 200)
+            return '';
+        var resposta = req.responseText;
+        var array = resposta.split(';');
+        var id = array[0] - 1;
+        var nome = array[1];
+
+        $('#nome_usuario').text(nome);
+
+        if (nome) {
+
+            frm = document.form;
+            frm.action = 'painel.php?pagina1=clientes/a_fatura_desconto.php&numdoc=' + nboleto + '&codloja=' + codloja;
+            frm.submit();
+
+        } else {
+            alert(' SENHA INVALIDA ');
+        }
+    }
+
+    function Altera_Vencimento(d1, d2, d3) {
+        $('#vencimento_original').val(d1);
+        $('#valor_original').val(d2);
+        $('#numdoc_titulo').val(d3);
+        $('#Modal_Vencimento').modal('show');
+        $('#vencimento_atual').focus();
+    }
+
+    function Altera_Vencimento_Confirma() {
+
+        $.ajax({
+            url: "clientes/a_titulo_atualiza.php?update",
+            type: "POST",
+            data: {
+                'numdoc': $('#numdoc_titulo').val(),
+                'data_vencimento': $('#vencimento_atual').val()
+            },
+            success: function (data) {
+                if (data == 1) {
+                    //location.reload();
+                    console.log(data);
+                } else {
+                    console.log(data);
+                }
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+        $('.mask-data').mask('00/00/0000');
+
+        var total = 0;
+        //Chama a função com click em qualquer checkbox
+        $(':checkbox').click(function() {
+
+          //Atribui o valor do input p/ variável 'valor'
+          var valor = parseFloat($(this).val());
+          //Se o checkbox for marcado ele soma se não subtrai
+          if ($(this).is(":checked")) {
+            total += valor;
+          } else {
+            total -= valor;
+          }
+
+          if ( total > 0 ){
+            if (document.getElementById('escolha').style.display == 'none') {
+                document.getElementById('escolha').style.display = '';
+            }
+          }else{
+             if (document.getElementById('escolha').style.display == '') {
+                document.getElementById('escolha').style.display = 'none';
+            }
+          }
+
+         //Atribui o valor ao input
+          $("#evento_value").val( total );
+        });
+
+
+
+    });
+
+</script>
+
+<script language="javascript">
+
+    function geraNotificacao(p_codloja, p_soma) {
+
+        if (p_soma == '0') {
+            alert('Atencao !  Nao existem debito para este cliente.');
+        } else {
+            popup = window.open('clientes/popup_notificacao_data.php?codloja=' + p_codloja + '&soma=' + p_soma, 'janela', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,width=' + 700 + ',height=' + 700 + ',left=' + 5 + ', top=' + 5 + ',screenX=' + 100 + ',screenY=' + 100 + '');
+        }
+    }
+
+    function grava_cobradora(boleto, option) {
+
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else
+        {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("GET", "clientes/atualiza_cobradora_titulos.php?cobradora=" + option + "&numdoc=" + boleto, true);
+        xmlhttp.send();
+    }
+</script>
+
+<?php
+// pega o saldo do crediario/credupere
+
+$saldo_crediario = '0,00';
+//echo "<br>".date('H:m:s');
+
+$sql_saldo = "SELECT saldo FROM cs2.contacorrente_recebafacil WHERE codloja='$codloja' order by id";
+$qr2 = mysql_query($sql_saldo, $con) or die("\nErro ao gerar o extrato\n" . mysql_error() . "\n\n");
+//echo "<br>".date('H:m:s');
+while ($matriz = mysql_fetch_array($qr2)) {
+    $saldo_crediario = number_format($matriz['saldo'], 2, ",", ".");
+    $sdo_crediario = $matriz['saldo'];
+}
+//echo "<br>".date('H:m:s');
+$sql_cliente = "select mid(a.logon,1,5) as logon, b.razaosoc, b.nomefantasia,
+                    b.fone, b.fax, b.celular, b.email, b.sitcli
+                from logon a
+                inner join cadastro b on a.codloja=b.codloja
+                where b.codloja = '$codloja'";
+//echo "<br>".date('H:m:s');
+$resulta = mysql_query($sql_cliente, $con);
+//echo "<br>".date('H:m:s');
+$linha = mysql_num_rows($resulta);
+if ($linha > 0) {
+    $matriz = mysql_fetch_array($resulta);
+    $logon = $matriz['logon'];
+    $razaosoc = $matriz['razaosoc'];
+    $razaosoc = $matriz['nomefantasia'];
+    $fone = mascara_celular($matriz['fone']);
+    $fax = mascara_celular($matriz['fax']);
+    $celular_n_mask = $matriz['celular'];
+    $email = $matriz['email'];
+    $sitcli = $matriz['sitcli'];
+//  $operadora = ver_operadora($celular);
+    $celular = mascara_celular($matriz['celular']);
+}
+
+//pega da tabela titulos todas as ocorrencias para esse codloja
+$command = "SELECT 
+                numdoc AS boleto, date_format(vencimento,'%d/%m/%Y') AS venc, valor, 
+                date_format(datapg,'%d/%m/%Y') AS dtpagamento, valorpg, referencia, 
+                vencimento, isento_juros, referencia, 
+                date_format(vencimento_alterado,'%d/%m/%Y') AS venc_alterado_view,
+                vencimento_alterado as venc_alterado
+            FROM cs2.titulos 
+            WHERE codloja = '$codloja'
+                  AND numboleto IS NOT NULL 
+                  AND datapg is NULL 
+            ORDER BY vencimento";
+$res = mysql_query($command, $con);
+$linhas = mysql_num_rows($res);
+$linhas1 = $linhas + 3;
+
+//comeca a tabela
+?>
+<form name='form' method='post' action='#' onsubmit='return false;'>
+    <?php
+    echo "
+        <table align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
+            <tr>
+                <td colspan='9' class='titulo'>FATURAS EM ATRASO OU A VENCER</td>
+            </tr>
+            <tr>
+                <td colspan='3' class='subtitulodireita'>Codigo</td>
+                <td colspan='6' class='subtitulopequeno'>$logon</td>
+            </tr>
+            <tr>
+                <td colspan='3' class='subtitulodireita'>Razao Social</td>
+                <td colspan='6' class='subtitulopequeno'>$razaosoc</td>
+            </tr>
+            <tr>
+                <td colspan='3' class='subtitulodireita'>Telefones</td>
+                <td colspan='6' class='subtitulopequeno'>$fone<br>$fax<br>$celular - $operadora</td>
+            </tr>
+            <tr>
+                <td colspan='3' class='subtitulodireita'>Email</td>
+                <td colspan='6' class='subtitulopequeno'>$email</td>
+            </tr>
+            
+            <tr height='20' bgcolor='87b5ff'>
+                <td align='center'  width='5%'></td>
+                <td align='center'  width='9%'>No. Boleto</td>
+                <td align='center'  width='9%'>Venc. Original</td>
+                <td align='center'  width='9%'>Venc. Atualizado</td>
+                <td align='center'  width='9%'>Vr. Original</td>
+                <td align='center'  width='9%'><font color='red'>Desconto<br>Abatimento</font></td>
+                <td align='center'  width='9%'><font color='#0000e6'>Acrescimo</font></td>
+                <td align='center'  width='9%'><b>Valor Atualizado</b></td>
+                <td align='center'  width='9%'>Origem</td>
+            </tr>
+";
+
+    $celular_ddd = substr($celular_n_mask,0,2);
+    $celular_digito_9 = substr($celular_n_mask,2,1);
+    $celular_number = substr($celular_n_mask,3,8);
+
+    $celular_valid = true;
+
+    if($celular_digito_9 != 9){
+        $celular_valid = false;
+        $celular_n_mask = 0;
+    }else if(strlen($celular_number) < 8){
+        $celular_valid = false;
+        $celular_n_mask = 0;
+    }
+
+    for ($a = 1; $a <= $linhas; $a++) {
+
+        $matriz = mysql_fetch_array($res);
+        $boleto = $matriz['boleto'];
+
+        // Verificando se o titulo tem desconto
+        $sql_desconto = "SELECT sum(desconto) AS desconto, sum(acrescimo) AS acrescimo  FROM cs2.titulos_movimentacao
+                         WHERE numdoc = '$boleto'";
+        $qry_desconto    = mysql_query($sql_desconto, $con);
+        $valor_desconto  = mysql_result($qry_desconto, 0, 'desconto');
+        $valor_acrescimo = mysql_result($qry_desconto, 0, 'acrescimo');
+        $venc_alter      = $matriz['venc_alterado'];
+        $venc_alterado_o = $matriz['venc_alterado'];
+        $venc_alterado_o = substr($venc_alterado_o, 8, 2) . '/' . substr($venc_alterado_o, 5, 2) . '/' . substr($venc_alterado_o, 0, 4);
+
+        $venc_alterado      = $matriz['venc_alterado'];
+        $venc_alterado_view = $matriz['venc_alterado_view'];
+        $venc_original      = $matriz['venc'];
+        $venc               = $matriz['venc'];
+
+        $vencSMS = $venc;
+
+        if ($venc_alterado != '')
+            $venc = $venc_alterado_view;
+
+        $valor_original = $matriz['valor'];
+        $valor          = $matriz['valor'] - $valor_desconto;
+        $referencia     = $matriz['referencia'];
+        $dtpagamento    = $matriz['dtpagamento'];
+
+        if ($_SESSION['id'] != 163) // SOMENTE PARA O WELLINGTON
+            $ativo = " disabled='disabled' ";
+
+        if (( $referencia <> 'MULTA' ) or ( $referencia == 'MULTA' and $dtpagamento <> '' )) {
+
+            /* condicao para mostra o pagamento com juros */
+            
+            $date = date("d/m/Y", time());
+            $vencimento = $matriz['vencimento'];
+
+            $vencimentof = substr($vencimento, 8, 2) . "/" . substr($vencimento, 5, 2) . "/" . substr($vencimento, 0, 4);
+
+            if ($venc_alter != '') {
+                $dif = diferenca_entre_datas($venc_alterado_o, $vencimentof, 'DD/MM/AAAA');
+            } else {
+                $dif = diferenca_entre_datas($date, $vencimentof, 'DD/MM/AAAA');
+            }
+            
+            $txt_valorcobrado = '';
+            $teste_multa = 0;
+            if ($dif > 0) {
+
+                $nvalor = str_replace(',', '.', $valor);
+                $multa = ($nvalor+$valor_acrescimo) * 0.02 ; // 2%
+                
+                $encargos = ( ( $nvalor + $valor_acrescimo) * 0.0015 ) * $dif;
+                $xencargos = number_format($encargos, 2, ',', '.');
+
+                $encargos = number_format($encargos, 2);
+
+                $_valor = ( $nvalor + $multa + $encargos + $valor_acrescimo );
+
+                $multa = number_format($multa, 2, ',', '.');
+                $valor_cobrado = number_format($_valor, 2, ',', '.');
+                
+            } else {
+                
+                $valor_cobrado = number_format($valor+$valor_acrescimo, 2, ',', '.');
+                
+            }
+            
+            /* ****************************************** */
+
+            $valor_original = number_format($valor_original, 2, ',', '.');
+            $dtpagamento = $matriz['dtpagamento'];
+            $valorpg = $matriz['valorpg'];
+            $origem = $matriz['referencia'];
+            if ( $origem == 'BOL' )
+                $origem = 'Mensalidade';
+
+            if (!$valorpg)
+                $soma = $soma + $valor;
+
+            /* Converte a Data para o formato Americano para fazer a comparação */
+            $venc_originalAux        = str_replace('/', '-', $venc_original);
+
+            // Col 1
+            echo "<tr height='22' bgcolor='#E5E5E5'>";
+
+            echo "<td><input name='selecao[]' type='checkbox' value='$valor' /></td>";
+
+            echo "<td align='center'><u><a href='../../inform/boleto/boleto.php?numdoc=$boleto'><font color='blue'>$boleto</font></a></u></td>
+                     <td align='center'>$venc_original</td>";
+
+            // Col 2
+            if ($venc_alterado != '')
+                echo "<td align='center'>$venc</td>";
+            else
+                echo "<td align='center'>&nbsp;</td>";
+
+            // Col 3            
+            echo "  <td align='center'>$valor_original</td>";
+
+            // Col 4
+            if ($valor_desconto > 0)
+                echo "  <td align='center'><font color='red'>" . number_format($valor_desconto, 2, ',', '.') . "<font></td>";
+            else
+                echo "  <td align='center'>&nbsp;</td>";
+
+            // Col 5
+            echo "  <td align='center'><font color='#0000e6'>$valor_acrescimo</font></td>";
+
+            // Col 6
+            echo"   <td align='center'>";
+
+            // Col 7
+            echo "<td align='center'>$origem</td>
+                </tr>";
+        }
+    }
+    $somax = number_format($soma, 2);
+
+    echo "<tr height='20' class='subtitulodireita'>
+            <td colspan='9'>Soma das Faturas Mensais não pagas: R$ $somax</td>
+          </tr>
+    </table>";
+    $res = mysql_close($con);
+    ?>
+    <table align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
+        <tr height='20' class='subtitulodireita'>
+            <td colspan='3' class='subtitulodireita'>Soma Total do(s) registro(s) selecionado(s)</td>
+            <td colspan='6' class='subtitulopequeno'><input type='text' disabled id='evento_value'></td>
+        </tr>
+    <table>
+
+    <table id="escolha" align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText' style="display:none;">
+        <tr> 
+            <td>Qtd de Parcelas</td>
+            <td>
+                <select id="iptParcelas" name="iptParcelas">
+                   <option value="0">Selecione...</option>
+                   <option value="1">Receber na próxima fatura</option>
+                   <option value="2">Parcelar em 2 vezes</option>
+                   <option value="3">Parcelar em 3 vezes</option>
+                </select>
+            </td>
+        </tr>
+        <tr> 
+            <td colspan="2"><input type='button' value='Confirme o parcelamento' onclick='Confirmar_Parcelamento()'></td>
+        </tr>
+    </div>
+
