@@ -278,7 +278,7 @@ $data_atual = date("Y-m-d");
 
 
     $(document).ready(function() {
-        $('.mask-data').mask('00/00/0000');
+        // $('.mask-data').mask('00/00/0000');
 
         var total = 0;
         //Chama a função com click em qualquer checkbox
