@@ -356,7 +356,8 @@ $data_atual = date("Y-m-d");
 
                     tr.appendChild(td_data);
                     tr.appendChild(td_valor);
-                    console.log(tr);
+
+
                     pai.insertBefore(tr, document.getElementById("botao_confirmar"));
                     
                 }
