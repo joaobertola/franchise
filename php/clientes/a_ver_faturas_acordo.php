@@ -94,176 +94,23 @@ $data_atual = date("Y-m-d");
     var codLoja_SMS;
     var nomeFantaia_SMS;
 
-    function digitarCodBarraSMS() {
-        var fundo_modal = document.getElementById('fundo-modal-sms');
-        var modal = document.getElementById('modal-sms');
-        var modal_digitar = document.getElementById('modal-manual-sms');
-        var txtSmsManual = document.getElementById('txtSmsManual').value;
-        fundo_modal.style.display = 'none';
-        modal.style.display = 'none';
-        modal_digitar.style.display = 'none';
+    function Confirmar_Parcelamento() {
+
+        var numdoc_array = [];
+
+        var numdoc = $('input:checkbox:checked').map(function(){
+                numdoc_array.push($(this).data('numdoc'));
+                return this.value;
+            }).get();
 
         $.ajax({
-            url: "../../inform/boleto/boleto.php?numdoc=" + smsId + "&barcode",
-            type: "POST",
-            success: function(data) {
-                //alert(data);
-                barcode = data;
-                $.ajax({
-                    url: "sms/enviaBoletoSMS.php",
-                    type: "POST",
-                    data: {
-                        'action': 'digitarCodBarraSMS',
-                        'barcode': barcode,
-                        'smsId': smsId,
-                        'smsNumber': smsNumber,
-                        'dt_vencimento': smsVencimento,
-                        'valor': smsValor,
-                        'codLoja_SMS': codLoja_SMS,
-                        'nomeFantaia_SMS': nomeFantaia_SMS,
-                        'txtSmsManual': txtSmsManual
-                    },
-                    success: function(data) {
-                        console.log(data);
-                        alert(data);
-                    }
-                });
-            }
-        });
-    }
-
-    function enviarCodBarraSMS() {
-        //alert(smsId);
-        $.ajax({
-            url: "../../inform/boleto/boleto.php?numdoc=" + smsId + "&barcode",
-            type: "POST",
-            success: function(data) {
-                //alert(data);
-                barcode = data;
-                $.ajax({
-                    url: "sms/enviaBoletoSMS.php",
-                    type: "POST",
-                    data: {
-                        'action': 'enviarCodBarraSMS',
-                        'barcode': barcode,
-                        'smsId': smsId,
-                        'smsNumber': smsNumber,
-                        'dt_vencimento': smsVencimento,
-                        'valor': smsValor,
-                        'codLoja_SMS': codLoja_SMS,
-                        'nomeFantaia_SMS': nomeFantaia_SMS
-                    },
-                    success: function(data) {
-                        console.log(data);
-                        alert(data);
-                    }
-                });
-            }
-        });
-    }
-
-    function closeModalSms() {
-        var fundo_modal = document.getElementById('fundo-modal-sms');
-        var modal = document.getElementById('modal-sms');
-        var modal_digitar = document.getElementById('modal-manual-sms');
-        fundo_modal.style.display = 'none';
-        modal.style.display = 'none';
-        modal_digitar.style.display = 'none';
-    }
-
-    function alerta() {
-        if (confirm("CONFIRMA O CANCELAMENTO DO RECEBIMENTO DE TÍTULO ?")) {} else {
-            return false
-        }
-    }
-
-    function alerta_desconto() {
-        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {} else {
-            return false
-        }
-    }
-
-    function afixar(form, idDiv, nboleto, cliente, sitcli) {
-
-        if (sitcli == 2) {
-            alert('Cliente CANCELADO !!! ');
-            abort;
-        }
-
-        div = document.getElementById(idDiv);
-
-        $('#botaoOK').removeAttr('onClick');
-        $('#botaoOK').attr("onClick", "valida_user('" + nboleto + "','" + cliente + "')");
-
-        if (div.style.display == 'none') {
-            div.style.display = 'block';
-        } else {
-            div.style.display = 'none';
-        }
-    }
-
-    function limpar(form, idDiv) {
-        document.form.dt_regularizacao.value = null;
-        document.form.senha_user.value = null;
-        $('#nome_usuario').text('');
-        div = document.getElementById(idDiv);
-        if (div.style.display == 'none')
-            div.style.display = 'block';
-        else
-            div.style.display = 'none';
-    }
-
-    function valida_user(nboleto, codloja) {
-        frm = document.form;
-
-        if (confirm("CONFIRMA LANÇAMENTO NESTA FATURA ?")) {} else {
-            return false
-        }
-
-        var usuario = frm.senha_user.value;
-        if (usuario == '') {
-            alert('Favor informar a senha para autorizacao');
-            exit;
-        }
-        var req = new XMLHttpRequest();
-        req.open('GET', "connect/valida_user.php?usuario=" + usuario, false);
-        req.send(null);
-        if (req.status != 200)
-            return '';
-        var resposta = req.responseText;
-        var array = resposta.split(';');
-        var id = array[0] - 1;
-        var nome = array[1];
-
-        $('#nome_usuario').text(nome);
-
-        if (nome) {
-
-            frm = document.form;
-            frm.action = 'painel.php?pagina1=clientes/a_fatura_desconto.php&numdoc=' + nboleto + '&codloja=' + codloja;
-            frm.submit();
-
-        } else {
-            alert(' SENHA INVALIDA ');
-        }
-    }
-
-    function Altera_Vencimento(d1, d2, d3) {
-        $('#vencimento_original').val(d1);
-        $('#valor_original').val(d2);
-        $('#numdoc_titulo').val(d3);
-        $('#Modal_Vencimento').modal('show');
-        $('#vencimento_atual').focus();
-    }
-
-    function Altera_Vencimento_Confirma() {
-
-        $.ajax({
-            url: "clientes/a_titulo_atualiza.php?update",
+            url: "clientes/a_ver_faturas_acordo_grava.php",
             type: "POST",
             data: {
-                'numdoc': $('#numdoc_titulo').val(),
-                'data_vencimento': $('#vencimento_atual').val()
+                'valor': $('#evento_value').val(),
+                'qtd_parcelas': $('#iptParcelas').val(),
+                'codigo': $('#iptCodigo').val(),
+                'numdoc' : numdoc_array                
             },
             success: function(data) {
                 if (data == 1) {
@@ -337,7 +184,7 @@ $data_atual = date("Y-m-d");
                     var td_data = document.createElement("td");
                     td_data.setAttribute("align","left");
                     var b_data = document.createElement("b");
-                    var b_text_data = document.createTextNode("Nova data de vencimento: ");
+                    var b_text_data = document.createTextNode("Próximo(s) Vencimento(s): ");
                     var td_text_data = document.createTextNode(data);
                     b_data.appendChild(b_text_data);
                     td_data.appendChild(b_data);
@@ -347,7 +194,7 @@ $data_atual = date("Y-m-d");
                     var td_valor = document.createElement("td");
                     td_valor.setAttribute("align","center");
                     var b_valor = document.createElement("b");
-                    var b_text_valor = document.createTextNode("Valor da parcela: ");
+                    var b_text_valor = document.createTextNode("Valor da Parcela: ");
                     var td_text_valor = document.createTextNode(total_valor_parcela);
                     b_valor.appendChild(b_text_valor);
                     td_valor.appendChild(b_valor)
@@ -361,16 +208,14 @@ $data_atual = date("Y-m-d");
                     pai.insertBefore(tr, document.getElementById("botao_confirmar"));
                     
                 }
-
-                    
-                    //    $('#escolha tbody').insertBefore(html, $('#botao_confirmar').children);
-                       remove_when_uncheked()
+                remove_when_uncheked()
                 // reciever_parcelar
             } else {
                 $('#escolha tbody .parcelas_new').remove();
                 remove_when_uncheked()
             }
         });
+
         function remove_when_uncheked(){
             $(':checkbox').click(function() {
                 //Atribui o valor do input p/ variável 'valor'
@@ -388,50 +233,14 @@ $data_atual = date("Y-m-d");
     });
 </script>
 
-<script language="javascript">
-    function geraNotificacao(p_codloja, p_soma) {
-
-        if (p_soma == '0') {
-            alert('Atencao !  Nao existem debito para este cliente.');
-        } else {
-            popup = window.open('clientes/popup_notificacao_data.php?codloja=' + p_codloja + '&soma=' + p_soma, 'janela', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,width=' + 700 + ',height=' + 700 + ',left=' + 5 + ', top=' + 5 + ',screenX=' + 100 + ',screenY=' + 100 + '');
-        }
-    }
-
-    function grava_cobradora(boleto, option) {
-
-        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else { // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.open("GET", "clientes/atualiza_cobradora_titulos.php?cobradora=" + option + "&numdoc=" + boleto, true);
-        xmlhttp.send();
-    }
-</script>
-
 <?php
-// pega o saldo do crediario/credupere
 
-$saldo_crediario = '0,00';
-//echo "<br>".date('H:m:s');
-
-$sql_saldo = "SELECT saldo FROM cs2.contacorrente_recebafacil WHERE codloja='$codloja' order by id";
-$qr2 = mysql_query($sql_saldo, $con) or die("\nErro ao gerar o extrato\n" . mysql_error() . "\n\n");
-//echo "<br>".date('H:m:s');
-while ($matriz = mysql_fetch_array($qr2)) {
-    $saldo_crediario = number_format($matriz['saldo'], 2, ",", ".");
-    $sdo_crediario = $matriz['saldo'];
-}
-//echo "<br>".date('H:m:s');
 $sql_cliente = "select mid(a.logon,1,5) as logon, b.razaosoc, b.nomefantasia,
                     b.fone, b.fax, b.celular, b.email, b.sitcli
                 from logon a
                 inner join cadastro b on a.codloja=b.codloja
                 where b.codloja = '$codloja'";
-//echo "<br>".date('H:m:s');
 $resulta = mysql_query($sql_cliente, $con);
-//echo "<br>".date('H:m:s');
 $linha = mysql_num_rows($resulta);
 if ($linha > 0) {
     $matriz = mysql_fetch_array($resulta);
@@ -443,7 +252,6 @@ if ($linha > 0) {
     $celular_n_mask = $matriz['celular'];
     $email = $matriz['email'];
     $sitcli = $matriz['sitcli'];
-    //  $operadora = ver_operadora($celular);
     $celular = mascara_celular($matriz['celular']);
 }
 
@@ -470,6 +278,7 @@ $linhas1 = $linhas + 3;
     echo "
         <table align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
             <tr>
+                <input type='hidden' id='iptCodigo' value='$codloja'>
                 <td colspan='9' class='titulo'>FATURAS EM ATRASO OU A VENCER</td>
             </tr>
             <tr>
@@ -480,25 +289,16 @@ $linhas1 = $linhas + 3;
                 <td colspan='3' class='subtitulodireita'>Razao Social</td>
                 <td colspan='6' class='subtitulopequeno'>$razaosoc</td>
             </tr>
-            <tr>
-                <td colspan='3' class='subtitulodireita'>Telefones</td>
-                <td colspan='6' class='subtitulopequeno'>$fone<br>$fax<br>$celular - $operadora</td>
-            </tr>
-            <tr>
-                <td colspan='3' class='subtitulodireita'>Email</td>
-                <td colspan='6' class='subtitulopequeno'>$email</td>
-            </tr>
-            
             <tr height='20' bgcolor='87b5ff'>
-                <td align='center'  width='5%'></td>
-                <td align='center'  width='9%'>No. Boleto</td>
-                <td align='center'  width='9%'>Venc. Original</td>
-                <td align='center'  width='9%'>Venc. Atualizado</td>
-                <td align='center'  width='9%'>Vr. Original</td>
-                <td align='center'  width='9%'><font color='red'>Desconto<br>Abatimento</font></td>
-                <td align='center'  width='9%'><font color='#0000e6'>Acrescimo</font></td>
-                <td align='center'  width='9%'><b>Valor Atualizado</b></td>
-                <td align='center'  width='9%'>Origem</td>
+                <td align='center' width='5%'></td>
+                <td align='center' width='9%'>No. Boleto</td>
+                <td align='center' width='9%'>Venc. Original</td>
+                <td align='center' width='9%'>Venc. Atualizado</td>
+                <td align='center' width='9%'>Vr. Original</td>
+                <td align='center' width='9%'><font color='red'>Desconto<br>Abatimento</font></td>
+                <td align='center' width='9%'><font color='#0000e6'>Acrescimo</font></td>
+                <td align='center' width='9%'><b>Valor Atualizado</b></td>
+                <td align='center' width='9%'>Origem</td>
             </tr>
 ";
 
@@ -552,8 +352,8 @@ $linhas1 = $linhas + 3;
         if (($referencia <> 'MULTA') or ($referencia == 'MULTA' and $dtpagamento <> '')) {
 
             /* condicao para mostra o pagamento com juros */
-
             $date = date("d/m/Y", time());
+
             $vencimento = $matriz['vencimento'];
 
             $vencimentof = substr($vencimento, 8, 2) . "/" . substr($vencimento, 5, 2) . "/" . substr($vencimento, 0, 4);
@@ -565,7 +365,7 @@ $linhas1 = $linhas + 3;
             }
 
             $txt_valorcobrado = '';
-            $teste_multa = 0;
+
             if ($dif > 0) {
 
                 $nvalor = str_replace(',', '.', $valor);
@@ -580,12 +380,11 @@ $linhas1 = $linhas + 3;
 
                 $multa = number_format($multa, 2, ',', '.');
                 $valor_cobrado = number_format($_valor, 2, ',', '.');
+
             } else {
 
                 $valor_cobrado = number_format($valor + $valor_acrescimo, 2, ',', '.');
             }
-
-            /* ****************************************** */
 
             $valor_original = number_format($valor_original, 2, ',', '.');
             $dtpagamento = $matriz['dtpagamento'];
@@ -603,7 +402,7 @@ $linhas1 = $linhas + 3;
             // Col 1
             echo "<tr height='22' bgcolor='#E5E5E5'>";
 
-            echo "<td><input name='selecao[]' type='checkbox' value='$valor' /></td>";
+            echo "<td><input name='selecao[]' type='checkbox' value='$valor' data-numdoc='$boleto'/></td>";
 
             echo "<td align='center'><u><a href='../../inform/boleto/boleto.php?numdoc=$boleto'><font color='blue'>$boleto</font></a></u></td>
                      <td align='center' class='data_vencimento'>$venc_original</td>";
@@ -627,14 +426,14 @@ $linhas1 = $linhas + 3;
             echo "  <td align='center'><font color='#0000e6'>$valor_acrescimo</font></td>";
 
             // Col 6
-            echo "   <td align='center'>";
+            echo "   <td align='center'>$valor_cobrado</td>";
 
             // Col 7
             echo "<td align='center'>$origem</td>
                 </tr>";
         }
     }
-    $somax = number_format($soma, 2);
+    $somax = number_format($soma,2,',', '.');
 
     echo "<tr height='20' class='subtitulodireita'>
             <td colspan='9'>Soma das Faturas Mensais não pagas: R$ $somax</td>
@@ -647,21 +446,29 @@ $linhas1 = $linhas + 3;
             <td colspan='3' class='subtitulodireita'>Soma Total do(s) registro(s) selecionado(s)</td>
             <td colspan='6' class='subtitulopequeno'><input type='text' disabled id='evento_value'></td>
         </tr>
-        <table id="reciever_parcelar">
+    </table>
+    <table align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
+        <tr>
+            <td colspan="9">
+                <table id="escolha" align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText' style="display:none;">
+                    <tr>
+                        <td colspan='3' class='subtitulodireita'>Qtd de Parcelas</td>
+                        <td colspan='6' class='subtitulopequeno'>
+                            <select id="iptParcelas" name="iptParcelas">
+                                <option value="0">Selecione...</option>
+                                <option value="1">Receber na próxima fatura</option>
+                                <option value="2">Parcelar em 2 vezes</option>
+                                <option value="3">Parcelar em 3 vezes</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="botao_confirmar">
+                        <td colspan="2"><input type='button' value='Confirme o parcelamento' onclick='Confirmar_Parcelamento()'></td>
+                    </tr>
+                    </div>
+                </table>
+            </td>
+            <!-- <span id="reciever_parcelar"></span> -->
 
-            <table id="escolha" align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText' style="display:none;">
-                <tr>
-                    <td>Qtd de Parcelas</td>
-                    <td>
-                        <select id="iptParcelas" name="iptParcelas">
-                            <option value="0">Selecione...</option>
-                            <option value="1">Receber na próxima fatura</option>
-                            <option value="2">Parcelar em 2 vezes</option>
-                            <option value="3">Parcelar em 3 vezes</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr id="botao_confirmar">
-                    <td colspan="2"><input type='button' value='Confirme o parcelamento' onclick='Confirmar_Parcelamento()'></td>
-                </tr>
-                </div>
+        </tr>
+    </table>
