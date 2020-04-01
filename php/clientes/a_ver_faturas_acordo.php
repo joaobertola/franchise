@@ -10,6 +10,14 @@ $data_atual = date("Y-m-d");
 <script src="<?= 'http://' . $_SERVER["SERVER_NAME"] ?>/franquias/css/assets/js/mask.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <style>
+    body{
+        padding:0;
+        margin:0;
+    }
+    #escolha{
+        margin:0;
+        width: 100%;
+    }
     #fundo-modal-sms {
         width: 100%;
         height: 100%;
@@ -83,6 +91,27 @@ $data_atual = date("Y-m-d");
         cursor: pointer;
         font-size: 18px;
     }
+    .parcelas_new{
+        background-color: #e5e5e5;
+    }
+    .parcelas_new td{
+        padding-left: 8px;
+        font-size: 12px;
+        max-width: 15vw;
+    }
+    #escolha tbody td.subtitulodireita{
+        min-width: 15.1vw;
+        max-width: 15.1vw;
+        width: 15.1vw;
+    }
+    #iptParcelas{
+        width: 12.8vw;
+    }
+    tr#botao_confirmar td {
+    /* margin-top: 34vh; */
+    padding-top: 3%;
+    }
+        
 </style>
 <script language="javascript">
     // MODAL BOLETO SMS
@@ -183,6 +212,7 @@ $data_atual = date("Y-m-d");
 
                     var td_data = document.createElement("td");
                     td_data.setAttribute("align","left");
+                    td_data.setAttribute("colspan","3");
                     var b_data = document.createElement("b");
                     var b_text_data = document.createTextNode("Próximo(s) Vencimento(s): ");
                     var td_text_data = document.createTextNode(data);
@@ -192,7 +222,8 @@ $data_atual = date("Y-m-d");
 
 
                     var td_valor = document.createElement("td");
-                    td_valor.setAttribute("align","center");
+                    td_valor.setAttribute("align","left");
+                    td_valor.setAttribute("colspan","6");;
                     var b_valor = document.createElement("b");
                     var b_text_valor = document.createTextNode("Valor da Parcela: ");
                     var td_text_valor = document.createTextNode(total_valor_parcela);
