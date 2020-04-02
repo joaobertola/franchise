@@ -384,7 +384,7 @@ if ( $atz_tabela == 'SIM' ){
 			<td colspan=\"8\">";
 	if ($situacao == "and a.datapg is null") echo "Soma das Faturas n&atilde;o quitadas: R$ $soma";
 	else if ($situacao == "and a.datapg is not null ") echo "Soma das Faturas quitadas: R$ $soma2";
-	else echo "Soma das Faturas n?o quitadas: R$ $soma<br>
+	else echo "Soma das Faturas não quitadas: R$ $soma<br>
 				Soma das Faturas quitadas: R$ $soma2";
 	echo "</table>";
 }
