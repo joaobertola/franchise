@@ -25,6 +25,7 @@ $ano = mysql_result($qry_insert,0,'ano');
 
 for ( $i=1 ; $i <= $qtd_parcelas ; $i++ ){
 
+    $parcela    = str_pad($i,2,0,STR_PAD_LEFT).'/'.str_pad($qtd_parcelas,2,0,STR_PAD_LEFT);
     $vencimento       = $ano.'-'.str_pad($mes+$i,2,0,STR_PAD_LEFT).'-30';
     $ano_new    = substr($vencimento,2,2);
     $mes_new    = substr($vencimento,5,2);
