@@ -9,6 +9,7 @@ $data_atual = date("Y-m-d");
 <script src="<?= 'http://' . $_SERVER["SERVER_NAME"] ?>/franquias/css/assets/js/bootstrap.min.js"></script>
 <script src="<?= 'http://' . $_SERVER["SERVER_NAME"] ?>/franquias/css/assets/js/mask.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/assets/css/sweetalert.css">
 <style>
     body{
         padding:0;
@@ -111,8 +112,8 @@ $data_atual = date("Y-m-d");
     /* margin-top: 34vh; */
     padding-top: 3%;
     }
-        
 </style>
+<script src="../css/assets/js/sweetalert.min.js"></script>
 <script language="javascript">
     // MODAL BOLETO SMS
 
@@ -126,6 +127,7 @@ $data_atual = date("Y-m-d");
     function Confirmar_Parcelamento() {
 
         var numdoc_array = [];
+        var form = this;
 
         var numdoc = $('input:checkbox:checked').map(function(){
                 numdoc_array.push($(this).data('numdoc'));
@@ -142,16 +144,32 @@ $data_atual = date("Y-m-d");
                 'numdoc' : numdoc_array                
             },
             success: function(data) {
-                if (data == 1) {
-                    //location.reload();
-                    console.log(data);
-                } else {
-                    console.log(data);
+                
+                var array = data.split(';');
+                var stat = array[0];
+                var link = array[1];
+
+                if (stat == '900') {
+
+                    swal({
+                           title: 'Registro gravado com sucesso!',
+                           timer: 5000,
+                           icon: 'success'
+                    }).then(function() {
+                        form.refresh();
+                    });
+
+                }else{
+                    Swal.fire(
+                       {
+                        icon : 'error',
+                        text : 'Erro ao gravar o registro'
+                       }
+                    );
                 }
             }
         });
     }
-
 
     $(document).ready(function() {
         // $('.mask-data').mask('00/00/0000');
@@ -274,16 +292,16 @@ $sql_cliente = "select mid(a.logon,1,5) as logon, b.razaosoc, b.nomefantasia,
 $resulta = mysql_query($sql_cliente, $con);
 $linha = mysql_num_rows($resulta);
 if ($linha > 0) {
-    $matriz = mysql_fetch_array($resulta);
-    $logon = $matriz['logon'];
-    $razaosoc = $matriz['razaosoc'];
-    $razaosoc = $matriz['nomefantasia'];
-    $fone = mascara_celular($matriz['fone']);
-    $fax = mascara_celular($matriz['fax']);
+    $matriz         = mysql_fetch_array($resulta);
+    $logon          = $matriz['logon'];
+    $razaosoc       = $matriz['razaosoc'];
+    $razaosoc       = $matriz['nomefantasia'];
+    $fone           = mascara_celular($matriz['fone']);
+    $fax            = mascara_celular($matriz['fax']);
     $celular_n_mask = $matriz['celular'];
-    $email = $matriz['email'];
-    $sitcli = $matriz['sitcli'];
-    $celular = mascara_celular($matriz['celular']);
+    $email          = $matriz['email'];
+    $sitcli         = $matriz['sitcli'];
+    $celular        = mascara_celular($matriz['celular']);
 }
 
 //pega da tabela titulos todas as ocorrencias para esse codloja
@@ -300,7 +318,6 @@ $command = "SELECT
             ORDER BY vencimento";
 $res = mysql_query($command, $con);
 $linhas = mysql_num_rows($res);
-$linhas1 = $linhas + 3;
 
 //comeca a tabela
 ?>
@@ -470,7 +487,7 @@ $linhas1 = $linhas + 3;
             <td colspan='9'>Soma das Faturas Mensais não pagas: R$ $somax</td>
           </tr>
     </table>";
-    $res = mysql_close($con);
+
     ?>
     <table align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
         <tr height='20' class='subtitulodireita'>
@@ -500,6 +517,43 @@ $linhas1 = $linhas + 3;
                 </table>
             </td>
             <!-- <span id="reciever_parcelar"></span> -->
-
         </tr>
     </table>
+</form>
+<br>
+
+<?php
+
+$command = "SELECT 
+               DATE_FORMAT(data,'%d/%m/%Y') AS data, parcela, DATE_FORMAT(vencimento,'%d/%m/%Y') AS vencimento,valor,texto_numdoc_origem
+            FROM cs2.titulos_acordo 
+            WHERE codloja = '$codloja'
+            ORDER BY id";
+$res = mysql_query($command, $con) or die ("Erro SQL : $command");
+$linhas = mysql_num_rows($res);
+if ( $linhas > 0 ){
+    echo "<form name='form' method='post' action='#' onsubmit='return false;'>
+            <table align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
+                <tr>
+                    <td colspan='9' class='titulo'>ACORDOS REALIZADOS</td>
+                </tr>
+                <tr height='20' bgcolor='87b5ff'>
+                    <td align='center' width='9%'>Data Acordo</td>
+                    <td align='center' width='9%'>Parcela</td>
+                    <td align='center' width='9%'>vencimento</td>
+                    <td align='center' width='9%'>Valor</td>
+                    <td align='center' width='9%'>Pago</td>
+                </tr>
+         ";
+    while ( $reg = mysql_fetch_array($res) ){
+        echo "<tr height='20' bgcolor='87b5ff'>
+                 <td align='center' width='9%'>".$reg['data']."</td>
+                 <td align='center' width='9%'>".$reg['parcela']."</td>
+                 <td align='center' width='9%'>".$reg['vencimento']."</td>
+                 <td align='center' width='9%'>".number_format($reg['valor'],2,',','.')."</td>
+                 <td align='center' width='9%'>".$reg['data_pagamento']."</td>
+               </tr>";
+    }
+}
+$res = mysql_close($con);
+?>
