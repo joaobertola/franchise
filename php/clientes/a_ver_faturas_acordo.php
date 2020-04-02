@@ -127,7 +127,7 @@ $data_atual = date("Y-m-d");
     function Confirmar_Parcelamento() {
 
         var numdoc_array = [];
-        var form = this;
+        // var form = this;
 
         var numdoc = $('input:checkbox:checked').map(function(){
                 numdoc_array.push($(this).data('numdoc'));
@@ -150,13 +150,14 @@ $data_atual = date("Y-m-d");
                 var link = array[1];
 
                 if (stat == '900') {
-
                     swal({
                            title: 'Registro gravado com sucesso!',
-                           timer: 5000,
-                           icon: 'success'
-                    }).then(function() {
-                        form.refresh();
+                           icon: 'success',
+                           buttons: ["Ok", true]
+                    }, (response)=>{
+                        if(response){
+                            window.location.reload();
+                        }
                     });
 
                 }else{
