@@ -303,7 +303,8 @@
 	   else if ( $codcons == 'A0231' ) $qtd = '5000'; 	// 5000 consultas para Pesquisa LOCALIZA NOVOS CLIENTES
 	   else if ( $codcons == 'TM001' ) $qtd = '5000'; 	// 5000 Torpedo Marketing
 	   else if ( $codcons == 'WM001' ) $qtd = '5000'; 	// 5000 WhatsApp Marketing
-	   
+       else if ( $codcons == 'EM001' ) $qtd = '5000'; 	// 5000 Email Marketing
+
 	   if ( $assinatura == '7' ) $qtd= '0';
 	   
 	   if ( substr($codcons,0,1) == 'F' ) $qtd = '20'; // Features
