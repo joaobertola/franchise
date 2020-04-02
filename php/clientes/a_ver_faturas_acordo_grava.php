@@ -12,25 +12,22 @@ $valor_parcela =  number_format($valor_parcela , 2);
 
 foreach ($documentos as $key => $value) {
     $numdoc .= $value.',';
+    $xdoc = $value;
 }
 $numdoc = substr($numdoc,0,-1);
 
-// $i = ;
-for ( $i=0 ; $i < $qtd_parcelas ; $i++ ){
+// selecionando o vencimento da ultima parcela selecionada e adicionando para o proximo mes
 
-    $parcela    = str_pad($i+1,2,0,STR_PAD_LEFT).'/'.str_pad($qtd_parcelas,2,0,STR_PAD_LEFT);
-    $data       = date('d/m/Y');
-    $data       = explode( "/",$data);
-    $dia        = $data[0];
-    $mes        = $data[1];
-    $ano        = $data[2];
-    $j          = $i+1;
-    $vencimento = date("d/m/Y",strtotime("+".$j." month",mktime(0, 0, 0,$mes,$dia,$ano)));
-    $venc       = $vencimento;
-    $vencimento = substr($vencimento,6,4).'-'.substr($vencimento,3,2).'-'.substr($vencimento,0,2);
+$sqlx = "select month(vencimento) as mes ,year(vencimento) as ano  from cs2.titulos where numdoc = '$xdoc'";
+$qry_insert = mysql_query($sqlx,$con);
+$mes = mysql_result($qry_insert,0,'mes');
+$ano = mysql_result($qry_insert,0,'ano');
 
-    $ano_new    = substr($venc,8,2);
-    $mes_new    = substr($venc,3,2);
+for ( $i=1 ; $i <= $qtd_parcelas ; $i++ ){
+
+    $vencimento       = $ano.'-'.str_pad($mes+$i,2,0,STR_PAD_LEFT).'-30';
+    $ano_new    = substr($vencimento,2,2);
+    $mes_new    = substr($vencimento,5,2);
 
     $new_doc    = $ano_new.$mes_new.str_pad($codloja,6,0,STR_PAD_LEFT);
 

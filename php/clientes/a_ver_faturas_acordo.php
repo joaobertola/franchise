@@ -569,4 +569,5 @@ if ( $linhas > 0 ){
     }
 }
 $res = mysql_close($con);
+
 ?>
