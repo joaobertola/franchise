@@ -550,7 +550,7 @@ if ( $linhas > 0 ){
                 </tr>
                 <tr height='20' bgcolor='87b5ff'>
                     <td align='center' width='9%'>Data Acordo</td>
-                    <td align='center' width='9%'>Referência</td>
+                    <td align='center' width='9%'>Venc. Original</td>
                     <td align='center' width='9%'>Parcela</td>
                     <td align='center' width='9%'>vencimento</td>
                     <td align='center' width='9%'>Valor</td>
@@ -558,9 +558,19 @@ if ( $linhas > 0 ){
                 </tr>
          ";
     while ( $reg = mysql_fetch_array($res) ){
+        $array = explode(',',$reg['texto_numdoc_origem']);
+        $qtd_array = count($array);
+        $vencimento = '';
+        for( $j = 0 ; $j < $qtd_array ; $j++){
+             $numdoc = $array[$j];
+             $sql_sel = "Select date_format(vencimento,'%d/%m/%Y') as vencimento FROM cs2.titulos WHERE numdoc = '$numdoc'";
+             $res_sel = mysql_query($sql_sel, $con) or die ("Erro SQL : $sql_sel");
+             $vencimento .= mysql_result($res_sel,0,'vencimento')."<br>";
+        }
+
         echo "<tr height='20' bgcolor='87b5ff'>
                  <td align='center' width='9%'>".$reg['data']."</td>
-                 <td align='center' width='9%'>".$reg['texto_numdoc_origem']."</td>
+                 <td align='center' width='9%'>".$vencimento."</td>
                  <td align='center' width='9%'>".$reg['parcela']."</td>
                  <td align='center' width='9%'>".$reg['vencimento']."</td>
                  <td align='center' width='9%'>".number_format($reg['valor'],2,',','.')."</td>

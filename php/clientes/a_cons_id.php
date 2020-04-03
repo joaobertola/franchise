@@ -74,7 +74,8 @@ if (isset($id)) {
             a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.tpconta, a.nome_doc, a.tx_mens_anterior, a.emitir_nfs, a.limite_credito, a.liberar_nfe, a.status_nfe, a.user_pendencia, a.tipo_nfe,
             a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2,
             a.multa_contratual, IF(a.id_consultor = 0 OR a.id_consultor IS NULL OR a.id_consultor = '', a.vendedor, g.nome) as nome_consultor, h.nome as nome_agendador, o.descricao AS operadora,
-                        o.logomarca, (SELECT senha FROM base_web_control.webc_usuario WHERE id_cadastro = a.codLoja AND login_master = 'S' LIMIT 1) AS senha
+                        o.logomarca, (SELECT senha FROM base_web_control.webc_usuario WHERE id_cadastro = a.codLoja AND login_master = 'S' LIMIT 1) AS senha,
+                        date_format(a.data_suspenso,'%d/%m/%Y') AS data_suspenso
             FROM cadastro a
             LEFT OUTER JOIN logon b on a.codloja = b.codloja
             inner join franquia c on a.id_franquia=c.id
@@ -102,7 +103,8 @@ if (isset($id)) {
             a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.tpconta, a.nome_doc, a.tx_mens_anterior, a.emitir_nfs, a.limite_credito, a.liberar_nfe, a.status_nfe, a.user_pendencia, a.tipo_nfe,
             a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2, a.agendador,
             a.multa_contratual, IF(a.id_consultor = 0 OR a.id_consultor IS NULL OR a.id_consultor = '', a.vendedor, g.nome) as nome_consultor, h.nome as nome_agendador,
-            o.descricao AS operadora, o.logomarca, (SELECT senha FROM base_web_control.webc_usuario WHERE id_cadastro = a.codLoja AND login_master = 'S' LIMIT 1) AS senha
+            o.descricao AS operadora, o.logomarca, (SELECT senha FROM base_web_control.webc_usuario WHERE id_cadastro = a.codLoja AND login_master = 'S' LIMIT 1) AS senha,
+            date_format(a.data_suspenso,'%d/%m/%Y') AS data_suspenso
             FROM cadastro a
             LEFT OUTER JOIN logon b on a.codloja = $codloja
             inner join franquia c on a.id_franquia=c.id
@@ -324,11 +326,7 @@ if ($codloja > 0) {
         var ano = data_doc.substr(6, 4);
         var ano_p = parseInt(ano) + 1;
         var mes_p = (parseFloat(mes) + parseFloat('1'));
-        /*
-         if(mes == 11)
-         var ultima_fatura = '30' + '/01/' + ano_p;
-         else
-         */
+
         if (mes == 12)
             var ultima_fatura = '30' + '/01/' + ano_p;
         else if (mes == 01)
@@ -336,7 +334,7 @@ if ($codloja > 0) {
         else
             var ultima_fatura = '30/' + strzero(mes_p, 2) + '/' + ano;
         document.form.ultima_fatura.value = ultima_fatura;
-        alert("Favor conferir a data da �ltima Fatura desde Cliente ! ");
+        alert("Favor conferir a data da última Fatura desde Cliente ! ");
     }
 
     function deletar(){
@@ -345,6 +343,15 @@ if ($codloja > 0) {
             return false
         }
     }
+
+    function mostra(form, idDiv,valor) {
+        if ( valor == 5 ){
+           div = document.getElementById(idDiv);
+           if (div.style.display == 'none') div.style.display = 'block';
+        }
+        else div.style.display = 'none';
+    }
+
 
     function afixar(form, idDiv) {
         div = document.getElementById(idDiv);
@@ -860,7 +867,7 @@ if ($codloja > 0) {
                 } else {
                     echo "bgcolor=\"#FF0000\"";
                 }
-                ?> ><font color="#FFFFFF"><?php echo $matriz['descsit']; ?></font>
+                ?> ><font color="#FFFFFF"><?php echo $matriz['descsit']; echo $matriz['sitcli'] == 5 ? ' até '.$matriz['data_suspenso'] : ''; ?></font>
             </td>
         </tr>
         <tr>
@@ -1187,7 +1194,7 @@ if ($codloja > 0) {
                                     if ($_SESSION['id'] == 4)
                                         $disabled = "disabled='disabled'";
                                     ?>
-                                    <select name="sitcli" <?php echo $disabled; ?> >
+                                    <select onChange="mostra(form,'dataSuspenso', this.value)" name="sitcli" <?php echo $disabled; ?> >
                                         <option value="0" <?php if ($matriz['sitcli'] == "0") {
                                             echo "selected";
                                         } ?> >ATIVO</option>
@@ -1200,8 +1207,16 @@ if ($codloja > 0) {
                                         <option value="3" <?php if ($matriz['sitcli'] == "3") {
                                             echo "selected";
                                         } ?> >BLQ VIRTUAL</option>
+                                        <option value="5" <?php if ($matriz['sitcli'] == "5") {
+                                            echo "selected";
+                                        } ?> >SUSPENSO</option>
                                     </select>
                                 <?php } ?>
+                                <div id="dataSuspenso" style='display: <?= $matriz['sitcli'] == '5' ? 'block' : 'none';?>' >
+                                   <br><br>
+                                   Data limite SUSPENSÃO :<br>
+                                   <input type="text" name="data_suspensao" onKeyPress="return MM_formtCep(event,this,'##/##/####');" onFocus="this.className='boxover'" onBlur="this.className='boxnormal'" maxlength='10' value=<?= $matriz['data_suspenso']?> >
+                                </div>
                             </td>
                         </tr>
                         <tr>

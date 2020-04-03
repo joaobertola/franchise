@@ -171,10 +171,7 @@ $dt_regularizacao    = inverteData($_REQUEST['dt_regularizacao']);
 $alterar             = $_REQUEST['alterar'];
 $pendencia_contrato  = $_REQUEST['pendencia_contrato'];
 $senha_user          = $_REQUEST['senha_user'];
-
-//echo "<pre>";
-//print_r($_REQUEST);
-//exit;
+$data_suspensao      = $_REQUEST['data_suspensao'];
 
 switch($_REQUEST['acao']){
 
@@ -236,9 +233,15 @@ switch($_REQUEST['acao']){
 		if ( $sitcli <> '' )
 			$comp = " sitcli = '$sitcli', ";
 			
+		$data_suspenso = '';
+
+		if ( $data_suspensao != '' )
+			$data_suspenso = ', data_suspenso = '."'".inverteData($data_suspensao)."'";
+
 		$sql_cad = "UPDATE cs2.cadastro SET 
 					$comp
 					sit_cobranca = '$sit_cobranca'
+					$data_suspenso
 				    WHERE codloja = '{$_REQUEST['codloja']}'";
 		
 		$qry_cad = mysql_query ($sql_cad, $con);
