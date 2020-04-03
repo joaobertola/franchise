@@ -860,26 +860,29 @@ if ($codloja > 0) {
         ?>
         <tr>
             <td class="subtitulodireita">Situa&ccedil;&atilde;o do Contrato</td>
-            <td colspan="3" class="formulario"
+            <td colspan="3" class="formulario" 
                 <?php
                 if ($matriz['sitcli'] == 0) {
-                    echo "bgcolor=\"#33CC66\"";
+                    echo " style='color:#FFFFFF'  bgcolor='#33CC66'>".$matriz['descsit'];
+                } elseif ($matriz['sitcli'] == 5) {
+                    echo " style='color:#000000' bgcolor='#FFFF00'>".$matriz['descsit']." até ".$matriz['data_suspenso'];
                 } else {
-                    echo "bgcolor=\"#FF0000\"";
+
+                    echo " style='color:#FFFFFF'  bgcolor='#FF0000'>".$matriz['descsit'];
                 }
-                ?> ><font color="#FFFFFF"><?php echo $matriz['descsit']; echo $matriz['sitcli'] == 5 ? ' até '.$matriz['data_suspenso'] : ''; ?></font>
+                ?>
             </td>
         </tr>
         <tr>
             <td class="subtitulodireita">Acesso</td>
             <?php
-            echo "<td class=\"formulario\" style=\"color:#FFFFFF\"";
+            echo "<td class='formulario' style='color:#FFFFFF'";
             if ($log['sitlog'] == 0)
-                echo "bgcolor=\"#33CC66\">ATIVO";
+                echo "bgcolor='#33CC66'>ATIVO";
             elseif ($log['sitlog'] == 1)
-                echo "bgcolor=\"#FFCC00\">BLOQUEADO";
+                echo "bgcolor='#FFCC00'>BLOQUEADO";
             else
-                echo "bgcolor=\"#FF0000\">CANCELADO";
+                echo "bgcolor='#FF0000'>CANCELADO";
             ?>
             <td colspan="3"></td>
         <tr>
