@@ -240,7 +240,7 @@ switch($_REQUEST['acao']){
 				$data_suspenso = ', data_suspenso = '."'".inverteData($data_suspensao)."'";
 
 				$sql_I = $sql2 = "INSERT INTO cs2.cadastro_log(codloja,acao)
-                                  VALUES({$_REQUEST['codloja']},'Acesso suspenso')";
+                                  VALUES({$_REQUEST['codloja']},'Acesso Suspenso')";
          		$qry_I = mysql_query ($sql_I, $con);
 			}
 		}else{
