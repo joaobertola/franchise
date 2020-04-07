@@ -235,8 +235,17 @@ switch($_REQUEST['acao']){
 			
 		$data_suspenso = '';
 
-		if ( $data_suspensao != '' )
-			$data_suspenso = ', data_suspenso = '."'".inverteData($data_suspensao)."'";
+		if ( $sitcli == 5){
+			if ( $data_suspensao != '' ){
+				$data_suspenso = ', data_suspenso = '."'".inverteData($data_suspensao)."'";
+
+				$sql_I = $sql2 = "INSERT INTO cs2.cadastro_log(codloja,acao)
+                                  VALUES({$_REQUEST['codloja']},'Acesso suspenso')";
+         		$qry_I = mysql_query ($sql_I, $con);
+			}
+		}else{
+			$data_suspenso = ", data_suspenso = null ";
+		}
 
 		$sql_cad = "UPDATE cs2.cadastro SET 
 					$comp

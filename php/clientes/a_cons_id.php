@@ -867,7 +867,6 @@ if ($codloja > 0) {
                 } elseif ($matriz['sitcli'] == 5) {
                     echo " style='color:#000000' bgcolor='#FFFF00'>".$matriz['descsit']." até ".$matriz['data_suspenso'];
                 } else {
-
                     echo " style='color:#FFFFFF'  bgcolor='#FF0000'>".$matriz['descsit'];
                 }
                 ?>
@@ -1181,7 +1180,7 @@ if ($codloja > 0) {
                                     </select>
                                 <?php } ?>
                             </td>
-                            <td width="207" rowspan="3" class="subtitulopequeno" style="text-align:center">
+                            <td width="100" rowspan="3" class="subtitulopequeno" style="text-align:center">
                                 <a href="javascript:abrir2('painel.php?pagina1=clientes/correspondencias.php&codloja=<?= $codloja ?>&logon=<?= $logon ?>')">
                                     Carta / Peti&ccedil;&atilde;o Resposta ao Associado
                                 </a>
@@ -1220,7 +1219,16 @@ if ($codloja > 0) {
                                    Data limite SUSPENSÃO :<br>
                                    <input type="text" name="data_suspensao" onKeyPress="return MM_formtCep(event,this,'##/##/####');" onFocus="this.className='boxover'" onBlur="this.className='boxnormal'" maxlength='10' value=<?= $matriz['data_suspenso']?> >
                                 </div>
-                            </td>
+                                <?php
+                                    echo "<br><br>";
+                                    $cmd = "SELECT date_format(data,'%d/%m/%Y - %h:%i:%s') as data, acao FROM cs2.cadastro_log
+                                            WHERE codloja = $codloja
+                                            ORDER BY id asc";
+                                    $rst = mysql_query($cmd, $con);
+                                    while ( $reg = mysql_fetch_array( $rst )){
+                                        echo $reg['data'].' - '.$reg['acao']."<br>";
+                                    }
+                                ?></td>
                         </tr>
                         <tr>
                             <td class="subtitulodireita">Situa&ccedil;&atilde;o da COBRAN&Ccedil;A</td>
