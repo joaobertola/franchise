@@ -4,11 +4,15 @@ require "connect/sessao.php";
 $fantasia = $_POST['fantasia'];
 $opnom = $_POST['opnom'];
 
+if( $opnom == 0)
+	$opnom = '0,5';
+
 if (($tipo == "a") || ($tipo == "c")) {
-	$comando = "SELECT c.codloja, c.razaosoc, mid(l.logon,1,5) as logon, c.nomefantasia, c.fone FROM cadastro c left join logon l on l.codloja = c.codloja WHERE nomefantasia like '%$fantasia%' and sitcli='$opnom' ORDER BY nomefantasia ASC";
+	$comando = "SELECT c.codloja, c.razaosoc, mid(l.logon,1,5) as logon, c.nomefantasia, c.fone FROM cadastro c left join logon l on l.codloja = c.codloja WHERE nomefantasia like '%$fantasia%' and sitcli in($opnom) ORDER BY nomefantasia ASC";
 } else {
-	$comando = "SELECT c.codloja, c.razaosoc, mid(l.logon,1,5) as logon, c.nomefantasia, c.fone FROM cadastro c left join logon l on l.codloja = c.codloja WHERE nomefantasia like '%$fantasia%' and sitcli='$opnom' and id_franquia='$id_franquia' ORDER BY nomefantasia ASC";
+	$comando = "SELECT c.codloja, c.razaosoc, mid(l.logon,1,5) as logon, c.nomefantasia, c.fone FROM cadastro c left join logon l on l.codloja = c.codloja WHERE nomefantasia like '%$fantasia%' and sitcli in($opnom) and id_franquia='$id_franquia' ORDER BY nomefantasia ASC";
 }
+
 
 $res = mysql_query ($comando, $con);
 $linhas = mysql_num_rows ($res);
