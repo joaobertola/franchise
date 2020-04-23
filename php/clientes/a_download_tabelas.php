@@ -17,7 +17,7 @@ require "connect/sessao.php";
 
     <td class="subtituloesquerda">
       <?php if($id_franquia == 4 || $id_franquia == 163 || $id_franquia == 247) { ?>
-      TAXA DE HOMOLOGAÇÃO&nbsp;<input type="radio" id="iptTxHomolog" name="iptTxHomolog" value="200" checked>&nbsp;R$ 200,00
+      TAXA DE HOMOLOGAÇÃO:<input type="radio" id="iptTxHomolog" name="iptTxHomolog" value="200" checked>&nbsp;R$ 200,00
       &nbsp;&nbsp;<input type="radio" id="iptTxHomolog" name="iptTxHomolog" value="150">&nbsp;R$ 150,00
       &nbsp;&nbsp;<input type="radio" id="iptTxHomolog" name="iptTxHomolog" value="100">&nbsp;R$ 100,00
         <input type="radio" id="iptTxHomolog" name="iptTxHomolog" value=""> BRANCO
