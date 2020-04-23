@@ -188,7 +188,7 @@ $nome = mysql_result($qry_resp, 0, 'fantasia');
 $valorHomolog = $_GET['vlrHomolog'];
 if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
 // Verificando se o valor não está sendo alterado pela URL
-    if($valorHomolog != 100 && $valorHomolog != 150 && $valorHomolog != 200){
+    if($valorHomolog != 100 && $valorHomolog != 150 && $valorHomolog != 200 && $valorHomolog != ''){
         $valorHomolog = 200;
     }
 
