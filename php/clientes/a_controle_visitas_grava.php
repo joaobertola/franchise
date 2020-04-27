@@ -259,7 +259,7 @@ if ( empty($protocolo) ){
                     $continua
                 WHERE id = $protocolo";
 
-    $qry_update = mysql_query( $sql_update,$con) or die("Falha ao ALTERAR o registro.");
+    $qry_update = mysql_query( $sql_update,$con) or die("Falha ao ALTERAR o registro 003. $sql_update");
 
     $b_rel_assistente = $_REQUEST['b_rel_assistente'];
     $b_rel_consultor  = $_REQUEST['b_rel_consultor'];
@@ -273,6 +273,9 @@ if ( empty($protocolo) ){
     // $qry_update_visita_log = mysql_query( $update_visita_log,$con) or die("Falha ao gravar o registro.");
     // mysql_insert_id($con);
 
+    if ( trim($id_funcionario) == '' )
+        $id_funcionario = 0;
+    
     $insert_visita_log = " INSERT INTO cs2.visitas_log
                         (
                             id_funcionario , id_visita , data_hora
@@ -281,7 +284,7 @@ if ( empty($protocolo) ){
                         ( 
                             $id_funcionario,{$_REQUEST["protocolo"]},NOW()
                         )";
-    $qry_insert_visita_log = mysql_query( $insert_visita_log,$con) or die("Falha ao gravar o registro.");
+    $qry_insert_visita_log = mysql_query( $insert_visita_log,$con) or die("Falha ao gravar o registro 004. $insert_visita_log");
 
     mysql_insert_id($con);
 
