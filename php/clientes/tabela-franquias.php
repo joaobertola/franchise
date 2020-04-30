@@ -519,11 +519,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>CT-e - Conhecimento de Transporte</td>
-                            <td>Em desenvolvimento</td>
+                            <td>Incluso na mensalidade</td>
                         </tr>
                         <tr>
                             <td>MDF-e - Manifesto Eletr&ocirc;nico de Documentos Fiscais</td>
-                            <td>Em desenvolvimento</td>
+                            <td>Incluso na mensalidade</td>
                         </tr>
                         <tr>
                             <td>e-Social</td>
