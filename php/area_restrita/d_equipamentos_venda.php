@@ -662,7 +662,7 @@ $acao = $_REQUEST['acao'];
                 $('.formPagto').remove();
                 var html = '';
                 var PrimeiroVencimento = $(this).parent().parent().find('.vencimento').val();
-                var valor = valor / 10;
+                var valor = valor / 6;
 
                 if (PrimeiroVencimento != 0) {
                     PrimeiroVencimento = PrimeiroVencimento.split('/');
@@ -684,7 +684,7 @@ $acao = $_REQUEST['acao'];
                 $(this).parent().parent().find('.vencimento').val(data_ini);
                 $(this).parent().parent().find('.vlr_recebido').val(number_format(valor, 2, ',', '.'));
                 mes = mes + 1;
-                for (var i = 0; i <= 10; i++) {
+                for (var i = 0; i <= 5; i++) {
 
                     mes++; // adiantamos o mês
 
@@ -717,7 +717,7 @@ $acao = $_REQUEST['acao'];
                     else diaa = dia;
                     var data_vencimento = diaa + '/' + mes + '/' + ano;
 
-                    html += '<tr class="formPagto"><td width="45%"><select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"><option value="0">... Selecione ...</option><option value="1">DINHEIRO</option><option value="2" selected>CHEQUE</option><option value="3">CART&Atilde;O CR&Eacute;DITO</option><option value="5">CART&Atilde;O D&Eacute;BITO</option><option value="4">BOLETO</option><option value="6">ANTECIPA&Ccedil;&Atilde;O</option></select></td><td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_vencimento + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td><td><button type="button" class="btnRemover">[REMOVER]</button></td></tr>'
+                    html += '<tr class="formPagto"> <td width="45%"><select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"><option value="0">... Selecione ...</option><option value="1">DINHEIRO</option><option value="2" selected>CHEQUE</option><option value="3">CART&Atilde;O CR&Eacute;DITO</option><option value="5">CART&Atilde;O D&Eacute;BITO</option><option value="4">BOLETO</option><option value="6">ANTECIPA&Ccedil;&Atilde;O</option></select></td><td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_vencimento + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td><td><button type="button" class="btnRemover">[REMOVER]</button></td></tr>'
 
                 }
 
@@ -729,7 +729,7 @@ $acao = $_REQUEST['acao'];
                 $('.formPagto').remove();
                 var html = '';
                 var PrimeiroVencimento = $(this).parent().parent().find('.vencimento').val();
-                var valor = valor / 6;
+                var valor = valor / 10;
 
                 if (PrimeiroVencimento != 0) {
                     PrimeiroVencimento = PrimeiroVencimento.split('/');
@@ -751,7 +751,7 @@ $acao = $_REQUEST['acao'];
                 $(this).parent().parent().find('.vencimento').val(data_ini);
                 $(this).parent().parent().find('.vlr_recebido').val(number_format(valor, 2, ',', '.'));
                 mes = mes + 1;
-                for (var i = 0; i <= 5; i++) {
+                for (var i = 0; i <= 10; i++) {
 
                     mes++; // adiantamos o mês
 
