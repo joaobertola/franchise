@@ -684,7 +684,7 @@ $acao = $_REQUEST['acao'];
                 $(this).parent().parent().find('.vencimento').val(data_ini);
                 $(this).parent().parent().find('.vlr_recebido').val(number_format(valor, 2, ',', '.'));
                 mes = mes + 1;
-                for (var i = 0; i <= 5; i++) {
+                for (var i = 0; i <= 10; i++) {
 
                     mes++; // adiantamos o mês
 
