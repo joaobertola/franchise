@@ -662,7 +662,7 @@ $acao = $_REQUEST['acao'];
                 $('.formPagto').remove();
                 var html = '';
                 var PrimeiroVencimento = $(this).parent().parent().find('.vencimento').val();
-                var valor = valor / 6;
+                var valor = valor / 10;
 
                 if (PrimeiroVencimento != 0) {
                     PrimeiroVencimento = PrimeiroVencimento.split('/');
