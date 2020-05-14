@@ -80,7 +80,7 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 											id,
 											nome
 										FROM cs2.funcionario
-										WHERE id_funcao = 19 OR id_funcao = 9
+										WHERE id_funcao = 19 OR id_funcao = 9 OR id_funcao = 32
 										ORDER BY nome ASC;";
 					$resFuncionario = mysql_query($sqlFuncionario,$con);
 					while ($rs = mysql_fetch_array($resFuncionario)) {
