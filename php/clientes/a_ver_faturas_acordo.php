@@ -307,18 +307,24 @@ if ($linha > 0) {
 
 //pega da tabela titulos todas as ocorrencias para esse codloja
 $command = "SELECT 
-                numdoc AS boleto, date_format(vencimento,'%d/%m/%Y') AS venc, valor, 
-                date_format(datapg,'%d/%m/%Y') AS dtpagamento, valorpg, referencia, 
-                vencimento, isento_juros, referencia, 
-                date_format(vencimento_alterado,'%d/%m/%Y') AS venc_alterado_view,
-                vencimento_alterado as venc_alterado
-            FROM cs2.titulos 
-            WHERE codloja = '$codloja'
-                  AND numboleto IS NOT NULL 
-                  AND datapg is NULL 
-            ORDER BY vencimento";
+                 numdoc AS boleto, date_format(a.vencimento,'%d/%m/%Y') AS venc, a.valor, 
+                 date_format(a.datapg,'%d/%m/%Y') AS dtpagamento, a.valorpg, a.referencia, 
+                 a.vencimento, a.isento_juros, a.referencia, 
+                 date_format(a.vencimento_alterado,'%d/%m/%Y') AS venc_alterado_view,
+                 a.vencimento_alterado as venc_alterado,
+                 (SELECT numdoc_destino FROM cs2.titulos_acordo WHERE texto_numdoc_origem like concat('%',a.numdoc,'%') LIMIT 1 ) as numdoc_destino
+            FROM cs2.titulos a
+            WHERE a.codloja = '$codloja'
+              AND a.numboleto IS NOT NULL 
+              AND a.datapg is NULL 
+            ORDER BY a.vencimento";
 $res = mysql_query($command, $con);
 $linhas = mysql_num_rows($res);
+
+if ( $linhas == 0 ){
+    echo "<script>swal('NENHUM Título em Aberto !')</script>";
+}
+
 
 //comeca a tabela
 ?>
@@ -369,6 +375,7 @@ $linhas = mysql_num_rows($res);
 
         $matriz = mysql_fetch_array($res);
         $boleto = $matriz['boleto'];
+        $numdoc_destino = $matriz['numdoc_destino'];
 
         // Verificando se o titulo tem desconto
         $sql_desconto = "SELECT sum(desconto) AS desconto, sum(acrescimo) AS acrescimo  FROM cs2.titulos_movimentacao
@@ -451,7 +458,10 @@ $linhas = mysql_num_rows($res);
             // Col 1
             echo "<tr height='22' bgcolor='#E5E5E5'>";
 
-            echo "<td><input name='selecao[]' type='checkbox' value='$valor' data-numdoc='$boleto'/></td>";
+            if ( $numdoc_destino != '' )
+                echo "<td>&nbsp</td>";
+            else
+                echo "<td><input name='selecao[]' type='checkbox' value='$valor' data-numdoc='$boleto'/></td>";
 
             echo "<td align='center'><u><a href='../../inform/boleto/boleto.php?numdoc=$boleto'><font color='blue'>$boleto</font></a></u></td>
                      <td align='center' class='data_vencimento'>$venc_original</td>";
@@ -540,6 +550,7 @@ if ( $linhas > 0 ){
                 </tr>
                 <tr height='20' bgcolor='87b5ff'>
                     <td align='center' width='9%'>Data Acordo</td>
+                    <td align='center' width='9%'>Venc. Original</td>
                     <td align='center' width='9%'>Parcela</td>
                     <td align='center' width='9%'>vencimento</td>
                     <td align='center' width='9%'>Valor</td>
@@ -547,8 +558,19 @@ if ( $linhas > 0 ){
                 </tr>
          ";
     while ( $reg = mysql_fetch_array($res) ){
+        $array = explode(',',$reg['texto_numdoc_origem']);
+        $qtd_array = count($array);
+        $vencimento = '';
+        for( $j = 0 ; $j < $qtd_array ; $j++){
+             $numdoc = $array[$j];
+             $sql_sel = "Select date_format(vencimento,'%d/%m/%Y') as vencimento FROM cs2.titulos WHERE numdoc = '$numdoc'";
+             $res_sel = mysql_query($sql_sel, $con) or die ("Erro SQL : $sql_sel");
+             $vencimento .= mysql_result($res_sel,0,'vencimento')."<br>";
+        }
+
         echo "<tr height='20' bgcolor='87b5ff'>
                  <td align='center' width='9%'>".$reg['data']."</td>
+                 <td align='center' width='9%'>".$vencimento."</td>
                  <td align='center' width='9%'>".$reg['parcela']."</td>
                  <td align='center' width='9%'>".$reg['vencimento']."</td>
                  <td align='center' width='9%'>".number_format($reg['valor'],2,',','.')."</td>
@@ -557,4 +579,5 @@ if ( $linhas > 0 ){
     }
 }
 $res = mysql_close($con);
+
 ?>

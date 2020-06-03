@@ -171,10 +171,7 @@ $dt_regularizacao    = inverteData($_REQUEST['dt_regularizacao']);
 $alterar             = $_REQUEST['alterar'];
 $pendencia_contrato  = $_REQUEST['pendencia_contrato'];
 $senha_user          = $_REQUEST['senha_user'];
-
-//echo "<pre>";
-//print_r($_REQUEST);
-//exit;
+$data_suspensao      = $_REQUEST['data_suspensao'];
 
 switch($_REQUEST['acao']){
 
@@ -236,9 +233,24 @@ switch($_REQUEST['acao']){
 		if ( $sitcli <> '' )
 			$comp = " sitcli = '$sitcli', ";
 			
+		$data_suspenso = '';
+
+		if ( $sitcli == 5){
+			if ( $data_suspensao != '' ){
+				$data_suspenso = ', data_suspenso = '."'".inverteData($data_suspensao)."'";
+
+				$sql_I = $sql2 = "INSERT INTO cs2.cadastro_log(codloja,acao)
+                                  VALUES({$_REQUEST['codloja']},'Acesso Suspenso')";
+         		$qry_I = mysql_query ($sql_I, $con);
+			}
+		}else{
+			$data_suspenso = ", data_suspenso = null ";
+		}
+
 		$sql_cad = "UPDATE cs2.cadastro SET 
 					$comp
 					sit_cobranca = '$sit_cobranca'
+					$data_suspenso
 				    WHERE codloja = '{$_REQUEST['codloja']}'";
 		
 		$qry_cad = mysql_query ($sql_cad, $con);

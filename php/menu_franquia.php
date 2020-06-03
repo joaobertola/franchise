@@ -49,7 +49,14 @@ function doBlink(){
     <td align="center"><?php echo $i++; ?></td>
     <td><a href="painel.php?pagina1=clientes/a_faturas.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');">Faturas do Cliente</a></td>
   </tr>
-  <?php if ( $id_franquia != 1205 ) {?>
+  <?php if ( $id_franquia == 163 ){ ?>
+  <tr>
+    <td align="center"><?php echo $i++; ?></td>
+    <td><a href="painel.php?pagina1=clientes/a_faturas_acordo.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');">Faturas do Cliente ( ACORDO )</a></td>
+  </tr>
+  <?php
+   }
+   if ( $id_franquia != 1205 ) {?>
     <tr>
     <td align="center"><?php echo $i++; ?></td>
     <td><a href="painel.php?pagina1=Franquias/b_cadatendente.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');">Cadastrar Atendentes</a></td>

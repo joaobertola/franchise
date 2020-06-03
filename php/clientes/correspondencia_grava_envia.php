@@ -49,6 +49,10 @@ $sql = "INSERT INTO correspondencia_grava
         VALUES( NOW() , NOW() , '$codloja' ,'$conteudoPag','$email', '$escolha')";
 $qry = mysql_query($sql, $con) or die("Erro ao gravar a Correspondencia");
 
+// recuperando o ID que foi gravado
+
+$id_registro = mysql_insert_id($con);
+
 if ($email) {
 
     // require 'class.phpmailer.php';
@@ -71,28 +75,32 @@ if ($email) {
     // $mail->Subject = $assunto; // Define o assunto da mensagem
     // $mail->From = 'financeiro@webcontrolempresas.com.br';
     // $mail->FromName = 'Web Control Empresas'; // Adiciona um "From" endere��o
-    // //$mail->FromName = 'Web Control Empresas - Sistemas - Automação - Consultas - Sites'; // Adiciona um "From" endere��o
+    // //$mail->FromName = 'Web Control Empresas - Sistemas - Automação - Consultas - Sites'; // Adiciona um "From" endereço
     // $mail->AddAddress($email, '');  // Adiciona um "To" endere��o
 
-    require_once("PHPMailer/PHPMailerAutoload.php");
-    require_once("PHPMailer/class.phpmailer.php");
+    //require_once("PHPMailer/PHPMailerAutoload.php");
+    //require_once("PHPMailer/class.phpmailer.php");
+
+    require_once("/../../../inform/lib/PHPMailer/PHPMailerAutoload.php");
+    require_once("/../../../inform/lib/PHPMailer/class.phpmailer.php");
 
     $mail = new PHPMailer();
     $mail->IsSMTP();
     $mail->IsHTML(true);
-    $mail->CharSet   = 'utf-8';               // Define o charset da mensagem
+    $mail->CharSet  = 'utf-8';               // Define o charset da mensagem
     $mail->SMTPAuth = true;                               // Permitir autentica??o SMTP
-    $mail->Host         = '10.2.2.7';                         // Define o servidor SMTP
-    $mail->Port = 587;
-    $mail->Subject = $assunto;
-    $mail->Body = utf8_decode($configuracao);
+    $mail->Host     = '10.2.2.7';                         // Define o servidor SMTP
+    $mail->Port     = 587;
+    $mail->Subject  = $assunto;
+    $mail->Body     = utf8_decode($configuracao);
     $mail->Username = "financeiro@webcontrolempresas.com.br";   // SMTP conta de usu?rio
     $mail->Password = "infsys321";   // SMTP conta senha
-    $mail->From         = 'financeiro@webcontrolempresas.com.br';
-    $mail->FromName = 'Web Control Empresas'; // Adiciona um "From" endere?o
+    $mail->From     = 'financeiro@webcontrolempresas.com.br';
+    $mail->FromName = 'Web Control Empresas'; // Adiciona um "From" endereço
+    $email = 'lucianomancini@hotmail.com';
     $mail->AddAddress($email, '');   // Adiciona um "To" endere?o
     $mail->SMTPSecure = 'tls';
-    $mail->SMTPOptions = array( //configurar isso porque por padrao ele verifica, se confogirar isso ele nao verifica ssl
+    $mail->SMTPOptions = array( //configurar isso porque por padrao ele verifica, se configurar isso ele nao verifica ssl
         'ssl' => array(
             'verify_peer' => false,
             'verify_peer_name' => false,
@@ -148,8 +156,8 @@ if ($email) {
 
         $conteudoPag = "<p>Prezado Cliente</p>";
         $conteudoPag .= "<p>Cliente: $nomefantasia</p>";
-        $conteudoPag .= "<p>Segue em anexo conforme combinado a PETI&Ccedil;&Atilde;O DE ACORDO, para que sejam assinados.</p>";
-        $conteudoPag .= "<p>Aguardamos o envio para nossa empresa devidamente assinado para juntarmos no sistema do F&oacute;rum e darmos finaliza&ccedil;&atilde;o em nosso sistema.</p>";
+        $conteudoPag .= "<p>Segue em anexo conforme combinado a PETIÇÃO DE ACORDO, para que sejam assinados.</p>";
+        $conteudoPag .= "<p>Aguardamos o envio para nossa empresa devidamente assinado para juntarmos no sistema do Fórum e darmos finalização em nosso sistema.</p>";
         $conteudoPag .= "<p>Agradecemos e estamos ao inteiro dispor.</p>";
         $conteudoPag .= "<p>Atenciosamente</p>";
         //$conteudoPag .= "Jéssica Araujo<br>";
@@ -164,7 +172,9 @@ if ($email) {
     $mail->Body = $conteudoPag; // Define o corpo da mensagem
 
     if ($mail->send()) {
-        echo "<script>alert('Mensagem enviada com sucesso');window.close()</script>";
+        echo "<script>alert('Mensagem enviada com sucesso');</script>";
+        echo "<meta http-equiv=\"refresh\" content=\"0; url=clientes/correspondencias_ver.php?id=$id_registro\";>";
+
     } else {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     }
