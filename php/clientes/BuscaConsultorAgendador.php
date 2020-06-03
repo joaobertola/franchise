@@ -20,47 +20,47 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 				if ( $sit == 'S' ) $situacao = " AND situacao = '0' ";
 				else $situacao = " AND situacao IN('0', '1') ";
 
-				$sql_sel = "SELECT
-				*
-				FROM cs2.consultores_assistente
-				WHERE id_franquia = '$id_franquia'
-				AND tipo_cliente = '0'
-				$situacao
-				ORDER BY situacao, nome";
-
+				// $sql_sel = "SELECT
+				// *
+				// FROM cs2.consultores_assistente
+				// WHERE id_franquia = '$id_franquia'
+				// AND tipo_cliente = '0'
+				// AND funcao = 10
+				// $situacao
+				// ORDER BY situacao, nome";
+				$sql_sel = "SELECT * from cs2.funcionario where funcao = 10 AND ativo = 'S' AND id_franqueado ='$id_franquia'";
+				
 				$qry = mysql_query($sql_sel,$con);
 				while ($rs = mysql_fetch_array($qry)) {
-					if ($rs['situacao'] == "0") {
+					if ($rs['ativo'] == "S") {
 						$sit = "Ativo";
-					} elseif ($rs['situacao'] == "1") {
+					} elseif ($rs['ativo'] == "N") {
 						$sit = "Bloqueado";
-					} elseif ($rs['situacao'] == "2") {
-						$sit = "Cancelado";
-					}
-					$html .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
+					} 
+					$html .= "<option value='" . $rs['id_consultor_assistente'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
 				}
 
-				$sql_sel = "SELECT
-				*
-				FROM cs2.consultores_assistente
-				WHERE id_franquia = '$id_franquia'
-				AND tipo_cliente = '1'
-				AND situacao IN('0','1')
-				ORDER BY situacao, nome";
+				// $sql_sel = "SELECT
+				// *
+				// FROM cs2.consultores_assistente
+				// WHERE id_franquia = '$id_franquia'
+				// AND tipo_cliente = '1'
+				// AND situacao IN('0','1')
+				// ORDER BY situacao, nome";
 
-				$qry = mysql_query($sql_sel,$con);
-				while ($rs = mysql_fetch_array($qry)) {
-					if ($rs['situacao'] == "0") {
-						$sit = "Ativo";
-					} elseif ($rs['situacao'] == "1") {
-						$sit = "Bloqueado";
-					} elseif ($rs['situacao'] == "2") {
-						$sit = "Cancelado";
-					}
-					$html2 .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
+				// $qry = mysql_query($sql_sel,$con);
+				// while ($rs = mysql_fetch_array($qry)) {
+				// 	if ($rs['situacao'] == "0") {
+				// 		$sit = "Ativo";
+				// 	} elseif ($rs['situacao'] == "1") {
+				// 		$sit = "Bloqueado";
+				// 	} elseif ($rs['situacao'] == "2") {
+				// 		$sit = "Cancelado";
+				// 	}
+				// 	$html2 .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
 
-				}
-				echo $html . ';' .$html2;
+				// }
+				echo $html;
 				//echo $html2;
 
 				break;
