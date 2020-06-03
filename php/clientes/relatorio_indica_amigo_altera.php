@@ -75,7 +75,21 @@ function retornaMesesBonificar($idIndicadao, $con) {
     VALUES('12','DEZ');";
     mysql_query($sqlAux, $con);
 
+
+
     $sqlAux = "DELETE FROM base_web_control.tmp_datas;";
+    mysql_query($sqlAux, $con);
+
+    $sqlAux = "INSERT INTO base_web_control.tmp_datas(data_fatura)
+    SELECT NOW() + INTERVAL -3 MONTH;";
+    mysql_query($sqlAux, $con);
+
+    $sqlAux = "INSERT INTO base_web_control.tmp_datas(data_fatura)
+    SELECT NOW() + INTERVAL -2 MONTH;";
+    mysql_query($sqlAux, $con);
+
+    $sqlAux = "INSERT INTO base_web_control.tmp_datas(data_fatura)
+    SELECT NOW() + INTERVAL -1 MONTH;";
     mysql_query($sqlAux, $con);
 
     $sqlAux = "INSERT INTO base_web_control.tmp_datas(data_fatura)
@@ -159,7 +173,7 @@ function retornaMesesBonificar($idIndicadao, $con) {
     INNER JOIN base_web_control.tmp_meses_label tml
     ON tml.num_mes = MONTH(td.data_fatura)
         ORDER BY id ASC
-    LIMIT 6
+    LIMIT 9
         ";
     return mysql_query($sqlAux, $con);
  
