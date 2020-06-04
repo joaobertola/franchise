@@ -25,19 +25,19 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 				FROM cs2.consultores_assistente
 				WHERE id_franquia = '$id_franquia'
 				AND tipo_cliente = '0'
-				AND funcao = 10
 				$situacao
 				ORDER BY situacao, nome";
-				//$sql_sel = "SELECT * from cs2.funcionario where funcao = 10 AND ativo = 'S' AND id_franqueado ='$id_franquia'";
-				
+
 				$qry = mysql_query($sql_sel,$con);
 				while ($rs = mysql_fetch_array($qry)) {
-					if ($rs['ativo'] == "S") {
+					if ($rs['situacao'] == "0") {
 						$sit = "Ativo";
-					} elseif ($rs['ativo'] == "N") {
+					} elseif ($rs['situacao'] == "1") {
 						$sit = "Bloqueado";
-					} 
-					$html .= "<option value='" . $rs['id_consultor_assistente'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
+					} elseif ($rs['situacao'] == "2") {
+						$sit = "Cancelado";
+					}
+					$html .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
 				}
 
 				$sql_sel = "SELECT
@@ -80,7 +80,7 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 											id,
 											nome
 										FROM cs2.funcionario
-										WHERE id_funcao = 19 OR id_funcao = 9 OR id_funcao = 32
+										WHERE id_funcao = 19 OR id_funcao = 9
 										ORDER BY nome ASC;";
 					$resFuncionario = mysql_query($sqlFuncionario,$con);
 					while ($rs = mysql_fetch_array($resFuncionario)) {
