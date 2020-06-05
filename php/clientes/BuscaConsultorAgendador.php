@@ -15,54 +15,31 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 
 			case 'buscarConsultorAgendador' :
 
-				$sit = $_REQUEST['ativo'];
-
-				if ( $sit == 'S' ) $situacao = " AND situacao = '0' ";
-				else $situacao = " AND situacao IN('0', '1') ";
-
-				$sql_sel = "SELECT
-				*
-				FROM cs2.consultores_assistente
-				WHERE id_franquia = '$id_franquia'
-				AND tipo_cliente = '0'
-				$situacao
-				ORDER BY situacao, nome";
-
-				$qry = mysql_query($sql_sel,$con);
-				while ($rs = mysql_fetch_array($qry)) {
-					if ($rs['situacao'] == "0") {
-						$sit = "Ativo";
-					} elseif ($rs['situacao'] == "1") {
-						$sit = "Bloqueado";
-					} elseif ($rs['situacao'] == "2") {
-						$sit = "Cancelado";
+				if ( $id_franquia == 1 ){
+					$sql_sel = "SELECT id, nome FROM cs2.funcionario WHERE id_empregador IN (1,2) and ativo = 'S'
+                            ORDER BY nome";
+					$qry = mysql_query($sql_sel,$con);
+					while ($rs = mysql_fetch_array($qry)) {
+						$html .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] ."</option>";
 					}
-					$html .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
-				}
-
-				$sql_sel = "SELECT
-				*
-				FROM cs2.consultores_assistente
-				WHERE id_franquia = '$id_franquia'
-				AND tipo_cliente = '1'
-				AND situacao IN('0','1')
-				ORDER BY situacao, nome";
-
-				$qry = mysql_query($sql_sel,$con);
-				while ($rs = mysql_fetch_array($qry)) {
-					if ($rs['situacao'] == "0") {
-						$sit = "Ativo";
-					} elseif ($rs['situacao'] == "1") {
-						$sit = "Bloqueado";
-					} elseif ($rs['situacao'] == "2") {
-						$sit = "Cancelado";
+					$html2 = '';
+					$html3 = '';
+					$sqlFuncionario = "SELECT
+											id,
+											nome
+										FROM cs2.funcionario
+										WHERE id_funcao = 19 OR id_funcao = 9
+										ORDER BY nome ASC;";
+					$resFuncionario = mysql_query($sqlFuncionario,$con);
+					while ($rs = mysql_fetch_array($resFuncionario)) {
+						$html3 .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] ."</option>";
 					}
-					$html2 .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
 
+				}else{
+					$html = "<option value='0'>Funcionario - Franquia</option>";
+					$html2 = '';
 				}
-				echo $html . ';' .$html2;
-				//echo $html2;
-
+				echo $html . ';' .$html2 .';'. $html3;
 				break;
 
 			case 'buscarFuncionario' :
