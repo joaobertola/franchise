@@ -84,7 +84,7 @@ $acao = $_REQUEST['acao'];
                 url: '../php/clientes/BuscaConsultorAgendador.php',
                 data: {
                     id_franquia: idfranquia,
-                    action: 'buscarConsultorAgendador',
+                    action: 'buscarConsultorAgendadorEquipamento',
                     ativo: 'S'
                 },
                 type: 'POST',

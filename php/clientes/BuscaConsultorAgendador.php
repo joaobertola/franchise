@@ -64,6 +64,51 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 				//echo $html2;
 
 				break;
+			case 'buscarConsultorAgendadorEquipamento' :
+
+				$sit = $_REQUEST['ativo'];
+				$situacao = " AND ativo = 'S' ";
+
+				$sql_sel = "SELECT * from cs2.funcionario
+				WHERE (funcao = 10 or id_funcao = 10)
+				and id_franqueado = ". $id_franquia . $situacao;
+
+				$qry = mysql_query($sql_sel,$con);
+				while ($rs = mysql_fetch_array($qry)) {
+					if ($rs['situacao'] == "0") {
+						$sit = "Ativo";
+					} elseif ($rs['situacao'] == "1") {
+						$sit = "Bloqueado";
+					} elseif ($rs['situacao'] == "2") {
+						$sit = "Cancelado";
+					}
+					$html .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
+				}
+
+				$sql_sel = "SELECT
+				*
+				FROM cs2.consultores_assistente
+				WHERE id_franquia = '$id_franquia'
+				AND tipo_cliente = '1'
+				AND situacao IN('0','1')
+				ORDER BY situacao, nome";
+
+				$qry = mysql_query($sql_sel,$con);
+				while ($rs = mysql_fetch_array($qry)) {
+					if ($rs['situacao'] == "0") {
+						$sit = "Ativo";
+					} elseif ($rs['situacao'] == "1") {
+						$sit = "Bloqueado";
+					} elseif ($rs['situacao'] == "2") {
+						$sit = "Cancelado";
+					}
+					$html2 .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] . " - " . $sit . "</option>";
+
+				}
+				echo $html . ';' .$html2;
+				//echo $html2;
+
+				break;
 
 			case 'buscarFuncionario' :
 
