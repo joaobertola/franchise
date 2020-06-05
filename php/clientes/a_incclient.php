@@ -804,18 +804,16 @@ if($_POST['id_franquia']){
         </tr>
         <tr>
             <td class="subtitulodireita">Agendador </td>
-            <?php echo $id_franquia;?>
             <td colspan="2" class="subtitulopequeno">
-            <?php
+                <?php
                 $sql_sel = "SELECT * FROM cs2.consultores_assistente WHERE id_franquia = '$id_franquia'
-                AND (tipo_cliente = '0' OR tipo_cliente = '2') AND situacao IN('0', '1') ORDER BY situacao, nome";
+                AND (tipo_cliente = '1' OR tipo_cliente = '2') AND situacao IN('0', '1') ORDER BY situacao, nome";
                 $qry = mysql_query($sql_sel, $con);
-                echo "<select name='vendedor' id='vendedor' style='width:65%'>";
+                echo "<select name='id_agendador' style='width:65%'>";
                 ?>
                 <option value="">Selecionar</option>
                 <?php
                 if($id_franquia != 4 && $id_franquia != 163) {
-
                     while($rs = mysql_fetch_array($qry)) {
                         if($rs['situacao'] == "0"){
                             $sit = "Ativo";
