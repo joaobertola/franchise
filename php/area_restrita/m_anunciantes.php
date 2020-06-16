@@ -1,37 +1,44 @@
 <?php 
+
 /**
  * Desenvolvido por um programador Web control
  */
+
 require "connect/sessao.php";
 require "connect/conexao_conecta.php";
 require "connect/funcoes.php";
 
-if(isset($_POST["cancelar_anunciante"])){
-    
+if(isset($_POST["cancelar_anunciante"]))
+{    
     $sql = "UPDATE cs2.anunciantes SET ativo = 'N' WHERE id = {$_POST["cancelar_anunciante"]}";
+   	$qry = mysql_query($sql, $con);
     
-    $qry = mysql_query($sql, $con);
-    
-    if($qry){
+    if($qry)
+    {
         echo "<p><label style='color:blue'>Cancelado com sucesso!</label></p>";
     }
 }
 
-if(isset($_POST["ativar_anunciante"])){
-    
-    $sql = "UPDATE cs2.anunciantes SET ativo = 'S' WHERE id = {$_POST["ativar_anunciante"]}";
-    
+if(isset($_POST["ativar_anunciante"]))
+{    
+    $sql = "UPDATE cs2.anunciantes SET ativo = 'S' WHERE id = {$_POST["ativar_anunciante"]}";   
     $qry = mysql_query($sql, $con);
     
-    if($qry){
+    if($qry)
+    {
         echo "<p><label style='color:blue'>Renovado com sucesso!</label></p>";
     }
 }
 
-$sql = "select * from cs2.anunciantes";
+$sql = "SELECT cs2.anunciantes.*, count(base_web_control.log_anuncios_relatorio.id_anuncio) as acessos 
+		FROM cs2.anunciantes 
+		LEFT JOIN base_web_control.log_anuncios_relatorio 
+		ON base_web_control.log_anuncios_relatorio.id_anuncio = cs2.anunciantes.id 
+		GROUP BY cs2.anunciantes.id";
 
-$qry = mysql_query($sql, $con) or die($sql);
-$total = mysql_num_rows($qry);
+$qry 	= mysql_query($sql, $con) or die($sql);
+$total 	= mysql_num_rows($qry);
+
 ?>
 
 <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
@@ -42,16 +49,17 @@ $total = mysql_num_rows($qry);
       
      <thead bgcolor="#CFCFCF">
      	<tr>
-            <td colspan="7" class="titulo">CADASTRO DE ANUNCIANTES</td>
+            <td colspan="8" class="titulo">CADASTRO DE ANUNCIANTES</td>
             <td><a href="painel.php?pagina1=area_restrita/m_incluir_anunciantes.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><input type="button" name="submit" value="Adicionar" /></a></td>
         </tr>
      	<tr>
      		<th>Id</th>
      		<th>Cliente</th>
      		<th>Tipo</th>
-     		<th>Valor</th>
-     		<th>Data Cadastro</th>
-     		<th>Data Fim</th>
+     		<th>Data Inicio</th>
+			<th>Data Fim</th>
+			<th>Tipo Sistema</th>
+			<th>Clicks</th>
      		<th>Situacao</th>
      		<th>Operacao</th>
      	</tr>
@@ -78,10 +86,12 @@ $total = mysql_num_rows($qry);
 	           echo "<td class='tdSel'>CONSULTOR</td>";
 	       }
 	       
-	       echo "<td class='tdSel'>R$ ".number_format($res["valor"],2,",",".")."</td>";
-	       echo "<td class='tdSel'>".date("d/m/Y",strtotime($res["data_cadastro"]))."</td>";
+	       //echo "<td class='tdSel'>R$ ".number_format($res["valor"],2,",",".")."</td>";
+	       echo "<td class='tdSel'>".date("d/m/Y",strtotime($res["data_inicio"]))."</td>";
 	       echo "<td class='tdSel'>".date("d/m/Y",strtotime($res["data_fim"]))."</td>";
-	       
+		   echo "<td class='tdSel' style = 'text-transform: uppercase;' align=center>".$res["tipo_sistema"]."</td>";
+		   echo "<td class='tdSel' align = center><a style='color: blue;' href = 'painel.php?pagina1=area_restrita/m_anunciantes_relatorio.php&id_anuncio={$res["id"]}'>".$res["acessos"]."</a></td>";
+
 	       if($res["ativo"] == "S"){
 	           echo "<td class='tdSel'>Ativo</td>";
 	           echo "<td style='text-align:center'>";
