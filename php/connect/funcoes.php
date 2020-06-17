@@ -431,5 +431,14 @@ function Grava_Acesso_WebControl($codloja,$nomefantasia,$cpfsocio1,$email,$login
 
 }
 
-
+function mascaraFone($p_fone)
+{
+   	if ($p_fone)
+   	{
+        if (strlen($p_fone) == 10)
+            return '(' . substr($p_fone, 0, 2) . ') ' . substr($p_fone, 2, 4) . '-' . substr($p_fone, 6, 4);
+        else
+            return '(' . substr($p_fone, 0, 2) . ') ' . substr($p_fone, 2, 5) . '-' . substr($p_fone, 7, 4);
+    }
+}
 ?>

@@ -100,7 +100,7 @@ else
 	   		while ($res = mysql_fetch_array($qry)) { 
 	       		echo "<tr bgcolor='{$a_cor[$cont % 2]}'>";
 	       			echo "<td class='tdSel' align=center>{$res["nome"]}</td>";
-		   			echo "<td class='tdSel'>".$res["fone"]."</td>";
+		   			echo "<td class='tdSel'>".mascaraFone($res["fone"])."</td>";
 		   			echo "<td class='tdSel' align=center>".$res["email"]."</td>";
 	       			echo "<td class='tdSel' align=center>".date("d/m/Y",strtotime($res["data_cadastro"]))."</td>";
 	       		echo "</tr>";
