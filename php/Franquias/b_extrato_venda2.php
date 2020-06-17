@@ -41,10 +41,15 @@ $complemento = " AND a.id_franquia = " . $_REQUEST['franqueado'];
 if ($_REQUEST['consultorAgendador'] != 0) {
 
     if ($_REQUEST['funcao'] == 'C') {
-        $complemento .= " AND d.id = " . $_REQUEST['consultorAgendador'];
-        $order = ' ORDER BY d.nome ASC';
+		
+		if ($_REQUEST['consultorAgendador'] != 0){
+			$complemento .= " AND d.id = " . $_REQUEST['consultorAgendador']
+		};
+		$order = ' ORDER BY d.nome ASC';
     } elseif ($_REQUEST['funcao'] == 'A') {
-        $complemento .= " AND e.id =" . $_REQUEST['consultorAgendador'];
+		if ($_REQUEST['consultorAgendador'] != 0){
+			$complemento .= " AND e.id =" . $_REQUEST['consultorAgendador'];
+		}
         $order = ' ORDER BY e.nome ASC';
     }
 
