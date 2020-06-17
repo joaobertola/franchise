@@ -60,6 +60,8 @@ if($_POST['ordem'] == 'codloja'){
 }
 
 if ($_REQUEST['tp_rel'] == '') {
+	
+	echo __LINE__;
 
     $sql = "SELECT mid(logon,1,5) as logon, a.nomefantasia, date_format(a.dt_cad,'%d/%m/%Y') as dt_cad, mid(d.nome,1,10) as vendedor, c.fantasia,
                     date_format(a.dt_pgto_comissao_vendedor, '%d/%m/%Y') AS dt_pgto_comissao_vendedor,
@@ -419,8 +421,10 @@ if ($_REQUEST['tp_rel'] == '') {
     }
 } else {
     if ($_REQUEST['tp_rel'] == '1')
+		echo __LINE__;
         include("b_extrato_venda22.php");
     else
+		echo __LINE__;
         include("b_extrato_venda222.php");
 }
 ?>
