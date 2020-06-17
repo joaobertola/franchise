@@ -53,8 +53,8 @@ $total 	= mysql_num_rows($qry);
             <td><a href="painel.php?pagina1=area_restrita/m_incluir_anunciantes.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><input type="button" name="submit" value="Adicionar" /></a></td>
         </tr>
      	<tr>
-     		<th>Id</th>
-     		<th>Cliente</th>
+     		<th>Campanha</th>
+     		<th>Id Cliente</th>
      		<th>Tipo</th>
      		<th>Data Inicio</th>
 			<th>Data Fim</th>
@@ -73,7 +73,7 @@ $total 	= mysql_num_rows($qry);
 	   while ($res = mysql_fetch_array($qry)) { 
 	       echo "<tr bgcolor='{$a_cor[$cont % 2]}'>";
 	       
-	       echo "<td class='tdSel'>{$res["id"]}</td>";
+	       echo "<td class='tdSel' align=center>{$res["id"]}</td>";
 	       echo "<td class='tdSel'>{$res["codloja"]}</td>";
 	       
 	       if($res["tipo"] == "B"){

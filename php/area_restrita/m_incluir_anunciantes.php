@@ -76,7 +76,7 @@ if(isset($_POST["cadastro_anunciantes"])){
 		</thead>
 		<tbody bgcolor="#CFCFCF">
 			<tr>
-				<th>Codigo Cliente</th>
+				<th>ID do cliente</th>
 				<td><input type='text' name='codloja' required/></td>
 			</tr>
 			<tr>
