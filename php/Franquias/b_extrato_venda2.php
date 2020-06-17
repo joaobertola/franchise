@@ -72,6 +72,8 @@ if ($_REQUEST['tp_rel'] == '') {
             WHERE a.dt_cad between '$data1' and '$data2'
             $complemento";
 
+    echo $sql;
+
     $sql = $sql . $order;
     $res = @mysql_query($sql, $con) or die ("Erro SQL : $sql");
     $registro = 0;
