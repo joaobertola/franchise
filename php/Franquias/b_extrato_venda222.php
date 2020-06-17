@@ -1,5 +1,8 @@
 <?php
 
+	echo __LINE__;
+	die;
+
     $total_geral_repasse = 0;
 
     $sql2 = "SELECT a.vendedor FROM cadastro a
