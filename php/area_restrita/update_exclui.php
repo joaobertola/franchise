@@ -58,14 +58,14 @@ if( $x == 1){
 		echo "<meta http-equiv=\"refresh\" content=\"0; url= painel.php?pagina1=area_restrita/d_excluir.php\";>";
 		
 	}else{
-		mail("lucianomancini@gmail.com","CONTINUE TENTANDO OTARIO"," From:lucianomancini@gmail.com");
+		mail("lucianomancini@gmail.com","CONTINUE TENTANDO"," From:lucianomancini@gmail.com");
 		
-		echo "continue tentando.. ot�rio";
+		echo "continue tentando.. otário";
 		$email_daf = 'lucianomancini@gmail.com';
-		$titulo = 'Alguem sem autoriza��o para excluir cliente';
+		$titulo = 'Alguem sem autorização para excluir cliente';
 		$headers = "Content-Type: text/html; charset=iso-8859-1\n"; 
 		$headers .= "From: $email_daf"; 
-		$mensagem = "CONTINUE TENTANDO OTARIO";
+		$mensagem = "CONTINUE TENTANDO ";
 		mail($email_daf, $titulo, $mensagem, $headers); 
 
 	}

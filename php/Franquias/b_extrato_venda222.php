@@ -1,6 +1,6 @@
 <?php
 
-    $total_geral_repasse = 0;
+	$total_geral_repasse = 0;
 
     $sql2 = "SELECT a.vendedor FROM cadastro a
              WHERE a.dt_cad between '$data1' and '$data2'
