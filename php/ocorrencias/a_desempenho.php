@@ -237,6 +237,7 @@
 		</form>
 		<br>
 		<br>
+		<?php if( $id_franquia == '163' ){ ?> 
 		<form method="post" action="painel.php?pagina1=Franquias/b_relatendimento_externo2.php" name='listacompleta' id='listacompleta'>
 			<table width=70% border="0" align="center">
 				<tr class="titulo">
@@ -278,6 +279,7 @@
 						</div>
 					</td>
 				</tr>
+				<?php } ?>
 
 				<tr>
 					<td colspan="2" class="titulo" align="center">
