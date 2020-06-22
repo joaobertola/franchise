@@ -84,7 +84,7 @@ $acao = $_REQUEST['acao'];
                 url: '../php/clientes/BuscaConsultorAgendador.php',
                 data: {
                     id_franquia: idfranquia,
-                    action: 'buscarConsultorAgendadorEquipamento',
+                    action: 'buscarConsultorAgendador',
                     ativo: 'S'
                 },
                 type: 'POST',
@@ -652,20 +652,19 @@ $acao = $_REQUEST['acao'];
                 var d = dia; // grava o dia em outra variável para poder recuperar depois
                 var data_ini = dia + '/' + mes + '/' + ano; // data para o boleto de pagamento à vista (recupere system nível 3)
 
-                <tr class="formPagto">
-
-                var html  = '<td width="45%"> ';
-                    html += '   <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
-                    html += '       <option value="0">... Selecione ...</option> ';
-                    html += '       <option value="1">DINHEIRO</option> ';
-                    html += '       <option value="2">CHEQUE</option> ';
-                    html += '       <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
-                    html += '       <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
-                    html += '       <option value="4">BOLETO</option> ';
-                    html += '       <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
-                    html += '       <option value="7">TRANSFER&Ecirc;NCIA</option> ';
-                    html += '   </select> ';
-                    html += '</td> ';
+                var html  = 'tr class="formPagto">';
+                    html += '   <td width="45%"> ';
+                    html += '      <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
+                    html += '         <option value="0">... Selecione ...</option> ';
+                    html += '         <option value="1">DINHEIRO</option> ';
+                    html += '         <option value="2">CHEQUE</option> ';
+                    html += '         <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
+                    html += '         <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
+                    html += '         <option value="4">BOLETO</option> ';
+                    html += '         <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
+                    html += '         <option value="7">TRANSFER&Ecirc;NCIA</option> ';
+                    html += '      </select> ';
+                    html += '   </td> ';
                     html += '<td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_ini + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td></tr>'
                 $('#tblPagamentos').append(html);
 
@@ -731,19 +730,20 @@ $acao = $_REQUEST['acao'];
                     else diaa = dia;
                     var data_vencimento = diaa + '/' + mes + '/' + ano;
 
-                    var html  = '<td width="45%"> ';
-                    html += '   <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
-                    html += '       <option value="0">... Selecione ...</option> ';
-                    html += '       <option value="1">DINHEIRO</option> ';
-                    html += '       <option value="2">CHEQUE</option> ';
-                    html += '       <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
-                    html += '       <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
-                    html += '       <option value="4">BOLETO</option> ';
-                    html += '       <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
-                    html += '       <option value="7">TRANSFER&Ecirc;NCIA</option> ';
-                    html += '   </select> ';
-                    html += '</td> ';
-                    html += '<td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_vencimento + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td><td><button type="button" class="btnRemover">[REMOVER]</button></td></tr>'
+                    var html  = 'tr class="formPagto">';
+                    html += '   <td width="45%"> ';
+                    html += '      <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
+                    html += '         <option value="0">... Selecione ...</option> ';
+                    html += '         <option value="1">DINHEIRO</option> ';
+                    html += '         <option value="2">CHEQUE</option> ';
+                    html += '         <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
+                    html += '         <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
+                    html += '         <option value="4">BOLETO</option> ';
+                    html += '         <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
+                    html += '         <option value="7">TRANSFER&Ecirc;NCIA</option> ';
+                    html += '      </select> ';
+                    html += '   </td> ';
+                    html += '<td><td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_vencimento + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td><td><button type="button" class="btnRemover">[REMOVER]</button></td></tr>'
 
                 }
 
@@ -752,8 +752,8 @@ $acao = $_REQUEST['acao'];
                 break;
 
             case '3':
+
                 $('.formPagto').remove();
-                var html = '';
                 var PrimeiroVencimento = $(this).parent().parent().find('.vencimento').val();
                 var valor = valor / 10;
 
@@ -809,18 +809,19 @@ $acao = $_REQUEST['acao'];
                     else diaa = dia;
                     var data_vencimento = diaa + '/' + mes + '/' + ano;
 
-                    var html  = '<td width="45%"> ';
-                    html += '   <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
-                    html += '       <option value="0">... Selecione ...</option> ';
-                    html += '       <option value="1">DINHEIRO</option> ';
-                    html += '       <option value="2">CHEQUE</option> ';
-                    html += '       <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
-                    html += '       <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
-                    html += '       <option value="4">BOLETO</option> ';
-                    html += '       <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
-                    html += '       <option value="7">TRANSFER&Ecirc;NCIA</option> ';
-                    html += '   </select> ';
-                    html += '</td> ';
+                var html  = 'tr class="formPagto">';
+                    html += '   <td width="45%"> ';
+                    html += '      <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
+                    html += '         <option value="0">... Selecione ...</option> ';
+                    html += '         <option value="1">DINHEIRO</option> ';
+                    html += '         <option value="2">CHEQUE</option> ';
+                    html += '         <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
+                    html += '         <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
+                    html += '         <option value="4">BOLETO</option> ';
+                    html += '         <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
+                    html += '         <option value="7">TRANSFER&Ecirc;NCIA</option> ';
+                    html += '      </select> ';
+                    html += '   </td> ';
                     html += '<td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_vencimento + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td><td><button type="button" class="btnRemover">[REMOVER]</button></td></tr>'
 
 
@@ -853,18 +854,19 @@ $acao = $_REQUEST['acao'];
                 var d = dia; // grava o dia em outra variável para poder recuperar depois
                 var data_ini = dia + '/' + mes + '/' + ano; // data para o boleto de pagamento à vista (recupere system nível 3)
 
-                var html  = '<td width="45%"> ';
-                    html += '   <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
-                    html += '       <option value="0">... Selecione ...</option> ';
-                    html += '       <option value="1">DINHEIRO</option> ';
-                    html += '       <option value="2">CHEQUE</option> ';
-                    html += '       <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
-                    html += '       <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
-                    html += '       <option value="4">BOLETO</option> ';
-                    html += '       <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
-                    html += '       <option value="7">TRANSFER&Ecirc;NCIA</option> ';
-                    html += '   </select> ';
-                    html += '</td> ';
+                var html  = 'tr class="formPagto">';
+                    html += '   <td width="45%"> ';
+                    html += '      <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
+                    html += '         <option value="0">... Selecione ...</option> ';
+                    html += '         <option value="1">DINHEIRO</option> ';
+                    html += '         <option value="2">CHEQUE</option> ';
+                    html += '         <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
+                    html += '         <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
+                    html += '         <option value="4">BOLETO</option> ';
+                    html += '         <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
+                    html += '         <option value="7">TRANSFER&Ecirc;NCIA</option> ';
+                    html += '      </select> ';
+                    html += '   </td> ';
                     html += '<td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_ini + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td></tr>'
                 $('#tblPagamentos').append(html);
 
@@ -892,18 +894,19 @@ $acao = $_REQUEST['acao'];
                 var d = dia; // grava o dia em outra variável para poder recuperar depois
                 var data_ini = dia + '/' + mes + '/' + ano; // data para o boleto de pagamento à vista (recupere system nível 3)
 
-                var html  = '<td width="45%"> ';
-                    html += '   <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
-                    html += '       <option value="0">... Selecione ...</option> ';
-                    html += '       <option value="1">DINHEIRO</option> ';
-                    html += '       <option value="2">CHEQUE</option> ';
-                    html += '       <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
-                    html += '       <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
-                    html += '       <option value="4">BOLETO</option> ';
-                    html += '       <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
-                    html += '       <option value="7">TRANSFER&Ecirc;NCIA</option> ';
-                    html += '   </select> ';
-                    html += '</td> ';
+                var html  = 'tr class="formPagto">';
+                    html += '   <td width="45%"> ';
+                    html += '      <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
+                    html += '         <option value="0">... Selecione ...</option> ';
+                    html += '         <option value="1">DINHEIRO</option> ';
+                    html += '         <option value="2">CHEQUE</option> ';
+                    html += '         <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
+                    html += '         <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
+                    html += '         <option value="4">BOLETO</option> ';
+                    html += '         <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
+                    html += '         <option value="7">TRANSFER&Ecirc;NCIA</option> ';
+                    html += '      </select> ';
+                    html += '   </td> ';
                     html += '<td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_ini + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td></tr>'
                 $('#tblPagamentos').append(html);
 
@@ -932,18 +935,19 @@ $acao = $_REQUEST['acao'];
                 var d = dia; // grava o dia em outra variável para poder recuperar depois
                 var data_ini = dia + '/' + mes + '/' + ano; // data para o boleto de pagamento à vista (recupere system nível 3)
 
-                var html  = '<td width="45%"> ';
-                    html += '   <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
-                    html += '       <option value="0">... Selecione ...</option> ';
-                    html += '       <option value="1">DINHEIRO</option> ';
-                    html += '       <option value="2">CHEQUE</option> ';
-                    html += '       <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
-                    html += '       <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
-                    html += '       <option value="4">BOLETO</option> ';
-                    html += '       <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
-                    html += '       <option value="7">TRANSFER&Ecirc;NCIA</option> ';
-                    html += '   </select> ';
-                    html += '</td> ';
+                var html  = 'tr class="formPagto">';
+                    html += '   <td width="45%"> ';
+                    html += '      <select name="forma_pgto[]" id="forma_pgto" onchange="seleciona_pgto()" class="forma_pgto"> ';
+                    html += '         <option value="0">... Selecione ...</option> ';
+                    html += '         <option value="1">DINHEIRO</option> ';
+                    html += '         <option value="2">CHEQUE</option> ';
+                    html += '         <option value="3">CART&Atilde;O CR&Eacute;DITO</option> ';
+                    html += '         <option value="5">CART&Atilde;O D&Eacute;BITO</option> ';
+                    html += '         <option value="4">BOLETO</option> ';
+                    html += '         <option value="6">ANTECIPA&Ccedil;&Atilde;O</option> ';
+                    html += '         <option value="7">TRANSFER&Ecirc;NCIA</option> ';
+                    html += '      </select> ';
+                    html += '   </td> ';
                     html += '<td><input type="text" name="vencimento[]" class="vencimento" id="vencimento"value="' + data_ini + '" onKeyPress="mascara(this,data)"/></td><td><input type="text" name="vlr_recebido[]" id="vlr_recebido" class="vlr_recebido" value="' + number_format(valor, 2, ',', '.') + '" onKeydown="FormataValor(this,20,event,2)" style="text-align:right"/></td><td><input type="button" name="OK" value="[OK]" class="btnReceberAgora"/></td></tr>'
                 $('#tblPagamentos').append(html);
 
