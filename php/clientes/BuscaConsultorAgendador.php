@@ -24,7 +24,7 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 				*
 				FROM cs2.consultores_assistente
 				WHERE id_franquia = '$id_franquia'
-				AND tipo_cliente = '0'
+				AND tipo_cliente = '1'
 				$situacao
 				ORDER BY situacao, nome";
 
