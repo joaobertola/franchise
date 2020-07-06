@@ -140,14 +140,14 @@ while ( $reg = mysql_fetch_array($qry) ){
         $Certificado_User  = 'wcsistemas';
         $Certificado_Cnpj  = '08745918000171';
         $Certificado_IM    = '05230906';
-        $Certificado_Senha = 'WC20181974';
+        $Certificado_Senha = 'wc20201212';
     }else{
 
         // WEBCONTROL
         $Certificado_User  = 'world click';
         $Certificado_Cnpj  = '13117948000173';
         $Certificado_IM    = '010106049109';
-        $Certificado_Senha = 'WEBC20191974';
+        $Certificado_Senha = 'wc20201212';
     }
         
     if ( $protocolo == '' ){
