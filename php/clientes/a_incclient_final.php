@@ -377,6 +377,7 @@
 	// Aplicando todos os direitos
 
 	// INICIO CRIAÇÃO DA BASE DE DADOS E DE SUAS RESPECTIVAS TABELAS
+	/*
 	$data_base_create = new CreateBaseDadosController();
 	$data_base_create->setDatabase('db_'.$login);
 	$data_base_create->create_data_base();
@@ -810,6 +811,7 @@
 	$data_base_create->create_table_whatsapp_master();
 	$data_base_create->create_table_whatsapp_transacao();
 	$data_base_create->create_table_whatsapp_user();
+	*/
 	// FIM CRIAÇÃO DA BASE DE DADOS E DE SUAS RESPECTIVAS TABELAS
 
 	Grava_Acesso_WebControl($codloja,$nomefantasia,$cpfsocio1,$email,$login,$senha,$uf);
