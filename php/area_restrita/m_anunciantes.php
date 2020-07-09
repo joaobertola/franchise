@@ -73,7 +73,7 @@ $total 	= mysql_num_rows($qry);
 	   while ($res = mysql_fetch_array($qry)) { 
 	       echo "<tr bgcolor='{$a_cor[$cont % 2]}'>";
 	       
-	       echo "<td class='tdSel' align=center><a style='color: blue;' href = 'painel.php?pagina1=area_restrita/m_editar_anunciantes.php&id_anuncio={$res["id"]}'>{$res["id"]}</a></td>";
+	       echo "<td class='tdSel' align=center>{$res["id"]}</td>";
 	       echo "<td class='tdSel'>{$res["codloja"]}</td>";
 	       
 	       if($res["tipo"] == "B"){
@@ -94,17 +94,15 @@ $total 	= mysql_num_rows($qry);
 
 	       if($res["ativo"] == "S"){
 	           echo "<td class='tdSel'>Ativo</td>";
-	           echo "<td style='text-align:center'>";
-	           echo "<input type='hidden' name='id_anunciante' value='{$res["id"]}' >";
-	           echo "<button type='submit' name='cancelar_anunciante' title='Cancelar' value='{$res["id"]}' >[x]</button>";
-	           echo "</td>";
+	           
 	       }
 	       if($res["ativo"] == "N"){
 	           echo "<td class='tdSel'>Nao Ativo</td>";
-	           echo "<td style='text-align:center'>";
-	           echo "<button type='submit' name='ativar_anunciante' title='Renovar' value='{$res["id"]}' >&#8634;</button>";
-	           echo "</td>";
-	       }
+		   }
+		   
+		   	echo "<td style='text-align:center'>";
+	        echo "<a style='color: blue;' href = 'painel.php?pagina1=area_restrita/m_editar_anunciantes.php&id_anuncio={$res["id"]}'><img src= 'https://www.pngfind.com/pngs/m/70-704184_png-file-svg-pencil-edit-icon-png-transparent.png' width = '30'/></a>";
+	        echo "</td>";
 	       
 	       echo "</tr>";
 	   }
