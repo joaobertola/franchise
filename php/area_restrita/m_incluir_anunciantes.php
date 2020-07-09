@@ -44,7 +44,7 @@ if(isset($_POST["cadastro_anunciantes"])){
 				}
 				else
 				{
-        			echo "<p><label style='color:red'>Nao foi possivel cadastrar anunciante!</label></p>";
+        			echo "<p><label style='color:red'>Não foi possível cadastrar o anúncio!</label></p>";
     			}
     
     			$qry = mysql_close($con);

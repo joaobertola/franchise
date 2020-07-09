@@ -73,7 +73,7 @@ $total 	= mysql_num_rows($qry);
 	   while ($res = mysql_fetch_array($qry)) { 
 	       echo "<tr bgcolor='{$a_cor[$cont % 2]}'>";
 	       
-	       echo "<td class='tdSel' align=center>{$res["id"]}</td>";
+	       echo "<td class='tdSel' align=center><a style='color: blue;' href = 'painel.php?pagina1=area_restrita/m_editar_anunciantes.php&id_anuncio={$res["id"]}'>{$res["id"]}</a></td>";
 	       echo "<td class='tdSel'>{$res["codloja"]}</td>";
 	       
 	       if($res["tipo"] == "B"){
