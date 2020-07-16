@@ -190,7 +190,7 @@ $qry = mysql_query($sql, $con) or die("Erro SQL:  $sql");
                         <?php
                         $consultora = $rs['consultora'];
                         $sql_funcionario = "SELECT substring_index(nome, ' ', 1) as nome_funcionario, id FROM cs2.funcionario
-                                            WHERE id_funcao = 19 AND ativo = 'S'";
+                                            WHERE id_funcao = 19 AND id_funcao = 32 AND ativo = 'S'";
                         $qry_funcionario = mysql_query($sql_funcionario, $con) or die("Erro SQL:  $sql_funcionario");
                         echo "<option value='' selected>Selecione</option>";
                         while ($rs2 = mysql_fetch_array($qry_funcionario)) {
