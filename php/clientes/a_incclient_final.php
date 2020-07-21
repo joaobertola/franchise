@@ -220,11 +220,11 @@
 					)
 				";
 
-//	if($franqueado == 1){
-//		echo '<pre>';
-//		var_dump($comando);
-//		die;
-//	}
+	if($franqueado == 1){
+		echo '<pre>';
+		var_dump($comando);
+		die;
+	}
 
 
 	$res = mysql_query ($comando, $con);
