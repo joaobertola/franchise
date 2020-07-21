@@ -2,8 +2,8 @@
 	require "connect/sessao.php";
 	require "connect/conexao_conecta.php";
 	require "connect/funcoes.php";
-	require "controller/CreateBaseDadosController.php";
-	require "model/CreateBaseDadosModel.php";
+	//require "controller/CreateBaseDadosController.php";
+	//require "model/CreateBaseDadosModel.php";
 	require "smtp.class.php";
 	
 	function enviaErroCpd($p_parametro){
@@ -220,11 +220,11 @@
 					)
 				";
 
-	if($franqueado == 1){
-		echo '<pre>';
-		var_dump($comando);
-		die;
-	}
+#	if($franqueado == 1){
+#		echo '<pre>';
+#		var_dump($comando);
+#		die;
+#	}
 
 
 	$res = mysql_query ($comando, $con);
