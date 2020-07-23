@@ -1,6 +1,8 @@
 <style>
-    select[readonly], input[readonly] {
-        background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+    select[readonly],
+    input[readonly] {
+        background: #eee;
+        /*Simular campo inativo - Sugestão @GabrielRodrigues*/
         pointer-events: none;
         touch-action: none;
     }
@@ -24,8 +26,8 @@ if ($_POST['id_anuncio']) {
 
                 $dominio = 'anunciantes/' . $codloja;
 
-                $tmp_name     = $_FILES['banner']['tmp_name'];
-                $error         = $_FILES['banner']['error'];
+                $tmp_name = $_FILES['banner']['tmp_name'];
+                $error    = $_FILES['banner']['error'];
                 $typeFile = substr($_FILES['banner']['name'], (strpos($_FILES['banner']['name'], '.')));
 
                 $nameUpload = time() . $typeFile;
@@ -62,7 +64,10 @@ if ($_POST['id_anuncio']) {
     }
 } elseif ($_GET['id_anuncio']) {
     $codAnuncio = $_GET['id_anuncio'];
-    $sql = "SELECT * FROM cs2.anunciantes WHERE id = $codAnuncio";
+    $sql = "SELECT c.nomefantasia, a.* FROM cs2.anunciantes a 
+    LEFT JOIN cs2.cadastro c
+    ON a.codloja = c.codloja 
+    WHERE a.id = $codAnuncio";
 
     $qry     = mysql_query($sql, $con) or die($sql);
     $total     = mysql_num_rows($qry);
@@ -77,13 +82,17 @@ if ($_POST['id_anuncio']) {
             <table border="0" align="center" width="640">
                 <thead bgcolor="#CFCFCF">
                     <tr>
-                        <th colspan="2" class="titulo">CADASTRAR NOVO ANUNCIANTE</th>
+                        <th colspan="2" class="titulo">EDITAR ANUNCIANTE</th>
                     </tr>
                 </thead>
                 <tbody bgcolor="#CFCFCF">
                     <tr>
                         <th>ID do cliente</th>
                         <td><input type='text' name='codloja' value='<?= $anuncio['codloja'] ?>' readonly /></td>
+                    </tr>
+                    <tr>
+                        <th>Nome Fantasia</th>
+                        <td><input type='text' name='nomefantasia' value='<?= $anuncio['nomefantasia'] ?>' readonly /></td>
                     </tr>
                     <tr>
                         <th>Tipo</th>

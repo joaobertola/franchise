@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Desenvolvido por um programador Web control
  */
@@ -8,59 +9,47 @@ require "connect/funcoes.php";
 
 $info = "";
 
-if(isset($_POST["cadastro_anunciantes"])){
-    foreach ($_POST as $i=>$v){
-        ${$i} = trim(utf8_decode(utf8_encode($v)));
+if (isset($_POST["cadastro_anunciantes"])) {
+	foreach ($_POST as $i => $v) {
+		${$i} = trim(utf8_decode(utf8_encode($v)));
 	}
 
-	switch($tipo) {
+	switch ($tipo) {
 		case 'S':
-			$dominio = 'anunciantes/'.$codloja;
-	
+			$dominio = 'anunciantes/' . $codloja;
+
 			$tmp_name 	= $_FILES['banner']['tmp_name'];
 			$error 		= $_FILES['banner']['error'];
 			$typeFile = substr($_FILES['banner']['name'], (strpos($_FILES['banner']['name'], '.')));
 
-			$nameUpload = time().$typeFile;
+			$nameUpload = time() . $typeFile;
 
-			$caminhoUpload 	= '../'.$dominio;
-			$caminhoBD = $_SERVER['HTTP_ORIGIN'].'/franquias/'.$dominio.'/'.$nameUpload;
+			$caminhoUpload 	= '../' . $dominio;
+			$caminhoBD = $_SERVER['HTTP_ORIGIN'] . '/franquias/' . $dominio . '/' . $nameUpload;
 
 			if (!is_dir($caminhoUpload)) {
 				mkdir($caminhoUpload, 0777, true);
 			}
-			
-			if ($error === UPLOAD_ERR_OK && move_uploaded_file($tmp_name, $caminhoUpload.'/'.$nameUpload))
-			{
+
+			if ($error === UPLOAD_ERR_OK && move_uploaded_file($tmp_name, $caminhoUpload . '/' . $nameUpload)) {
 
 				$sql = "INSERT INTO cs2.anunciantes 
 							(codloja, tipo, data_cadastro, data_inicio, data_fim, ativo, tipo_sistema, url, banner) 
-						VALUE ({$codloja}, '{$tipo}', now(), '{$data_inicio}', '{$data_fim}', '{$situacao}', '{$tipo_sistema}', '{$url}', '{$caminhoBD}')";			
+						VALUE ({$codloja}, '{$tipo}', now(), '{$data_inicio}', '{$data_fim}', '{$situacao}', '{$tipo_sistema}', '{$url}', '{$caminhoBD}')";
 				$qry = mysql_query($sql, $con);
 
-				if($qry)
-				{
-        			echo "<p><label style='color:blue'>Cadastrado com sucesso!</label></p>";
+				if ($qry) {
+					echo "<p><label style='color:blue'>Cadastrado com sucesso!</label></p>";
+				} else {
+					echo "<p><label style='color:red'>Não foi possível cadastrar o anúncio!</label></p>";
 				}
-				else
-				{
-        			echo "<p><label style='color:red'>Não foi possível cadastrar o anúncio!</label></p>";
-    			}
-    
-    			$qry = mysql_close($con);
-			} 
-			else
-			{
+
+				$qry = mysql_close($con);
+			} else {
 				echo 'Erro ao fazer o upload:', $error;
 			}
-		break;
+			break;
 	}
-
-	
-
-    
-    
-    
 }
 ?>
 
@@ -77,7 +66,11 @@ if(isset($_POST["cadastro_anunciantes"])){
 		<tbody bgcolor="#CFCFCF">
 			<tr>
 				<th>ID do cliente</th>
-				<td><input type='text' name='codloja' required/></td>
+				<td><input type='text' name='codloja' id="codloja" required style="width: 98%;"/></td>
+			</tr>
+			<tr>
+				<th>Nome Fantasia</th>
+				<td><input type='text' name='nomefantasia' id='nomefantasia' readonly disabled style="width: 98%;"/></td>
 			</tr>
 			<tr>
 				<th>Tipo</th>
@@ -94,17 +87,17 @@ if(isset($_POST["cadastro_anunciantes"])){
 				<td><input type='text' name='valor' /></td>
 			</tr>-->
 		</tbody>
-		<tbody  bgcolor="#CFCFCF" id = "sistema">
-		<tr>
+		<tbody bgcolor="#CFCFCF" id="sistema">
+			<tr>
 				<th>Data Início</th>
 				<td>
-					<input type='date' name='data_inicio' required/>
+					<input type='date' name='data_inicio' required />
 				</td>
 			</tr>
 			<tr>
 				<th>Data Fim</th>
 				<td>
-					<input type='date' name='data_fim' required/>
+					<input type='date' name='data_fim' required />
 				</td>
 			</tr>
 			<tr>
@@ -118,15 +111,15 @@ if(isset($_POST["cadastro_anunciantes"])){
 			</tr>
 			<tr>
 				<th>Banner</th>
-				<td><input type = "file" name = "banner" required></td>
+				<td><input type="file" name="banner" required></td>
 			</tr>
 			<tr>
-				<td colspan = "2" align="center">
-					<label for = "type_lead">Lead</label>
-					<input id = "type_lead" type = "radio" name = "tipo_sistema" value = "lead" checked>
-					
-					<label for = "type_link">Link</label>
-					<input id = "type_link" type = "radio" name = "tipo_sistema" value = "link">
+				<td colspan="2" align="center">
+					<label for="type_lead">Lead</label>
+					<input id="type_lead" type="radio" name="tipo_sistema" value="lead" checked>
+
+					<label for="type_link">Link</label>
+					<input id="type_link" type="radio" name="tipo_sistema" value="link">
 				</td>
 			</tr>
 			<!--<tr id = "lead">
@@ -136,35 +129,36 @@ if(isset($_POST["cadastro_anunciantes"])){
 					<input type = "text" name = "email" placeholder="e-mail">
 				</td>
 			</tr>-->
-			<tr id = "link">
-				<td colspan = 2 align= "center">
-					<input type = "text" name = "url" placeholder="url" style="width: 98%;">
+			<tr id="link">
+				<td colspan=2 align="center">
+					<input type="text" name="url" placeholder="url" style="width: 98%;">
 				</td>
 			</tr>
 		</tbody>
 		<tfooter>
-			<tr><td>&nbsp;</td></tr>
 			<tr>
-    			<td>&nbsp;</td>
-    			<td>
-    				<input type='submit' name='cadastro_anunciantes' value="Salvar" />
-    				<input type='reset' name='' value='Limpar' />
-    			</td>
-    		</tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<input type='submit' name='cadastro_anunciantes' value="Salvar" />
+					<input type='reset' name='' value='Limpar' />
+				</td>
+			</tr>
 		</tfooter>
 	</table>
 </form>
 
 <script>
-	$(document).ready(function () {
+	$(document).ready(function() {
 		$('#link').hide();
 		$('#sistema').hide();
-		
-		$('select[name=tipo]').change(function () {
+
+		$('select[name=tipo]').change(function() {
 			var valor = $('select[name=tipo] option').filter(':selected').val();
-			
-			switch(valor)
-			{
+
+			switch (valor) {
 				case 'S':
 					$('#sistema').show();
 					break;
@@ -174,11 +168,10 @@ if(isset($_POST["cadastro_anunciantes"])){
 			}
 		});
 
-		$('input[name = "tipo_sistema"]').change(function () {
+		$('input[name = "tipo_sistema"]').change(function() {
 			var valor = $('input[name = "tipo_sistema"]:checked').val();
-			
-			switch(valor)
-			{
+
+			switch (valor) {
 				case 'lead':
 					$('#link').hide();
 					//$('#lead').show();
@@ -189,8 +182,28 @@ if(isset($_POST["cadastro_anunciantes"])){
 					break;
 			}
 		});
+
+		// Traz o Nome Fantasia ,
+
+		$("#codloja").on('keyup', function() {
+
+			var codloja = $(this).val();
+
+			var data = {
+				codloja: codloja
+			}
+
+			$.ajax({
+				type: "POST",
+				url: "area_restrita/m_busca_cadastro.php",
+				data: data,
+				dataType: "text",
+				success: function(response) {
+					// console.log(response);
+					$("#nomefantasia").val(response)
+				}
+			});
+		})
+
 	});
-
-
-
 </script>
