@@ -6,6 +6,14 @@
         pointer-events: none;
         touch-action: none;
     }
+
+    td.previa-banner {
+        height: 150px;
+    }
+
+    td.previa-banner img {
+        height: 100%;
+    }
 </style>
 <?php
 require_once "connect/sessao.php";
@@ -129,8 +137,18 @@ if ($_POST['id_anuncio']) {
                     </tr>
                     <tr>
                         <th>Banner</th>
-                        <td><input type="file" name="banner"></td>
+                        <td><input id="banner" type="file" name="banner"></td>
                     </tr>
+                    <?php if (!empty($anuncio['banner'])) : ?>
+                        <tr id="line-previa">
+                            <th style="width: 25%;">Prévia</th>
+                            <td class="previa-banner">
+                                <a target="_blank" href="<?= $anuncio['banner']; ?>">
+                                    <img id="previa" src="<?= $anuncio['banner']; ?>" />
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                     <tr>
                         <td colspan="2" align="center">
                             <label for="type_lead">Lead</label>
@@ -174,6 +192,7 @@ if ($_POST['id_anuncio']) {
 
 <script>
     $(document).ready(function() {
+
         let tipo = $('select[name=tipo] option').filter(':selected').val();
         esconderTipo(tipo);
 
@@ -191,6 +210,24 @@ if ($_POST['id_anuncio']) {
 
             esconderTipoSistema(valor);
         });
+    });
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#previa').attr('src', e.target.result);
+                $('#line-previa').css('display', 'contents');
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#banner").on('change', function() {
+        readURL(this);
     });
 
     function esconderTipo(valor) {

@@ -53,6 +53,16 @@ if (isset($_POST["cadastro_anunciantes"])) {
 }
 ?>
 
+<style>
+	td.previa-banner {
+		height: 150px;
+	}
+
+	td.previa-banner img {
+		height: 100%;
+	}
+</style>
+
 <script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
 <script language="JavaScript" src="../js/jquery.meio.mask.js" type="text/javascript"></script>
 
@@ -66,11 +76,11 @@ if (isset($_POST["cadastro_anunciantes"])) {
 		<tbody bgcolor="#CFCFCF">
 			<tr>
 				<th>ID do cliente</th>
-				<td><input type='text' name='codloja' id="codloja" required style="width: 98%;"/></td>
+				<td><input type='text' name='codloja' id="codloja" required style="width: 98%;" /></td>
 			</tr>
 			<tr>
 				<th>Nome Fantasia</th>
-				<td><input type='text' name='nomefantasia' id='nomefantasia' readonly disabled style="width: 98%;"/></td>
+				<td><input type='text' name='nomefantasia' id='nomefantasia' readonly disabled style="width: 98%;" /></td>
 			</tr>
 			<tr>
 				<th>Tipo</th>
@@ -111,7 +121,15 @@ if (isset($_POST["cadastro_anunciantes"])) {
 			</tr>
 			<tr>
 				<th>Banner</th>
-				<td><input type="file" name="banner" required></td>
+				<td><input id="banner" type="file" name="banner" required></td>
+			</tr>
+			<tr id="line-previa" style="display: none;">
+				<th style="width: 25%;">Prévia</th>
+				<td class="previa-banner">
+					<a target="_blank">
+						<img id="previa" src="/" />
+					</a>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
@@ -151,6 +169,24 @@ if (isset($_POST["cadastro_anunciantes"])) {
 </form>
 
 <script>
+	function readURL(input) {
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#previa').attr('src', e.target.result);
+				$('#line-previa').css('display', 'contents');
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#banner").on('change', function() {
+		readURL(this);
+	});
+
 	$(document).ready(function() {
 		$('#link').hide();
 		$('#sistema').hide();
