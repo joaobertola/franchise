@@ -126,9 +126,7 @@ if (isset($_POST["cadastro_anunciantes"])) {
 			<tr id="line-previa" style="display: none;">
 				<th style="width: 25%;">Prévia</th>
 				<td class="previa-banner">
-					<a target="_blank">
-						<img id="previa" src="/" />
-					</a>
+					<img id="previa" src="/" />
 				</td>
 			</tr>
 			<tr>
