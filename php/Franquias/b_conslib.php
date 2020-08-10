@@ -12,7 +12,7 @@ $logon = $_POST['logon'];
 $ip = getenv("REMOTE_ADDR");
 $selected_cnt   = count($selected);
 if (empty($selected_cnt)) {
-	echo "<script>alert(\"Voc� n�o marcou nenhuma op��o!\");</script>";
+	echo "<script>alert(\"Você não marcou nenhuma opção!\");</script>";
 	echo "<meta http-equiv=Refresh content=\"0; url= ../painel.php?pagina1=Franquias/b_liberaconsulta1.php&codigo=$codigo\";>";
 }
 

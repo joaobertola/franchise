@@ -1,8 +1,18 @@
 <style>
-    select[readonly], input[readonly] {
-        background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+    select[readonly],
+    input[readonly] {
+        background: #eee;
+        /*Simular campo inativo - Sugestão @GabrielRodrigues*/
         pointer-events: none;
         touch-action: none;
+    }
+
+    td.previa-banner {
+        height: 150px;
+    }
+
+    td.previa-banner img {
+        height: 100%;
     }
 </style>
 <?php
@@ -24,8 +34,8 @@ if ($_POST['id_anuncio']) {
 
                 $dominio = 'anunciantes/' . $codloja;
 
-                $tmp_name     = $_FILES['banner']['tmp_name'];
-                $error         = $_FILES['banner']['error'];
+                $tmp_name = $_FILES['banner']['tmp_name'];
+                $error    = $_FILES['banner']['error'];
                 $typeFile = substr($_FILES['banner']['name'], (strpos($_FILES['banner']['name'], '.')));
 
                 $nameUpload = time() . $typeFile;
@@ -62,7 +72,10 @@ if ($_POST['id_anuncio']) {
     }
 } elseif ($_GET['id_anuncio']) {
     $codAnuncio = $_GET['id_anuncio'];
-    $sql = "SELECT * FROM cs2.anunciantes WHERE id = $codAnuncio";
+    $sql = "SELECT c.nomefantasia, a.* FROM cs2.anunciantes a 
+    LEFT JOIN cs2.cadastro c
+    ON a.codloja = c.codloja 
+    WHERE a.id = $codAnuncio";
 
     $qry     = mysql_query($sql, $con) or die($sql);
     $total     = mysql_num_rows($qry);
@@ -77,13 +90,17 @@ if ($_POST['id_anuncio']) {
             <table border="0" align="center" width="640">
                 <thead bgcolor="#CFCFCF">
                     <tr>
-                        <th colspan="2" class="titulo">CADASTRAR NOVO ANUNCIANTE</th>
+                        <th colspan="2" class="titulo">EDITAR ANUNCIANTE</th>
                     </tr>
                 </thead>
                 <tbody bgcolor="#CFCFCF">
                     <tr>
                         <th>ID do cliente</th>
                         <td><input type='text' name='codloja' value='<?= $anuncio['codloja'] ?>' readonly /></td>
+                    </tr>
+                    <tr>
+                        <th>Nome Fantasia</th>
+                        <td><input type='text' name='nomefantasia' value='<?= $anuncio['nomefantasia'] ?>' readonly /></td>
                     </tr>
                     <tr>
                         <th>Tipo</th>
@@ -120,8 +137,18 @@ if ($_POST['id_anuncio']) {
                     </tr>
                     <tr>
                         <th>Banner</th>
-                        <td><input type="file" name="banner"></td>
+                        <td><input id="banner" type="file" name="banner"></td>
                     </tr>
+                    <?php if (!empty($anuncio['banner'])) : ?>
+                        <tr id="line-previa">
+                            <th style="width: 25%;">Prévia</th>
+                            <td class="previa-banner">
+                                <a target="_blank" href="<?= $anuncio['banner']; ?>">
+                                    <img id="previa" src="<?= $anuncio['banner']; ?>" />
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                     <tr>
                         <td colspan="2" align="center">
                             <label for="type_lead">Lead</label>
@@ -165,6 +192,7 @@ if ($_POST['id_anuncio']) {
 
 <script>
     $(document).ready(function() {
+
         let tipo = $('select[name=tipo] option').filter(':selected').val();
         esconderTipo(tipo);
 
@@ -182,6 +210,24 @@ if ($_POST['id_anuncio']) {
 
             esconderTipoSistema(valor);
         });
+    });
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#previa').attr('src', e.target.result);
+                $('#line-previa').css('display', 'contents');
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#banner").on('change', function() {
+        readURL(this);
     });
 
     function esconderTipo(valor) {
