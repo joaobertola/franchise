@@ -394,7 +394,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
     ?>
     <?php
     $totalAPagar = number_format($total_comissao_produto + (($totalAfiliacoes - ($totalCancelados + $totalPendentes + $totalContadores + $totalPendentesAdesao + $totalPagos)) * $comissaoAfiliacao) + $valorBonus20 + $valorBonus25, 2, ',', '.');
-    
+
     $totalPagarSemFormat = $total_comissao_produto + $totalPendenteAfiliacao + $valorBonus20Pendente + $valorBonus25Pendente - (($valorTotalPago) * ($comissaoEquipamento / 100));
     
     if ( $origem != 'CONTABIL')
@@ -660,7 +660,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
     if ( $origem == 'CONTABIL'){
         
         $totalcomissao        = ($totalPendenteAfiliacao);
-        $totalPercentComissao = (($valorTotalComissao * $comissaoEquipamento)/100);
+        $totalPercentComissao = $total_comissao_produto;
         $totalAdiantamento    = $valorTotalCredito - $valorTotalDebito;
 
         $html .= '<td style="font-size: 16px">'.$certifico.'</td>
@@ -700,7 +700,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                                 <td class="corpoTabela"> R$ ' .number_format($totalcomissao, 2, ',', '.'). '</td>
                             </tr>
                             <tr>
-                                <td class="corpoTabela">COMISSÃO EQUIPAMENTOS ('. number_format($comissaoEquipamento, 2, '.', '').'% de R$ '.number_format($valorTotalComissao, 2, ',', '.').')</td>
+                                <td class="corpoTabela">COMISSÃO EQUIPAMENTOS</td>
                                 <td class="corpoTabela">'.$totalEquipamentos.'</td>
                                 <td class="corpoTabela"> R$ '.number_format($totalPercentComissao, 2, ',', '.'). '</td>
                             </tr>
