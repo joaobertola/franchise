@@ -283,14 +283,13 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
 
     $sqlEquipamentos = "SELECT
                             ce.id,
-                            p.id AS id_produto,
                             ce.data_compra,
                             DATE_FORMAT(ce.data_venda, '%d/%m/%Y') AS data_venda_label,
                             c.nomefantasia,
                             (SELECT login FROM base_web_control.webc_usuario WHERE id_cadastro = c.codLoja LIMIT 1) AS codigo,
                             GROUP_CONCAT(p.descricao SEPARATOR ' <br>') AS descricao,
                             ced.valor_unitario,
-                            f.comissao_equipamento,
+                            if ( p.id = 53406684 , 30, f.comissao_equipamento ) AS comissao_equipamento,
                             f.nome,
                             IF(ce.vr_pgto_comissao IS NOT NULL AND ce.vr_pgto_comissao > 0.00,1,0) AS pago_comissao,
                             (SELECT
@@ -342,25 +341,25 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
     $valorTotalPago = 0;
     $valorTotalComissao = 0;
     $comissaoEquipamento = 0;
-    $totalComissao = 0;
+
+    $total_comissao_produto = 0;
 
     while ($arrEquipamentos = mysql_fetch_array($qryEquipamentos)) {
+
         $status = 'Pendente Pagamento';
         $checked = '';
 
         if ($arrEquipamentos['pago_comissao'] == '1') {
             $checked = 'checked';
         }
+        $comissao_produto = 0;
 
         if ($arrEquipamentos['pendente'] == 0) {
             $status = 'OK';
-            $valorTotalComissao = $valorTotalComissao + $arrEquipamentos['valor_total'];
+            $valorTotalComissao += $arrEquipamentos['valor_total'];
+            $comissao_produto = $arrEquipamentos['valor_total'] * ($arrEquipamentos['comissao_equipamento'] / 100); 
+            $total_comissao_produto += $arrEquipamentos['valor_total'] * ($arrEquipamentos['comissao_equipamento'] / 100); 
         }
-
-        $perc_comissao = 0.07;
-        if (  $arrEquipamentos['id_produto'] == 53406684 )
-           $perc_comissao = 0.30;
-
 
         $html .= '<tr style="border: black; border-style: solid;">
                                 <td class="corpoTabela">' . $arrEquipamentos['data_venda_label'] . '</td>
@@ -368,7 +367,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                                 <td class="corpoTabela">' . $arrEquipamentos['nomefantasia'] . '</td>
                                 <td class="corpoTabela">' . $arrEquipamentos['descricao'] . '</td>
                                 <td class="corpoTabela">R$ ' . number_format($arrEquipamentos['valor_total'], 2, ',', '.') . '</td>
-                                <td class="corpoTabela">R$ ' . number_format($arrEquipamentos['valor_total'] * $perc_comissao , 2, ',', '.') . '</td>
+                                <td class="corpoTabela">R$ ' . number_format($comissao_produto, 2, ',', '.') . '</td>
                                 <td class="corpoTabela">'. $status .'</td>';
         if ( $origem != 'CONTABIL')
                       $html .= '<td class="corpoTabela" align="center">
@@ -377,7 +376,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                                            id="iptPagoEquipamento"
                                            class="iptPagoEquipamento"
                                            data-id_equipamento="' . $arrEquipamentos['id'] . '"
-                                           data-valor_comissao="' . $arrEquipamentos['valor_total'] * ($arrEquipamentos['comissao_equipamento'] / 100) . '"
+                                           data-valor_comissao="' . $comissao_produto . '"
                                          ' . $checked . ' >
 
                                 </td>';
@@ -387,29 +386,25 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
 
             $valorTotalPago = $valorTotalPago + $arrEquipamentos['valor_total'];
         } else {
-            $valorTotal = $valorTotal + $arrEquipamentos['valor_total'];
+            $valorTotal += $arrEquipamentos['valor_total'];
         }
         $comissaoEquipamento = $arrEquipamentos['comissao_equipamento'];
-
-        if (  $arrEquipamentos['id_produto'] == 53406684 ) $comissaoEquipamento = 30;
-
-        $totalComissao += ( $arrEquipamentos['valor_total'] * $perc_comissao );
-
+        
     }
     ?>
     <?php
-    $totalAPagar = number_format((($valorTotal) * ($comissaoEquipamento / 100)) + (($totalAfiliacoes - ($totalCancelados + $totalPendentes + $totalContadores + $totalPendentesAdesao + $totalPagos)) * $comissaoAfiliacao) + $valorBonus20 + $valorBonus25, 2, ',', '.');
-    $totalPagarSemFormat = (($valorTotalComissao) * ($comissaoEquipamento / 100)) + $totalPendenteAfiliacao + $valorBonus20Pendente + $valorBonus25Pendente - (($valorTotalPago) * ($comissaoEquipamento / 100));
+    $totalAPagar = number_format($total_comissao_produto + (($totalAfiliacoes - ($totalCancelados + $totalPendentes + $totalContadores + $totalPendentesAdesao + $totalPagos)) * $comissaoAfiliacao) + $valorBonus20 + $valorBonus25, 2, ',', '.');
+    
+    $totalPagarSemFormat = $total_comissao_produto + $totalPendenteAfiliacao + $valorBonus20Pendente + $valorBonus25Pendente - (($valorTotalPago) * ($comissaoEquipamento / 100));
     
     if ( $origem != 'CONTABIL')
         $html .= '<tr>
                 <td colspan="4" align="right" class="corpoTabela">Total Geral:</td>
                 <td colspan="3"
-                    class="corpoTabela">R$ ' . number_format($valorTotal, 2, ',', '.') . '</td>';
+                    class="corpoTabela">R$ ' . number_format($valorTotal, 2, ',', '.') .' </td>';
     
     if ( $origem != 'CONTABIL')
       $html .= '<td></td>';
-
       $html .= '
           </tr>
             <tr>
@@ -419,13 +414,12 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
       
     if ( $origem != 'CONTABIL')
       $html .= '<td></td>';
-
       $html .= '
           </tr>
             <tr>
                 <td colspan="4" align="right" class="corpoTabela" style="color: blue; font-weight: bold;">Pendentes à Pagar:</td>
                 <td colspan="3"
-                    class="corpoTabela" style="color: blue; font-weight: bold;">R$ ' . number_format($totalComissao, 2, ',', '.') . '</td>';
+                    class="corpoTabela" style="color: blue; font-weight: bold;">R$ ' . number_format($total_comissao_produto, 2, ',', '.') . '</td>';
       
     if ( $origem != 'CONTABIL')
       $html .= '<td></td>';
@@ -495,7 +489,7 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         LEFT JOIN cs2.funcionario AS f ON f.id_consultor_assistente = ca.id
                         WHERE FIND_IN_SET(ca.id_franquia , 1)
                             -- AND cv.data_agendamento BETWEEN base_web_control.fn_get_mes_inicio_filtro() - INTERVAL 1 MONTH AND base_web_control.fn_get_mes_inicio_filtro()
-                            AND date(cv.data_agendamento) BETWEEN '$strDataInicio' AND '$strDataFim'
+                            AND cv.data_agendamento BETWEEN '$strDataInicio 00:00:00' AND '$strDataFim 23:59:59'
                             AND f.id = '$idFuncionario'
                             AND ca.situacao = 0
                             AND ca.tipo_cliente = 0
@@ -506,21 +500,18 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                      ) AS aux
                 ORDER BY total DESC, nome_consultor ASC";
 
+               // echo "<pre>";
+               // print_r( $sqlParticipacao );
+               // die;
+
                 $resParticipacao = mysql_query($sqlParticipacao, $con);
+                // $totalParticipacao = mysql_result($resParticipacao, 0 , 'total');
+
                 $resultado_visitou = mysql_result($resParticipacao, 0 , 'resultado_visitou');
                 $resultado_demonstrou = mysql_result($resParticipacao, 0 , 'resultado_demonstrou') * 4;
                 $resultado_levousuper = mysql_result($resParticipacao, 0 , 'resultado_levousuper') * 3;
                 $resultado_ligougerente = mysql_result($resParticipacao, 0 , 'resultado_ligougerente');
                 $resultado_cartaovisita = mysql_result($resParticipacao, 0 , 'resultado_cartaovisita');
-
-                
-                echo "Visitou: $resultado_visitou<br>
-                      Vizinhos: ".mysql_result($resParticipacao, 0 , 'resultado_visitou')."<br>".
-                      "Demonstrou: ".mysql_result($resParticipacao, 0 , 'resultado_demonstrou')."<br>".
-                      "Super: ".mysql_result($resParticipacao, 0 , 'resultado_levousuper')."<br>".
-                      "Ligou Gerente: ".mysql_result($resParticipacao, 0 , 'resultado_ligougerente')."<br>".
-                      "Cartao Visita: " .mysql_result($resParticipacao, 0 , 'resultado_cartaovisita')."<br><br>";
-                
 
                 // Vizinhos
 
@@ -548,9 +539,9 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         WHERE vizinhos='on' and cv.id_consultor=ca.id)  AS vizitas_realizadas_vizinhos
                             
                 FROM cs2.consultores_assistente ca
-                LEFT JOIN cs2.controle_comercial_visitas cv2
-                ON cv2.id_consultor = ca.id
-                AND date(cv2.data_agendamento) BETWEEN '$strDataInicio' AND '$strDataFim'
+                LEFT JOIN cs2.controle_comercial_visitas cv2 
+                    ON cv2.id_consultor = ca.id
+                    AND cv2.data_agendamento BETWEEN '$strDataInicio 00:00:00' AND '$strDataFim 23:59:59'
                 LEFT JOIN cs2.funcionario AS f ON f.id_consultor_assistente = ca.id
                 WHERE FIND_IN_SET(ca.id_franquia , 1)
                     AND ca.situacao = 0
