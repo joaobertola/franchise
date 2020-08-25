@@ -116,7 +116,7 @@
     </tr>
     <tr>
         <td>&nbsp;</td>
-        <td bgcolor="#FF33CC"><b>&nbsp;&nbsp;<a href="../php/clientes/documentos/ROTEIRO_DE_CONFERENCIA_PARA_CADASTRO_DE_NOVO_ASSOCIADO_26112019.pdf" target="_blank">Roteiro de Confer&ecirc;ncia</a></b></td>
+        <td bgcolor="#FF33CC"><b>&nbsp;&nbsp;<a href="../php/clientes/documentos/ROTEIRO_DE_CONFERENCIA_PARA_CADASTRO_DE_NOVO_ASSOCIADO_25082020.pdf" target="_blank">Roteiro de Confer&ecirc;ncia</a></b></td>
     </tr>
     <tr>
         <td>&nbsp;</td>
@@ -173,7 +173,6 @@
     <tr>
         <td>&nbsp;</td>
         <td class="titulo">&nbsp;</td>
-
 </table>
 <center>
     <input name="button" type="button" onClick="javascript: history.back();" value="Voltar" />

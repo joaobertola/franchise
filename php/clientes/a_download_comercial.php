@@ -2,70 +2,66 @@
 require "connect/sessao.php";
 ?>
 <table width=90% border="0" align="center">
-	<tr>
-		<td>&nbsp;</td>
-		<td class="titulo">DEPARTAMENTO COMERCIAL</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td bgcolor="#FFFF00" ><a href="../php/clientes/documentos/ABORDAGEM DE VENDAS UM BATE PAPO COM O CLIENTE.pdf" target="_blank"><font color="#000000">&nbsp;&nbsp;ABORDAGEM DE VENDAS - UM BATE PAPO COM O CLIENTE (PDF - 195 KB) </font></a></td>
-	</tr>    
-	<tr>
-		<td>&nbsp;</td>
-		<td bgcolor="#0000FF" ><a href="../php/clientes/documentos/TABELA DE PRECOS DE ACESSORIOS.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;TABELA DE PRE&Ccedil;OS DE ACESS&Oacute;RIOS (PDF - 212 KB) </font></a></td>
-	</tr>
-<!-- 	<tr> -->
-<!-- 		<td>&nbsp;</td> -->
-<!-- 		<td bgcolor="#0000FF" ><a href="../php/clientes/documentos/TABELA_DE_PRECOS_E_PEDIDO_DE_EQUIPAMENTOS_22092016.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;TABELA DE PRE&Ccedil;OS E PEDIDO DE EQUIPAMENTOS (PDF - 212 KB) </font></a></td> -->
-<!-- 	</tr> -->
-	<tr>
-		<td>&nbsp;</td>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="titulo">DEPARTAMENTO COMERCIAL</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td bgcolor="#FFFF00" ><a href="../php/clientes/documentos/ABORDAGEM DE VENDAS UM BATE PAPO COM O CLIENTE.pdf" target="_blank"><font color="#000000">&nbsp;&nbsp;ABORDAGEM DE VENDAS - UM BATE PAPO COM O CLIENTE (PDF - 195 KB) </font></a></td>
+  </tr>    
+  <tr>
+    <td>&nbsp;</td>
+    <td bgcolor="#0000FF" ><a href="../php/clientes/documentos/TABELA DE PRECOS DE ACESSORIOS.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;TABELA DE PRE&Ccedil;OS DE ACESS&Oacute;RIOS (PDF - 212 KB) </font></a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
                 <td bgcolor="#0000FF" ><a href="../php/clientes/documentos/01 - PEDIDO DE ANALISE DE IMPORTACAO DE DADOS.doc" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp01 - PEDIDO DE ANALISE DE IMPORTA&Ccedil;&Atilde;O DE DADOS (DOC - 12 KB) </font></a></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td bgcolor="#0000FF" ><a href="../php/clientes/documentos/02 - PEDIDO DE IMPORTACAO DE DADOS.doc" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp02 - PEDIDO DE IMPORTA&Ccedil;&Atilde;O DE DADOS (DOC - 12 KB) </font></a></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td class="subtitulocentro"><div align="left"><a href="../php/clientes/documentos/5_BENEFICIOS_SOLUCOES.pdf" target="_blank">&nbsp;&nbsp5 BENEFICIOS DAS SOLU&Ccedil;&Otilde;ES INFORM SYSTEM</a></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td bgcolor="#0000FF" ><a href="../php/clientes/documentos/02 - PEDIDO DE IMPORTACAO DE DADOS.doc" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp02 - PEDIDO DE IMPORTA&Ccedil;&Atilde;O DE DADOS (DOC - 12 KB) </font></a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="subtitulocentro"><div align="left"><a href="../php/clientes/documentos/5_BENEFICIOS_SOLUCOES.pdf" target="_blank">&nbsp;&nbsp5 BENEFICIOS DAS SOLU&Ccedil;&Otilde;ES INFORM SYSTEM</a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
                 <td bgcolor="#FF33CC"><b>&nbsp;&nbsp;<a href="../php/clientes/documentos/ANTECIPACAO_DE_CREDITO_DE_BOLETOS.pdf" target="_blank">Antecipa&ccedil;&atilde;o  de Cr&eacute;dito de Boletos</a></b></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td class="subtituloesquerda"><a href="../php/clientes/documentos/Alineas Bancarias.doc" target="_blank">Al&iacute;neas banc&aacute;rias (DOC - 77 KB)</a></td>
-	</tr>
-	<tr>
-		<td><div align="right"><img src="../img/Pasta.gif"></div></td>
-		<td class="subtituloesquerda"><a href="painel.php?pagina1=../php/clientes/a_download_anuncios.php">Anuncios</a></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td class="subtituloesquerda"><a href="../php/clientes/documentos/CADASTRO COMPLETO DE VENDEDORES.doc" target="_blank">Cadastro completo de Vendedores (DOC - 57 KB)</a></td>
-	</tr>
-	<tr>
-		<td><div align="right"><img src="../img/Pasta.gif"></div></td>
-		<td class="subtituloesquerda"><a href="painel.php?pagina1=../php/clientes/a_download_cartacancel.php">Carta de Cancelamento da Concorr&ecirc;ncia - Modelos</a></td>
-	</tr>
-	<tr>
-		<td><div align="right"><img src="../img/Pasta.gif"></div></td>
-		<td class="subtituloesquerda"><a href="../php/clientes/documentos/CARTILHA_COMERCIAL_FRANQUIAS_V2.doc">CARTILHA COMERCIAL FRANQUIAS</a></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td class="subtituloesquerda"><a href="../php/clientes/documentos/Check-List_de_Contratos_enviados.doc" target="_blank">CHECK-LIST DE CONTRATOS ENVIADOS  -  OBRIGATORIO NA FRENTE DO CONTRATO (DOC - 32KB)</a></td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td bgcolor="#0000FF"><a href="../php/clientes/documentos/CONTRATO_DE_PRESTACAO_DE_SERVICOS_WEB_CONTROL_EMPRESAS7.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;CONTRATO DE PRESTA&Ccedil;&Atilde;O DE SERVI&Ccedil;OS  -  WEB CONTROL EMPRESAS (PDF - 254 KB)</font></a></td>
-	</tr>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="subtituloesquerda"><a href="../php/clientes/documentos/Alineas Bancarias.doc" target="_blank">Al&iacute;neas banc&aacute;rias (DOC - 77 KB)</a></td>
+  </tr>
+  <tr>
+    <td><div align="right"><img src="../img/Pasta.gif"></div></td>
+    <td class="subtituloesquerda"><a href="painel.php?pagina1=../php/clientes/a_download_anuncios.php">Anuncios</a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="subtituloesquerda"><a href="../php/clientes/documentos/CADASTRO COMPLETO DE VENDEDORES.doc" target="_blank">Cadastro completo de Vendedores (DOC - 57 KB)</a></td>
+  </tr>
+  <tr>
+    <td><div align="right"><img src="../img/Pasta.gif"></div></td>
+    <td class="subtituloesquerda"><a href="painel.php?pagina1=../php/clientes/a_download_cartacancel.php">Carta de Cancelamento da Concorr&ecirc;ncia - Modelos</a></td>
+  </tr>
+  <tr>
+    <td><div align="right"><img src="../img/Pasta.gif"></div></td>
+    <td class="subtituloesquerda"><a href="../php/clientes/documentos/CARTILHA_COMERCIAL_FRANQUIAS_V2.doc">CARTILHA COMERCIAL FRANQUIAS</a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="subtituloesquerda"><a href="../php/clientes/documentos/Check-List_de_Contratos_enviados.doc" target="_blank">CHECK-LIST DE CONTRATOS ENVIADOS  -  OBRIGATORIO NA FRENTE DO CONTRATO (DOC - 32KB)</a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td bgcolor="#0000FF"><a href="../php/clientes/documentos/CONTRATO_DE_PRESTACAO_DE_SERVICOS_WEB_CONTROL_EMPRESAS7.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;CONTRATO DE PRESTA&Ccedil;&Atilde;O DE SERVI&Ccedil;OS  -  WEB CONTROL EMPRESAS (PDF - 254 KB)</font></a></td>
+  </tr>
   
   <tr>
     <td>&nbsp;</td>
@@ -131,7 +127,7 @@ require "connect/sessao.php";
   </tr>
     <tr>
     <td>&nbsp;</td>
-    <td bgcolor="#FF33CC"><b>&nbsp;&nbsp;<a href="../php/clientes/documentos/ROTEIRO_DE_CONFERENCIA_PARA_CADASTRO_DE_NOVO_ASSOCIADO_26112019.pdf" target="_blank">Roteiro de Confer&ecirc;ncia</a></b></td>
+    <td bgcolor="#FF33CC"><b>&nbsp;&nbsp;<a href="../php/clientes/documentos/ROTEIRO_DE_CONFERENCIA_PARA_CADASTRO_DE_NOVO_ASSOCIADO_25082020.pdf" target="_blank">Roteiro de Confer&ecirc;ncia</a></b></td>
   </tr>
 
     <tr>
@@ -158,22 +154,20 @@ require "connect/sessao.php";
     <td>&nbsp;</td>
     <td bgcolor="#0000FF"><a href="../php/clientes/documentos/TERMO DE RESPONSABILIDADE DE USO DE FERRAMENTAS E ACESSORIOS.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;TERMO DE RESPONSABILIDADE DE USO DE FERRAMENTAS E ACESSORIOS - FUNCIONARIOS</font></a></td>
   </tr>
-
-
   <tr>
     <td>&nbsp;</td>
     <td class="subtituloesquerda"><a href="../php/clientes/documentos/TOPICOS DE TREINAMENTOS.doc" target="_blank">T&oacute;picos de Treinamento (DOC - 34 KB)</a></td>
   </tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td class="subtituloesquerda"><a href="../php/clientes/documentos/Ficha_Indicacoes.doc" target="_blank">Ficha de Indica&ccedil;&otilde;es (DOC - 25 KB)</a></td>
-	</tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td class="subtituloesquerda"><a href="../php/clientes/documentos/Ficha_Indicacoes.doc" target="_blank">Ficha de Indica&ccedil;&otilde;es (DOC - 25 KB)</a></td>
+  </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-  	<td>&nbsp;</td>
+    <td>&nbsp;</td>
     <td class="titulo">&nbsp;</td>
   </tr>
 </table>
