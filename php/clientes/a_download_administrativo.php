@@ -64,7 +64,7 @@
     </tr>
     <tr>
         <td>&nbsp;</td>
-        <td bgcolor="#0000FF"><a href="../php/clientes/documentos/CONTRATO_DE_PRESTACAO_DE_SERVICOS_WEB_CONTROL_EMPRESAS7.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;CONTRATO DE PRESTA&Ccedil;&Atilde;O DE SERVI&Ccedil;OS  -  WEB CONTROL EMPRESAS (PDF - 254 KB)</font></a></td>
+        <td bgcolor="#0000FF"><a href="../php/clientes/documentos/CONTRATO_DE_PRESTACAO_DE_SERVICOS_WEB_CONTROL_EMPRESAS_MULTA_30_PORCENTO.pdf" target="_blank"><font color="#FFFFFF">&nbsp;&nbsp;CONTRATO DE PRESTA&Ccedil;&Atilde;O DE SERVI&Ccedil;OS  -  WEB CONTROL EMPRESAS (PDF - 254 KB)</font></a></td>
     </tr>
     <tr>
         <td>&nbsp;</td>
