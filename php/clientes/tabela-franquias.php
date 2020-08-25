@@ -249,7 +249,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                 </td>
             </tr>
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq table-bordered">
 
@@ -317,10 +317,10 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -334,11 +334,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -376,11 +376,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -410,11 +410,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -429,11 +429,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -448,11 +448,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-				<td width="15%"></td>
+				<td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -482,11 +482,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-				<td width="15%"></td>
+				<td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -500,11 +500,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -535,11 +535,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -554,11 +554,11 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
             <tr>
-                <td width="15%"></td>
+                <td width="20%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq">
                         <tr>
@@ -572,7 +572,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                     </table>
                 </td>
-                <td width="15%"></td>
+                <td width="20%"></td>
             </tr>
 
         </table>
