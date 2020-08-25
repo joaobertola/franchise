@@ -252,21 +252,20 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                 <td width="15%"></td>
                 <td width="70%" colspan="2">
                     <table class="table ccinq table-bordered">
+
                         <tr class="txtleft">
-                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Mensalidade
-                                    Plus</strong></td>
+                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Pacote Sistema de Gestão</strong></td>
                             <?php if ($_REQUEST['tabela'] == 2) {
                                 ?>
                                 <td width="50%">R$ 00,00</td><?php
                             } else {
                                 ?>
-                                <td width="50%">R$ 79,90</td><?PHP
+                                <td width="50%">R$ 169,90</td><?PHP
                             }
                             ?>
                         </tr>
                         <tr class="txtleft">
-                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Mensalidade
-                                    Premium</strong></td>
+                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Pacote Sistema de Gestão Premium</strong></td>
                             <?php if ($_REQUEST['tabela'] == 2) {
                                 ?>
                                 <td width="50%">R$ 00,00</td><?php
@@ -277,17 +276,26 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                             ?>
                         </tr>
                         <tr class="txtleft">
-                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Mensalidade
-                                    Platinum</strong></td>
+                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Pacote Sistema de Gestão Plus</strong></td>
                             <?php if ($_REQUEST['tabela'] == 2) {
                                 ?>
                                 <td width="50%">R$ 00,00</td><?php
                             } else {
                                 ?>
-                                <td width="50%">R$ 169,90</td><?PHP
+                                <td width="50%">R$ 79,90</td><?PHP
                             }
                             ?>
-
+                        </tr>
+                        <tr class="txtleft">
+                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Pacote Sistema de Loja Virtual e E-commerce</strong></td>
+                            <?php if ($_REQUEST['tabela'] == 2) {
+                                ?>
+                                <td width="50%">R$ 00,00</td><?php
+                            } else {
+                                ?>
+                                <td width="50%">R$ 135,00</td><?PHP
+                            }
+                            ?>
                         </tr>
                         <tr class="txtleft">
                             <td width="50%"><strong>Licen&ccedil;a de Software</strong></td>
@@ -304,7 +312,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
 
                         </tr>
                         <tr class="txtleft">
-                            <td width="50%"><strong>Deslocamento T&eacute;cnico no local (cidades relacionadas no site)</strong></td>
+                            <td width="50%"><strong>Deslocamento T&eacute;cnico no local (cidades no site)</strong></td>
                             <td width="50%">R$ 35,00</td>
                         </tr>
                     </table>
@@ -488,10 +496,6 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Site Institucional</td>
-                            <td>Incluso na mensalidade</td>
-                        </tr>
-                        <tr>
-                            <td>Loja Virtual</td>
                             <td>Incluso na mensalidade</td>
                         </tr>
                     </table>
