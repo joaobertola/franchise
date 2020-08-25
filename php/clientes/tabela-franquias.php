@@ -254,8 +254,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                     <table class="table ccinq table-bordered">
 
                         <tr class="txtleft">
-                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Mensalidade
-                                    Platinum</strong></td>
+                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Pacote Sistema de Gestão Platinum</strong></td>
                             <?php if ($_REQUEST['tabela'] == 2) {
                                 ?>
                                 <td width="50%">R$ 00,00</td><?php
