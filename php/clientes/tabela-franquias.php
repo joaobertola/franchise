@@ -330,7 +330,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Todos os M&oacute;dulos</td>
-                            <td>Incluso na Mensalidade</td>
+                            <td>Incluso na Mensalidade (exceto Loja Virtual e E-commerce)</td>
                         </tr>
                     </table>
                 </td>
