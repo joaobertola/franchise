@@ -330,7 +330,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Todos os M&oacute;dulos</td>
-                            <td>Incluso na Mensalidade (exceto Loja Virtual e E-commerce)</td>
+                            <td>Incluso no Pacote (exceto Loja Virtual e E-commerce)</td>
                         </tr>
                     </table>
                 </td>
@@ -348,19 +348,19 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Or&ccedil;amentos</td>
-                            <td>Incluso na Mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>Ordem de Servi&ccedil;os</td>
-                            <td>Incluso na Mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>Vendas Consignadas</td>
-                            <td>Incluso na Mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>Frente de Caixa</td>
-                            <td>Incluso na Mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>Emiss&atilde;o (Boletos, Crediários)</td>
@@ -372,7 +372,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Promiss&oacute;rias</td>
-                            <td>Incluso na Mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                     </table>
                 </td>
@@ -496,7 +496,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Site Institucional</td>
-                            <td>Incluso na mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                     </table>
                 </td>
@@ -515,19 +515,19 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>NF-e / NFCe / NFSe / Cupom Fiscal</td>
-                            <td>Incluso na mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>SPED Fiscal / SPED Cont&aacute;bil</td>
-                            <td>Incluso na mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>CT-e - Conhecimento de Transporte</td>
-                            <td>Incluso na mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>MDF-e - Manifesto Eletr&ocirc;nico de Documentos Fiscais</td>
-                            <td>Incluso na mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                         <tr>
                             <td>e-Social</td>
@@ -549,7 +549,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td class="txtcenter" colspan="2">
-                                Incluso na mensalidade
+                                Incluso no Pacote
                             </td>
                         </tr>
                     </table>
@@ -568,7 +568,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Celulares e Tablets</td>
-                            <td>Incluso na mensalidade</td>
+                            <td>Incluso no Pacote</td>
                         </tr>
                     </table>
                 </td>
