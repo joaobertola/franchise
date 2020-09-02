@@ -29,8 +29,6 @@ $strDataInicio = $_POST['data2I'];
 $strDataFim = $_POST['data2F'];
  $id_funcao = $_POST['iptFuncao'];
 
-
-
 $strDataInicio = substr($strDataInicio, 6, 4) . '-' . substr($strDataInicio, 3, 2) . '-' . substr($strDataInicio, 0, 2);
 $strDataFim = substr($strDataFim, 6, 4) . '-' . substr($strDataFim, 3, 2) . '-' . substr($strDataFim, 0, 2);
 
@@ -60,8 +58,11 @@ $res = mysql_query($sql, $con); ?>
             <?php
 
         $idFuncionario = $arrItens['id'];
+
         if ( $iptTipoRelatorio == 'S' ){
-            $sqlEquipamentos = "SELECT
+
+            $sqlEquipamentos = "
+                            SELECT
                                 ce.id,
                                 ce.data_compra,
                                 DATE_FORMAT(ce.data_venda, '%d/%m/%Y') AS data_venda_label,
@@ -71,15 +72,17 @@ $res = mysql_query($sql, $con); ?>
                                 ced.valor_unitario,
                                 f.comissao_equipamento,
                                 f.nome,
+
                                 (SELECT
                                     (SUM(valor) - (SELECT IFNULL(SUM(valor_unitario),0) FROM cs2.cadastro_equipamento_descricao WHERE id_cadastro_equipamento = cp.id_venda AND (codigo_barra = '1' OR codigo_barra = '7510103')))
                                 FROM cs2.cadastro_equipamento_pagamento cp
                                 WHERE id_venda = ce.id)  AS valor_total,
+
                                 (SELECT IF(COUNT(*)>0,0,1) FROM cs2.cadastro_equipamento_pagamento WHERE id_venda = ce.id AND dt_conf_recebimento IS NOT NULL) AS pendente
+
                             FROM cs2.cadastro_equipamento ce
                             INNER JOIN cs2.cadastro_equipamento_descricao ced ON ced.id_cadastro_equipamento = ce.id
                             LEFT JOIN base_web_control.produto p              ON p.id_cadastro = 62735 AND (ced.codigo_barra = p.codigo_barra OR ced.codigo_barra = p.identificacao_interna)
-                            -- retirado luciano 19/12/2017 --> LEFT JOIN cs2.funcionario f  ON f.id_consultor_assistente = ce.id_consultor OR f.id = ce.id_consultor
                             LEFT JOIN cs2.funcionario f                       ON f.id = ce.id_consultor
                             INNER JOIN cs2.cadastro c                         ON ce.codloja = c.codLoja
                             WHERE data_venda BETWEEN '$strDataInicio' AND '$strDataFim'
@@ -88,7 +91,7 @@ $res = mysql_query($sql, $con); ?>
                                 AND c.id_franquia = 1
                                 AND ce.codLoja != 23096
                                 GROUP BY ce.id
-                                ORDER BY ce.id ASC;";
+                                ORDER BY ce.id ASC";
             $qryEquipamentos = mysql_query($sqlEquipamentos, $con);
 
             ?>
@@ -107,10 +110,13 @@ $res = mysql_query($sql, $con); ?>
                 </tr>
 
                 <?php
-                $totalEquipamentos = mysql_num_rows($qryEquipamentos);
-                $valorTotal = 0;
+                $totalEquipamentos   = mysql_num_rows($qryEquipamentos);
+                $valorTotal          = 0;
                 $comissaoEquipamento = 0;
-                $valorTotalComissao = 0;
+                $valorTotalComissao  = 0;
+                $valorTotalComissaoX = 0;
+                $totCom              = 0;
+
                 while ($arrEquipamentos = mysql_fetch_array($qryEquipamentos)) {
 
                     $status = 'Pendente Pagamento';
@@ -122,11 +128,53 @@ $res = mysql_query($sql, $con); ?>
                         <td class="corpoTabela"><?php echo $arrEquipamentos['data_venda_label'] ?></td>
                         <td class="corpoTabela"><?php echo $arrEquipamentos['codigo'] ?></td>
                         <td class="corpoTabela"><?php echo $arrEquipamentos['nomefantasia'] ?></td>
-                        <td class="corpoTabela"><?php echo $arrEquipamentos['descricao'] ?></td>
+                        <td class="corpoTabela"><?php
+
+                        // Listando os equipamentos e valor da comissáo de cada 1
+
+                        // Total recebido
+                        $sql_Equip = "SELECT
+                                        sum(a.valor) as valor_recebido,
+                                        (select sum( qtd * valor_unitario ) from cs2.cadastro_equipamento_descricao where id_cadastro_equipamento = a.id_venda) as totalvenda
+                                      from cs2.cadastro_equipamento_pagamento a where a.id_venda = ".$arrEquipamentos['id'];
+                        $qryEquip = mysql_query($sql_Equip, $con);
+                        $tot_prod     = mysql_result($qryEquip,0,'totalvenda');
+                        $tot_recebido = mysql_result($qryEquip,0,'valor_recebido');
+
+
+                        $sql_Equip = "SELECT b.qtd, b.valor_unitario, b.codigo_barra, p.descricao FROM cs2.cadastro_equipamento a
+                                      INNER JOIN cs2.cadastro_equipamento_descricao b ON b.id_cadastro_equipamento = a.id
+                                      LEFT JOIN base_web_control.produto p            ON p.id_cadastro = 62735 AND (b.codigo_barra = p.codigo_barra OR b.codigo_barra = p.identificacao_interna)
+                                      WHERE a.id = ".$arrEquipamentos['id'];
+                        $produtoVendidos = '';
+                        $td = '';
+                        $tot_Prod  = 0;
+                        $qryEquip = mysql_query($sql_Equip, $con);
+                        while ($arrItens = mysql_fetch_array($qryEquip)) {
+                            if ( $arrItens['codigo_barra'] == '147258' )
+                                $Comissao =  ( $arrItens['qtd'] *  $arrItens['valor_unitario'] ) * 0.3;
+                            else
+                                $Comissao =  ( $arrItens['qtd'] *  $arrItens['valor_unitario'] ) * 0.07;
+
+                            $td .= '<tr><td class="corpoTabela" align="left">'. $arrItens['descricao'].'</td>'; 
+                            $td .= '<td class="corpoTabela" align="right">R$ '.number_format($Comissao,2,',','.').'</td></tr>'; 
+
+                            $tot_Prod += ($arrItens['qtd'] *  $arrItens['valor_unitario']);
+                            $totCom   += $Comissao;
+                        }
+                        $desconto_Comissao = ($tot_Prod-$tot_recebido) * 0.07;
+
+                        echo '<table width="100%">';
+                        echo $td;
+                        echo '</table>';
+
+                        ?></td>
                         <td class="corpoTabela"><?php echo 'R$ ' . number_format($arrEquipamentos['valor_total'], 2, ',', '.') ?></td>
                         <td class="corpoTabela"><?php echo $status ?></td>
                     </tr>
-                    <?php $valorTotal = $valorTotal + $arrEquipamentos['valor_total'];
+                    <?php 
+                    $valorTotal = $valorTotal + $arrEquipamentos['valor_total'];
+
                     $comissaoEquipamento = $arrEquipamentos['comissao_equipamento'];
                 }
                 ?>
@@ -136,18 +184,29 @@ $res = mysql_query($sql, $con); ?>
                         class="corpoTabela"><?php echo 'R$ ' . number_format($valorTotal, 2, ',', '.') ?></td>
                     <td></td>
                 </tr>
+
+                <tr>
+                    <td colspan="4" align="right" class="corpoTabela">Premiação de Equipamentos Produtos:</td>
+                    <td colspan="1"
+                        class="corpoTabela"><?php echo 'R$ ' . number_format($totCom, 2, ',', '.'); ?></td>
+                    <td></td>
+                </tr>
+
+                <!--
                 <tr>
                     <td colspan="4" align="right" class="corpoTabela">Premiação de Equipamentos Produtos:</td>
                     <td colspan="1"
                         class="corpoTabela"><?php echo 'R$ ' . number_format($valorTotalComissao, 2, ',', '.') . ' x ' . number_format($comissaoEquipamento, 2, '.', '') . '%' ?></td>
                     <td></td>
                 </tr>
+                
                 <tr>
                     <td colspan="4" align="right" class="corpoTabela">Total:</td>
                     <td colspan="1"
                         class="corpoTabela"><?php echo 'R$ ' . number_format(($valorTotalComissao * ($comissaoEquipamento / 100)), 2, ',', '.') ?></td>
                     <td></td>
                 </tr>
+                -->
             </table>
             
             <?php
