@@ -245,7 +245,6 @@
 		$vr_loja_virtual = str_replace(',','.',$vr_loja_virtual);
 		$xSql = "UPDATE cs2.cadastro SET modulo_loja_virtual = '$vr_loja_virtual' WHERE codloja = $codloja";
 	}
-	echo "$xSql<br>";
 	mysql_query($xSql, $con);
 	
 
@@ -255,7 +254,6 @@
 		$vr_pesq_cred = str_replace(',','.',$vr_pesq_cred);
 		$xSql = "UPDATE cs2.cadastro SET modulo_pesq_credito = '$vr_pesq_cred' WHERE codloja = $codloja";
 	}
-	echo "$xSql<br>";
 	mysql_query($xSql, $con);
 
 	if ( $vr_rec_deved == 'NULL' ){
@@ -264,7 +262,6 @@
 		$vr_rec_deved = str_replace(',','.',$vr_rec_deved);
 		$xSql = "UPDATE cs2.cadastro SET modulo_receber_deved = '$vr_rec_deved' WHERE codloja = $codloja";
 	}
-	echo "$xSql<br>";
     mysql_query($xSql, $con);
 
 	if ( $vr_aum_venda == 'NULL' ){
@@ -273,7 +270,6 @@
 		$vr_aum_venda = str_replace(',','.',$vr_aum_venda);
 		$xSql = "UPDATE cs2.cadastro SET modulo_aumentar_vendas = '$vr_aum_venda' WHERE codloja = $codloja";
 	}
-	echo "$xSql<br>";
 	mysql_query($xSql, $con);
 
 
@@ -410,8 +406,6 @@
 	// verifica_email($franqueado,$codloja,$nomefantasia);
 	
 	grava_dados($insc, $Tipo, $razaosoc, $logradouro, $numero, $complemento, $bairro, $localidade, $uf, $cep, $email, $fone, $celular, $cpfsocio1, $socio1, $cpfsocio2, $socio2);
-	
-	die;
 	
 	// Gravando cliente para utilizar o WEBCONTROL
 	// Criando Funcionario
