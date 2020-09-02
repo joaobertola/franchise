@@ -75,7 +75,8 @@ if (isset($id)) {
             a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2,
             a.multa_contratual, IF(a.id_consultor = 0 OR a.id_consultor IS NULL OR a.id_consultor = '', a.vendedor, g.nome) as nome_consultor, h.nome as nome_agendador, o.descricao AS operadora,
                         o.logomarca, (SELECT senha FROM base_web_control.webc_usuario WHERE id_cadastro = a.codLoja AND login_master = 'S' LIMIT 1) AS senha,
-                        date_format(a.data_suspenso,'%d/%m/%Y') AS data_suspenso
+                        date_format(a.data_suspenso,'%d/%m/%Y') AS data_suspenso,
+            a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
             FROM cadastro a
             LEFT OUTER JOIN logon b on a.codloja = b.codloja
             inner join franquia c on a.id_franquia=c.id
@@ -104,7 +105,8 @@ if (isset($id)) {
             a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2, a.agendador,
             a.multa_contratual, IF(a.id_consultor = 0 OR a.id_consultor IS NULL OR a.id_consultor = '', a.vendedor, g.nome) as nome_consultor, h.nome as nome_agendador,
             o.descricao AS operadora, o.logomarca, (SELECT senha FROM base_web_control.webc_usuario WHERE id_cadastro = a.codLoja AND login_master = 'S' LIMIT 1) AS senha,
-            date_format(a.data_suspenso,'%d/%m/%Y') AS data_suspenso
+            date_format(a.data_suspenso,'%d/%m/%Y') AS data_suspenso,
+            a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
             FROM cadastro a
             LEFT OUTER JOIN logon b on a.codloja = $codloja
             inner join franquia c on a.id_franquia=c.id
@@ -729,7 +731,7 @@ if ($codloja > 0) {
             <td class="subtitulodireita">Pacote Anterior ao reajuste</td>
             <td colspan="3" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['tx_mens_anterior']; ?></td>
         <tr>
-            <td class="subtitulodireita">Pacote Pesquisas</td>
+            <td class="subtitulodireita">Pacote Sistema Gestão</td>
             <td colspan="3" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['tx_mens']; ?></td>
         </tr>
 
@@ -737,6 +739,31 @@ if ($codloja > 0) {
             <td class="subtitulodireita">Licen&ccedil;as - Softwares de Solu&ccedil;&otilde;es</td>
             <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['mensalidade_solucoes']; ?></td>
         </tr>
+
+        <tr>
+            <td class="subtitulodireita">Módulo Loja Virtual E-commerce</td>
+            <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['modulo_loja_vitual']; ?></td>
+        </tr>
+
+        <tr>
+            <td class="subtitulodireita">Módulo Receber de Devedores</td>
+            <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['modulo_receber_deved']; ?></td>
+        </tr>
+
+        <tr>
+            <td class="subtitulodireita">Módulo Consulta de Crédito</td>
+            <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['modulo_pesq_credito']; ?></td>
+        </tr>
+
+        <tr>
+            <td class="subtitulodireita">Módulo Aumentar Clientes e Faturamento</td>
+            <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['modulo_aumentar_vendas']; ?></td>
+        </tr>
+
+
+a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
+
+
         <tr>
             <td class="subtitulodireita">Tabela de Pre&ccedil;os</td>
             <td colspan="3">
