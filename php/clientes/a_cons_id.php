@@ -1250,7 +1250,7 @@ if ($codloja > 0) {
                                 </div>
                                 <?php
                                     echo "<br><br>";
-                                    $cmd = "SELECT date_format(data,'%d/%m/%Y - %h:%i:%s') as data, acao FROM cs2.cadastro_log
+                                    $cmd = "SELECT date_format(data,'%d/%m/%Y - %H:%i:%s') as data, acao FROM cs2.cadastro_log
                                             WHERE codloja = $codloja
                                             ORDER BY id asc";
                                     $rst = mysql_query($cmd, $con);
