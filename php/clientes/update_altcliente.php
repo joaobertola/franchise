@@ -209,8 +209,8 @@ else $modulo_loja_vitual = mysql_result($res_modulo,0,'valor');
 $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 3";
 $res_modulo = mysql_query($sql_modulo, $con);
 if ( $modulo_receber_deved == 9 ) $modulo_receber_deved = 'NULL';
-elseif ( $modulo_receber_deved == 0 ) $modulo_receber_deved = '0.00';
-else $modulo_receber_deved = mysql_result($res_modulo,0,'valor');
+elseif ( $modulo_receber_deved == 0 ) $modulo_receber_deved = "'0.00'";
+else $modulo_receber_deved = "'".mysql_result($res_modulo,0,'valor')."'";
 
 
 $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 2";
@@ -281,10 +281,10 @@ if($_SESSION['ss_tipo'] == "a"){
             contadorSN                    = '$contadorSN',
             id_agendador                  = '$id_agendador',
             id_consultor                  = '$id_consultor',
-            modulo_loja_vitual            = '$modulo_loja_vitual',
-            modulo_receber_deved          = '$modulo_receber_deved',
-            modulo_pesq_credito           = '$modulo_pesq_credito',
-            modulo_aumentar_vendas        = '$modulo_aumentar_vendas'
+            modulo_loja_vitual            = $modulo_loja_vitual,
+            modulo_receber_deved          = $modulo_receber_deved,
+            modulo_pesq_credito           = $modulo_pesq_credito,
+            modulo_aumentar_vendas        = $modulo_aumentar_vendas
     ";
 }
 
@@ -302,7 +302,6 @@ if($_SESSION['id'] == '163'){
 	}
 	$query .= " , vr_max_limite_crediario = '$vr_max_limite_crediario'";
 }
-
 $query .= " WHERE codloja ='$codloja'";
 
 try{
