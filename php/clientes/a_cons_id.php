@@ -747,22 +747,24 @@ if ($codloja > 0) {
 
         <tr>
             <td class="subtitulodireita">Módulo Receber de Devedores</td>
-            <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['modulo_receber_deved']; ?></td>
+            <td colspan="3" class="subtitulopequeno"><?php 
+                echo $matriz['modulo_receber_deved'] == '' ? 'nenhum' : 'R$ '.$matriz['modulo_receber_deved'] ;?>
+            </td>
         </tr>
 
         <tr>
             <td class="subtitulodireita">Módulo Consulta de Crédito</td>
-            <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['modulo_pesq_credito']; ?></td>
+            <td colspan="3" class="subtitulopequeno"><?php
+                echo $matriz['modulo_pesq_credito'] == '' ? 'nenhum' : 'R$ '.$matriz['modulo_pesq_credito'] ;?>
+            </td>
         </tr>
 
         <tr>
             <td class="subtitulodireita">Módulo Aumentar Clientes e Faturamento</td>
-            <td colspan="3" class="subtitulopequeno">R$ <?php echo $matriz['modulo_aumentar_vendas']; ?></td>
+            <td colspan="3" class="subtitulopequeno"><?php
+                echo $matriz['modulo_aumentar_vendas'] == '' ? 'nenhum' : 'R$ '.$matriz['modulo_aumentar_vendas'] ;?>
+            </td>
         </tr>
-
-
-a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
-
 
         <tr>
             <td class="subtitulodireita">Tabela de Pre&ccedil;os</td>
