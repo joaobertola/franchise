@@ -136,13 +136,14 @@ $qry_cel_cliente  = mysql_query($sql_cel_cliente,$con);
 $registro_cel       = mysql_fetch_array($qry_cel_cliente);
 $cel_antigo = $registro_cel['celular'];
 $idOperadora = $registro_cel['id_operadora'];
-//echo '<pre>';
-//echo "Cel Antigo:" .$cel_antigo;
-//echo '<pre>';
-//echo "Cel Novo:" .$celular;
-//echo '<pre>';
-//echo "Operadora:" .$idOperadora;
-//die;
+
+// Cobrança dos Módulos
+
+$modulo_loja_vitual     = $_POST['modulo_loja_vitual'];
+$modulo_receber_deved   = $_POST['modulo_receber_deved'];
+$modulo_pesq_credito    = $_POST['modulo_pesq_credito'];
+$modulo_aumentar_vendas = $_POST['modulo_aumentar_vendas'];
+
 if($cel_antigo != $celular){
 
 	$servidor = 'http://consultaoperadora.telein.com.br/sistema/consultas_resumidas.php';
@@ -196,15 +197,40 @@ $qry_tpcliente  = mysql_query($sql_tp_cliente,$con);
 $registro       = mysql_fetch_array($qry_tpcliente);
 $tipo_cliente_antigo = $registro['tipo_cliente'];
 
+# Procedendo a ATUALIZACAO DO CADASTRO
 
 
-# Procedendo a ATUALIZA��O DO CADASTRO
+$sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 1";
+$res_modulo = mysql_query($sql_modulo, $con);
+if ( $modulo_loja_vitual == 9 ) $modulo_loja_vitual = 'NULL';
+elseif ( $modulo_loja_vitual == 0 ) $modulo_loja_vitual = '0.00';
+else $modulo_loja_vitual = mysql_result($res_modulo,0,'valor');
+
+$sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 3";
+$res_modulo = mysql_query($sql_modulo, $con);
+if ( $modulo_receber_deved == 9 ) $modulo_receber_deved = 'NULL';
+elseif ( $modulo_receber_deved == 0 ) $modulo_receber_deved = '0.00';
+else $modulo_receber_deved = mysql_result($res_modulo,0,'valor');
+
+
+$sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 2";
+$res_modulo = mysql_query($sql_modulo, $con);
+if ( $modulo_pesq_credito == 9 ) $modulo_pesq_credito = 'NULL';
+elseif ( $modulo_pesq_credito == 0 ) $modulo_pesq_credito = '0.00';
+else $modulo_pesq_credito = mysql_result($res_modulo,0,'valor');
+
+
+$sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 4";
+$res_modulo = mysql_query($sql_modulo, $con);
+if ( $modulo_aumentar_vendas == 9 ) $modulo_aumentar_vendas = 'NULL';
+elseif ( $modulo_aumentar_vendas == 0 ) $modulo_aumentar_vendas = '0.00';
+else $modulo_aumentar_vendas = mysql_result($res_modulo,0,'valor');
 
 $query = "UPDATE cadastro SET 
             razaosoc                      = '$razao',
             nomefantasia                  = '$nomef',
-            end 		  	              = '$endereco', 
-            numero 		                  = '$numero',
+            end                           = '$endereco', 
+            numero                        = '$numero',
             complemento                   = '$complemento',
             bairro                        = '$bairro',
             cidade                        = '$cidade',
@@ -236,8 +262,8 @@ $query = "UPDATE cadastro SET
             contador_celular              = '$contador_celular',
             contador_email1               = '$contador_email1',
             contador_email2               = '$contador_email2',
-			inscricao_estadual_tributario = '$inscricao_estadual_tributario',
-			whatsapp                      = '$whatsapp'";
+            inscricao_estadual_tributario = '$inscricao_estadual_tributario',
+            whatsapp                      = '$whatsapp'";
 
 if($_SESSION['usuario'] == "franquiasnacional")
     $query .= " ,emitir_nfs           = '$emitir_nfs'";
@@ -245,16 +271,20 @@ if($_SESSION['usuario'] == "franquiasnacional")
         
 if($_SESSION['ss_tipo'] == "a"){
     $query .= " , 
-    id_franquia          = '$franqueado',
-    id_franquia_jr       = '$id_franquia_jr',
-    tx_mens              = '$pct_pesquisa',
-    mensalidade_solucoes = '$pct_solucoes',
-    tipo_cliente         = '$tipo_cliente',
-    emitir_nfs           = '$emitir_nfs',
-    dt_cad		 = '$dt_cad',
-    contadorSN           = '$contadorSN',
-    id_agendador         = '$id_agendador',
-    id_consultor         = '$id_consultor'
+            id_franquia                   = '$franqueado',
+            id_franquia_jr                = '$id_franquia_jr',
+            tx_mens                       = '$pct_pesquisa',
+            mensalidade_solucoes          = '$pct_solucoes',
+            tipo_cliente                  = '$tipo_cliente',
+            emitir_nfs                    = '$emitir_nfs',
+            dt_cad                        = '$dt_cad',
+            contadorSN                    = '$contadorSN',
+            id_agendador                  = '$id_agendador',
+            id_consultor                  = '$id_consultor',
+            modulo_loja_vitual            = '$modulo_loja_vitual',
+            modulo_receber_deved          = '$modulo_receber_deved',
+            modulo_pesq_credito           = '$modulo_pesq_credito',
+            modulo_aumentar_vendas        = '$modulo_aumentar_vendas'
     ";
 }
 
@@ -278,7 +308,7 @@ $query .= " WHERE codloja ='$codloja'";
 try{
     mysql_query($query,$con);
 }catch (Exception $e) {
-    echo 'Erro da Atualiza��o dos DADOS DO CLIENTE, Contate a WEB CONTROL EMPRESAS: ',  $e->getMessage(), "\n";
+    echo 'Erro da Atualizacao dos DADOS DO CLIENTE, Contate a WEB CONTROL EMPRESAS: ',  $e->getMessage(), "\n";
 }
 	
 if($_SESSION['ss_tipo'] == "a")

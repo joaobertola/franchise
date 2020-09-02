@@ -880,10 +880,10 @@ if($_POST['id_franquia']){
         </tr>
         <tr>
             <td class="subtitulodireita">Tabela de Pre&ccedil;os</td>
-            <td width="282" class="subtitulopequeno">
+            <td width="600" class="subtitulopequeno">
                 <table class="subtitulopequeno" border="0">
                     <tr>
-                        <td>Tabela</td>
+                        <td width="400">Tabela</td>
                         <td>
                             <select name="assinatura" onChange="pesquisar_dados( this.value )">
                                 <option></option>
@@ -898,9 +898,72 @@ if($_POST['id_franquia']){
                         </td>
                     </tr>
                     <tr>
-                        <td>Pacote</td>
+                        <td>Pacote Sistema Gestão</td>
                         <td>
                             <select name="pacote"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Módulo Loja Virtual E-commerce</td>
+                        <td>
+                            <select name="loja_virtual">
+                                <?php
+                                $consulta = mysql_query("SELECT format(valor,2,'de_DE') as valor FROM cs2.cadastro_modulos WHERE Id = '1'", $con);
+                                echo "<option value=\"NULL\">nenhum</option>\n";
+                                while( $row = mysql_fetch_assoc($consulta) )
+                                {
+                                    echo "<option value=\"{$row['valor']}\">R$ {$row['valor']}</option>\n";
+                                }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Módulo Receber de Devedores</td>
+                        <td>
+                            <select name="rec_deved">
+                                <?php
+                                $consulta = mysql_query("SELECT format(valor,2,'de_DE') as valor FROM cs2.cadastro_modulos WHERE Id = '3'", $con);
+                                echo "<option value=\"NULL\">nenhum</option>\n";
+                                while( $row = mysql_fetch_assoc($consulta) )
+                                {
+                                    echo "<option value=\"{$row['valor']}\">R$ {$row['valor']}</option>\n";
+                                }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Módulo Consulta de Crédito</td>
+                        <td>
+                            <select name="pesq_cred">
+                                <?php
+                                $consulta = mysql_query("SELECT format(valor,2,'de_DE') as valor FROM cs2.cadastro_modulos WHERE Id = '2'", $con);
+                                echo "<option value=\"NULL\">nenhum</option>\n";
+                                while( $row = mysql_fetch_assoc($consulta) )
+                                {
+                                    echo "<option value=\"{$row['valor']}\">R$ {$row['valor']}</option>\n";
+                                }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Módulo Aumentar Clientes e Faturamento</td>
+                        <td>
+                            <select name="aum_venda">
+                                <?php
+                                $consulta = mysql_query("SELECT format(valor,2,'de_DE') as valor FROM cs2.cadastro_modulos WHERE Id = '4'", $con);
+                                echo "<option value=\"NULL\">nenhum</option>\n";
+                                while( $row = mysql_fetch_assoc($consulta) )
+                                {
+                                    echo "<option value=\"{$row['valor']}\">R$ {$row['valor']}</option>\n";
+                                }
+                                ?>
+                            </select>
                         </td>
                     </tr>
                 </table>

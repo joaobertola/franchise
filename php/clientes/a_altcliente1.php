@@ -324,7 +324,11 @@ $comando = "SELECT
                 a.agendador,
                 a.id_agendador,
                 a.id_consultor,
-                a.whatsapp
+                a.whatsapp,
+                a.modulo_loja_vitual,
+                a.modulo_pesq_credito,
+                a.modulo_receber_deved,
+                a.modulo_aumentar_vendas
             FROM cs2.cadastro a
             INNER JOIN cs2.logon b    ON a.codloja = b.codloja
             INNER JOIN cs2.situacao d ON a.sitcli = d.codsit
@@ -687,6 +691,123 @@ if ($renegociacao_tabela != "") {
             <tr>
                 <td class="subtitulodireita">Licen&ccedil;as - Softwares de Solu&ccedil;&otilde;es</td>
                 <td colspan="3" class="subtitulopequeno"><input name="pct_solucoes" type="text" id="pct_solucoes" value="<?php echo $matriz['mensalidade_solucoes']; ?>" size="25" maxlength="12" onFocus="this.className='boxover'" onBlur="this.className='boxnormal'" /></td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita"></td>
+                <td colspan="3" class="subtitulopequeno">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita">Módulo Loja Virtual E-commerce</td>
+                <td colspan="3" class="subtitulopequeno">
+                    <select name="modulo_loja_vitual" style="width:40%">
+                        <?php
+                        $sel_mod_1 = '';
+                        $sel_mod_2 = '';
+                        $sel_mod_3 = '';
+                        if ( $matriz['modulo_loja_vitual'] == NULL ) $sel_mod_1 = 'selected="selected"';
+                        elseif ( $matriz['modulo_loja_vitual'] == '0.00') $sel_mod_2 = 'selected="selected"';
+                        else $sel_mod_3 = 'selected="selected"';
+                        ?>
+                        <option value = '9' <?php echo $sel_mod_1; ?>>nenhum</option>
+                        <option value = '0' <?php echo $sel_mod_2; ?> >0,00</option>
+                        <option value = '1' <?php echo $sel_mod_3; ?>>
+                            <?php
+                            $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 1";
+                            $res_modulo = mysql_query($sql_modulo, $con);
+                            if ( $matriz['modulo_loja_vitual']  == NULL or $matriz['modulo_loja_vitual']  == 0 )
+                                echo mysql_result($res_modulo,0,'valor');
+                            else
+                                echo $matriz['modulo_loja_vitual'];
+                            ?>                                
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita">Módulo Receber de Devedores</td>
+                <td colspan="3" class="subtitulopequeno">
+                    <select name="modulo_receber_deved" style="width:40%">
+                        <?php
+                        $sel_mod_1 = '';
+                        $sel_mod_2 = '';
+                        $sel_mod_3 = '';
+                        if ( $matriz['modulo_receber_deved'] == NULL ) $sel_mod_1 = 'selected="selected"';
+                        elseif ( $matriz['modulo_receber_deved'] == '0.00') $sel_mod_2 = 'selected="selected"';
+                        else $sel_mod_3 = 'selected="selected"';
+                        ?>
+                        <option value = '9' <?php echo $sel_mod_1; ?>>nenhum</option>
+                        <option value = '0' <?php echo $sel_mod_2; ?> >0,00</option>
+                        <option value = '1' <?php echo $sel_mod_3; ?>>
+                            <?php
+                            $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 3";
+                            $res_modulo = mysql_query($sql_modulo, $con);
+                            if ( $matriz['modulo_receber_deved']  == NULL or $matriz['modulo_receber_deved']  == 0 )
+                                echo mysql_result($res_modulo,0,'valor');
+                            else
+                                echo $matriz['modulo_receber_deved'];
+                            ?>                                
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita">Módulo Consulta de Crédito</td>
+                <td colspan="3" class="subtitulopequeno">
+                    <select name="modulo_pesq_credito" style="width:40%">
+                        <?php
+                        $sel_mod_1 = '';
+                        $sel_mod_2 = '';
+                        $sel_mod_3 = '';
+                        if ( $matriz['modulo_pesq_credito'] == NULL ) $sel_mod_1 = 'selected="selected"';
+                        elseif ( $matriz['modulo_pesq_credito'] == '0.00') $sel_mod_2 = 'selected="selected"';
+                        else $sel_mod_3 = 'selected="selected"';
+                        ?>
+                        <option value = '9' <?php echo $sel_mod_1; ?>>nenhum</option>
+                        <option value = '0' <?php echo $sel_mod_2; ?> >0,00</option>
+                        <option value = '1' <?php echo $sel_mod_3; ?>>
+                            <?php
+                            $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 2";
+                            $res_modulo = mysql_query($sql_modulo, $con);
+                            if ( $matriz['modulo_pesq_credito']  == NULL or $matriz['modulo_pesq_credito']  == 0 )
+                                echo mysql_result($res_modulo,0,'valor');
+                            else
+                                echo $matriz['modulo_pesq_credito'];
+                            ?>                                
+                        </option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="subtitulodireita">Módulo Aumentar Clientes e Faturamento</td>
+                <td colspan="3" class="subtitulopequeno">
+                    <select name="modulo_aumentar_vendas" style="width:40%">
+                        <?php
+                        $sel_mod_1 = '';
+                        $sel_mod_2 = '';
+                        $sel_mod_3 = '';
+                        if ( $matriz['modulo_aumentar_vendas'] == NULL ) $sel_mod_1 = 'selected="selected"';
+                        elseif ( $matriz['modulo_aumentar_vendas'] == '0.00') $sel_mod_2 = 'selected="selected"';
+                        else $sel_mod_3 = 'selected="selected"';
+                        ?>
+                        <option value = '9' <?php echo $sel_mod_1; ?>>nenhum</option>
+                        <option value = '0' <?php echo $sel_mod_2; ?> >0,00</option>
+                        <option value = '1' <?php echo $sel_mod_3; ?>>
+                            <?php
+                            $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 4";
+                            $res_modulo = mysql_query($sql_modulo, $con);
+                            if ( $matriz['modulo_aumentar_vendas']  == NULL or $matriz['modulo_aumentar_vendas']  == 0 )
+                                echo mysql_result($res_modulo,0,'valor');
+                            else
+                                echo $matriz['modulo_aumentar_vendas'];
+                            ?>                                
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita"></td>
+                <td colspan="3" class="subtitulopequeno">&nbsp;</td>
             </tr>
             <?php
         }

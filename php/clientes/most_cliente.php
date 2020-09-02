@@ -2,7 +2,6 @@
 require "connect/sessao.php";
 require "connect/funcoes.php";
 
-
 $codloja = $_REQUEST['codloja'];
 
 $comando = "SELECT 
@@ -16,7 +15,8 @@ $comando = "SELECT
 			a.inscricao_estadual, a.cnae_fiscal, a.inscricao_municipal, a.vr_max_limite_crediario,
 			a.inscricao_estadual_tributario, a.numero, a.complemento, a.emitir_nfs,
 			a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2,
-                        g.nome as nome_consultor, h.nome as nome_agendador
+            g.nome as nome_consultor, h.nome as nome_agendador,
+            a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
 		 FROM cs2.cadastro a
 			inner join cs2.franquia b on a.id_franquia=b.id
 			inner join cs2.classif_cadastro c on a.classe=c.id
@@ -51,7 +51,8 @@ $_comando = "SELECT
 			mid(b.logon,1,5) as logon, mid(b.logon,7,10) as senha, a.classe, a.banco_cliente, a.agencia_cliente,
 			a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta, 
 			a.inscricao_estadual, a.cnae_fiscal, a.inscricao_municipal, 
-			a.inscricao_estadual_tributario, a.numero, a.complemento, a.vr_max_limite_crediario
+			a.inscricao_estadual_tributario, a.numero, a.complemento, a.vr_max_limite_crediario,
+            a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
 			FROM cs2.cadastro a
 			inner join cs2.logon b on a.codloja=b.codloja
 			inner join cs2.situacao d on a.sitcli=d.codsit
@@ -112,7 +113,7 @@ function novoCliente(){
 } 
 function alterarCliente(){
  	frm = document.form;
-    frm.action = 'painel.php?pagina1=clientes/a_altcliente1.php&codloja==<?php echo $codloja?>';
+    frm.action = 'painel.php?pagina1=clientes/a_altcliente1.php&codloja=<?php echo $codloja?>';
 	frm.submit();
 }
 </script>
@@ -341,25 +342,7 @@ function alterarCliente(){
                 <td class="subtitulodireita">Data de afilia&ccedil;&atilde;o</td>
                 <td class="subtitulopequeno"><?php echo $matriz['data']; ?></td>
             </tr>
-            <!--
-  <tr>
-    <td class="subtitulodireita">Emiss&atilde;o de Nota Fiscal e Fatura</td>
-    <td valign="top" class="subtitulopequeno"><table class="campoesquerda" border="0">
-      <tr>
-        <td><input type="radio" name="fatura" value="1" <?// if ($matriz['emissao_financeiro'] == "1"){ echo "checked"; }?> />
-          Emite fatura e relaciona a NF &uacute;nica</td>
-      </tr>
-      <tr>
-        <td><input type="radio" name="fatura" value="2" <? //if ($matriz['emissao_financeiro'] == "2"){ echo "checked"; }?> />
-          Emite s&oacute; NF individual</td>
-      </tr>
-      <tr>
-        <td><input type="radio" name="fatura" value="3" <? //if ($matriz['emissao_financeiro'] == "3"){ echo "checked"; }?> />
-          Emite fatura e NF individual</td>
-      </tr>
-    </table></td>
-  </tr>
-  -->
+
             <?php if( ($_SESSION['ss_tipo'] == "a") or ($_SESSION["id"] == '1204') ){?>
                 <tr>
                     <td class="subtitulodireita">Emiss&atilde;o de Nota Fiscal de Servi&ccedil;o</td>
@@ -378,20 +361,35 @@ function alterarCliente(){
                 <td class="subtitulopequeno"><?php echo $vr_max_limite_crediario?></td>
             </tr>
 
-
-
             <tr>
                 <td class="subtitulodireita">Renegociação de Tabela</td>
                 <td class="subtitulopequeno"><?php echo $data_view?></td>
             </tr>
             <tr>
-                <td class="subtitulodireita">Pacote Pesquisas</td>
+                <td class="subtitulodireita">Pacote Sistema Gestão</td>
                 <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['tx_mens']; ?></td>
             </tr>
             <tr>
                 <td class="subtitulodireita">Licen&ccedil;as - Softwares de Solu&ccedil;&otilde;es</td>
                 <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['mensalidade_solucoes']; ?></td>
             </tr>
+            <tr>
+                <td class="subtitulodireita">Módulo Loja Virtual E-commerce</td>
+                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_loja_vitual']; ?></td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita">Módulo Receber de Devedores</td>
+                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_receber_deved']; ?></td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita">Módulo Consulta de Crédito</td>
+                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_pesq_credito']; ?></td>
+            </tr>
+            <tr>
+                <td class="subtitulodireita">Módulo Aumentar Clientes e Faturamento</td>
+                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_aumentar_vendas']; ?></td>
+            </tr>
+
             <tr>
                 <td class="subtitulodireita">Tabela de Pre&ccedil;os</td>
                 <td>

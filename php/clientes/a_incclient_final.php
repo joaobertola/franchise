@@ -34,7 +34,7 @@
 	
 	//coloca a data de hoje
 	$data = date('Y-m-d H:i:s');
-	
+
 	$razaosoc     = str_replace("'","",$_POST['razaosoc']);
 	$nomefantasia = str_replace("'","",$_POST['nomefantasia']);
 	
@@ -58,6 +58,11 @@
 	$email 		= $_POST['email'];
 	$assinatura = $_POST['assinatura'];
 	$pacote		= $_POST['pacote'];
+
+	$vr_loja_virtual = $_POST['loja_virtual'];
+	$vr_pesq_cred	 = $_POST['pesq_cred'];
+	$vr_rec_deved	 = $_POST['rec_deved'];
+	$vr_aum_venda    = $_POST['aum_venda'];
 	
 	$obs 		= substitui_acentos($_POST['obs']);
 	$contrato 	= $_POST['contrato'];
@@ -232,6 +237,30 @@
 	if(!$res){
 		echo "<script>alert(\"Erro na inserção do cliente, entre em contato com o Departamento de Informatica !\");history.back();</script>";
 		exit;
+	}
+
+	if ( $vr_loja_virtual != 'NULL' ){
+		$vr_loja_virtual = str_replace(',','.',$vr_loja_virtual);
+		$xSql = "UPDATE cs2.cadastro SET modulo_loja_virtual = '$vr_loja_virtual' WHERE codloja = $codloja";
+		mysql_query($xSql, $con);
+	}
+
+	if ( $vr_pesq_cred != 'NULL' ){
+		$vr_pesq_cred = str_replace(',','.',$vr_pesq_cred);
+		$xSql = "UPDATE cs2.cadastro SET modulo_pesq_credito = '$vr_pesq_cred' WHERE codloja = $codloja";
+		mysql_query($xSql, $con);
+	}
+
+	if ( $vr_rec_deved != 'NULL' ){
+		$vr_rec_deved = str_replace(',','.',$vr_rec_deved);
+		$xSql = "UPDATE cs2.cadastro SET modulo_receber_deved = '$vr_rec_deved' WHERE codloja = $codloja";
+		mysql_query($xSql, $con);
+	}
+
+	if ( $vr_aum_venda != 'NULL' ){
+		$vr_aum_venda = str_replace(',','.',$vr_aum_venda);
+		$xSql = "UPDATE cs2.cadastro SET modulo_aumentar_vendas = '$vr_aum_venda' WHERE codloja = $codloja";
+		mysql_query($xSql, $con);
 	}
 
 	// registrando log
