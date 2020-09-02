@@ -375,19 +375,25 @@ function alterarCliente(){
             </tr>
             <tr>
                 <td class="subtitulodireita">Módulo Loja Virtual E-commerce</td>
-                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_loja_vitual']; ?></td>
+                <td valign="top" class="subtitulopequeno"><?php echo $matriz['modulo_loja_vitual']; ?></td>
             </tr>
             <tr>
                 <td class="subtitulodireita">Módulo Receber de Devedores</td>
-                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_receber_deved']; ?></td>
+                <td valign="top" class="subtitulopequeno"><?php
+                    echo $matriz['modulo_receber_deved'] == '' ? 'nenhum' : 'R$ '.$matriz['modulo_receber_deved'] ;?>
+                 </td>
             </tr>
             <tr>
                 <td class="subtitulodireita">Módulo Consulta de Crédito</td>
-                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_pesq_credito']; ?></td>
+                <td valign="top" class="subtitulopequeno"><?php
+                    echo $matriz['modulo_pesq_credito'] == '' ? 'nenhum' : 'R$ '.$matriz['modulo_pesq_credito'] ;?>
+                </td>
             </tr>
             <tr>
                 <td class="subtitulodireita">Módulo Aumentar Clientes e Faturamento</td>
-                <td valign="top" class="subtitulopequeno">R$&nbsp;<?php echo $matriz['modulo_aumentar_vendas']; ?></td>
+                <td valign="top" class="subtitulopequeno"><?php
+                    echo $matriz['modulo_aumentar_vendas'] == '' ? 'nenhum' : 'R$ '.$matriz['modulo_aumentar_vendas'] ;?>
+                </td>
             </tr>
 
             <tr>
