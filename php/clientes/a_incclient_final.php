@@ -63,7 +63,7 @@
 	$vr_pesq_cred	 = $_POST['pesq_cred'];
 	$vr_rec_deved	 = $_POST['rec_deved'];
 	$vr_aum_venda    = $_POST['aum_venda'];
-	
+
 	$obs 		= substitui_acentos($_POST['obs']);
 	$contrato 	= $_POST['contrato'];
 	$franqueado = substitui_acentos($_POST['franqueado']);
@@ -239,29 +239,43 @@
 		exit;
 	}
 
-	if ( $vr_loja_virtual != 'NULL' ){
+	if ( $vr_loja_virtual == 'NULL' ){
+		$xSql = "UPDATE cs2.cadastro SET modulo_loja_virtual = NULL WHERE codloja = $codloja";
+	}else{
 		$vr_loja_virtual = str_replace(',','.',$vr_loja_virtual);
 		$xSql = "UPDATE cs2.cadastro SET modulo_loja_virtual = '$vr_loja_virtual' WHERE codloja = $codloja";
-		mysql_query($xSql, $con);
 	}
+	echo "$xSql<br>";
+	mysql_query($xSql, $con);
+	
 
-	if ( $vr_pesq_cred != 'NULL' ){
+	if ( $vr_pesq_cred == 'NULL' ){
+		$xSql = "UPDATE cs2.cadastro SET modulo_pesq_credito = NULL WHERE codloja = $codloja";
+	}else{
 		$vr_pesq_cred = str_replace(',','.',$vr_pesq_cred);
 		$xSql = "UPDATE cs2.cadastro SET modulo_pesq_credito = '$vr_pesq_cred' WHERE codloja = $codloja";
-		mysql_query($xSql, $con);
 	}
+	echo "$xSql<br>";
+	mysql_query($xSql, $con);
 
-	if ( $vr_rec_deved != 'NULL' ){
+	if ( $vr_rec_deved == 'NULL' ){
+		$xSql = "UPDATE cs2.cadastro SET modulo_receber_deved = NULL WHERE codloja = $codloja";
+	}else{
 		$vr_rec_deved = str_replace(',','.',$vr_rec_deved);
 		$xSql = "UPDATE cs2.cadastro SET modulo_receber_deved = '$vr_rec_deved' WHERE codloja = $codloja";
-		mysql_query($xSql, $con);
 	}
+	echo "$xSql<br>";
+    mysql_query($xSql, $con);
 
-	if ( $vr_aum_venda != 'NULL' ){
+	if ( $vr_aum_venda == 'NULL' ){
+		$xSql = "UPDATE cs2.cadastro SET modulo_aumentar_vendas = NULL WHERE codloja = $codloja";
+	}else{
 		$vr_aum_venda = str_replace(',','.',$vr_aum_venda);
 		$xSql = "UPDATE cs2.cadastro SET modulo_aumentar_vendas = '$vr_aum_venda' WHERE codloja = $codloja";
-		mysql_query($xSql, $con);
 	}
+	echo "$xSql<br>";
+	mysql_query($xSql, $con);
+
 
 	// registrando log
 	$teste = str_replace(chr(39),'',$comando);
@@ -397,6 +411,7 @@
 	
 	grava_dados($insc, $Tipo, $razaosoc, $logradouro, $numero, $complemento, $bairro, $localidade, $uf, $cep, $email, $fone, $celular, $cpfsocio1, $socio1, $cpfsocio2, $socio2);
 	
+	die;
 	
 	// Gravando cliente para utilizar o WEBCONTROL
 	// Criando Funcionario

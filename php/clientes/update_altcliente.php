@@ -139,7 +139,7 @@ $idOperadora = $registro_cel['id_operadora'];
 
 // Cobrança dos Módulos
 
-$modulo_loja_vitual     = $_POST['modulo_loja_vitual'];
+$modulo_loja_virtual    = $_POST['modulo_loja_virtual'];
 $modulo_receber_deved   = $_POST['modulo_receber_deved'];
 $modulo_pesq_credito    = $_POST['modulo_pesq_credito'];
 $modulo_aumentar_vendas = $_POST['modulo_aumentar_vendas'];
@@ -202,9 +202,9 @@ $tipo_cliente_antigo = $registro['tipo_cliente'];
 
 $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 1";
 $res_modulo = mysql_query($sql_modulo, $con);
-if ( $modulo_loja_vitual == 9 ) $modulo_loja_vitual = 'NULL';
-elseif ( $modulo_loja_vitual == 0 ) $modulo_loja_vitual = '0.00';
-else $modulo_loja_vitual = mysql_result($res_modulo,0,'valor');
+if ( $modulo_loja_virtual == 9 ) $modulo_loja_virtual = 'NULL';
+elseif ( $modulo_loja_virtual == 0 ) $modulo_loja_virtual = '0.00';
+else $modulo_loja_virtual = mysql_result($res_modulo,0,'valor');
 
 $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 3";
 $res_modulo = mysql_query($sql_modulo, $con);
@@ -281,7 +281,7 @@ if($_SESSION['ss_tipo'] == "a"){
             contadorSN                    = '$contadorSN',
             id_agendador                  = '$id_agendador',
             id_consultor                  = '$id_consultor',
-            modulo_loja_vitual            = $modulo_loja_vitual,
+            modulo_loja_virtual           = $modulo_loja_virtual,
             modulo_receber_deved          = $modulo_receber_deved,
             modulo_pesq_credito           = $modulo_pesq_credito,
             modulo_aumentar_vendas        = $modulo_aumentar_vendas

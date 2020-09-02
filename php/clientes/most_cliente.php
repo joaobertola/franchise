@@ -16,7 +16,7 @@ $comando = "SELECT
 			a.inscricao_estadual_tributario, a.numero, a.complemento, a.emitir_nfs,
 			a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2,
             g.nome as nome_consultor, h.nome as nome_agendador,
-            a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
+            a.modulo_loja_virtual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
 		 FROM cs2.cadastro a
 			inner join cs2.franquia b on a.id_franquia=b.id
 			inner join cs2.classif_cadastro c on a.classe=c.id
@@ -52,7 +52,7 @@ $_comando = "SELECT
 			a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta, 
 			a.inscricao_estadual, a.cnae_fiscal, a.inscricao_municipal, 
 			a.inscricao_estadual_tributario, a.numero, a.complemento, a.vr_max_limite_crediario,
-            a.modulo_loja_vitual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
+            a.modulo_loja_virtual, a.modulo_receber_deved, a.modulo_pesq_credito, a.modulo_aumentar_vendas 
 			FROM cs2.cadastro a
 			inner join cs2.logon b on a.codloja=b.codloja
 			inner join cs2.situacao d on a.sitcli=d.codsit
@@ -375,7 +375,7 @@ function alterarCliente(){
             </tr>
             <tr>
                 <td class="subtitulodireita">Módulo Loja Virtual E-commerce</td>
-                <td valign="top" class="subtitulopequeno"><?php echo $matriz['modulo_loja_vitual']; ?></td>
+                <td valign="top" class="subtitulopequeno"><?php echo $matriz['modulo_loja_virtual']; ?></td>
             </tr>
             <tr>
                 <td class="subtitulodireita">Módulo Receber de Devedores</td>

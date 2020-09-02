@@ -325,7 +325,7 @@ $comando = "SELECT
                 a.id_agendador,
                 a.id_consultor,
                 a.whatsapp,
-                a.modulo_loja_vitual,
+                a.modulo_loja_virtual,
                 a.modulo_pesq_credito,
                 a.modulo_receber_deved,
                 a.modulo_aumentar_vendas
@@ -699,13 +699,13 @@ if ($renegociacao_tabela != "") {
             <tr>
                 <td class="subtitulodireita">Módulo Loja Virtual E-commerce</td>
                 <td colspan="3" class="subtitulopequeno">
-                    <select name="modulo_loja_vitual" style="width:40%">
+                    <select name="modulo_loja_virtual" style="width:40%">
                         <?php
                         $sel_mod_1 = '';
                         $sel_mod_2 = '';
                         $sel_mod_3 = '';
-                        if ( $matriz['modulo_loja_vitual'] == NULL ) $sel_mod_1 = 'selected="selected"';
-                        elseif ( $matriz['modulo_loja_vitual'] == '0.00') $sel_mod_2 = 'selected="selected"';
+                        if ( $matriz['modulo_loja_virtual'] == NULL ) $sel_mod_1 = 'selected="selected"';
+                        elseif ( $matriz['modulo_loja_virtual'] == '0.00') $sel_mod_2 = 'selected="selected"';
                         else $sel_mod_3 = 'selected="selected"';
                         ?>
                         <option value = '9' <?php echo $sel_mod_1; ?>>nenhum</option>
@@ -714,10 +714,10 @@ if ($renegociacao_tabela != "") {
                             <?php
                             $sql_modulo = "SELECT valor FROM cs2.cadastro_modulos WHERE Id = 1";
                             $res_modulo = mysql_query($sql_modulo, $con);
-                            if ( $matriz['modulo_loja_vitual']  == NULL or $matriz['modulo_loja_vitual']  == 0 )
+                            if ( $matriz['modulo_loja_virtual']  == NULL or $matriz['modulo_loja_virtual']  == 0 )
                                 echo mysql_result($res_modulo,0,'valor');
                             else
-                                echo $matriz['modulo_loja_vitual'];
+                                echo $matriz['modulo_loja_virtual'];
                             ?>                                
                         </option>
                     </select>
