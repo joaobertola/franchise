@@ -156,7 +156,7 @@ $res = mysql_query($sql, $con); ?>
                             else
                                 $Comissao =  ( $arrItens['qtd'] *  $arrItens['valor_unitario'] ) * 0.07;
 
-                            $td .= '<tr><td class="corpoTabela" align="left">'. $arrItens['descricao'].'</td>'; 
+                            $td .= '<tr><td class="corpoTabela" align="left">'. substr($arrItens['descricao'],0,35).'</td>'; 
                             $td .= '<td class="corpoTabela" align="right">R$ '.number_format($Comissao,2,',','.').'</td></tr>'; 
 
                             $tot_Prod += ($arrItens['qtd'] *  $arrItens['valor_unitario']);
