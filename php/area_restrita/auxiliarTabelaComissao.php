@@ -37,7 +37,8 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         IF(contadorsn = 'N' AND @pagoComissao = '0' AND @pendente = 'Ativo', @comissaoAfiliacao, 0) AS comissao_afiliacao,
                         IF(@pagoComissao = 1,@comissaoAfiliacao,0) AS valor_comissao_pago,
                         (SELECT IF(COUNT(*) > 0,1,0) FROM cs2.funcionario_bonus_afiliacao WHERE id_funcionario = f.id AND tipo_bonus = '20' AND DATE_FORMAT(referencia_bonus,'%Y-%m') = '$dataFiltro') AS pago_bonus20,
-                        (SELECT IF(COUNT(*) > 0,1,0) FROM cs2.funcionario_bonus_afiliacao WHERE id_funcionario = f.id AND tipo_bonus = '25' AND DATE_FORMAT(referencia_bonus,'%Y-%m') = '$dataFiltro') AS pago_bonus25
+                        (SELECT IF(COUNT(*) > 0,1,0) FROM cs2.funcionario_bonus_afiliacao WHERE id_funcionario = f.id AND tipo_bonus = '25' AND DATE_FORMAT(referencia_bonus,'%Y-%m') = '$dataFiltro') AS pago_bonus25,
+                        modulo_loja_virtual, modulo_pesq_credito, modulo_receber_deved, modulo_aumentar_vendas
                     FROM cs2.cadastro c
                     INNER JOIN cs2.funcionario f
                     ON f.id_consultor_assistente = c.id_consultor
@@ -83,13 +84,14 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                 if ( $origem == 'CONTABIL')
                     $html .= "<td colspan='6' class='titulo'>Novas Afiliações</td>";
                 else
-                    $html .= "<td colspan='7' class='titulo'>Novas Afiliações</td>";
+                    $html .= "<td colspan='8' class='titulo'>Novas Afiliações</td>";
                 
                 $html .= "</tr>
                 <tr>
                     <td width='5%' style='width: 5%;' class='subtitulo'>Código</td>
                     <td width='35%' style='width: 25%;' class='subtitulo'>Empresa</td>
                     <td width='10%' style='width: 10%;' class='subtitulo'>Data Afiliação</td>
+                    <td width='10%' style='width: 10%;' class='subtitulo'>Mod LV</td>
                     <td width='30%' style='width: 25%;' class='subtitulo'>Adesão</td>
                     <td width='20%' style='width: 20%;' class='subtitulo'>Comissão 50%</td>
                     <td width='30%' style='width: 25%;' class='subtitulo'>Status</td>";
@@ -123,6 +125,9 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         <td width="5%" class="corpoTabela">' . $arrAfiliacao['codigo'] . '</td>
                         <td width="35%" class="corpoTabela">' . $arrAfiliacao['nomefantasia'] . '</td>
                         <td width="10%" class="corpoTabela">' . $arrAfiliacao['data_afiliacao'] . '</td>
+
+                        <td width="10%" class="corpoTabela">' . $arrAfiliacao['modulo_loja_virtual'] . '</td>                        
+
                         <td width="30%" class="corpoTabela">R$' . number_format($arrAfiliacao['vr_pgto_adesao'],2,',','.') . '</td>
                         <td width="30%" class="corpoTabela">R$' . number_format(($arrAfiliacao['vr_pgto_adesao']/2),2,',','.') . '</td>
                         <td width="20%" class="corpoTabela">' . $pendencia . '</td>';
@@ -242,20 +247,20 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                         colspan="7">Afiliações: ' . $qtd_afiliacao_contabil .' | Repassados ' . $totalPagos . '</td>
                 </tr>';
     }else{
-        $html .= '<td colspan="7" class="corpoTabela">&nbsp;</td>
+        $html .= '<td colspan="8" class="corpoTabela">&nbsp;</td>
                     <tr>
                         <td class="corpoTabela"
-                            colspan="7">Afiliações: ' . $totalAfiliacoes . ' | Cancelados: ' . $totalCancelados . ' | Pendentes à Pagar: ' . $pendentesARepassar . ' | Contadores: ' . $totalContadores . ' | Pendentes Adesão: ' . $totalPendentesAdesao . ' | Repassados ' . $totalPagos . '</td>
+                            colspan="8">Afiliações: ' . $totalAfiliacoes . ' | Cancelados: ' . $totalCancelados . ' | Pendentes à Pagar: ' . $pendentesARepassar . ' | Contadores: ' . $totalContadores . ' | Pendentes Adesão: ' . $totalPendentesAdesao . ' | Repassados ' . $totalPagos . '</td>
                     </tr>';
     }
                 $html .= '<tr>
                     <td colspan="4" align="right" class="corpoTabela">Pendentes à Pagar</td>
-                    <td colspan="3"
+                    <td colspan="4"
                         class="corpoTabela">R$ ' . number_format($totalPendenteAfiliacao, 2, ',', '.') . '</td>
                 </tr>
                 <tr>
                     <td colspan="4" align="right" class="corpoTabela">Total Repassados</td>
-                    <td colspan="3"
+                    <td colspan="4"
                         class="corpoTabela">R$ ' . number_format($vr_pago_comissao, 2, ',', '.') . '</td>
                 </tr>
                 ';
