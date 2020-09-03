@@ -160,7 +160,10 @@ $res = mysql_query($sql, $con); ?>
                             $td .= '<td class="corpoTabela" align="right">R$ '.number_format($Comissao,2,',','.').'</td></tr>'; 
 
                             $tot_Prod += ($arrItens['qtd'] *  $arrItens['valor_unitario']);
-                            $totCom   += $Comissao;
+
+                            if($arrEquipamentos['pendente'] == 0){
+                                $totCom   += $Comissao;
+                            }
                         }
                         $desconto_Comissao = ($tot_Prod-$tot_recebido) * 0.07;
 
