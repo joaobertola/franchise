@@ -90,8 +90,12 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
                 <tr>
                     <td width='5%' style='width: 5%;' class='subtitulo'>Código</td>
                     <td width='35%' style='width: 25%;' class='subtitulo'>Empresa</td>
-                    <td width='10%' style='width: 10%;' class='subtitulo'>Data Afiliação</td>
-                    <td width='10%' style='width: 10%;' class='subtitulo'>Mod LV</td>
+                    <td width='10%' style='width: 10%;' class='subtitulo'>Data Afiliação</td>";
+
+                if ( $origem != 'CONTABIL')
+                   $html .= "<td width='10%' style='width: 10%;' class='subtitulo'>Mod LV</td>";
+
+                $html .= "
                     <td width='30%' style='width: 25%;' class='subtitulo'>Adesão</td>
                     <td width='20%' style='width: 20%;' class='subtitulo'>Comissão 50%</td>
                     <td width='30%' style='width: 25%;' class='subtitulo'>Status</td>";
@@ -121,13 +125,12 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
         }
         
         if ( $origem != 'CONTABIL'){
+
             $html .= '<tr>
                         <td width="5%" class="corpoTabela">' . $arrAfiliacao['codigo'] . '</td>
                         <td width="35%" class="corpoTabela">' . $arrAfiliacao['nomefantasia'] . '</td>
                         <td width="10%" class="corpoTabela">' . $arrAfiliacao['data_afiliacao'] . '</td>
-
                         <td width="10%" class="corpoTabela">' . $arrAfiliacao['modulo_loja_virtual'] . '</td>                        
-
                         <td width="30%" class="corpoTabela">R$' . number_format($arrAfiliacao['vr_pgto_adesao'],2,',','.') . '</td>
                         <td width="30%" class="corpoTabela">R$' . number_format(($arrAfiliacao['vr_pgto_adesao']/2),2,',','.') . '</td>
                         <td width="20%" class="corpoTabela">' . $pendencia . '</td>';
@@ -241,12 +244,14 @@ function geraHtml($idFuncionario, $strDataInicio, $strDataFim, $ativo, $con, $no
     $pendentesARepassar = $totalAfiliacoes - ($totalCancelados + $totalPendentes + $totalContadores + $totalPendentesAdesao + $totalPagos);
 
     if ( $origem == 'CONTABIL'){
-    $html .= '<td colspan="7" class="corpoTabela">&nbsp;</td>
+        $col = 3;
+        $html .= '<td colspan="7" class="corpoTabela">&nbsp;</td>
                 <tr>
                     <td class="corpoTabela"
                         colspan="7">Afiliações: ' . $qtd_afiliacao_contabil .' | Repassados ' . $totalPagos . '</td>
                 </tr>';
     }else{
+        $col = 4;
         $html .= '<td colspan="8" class="corpoTabela">&nbsp;</td>
                     <tr>
                         <td class="corpoTabela"
