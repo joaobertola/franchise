@@ -438,7 +438,8 @@ if ($id_franquia == 4 || $id_franquia = 247 || $id_franquia == 163) {
                                         WHEN '3' THEN 'CARTAO DE CREDITO'
                                         WHEN '4' THEN 'BOLETO'
                                         WHEN '5' THEN 'CARTAO DE DEBITO'
-                                                                            WHEN '6' THEN 'ANTECIPACAO'
+                                        WHEN '6' THEN 'ANTECIPACAO'
+                                        WHEN '7' THEN 'TRANSFERENCIA'
                                     END as pgto
                                  FROM cs2.cadastro_equipamento_pagamento WHERE id_venda = $id_venda ORDER BY vencimento ASC";
                         $res_pgto = mysql_query($sql_pgto, $con);
