@@ -190,8 +190,8 @@ function confirma() {
     var parte1 = frm.email.value.indexOf("@");
     //var parte2 = frm.email.value.indexOf(".");
     var parte3 = frm.email.value.length;
-    if (!(parte1 >= 3 && parte3 >= 9)) {//parte2 >= 6 && 
-        alert("O campo E-mail deve ser conter um endereco eletronico!");
+    if (!(parte1 >= 2 && parte3 >= 9)) {//parte2 >= 6 && 
+        alert("O campo E-mail deve ser conter um endereço eletrônico!");
         frm.email.focus();
         return false;
     }
@@ -218,7 +218,7 @@ function validaCel(){
 function Verifica_TipoCliente() {
     frm = document.form;
     if (frm.tipo_cliente.value == 'A') {
-        alert('Vo�� est� mudando o Tipo do Cliente Para Administrador');
+        alert('Você está mudando o Tipo do Cliente Para Administrador');
     }
 }
 
