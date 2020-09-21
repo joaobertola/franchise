@@ -146,6 +146,12 @@ function validaDat2(campo,dados,idpedido) {
                 <?php
 				$pesquisa = $_REQUEST['pesquisa'];
 				
+				$sql = "SELECT SUBDATE(now(), INTERVAL 30 day) data";
+		    	$qr = mysql_query($sql, $con)or die("ERRO:  Segundo SQL  ==>  $sql");
+    			$campos = mysql_fetch_array($qr);
+    			$data30 = substr($campos["data"], 0, 10);
+
+
 				if ( $pesquisa )
 					$sql_compl = " AND b.descricao like '%$pesquisa%'";
 				else
@@ -157,7 +163,7 @@ function validaDat2(campo,dados,idpedido) {
 							date_format(a.data_deposito,'%d/%m/%Y') as data_deposito 
 						FROM cs2.solicitacao_valores a
 						INNER JOIN cs2.solicitacao_valores_item b ON a.id = b.id_sol
-						WHERE a.id_franquia = $id_franquia $sql_compl
+						WHERE a.dt_cad >= '$data30' AND a.id_franquia = $id_franquia $sql_compl
 						GROUP BY a.id";
 				$qry = mysql_query($sql, $con) or die("Erro SQL: $sql");
 				if ( mysql_num_rows($qry) == 0 ){
