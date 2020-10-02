@@ -496,7 +496,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Site Institucional e Loja Virtual Ecommerce</td>
-                            <td>Incluso no Pacote de Loja Virtual Ecommerce</td>
+                            <td>Incluso no Módulo de Loja Virtual Ecommerce</td>
                         </tr>
                     </table>
                 </td>
