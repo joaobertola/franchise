@@ -153,9 +153,9 @@ $res = mysql_query($sql, $con); ?>
                         $qryEquip = mysql_query($sql_Equip, $con);
                         while ($arrItens = mysql_fetch_array($qryEquip)) {
                             if ( $arrItens['codigo_barra'] == '147258' )
-                                $Comissao =  ( $arrItens['qtd'] *  $arrItens['valor_unitario'] ) * 0.3;
+                                $Comissao =  ( $arrEquipamentos['valor_total'] ) * 0.3;
                             else
-                                $Comissao =  ( $arrItens['qtd'] *  $arrItens['valor_unitario'] ) * 0.07;
+                                $Comissao =  ( $arrEquipamentos['valor_total'] ) * 0.07;
 
                             $td .= '<tr><td class="corpoTabela" align="left">xx'. substr($arrItens['descricao'],0,35).'</td>'; 
                             $td .= '<td class="corpoTabela" align="right">yy R$ '.number_format($Comissao,2,',','.').'</td></tr>'; 
