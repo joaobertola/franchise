@@ -138,7 +138,7 @@ $res = mysql_query($sql, $con); ?>
                                         sum(a.valor) as valor_recebido,
                                         (select sum( qtd * valor_unitario ) from cs2.cadastro_equipamento_descricao where id_cadastro_equipamento = a.id_venda) as totalvenda
                                       from cs2.cadastro_equipamento_pagamento a where a.id_venda = ".$arrEquipamentos['id'];
-                        $qryEquip = mysql_query($sql_Equip, $con);
+                        $qryEquip     = mysql_query($sql_Equip, $con);
                         $tot_prod     = mysql_result($qryEquip,0,'totalvenda');
                         $tot_recebido = mysql_result($qryEquip,0,'valor_recebido');
 
@@ -155,7 +155,7 @@ $res = mysql_query($sql, $con); ?>
                             if ( $arrItens['codigo_barra'] == '147258' )
                                 $Comissao =  ( $arrEquipamentos['valor_total'] ) * 0.3;
                             else
-                                $Comissao =  ( $arrEquipamentos['valor_total'] ) * 0.07;
+                                $Comissao =  ( $arrItens['qtd'] *  $arrItens['valor_unitario']  ) * 0.07;
 
                             $td .= '<tr><td class="corpoTabela" align="left">'. substr($arrItens['descricao'],0,35).'</td>'; 
                             $td .= '<td class="corpoTabela" align="right">R$ '.number_format($Comissao,2,',','.').'</td></tr>'; 
