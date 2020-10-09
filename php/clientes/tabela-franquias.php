@@ -260,7 +260,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                                 <td width="50%">R$ 00,00</td><?php
                             } else {
                                 ?>
-                                <td width="50%">R$ 169,90</td><?PHP
+                                <td width="50%">R$ 99,90</td><?PHP
                             }
                             ?>
                         </tr>
@@ -271,7 +271,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                                 <td width="50%">R$ 00,00</td><?php
                             } else {
                                 ?>
-                                <td width="50%">R$ 129,90</td><?PHP
+                                <td width="50%">R$ 89,90</td><?PHP
                             }
                             ?>
                         </tr>
@@ -287,13 +287,13 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                             ?>
                         </tr>
                         <tr class="txtleft">
-                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Pacote Sistema de Loja Virtual e E-commerce</strong></td>
+                            <td width="50%"><strong>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp; Módulo Sistema de Loja Virtual E-commerce</strong></td>
                             <?php if ($_REQUEST['tabela'] == 2) {
                                 ?>
                                 <td width="50%">R$ 00,00</td><?php
                             } else {
                                 ?>
-                                <td width="50%">R$ 135,00</td><?PHP
+                                <td width="50%">R$ 49,90</td><?PHP
                             }
                             ?>
                         </tr>
@@ -330,7 +330,7 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                         </tr>
                         <tr>
                             <td>Todos os M&oacute;dulos</td>
-                            <td>Incluso no Pacote (exceto Loja Virtual e E-commerce)</td>
+                            <td>Incluso no Pacote (exceto Loja Virtual E-commerce)</td>
                         </tr>
                     </table>
                 </td>
@@ -495,8 +495,8 @@ if($_GET['id'] == 163 || $_GET['id'] == 4 || $_GET['id'] == 247){
                             </th>
                         </tr>
                         <tr>
-                            <td>Site Institucional</td>
-                            <td>Incluso no Pacote</td>
+                            <td>Site Institucional e Loja Virtual Ecommerce</td>
+                            <td>Incluso no Módulo de Loja Virtual Ecommerce</td>
                         </tr>
                     </table>
                 </td>
