@@ -382,25 +382,6 @@ if ($go == 'email') {
                     <input type="text" name="de" id="de" size="35" value="financeiro@webcontrolempresas.com.br" class="boxnormal" onFocus="this.className = 'boxover'" onBlur="this.className = 'boxnormal'" />
                 </td>
             </tr>
-            <tr >
-                <td class="subtitulodireita" style="background-color:#FFFF00">Informar a nova data para pagamento:</td>
-                <td class="subtitulopequeno" style="background-color:#FFFF00">
-                    <input type="hidden" id="venc_atualizado_confirmado"  name="venc_atualizado_confirmado" value=""/>
-                    <input type="hidden" id="vencimento_atualizado"  name="venc_atualizado" value="<?php echo $venc_mostra; ?>"/>
-
-                    <input type="text" id="vencimento_atualizado1" size="35" value="<?php echo $venc_mostra; ?>" class="boxnormal" onFocus="this.className = 'boxover'" onBlur="this.className = 'boxnormal'" disabled />
-                    <?php if ($disabled == '') { ?>
-                        <a onclick="opemCalendario()"><img width="20px" src="../img/calendar-icon_34471.png"/></a>
-                        <div style="position:absolute;width:200px;min-height:150px;background:#FFF;display:none;" id="calendario-box"></div>
-                    <?php } ?>
-                </td>
-            </tr>
-            <tr>
-                <td class="subtitulodireita" style="background-color:#FFFF00">Valor Atualizado:</td>
-                <td class="subtitulopequeno" style="background-color:#FFFF00">
-                    <input type="text" name="valor_atualizado" id="valor_atualizado" size="35" value="<?php echo $valor; ?>" class="boxnormal" onFocus="this.className = 'boxover'" onBlur="this.className = 'boxnormal'" disabled />
-                </td>
-            </tr>
             <tr>
                 <td class="subtitulodireita" style="background-color:#FFFF00">Para:</td>
                 <td class="subtitulopequeno" style="background-color:#FFFF00">
