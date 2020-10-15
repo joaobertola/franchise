@@ -37,8 +37,8 @@ $codigo = $_POST['codigo'];
         var de = document.getElementById('de').value;
         var para = document.getElementById('para').value;
         var assunto = document.getElementById('assunto').value;
-        var venc_atualizado = document.getElementById('vencimento_atualizado').value;
-        var venc_atualizado_confirmado = document.getElementById('venc_atualizado_confirmado').value;
+    //    var venc_atualizado = document.getElementById('vencimento_atualizado').value;
+    //    var venc_atualizado_confirmado = document.getElementById('venc_atualizado_confirmado').value;
 
         // travar para nao gravar vencimento invalido
         var d = new Date();
