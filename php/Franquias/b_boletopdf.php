@@ -46,18 +46,22 @@ $codigo = $_POST['codigo'];
         var data = dataHora.substr(0, 10);
 
 
-        var dataAtual = parseInt(data.split("/")[2] + data.split("/")[1] + data.split("/")[0]);
-        var vencimento = parseInt(venc_atualizado.split("/")[2] + venc_atualizado.split("/")[1] + venc_atualizado.split("/")[0]);
+    //    var dataAtual = parseInt(data.split("/")[2] + data.split("/")[1] + data.split("/")[0]);
+    //    var vencimento = parseInt(venc_atualizado.split("/")[2] + venc_atualizado.split("/")[1] + venc_atualizado.split("/")[0]);
 
-        var dataAtualComparar = new Date(dataAtual);
-        var dataVencimentoComparar = new Date(vencimento);
+   //     var dataAtualComparar = new Date(dataAtual);
+   //     var dataVencimentoComparar = new Date(vencimento);
 
-        if (dataVencimentoComparar < dataAtualComparar) {
-            alert('O Vencimento deve ser maior que a Data Atual!');
-            return false;
-        } 
+   //     if (dataVencimentoComparar < dataAtualComparar) {
+   //         alert('O Vencimento deve ser maior que a Data Atual!');
+   //         return false;
+   //     } 
 		
-        window.location.href = '../../inform/boleto/boleto.php?numdoc=' + numDoc + '&link_externo=sim&de=' + de + '&para=' + para + '&assunto=' + assunto + '&venc_atualizado=' + venc_atualizado + '&venc_atualizado_confirmado=' + venc_atualizado_confirmado;
+//        window.location.href = '../../inform/boleto/boleto.php?numdoc=' + numDoc + '&link_externo=sim&de=' + de + '&para=' + para + '&assunto=' + assunto + '&venc_atualizado=' + venc_atualizado + '&venc_atualizado_confirmado=' + venc_atualizado_confirmado;
+
+        window.location.href = '../../inform/boleto/boleto.php?numdoc=' + numDoc + '&link_externo=sim&de=' + de + '&para=' + para + '&assunto=' + assunto ;
+
+
 
     }
     window.onload = function () {
