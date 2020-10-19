@@ -196,27 +196,15 @@ $res = mysql_query($sql, $con); ?>
                     <td></td>
                 </tr>
 
-                <!--
-                <tr>
-                    <td colspan="4" align="right" class="corpoTabela">Premiação de Equipamentos Produtos:</td>
-                    <td colspan="1"
-                        class="corpoTabela"><?php echo 'R$ ' . number_format($valorTotalComissao, 2, ',', '.') . ' x ' . number_format($comissaoEquipamento, 2, '.', '') . '%' ?></td>
-                    <td></td>
-                </tr>
-                
-                <tr>
-                    <td colspan="4" align="right" class="corpoTabela">Total:</td>
-                    <td colspan="1"
-                        class="corpoTabela"><?php echo 'R$ ' . number_format(($valorTotalComissao * ($comissaoEquipamento / 100)), 2, ',', '.') ?></td>
-                    <td></td>
-                </tr>
-                -->
             </table>
             
             <?php
             }
 
-            if ( $iptTipoRelatorio == 'M' ){
+            if ( $iptTipoRelatorio == 'M' or $iptTipoRelatorio == 'S' ){
+
+                $valorTotalCredito = $totCom;
+
                 $sqlDebCred = "
                                     SELECT
                                         valor,
@@ -231,62 +219,66 @@ $res = mysql_query($sql, $con); ?>
 
                 $resDebCred = mysql_query($sqlDebCred, $con);
 
-                ?>
-                <table width='100%' border='1' cellpadding='0' cellspacing='0' class=''
-                       style="margin-top: 5px;">
-                    <tr>
-                        <td colspan="5" class="titulo">Lançamentos</td>
-                    </tr>
-                    <tr>
-                        <td class="subtitulo">Data/Folha</td>
-                        <td class="subtitulo">Tipo Lançamento</td>
-                        <td class="subtitulo">Descrição</td>
-                        <td class="subtitulo">Valor</td>
-                    </tr>
+                if ( mysql_num_rows($resDebCred) > 0 ){
 
-                    <?php
-                    $valorTotalCredito = 0;
-                    $valorTotalDebito = 0;
-                    while ($arrDebCred = mysql_fetch_array($resDebCred)) { ?>
-                        <tr style="border: black; border-style: solid;">
-                            <td class="corpoTabela"><?php echo $arrDebCred['data_folha_label'] ?></td>
-                            <td class="corpoTabela"><?php echo $arrDebCred['tipo_lancamento'] == 'D' ? 'Débito' : 'Crédito'; ?></td>
-                            <td class="corpoTabela"><?php echo $arrDebCred['descricao'] ?></td>
-                            <td class="corpoTabela"><?php echo 'R$ ' . number_format($arrDebCred['valor'], 2, ',', '.') ?></td>
-                        </tr>
-                        <?php
-
-                        if ($arrDebCred['tipo_lancamento'] == 'D') {
-                            $valorTotalDebito += $arrDebCred['valor'];
-                        } else if ($arrDebCred['tipo_lancamento'] == 'C') {
-                            $valorTotalCredito += $arrDebCred['valor'];
-                        }
-                    }
                     ?>
-                    <tr>
-                        <td colspan="3" align="right" class="corpoTabela">Total Crédito:</td>
-                        <td colspan="1"
-                            class="corpoTabela"><?php echo 'R$ ' . number_format($valorTotalCredito, 2, ',', '.') ?></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" align="right" class="corpoTabela" style="color: blue; font-weight: bold;">Total
-                            Débito:
-                        </td>
-                        <td colspan="1"
-                            class="corpoTabela"
-                            style="color: blue; font-weight: bold;"><?php echo 'R$ ' . number_format($valorTotalDebito, 2, ',', '.') ?></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" align="right" class="corpoTabela" style="color: blue; font-weight: bold;">Saldo
-                            Final(Crédito - Débito):
-                        </td>
-                        <td colspan="1"
-                            class="corpoTabela"
-                            style="color: blue; font-weight: bold;"><?php echo 'R$ ' . number_format($valorTotalCredito - $valorTotalDebito, 2, ',', '.') ?></td>
-                    </tr>
-                </table>
 
-            <?php } ?>
+                    <table width='100%' border='1' cellpadding='0' cellspacing='0' class=''
+                           style="margin-top: 5px;">
+                        <tr>
+                            <td colspan="5" class="titulo">Lançamentos</td>
+                        </tr>
+                        <tr>
+                            <td class="subtitulo">Data/Folha</td>
+                            <td class="subtitulo">Tipo Lançamento</td>
+                            <td class="subtitulo">Descrição</td>
+                            <td class="subtitulo">Valor</td>
+                        </tr>
+
+                        <?php
+                        // $valorTotalCredito = 0;
+                        $valorTotalDebito = 0;
+                        while ($arrDebCred = mysql_fetch_array($resDebCred)) { ?>
+                            <tr style="border: black; border-style: solid;">
+                                <td class="corpoTabela"><?php echo $arrDebCred['data_folha_label'] ?></td>
+                                <td class="corpoTabela"><?php echo $arrDebCred['tipo_lancamento'] == 'D' ? 'Débito' : 'Crédito'; ?></td>
+                                <td class="corpoTabela"><?php echo $arrDebCred['descricao'] ?></td>
+                                <td class="corpoTabela"><?php echo 'R$ ' . number_format($arrDebCred['valor'], 2, ',', '.') ?></td>
+                            </tr>
+                            <?php
+
+                            if ($arrDebCred['tipo_lancamento'] == 'D') {
+                                $valorTotalDebito += $arrDebCred['valor'];
+                            } else if ($arrDebCred['tipo_lancamento'] == 'C') {
+                                $valorTotalCredito += $arrDebCred['valor'];
+                            }
+                        }
+                        ?>
+                        <tr>
+                            <td colspan="3" align="right" class="corpoTabela">Total Crédito:</td>
+                            <td colspan="1"
+                                class="corpoTabela"><?php echo 'R$ ' . number_format($valorTotalCredito, 2, ',', '.') ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right" class="corpoTabela" style="color: blue; font-weight: bold;">Total
+                                Débito:
+                            </td>
+                            <td colspan="1"
+                                class="corpoTabela"
+                                style="color: blue; font-weight: bold;"><?php echo 'R$ ' . number_format($valorTotalDebito, 2, ',', '.') ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right" class="corpoTabela" style="color: blue; font-weight: bold;">Saldo
+                                Final(Crédito - Débito):
+                            </td>
+                            <td colspan="1"
+                                class="corpoTabela"
+                                style="color: blue; font-weight: bold;"><?php echo 'R$ ' . number_format($valorTotalCredito - $valorTotalDebito, 2, ',', '.') ?></td>
+                        </tr>
+                    </table>
+
+            <?php }
+               } ?>
 
             <table width="100%" border='0' cellpadding='0' cellspacing='0' style="margin-top: 5px;">
                 <tr>

@@ -334,6 +334,7 @@ $sqlFuncao = "
                     descricao
                 FROM cs2.funcao
                 WHERE ativo = '1'
+                ORDER BY descricao
                 ";
 $resFuncao = mysql_query($sqlFuncao,$con);
 ?>
