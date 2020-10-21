@@ -4,8 +4,9 @@ ini_set('allow_url_include', true);
 
 // Desenvolvimento
 // define('ENDERECO', 'http://' . $_SERVER["HTTP_HOST"] . '/franquias');
+
 // Produção 
-define('ENDERECO', 'http://' . $_SERVER["HTTP_HOST"]);
+define('ENDERECO', 'https://' . $_SERVER["HTTP_HOST"]);
 
 require_once __DIR__ . '/../../atendimento/classes/DbConnection.class.php';
 require_once __DIR__ . '/../controller/VeiculosController.php';
