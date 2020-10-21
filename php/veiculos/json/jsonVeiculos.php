@@ -73,7 +73,7 @@ switch ($op) {
             $extensao = strtolower($extensao);
             if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
                 $novoNome = uniqid(time()) . '.' . $extensao;
-                $destino = __DIR__ . '/../imagens';
+                $destino = '../imagens';
                 if (!is_dir($destino)) {
                     mkdir($destino);
                 }

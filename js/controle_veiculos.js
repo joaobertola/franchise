@@ -147,7 +147,8 @@ $(document).on("click", ".openImagem", function (e) {
   var imagem = $(this).data("imagem");
   var idOcorrencia = $(this).data("id");
   $("#imagem" + idOcorrencia).attr("src", imagem);
-  $("#linhaImagem" + idOcorrencia).css("display", "block");
+  $("#linkImagem" + idOcorrencia).attr("href", imagem);
+  $("#linhaImagem" + idOcorrencia).css("display", "");
 });
 
 $(document).on("click", ".excluiVeiculo", function(e){

@@ -71,7 +71,7 @@ $ocorrecias = $ocorrencia->selectAll($idVeiculo);
                                     ?>
                                 </span>
                                 <?php if ($o['ocorrencia'] == 6) : ?>
-                                    <button data-toggle="modal" data-target="#imagemModal" data-id="<?= $o['idocorrencia']; ?>" data-imagem="<?= __DIR__ . '/../../imagens/' . $o['imagem']; ?>" class="openImagem btn btn-light w-25 small-text">Imagem <i class="far fa-image"></i></button>
+                                    <button data-toggle="modal" data-target="#imagemModal" data-id="<?= $o['idocorrencia']; ?>" data-imagem="<?= '/franquias/php/veiculos/imagens/' . $o['imagem']; ?>" class="openImagem btn btn-light w-25 small-text">Imagem <i class="far fa-image"></i></button>
                                 <?php endif; ?>
                             </div>
                         </td>
@@ -82,7 +82,9 @@ $ocorrecias = $ocorrencia->selectAll($idVeiculo);
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <div class="d-flex w-100 align-items-center">
-                                <img width="100%" src="#" id="imagem<?= $o['idocorrencia']; ?>" class="imagemOcorrencia">
+                                <a class="w-100" href="#" id="linkImagem<?= $o['idocorrencia']; ?>" target="_blank">
+                                    <img width="100%" src="#" id="imagem<?= $o['idocorrencia']; ?>" class="imagemOcorrencia">
+                                </a>
                             </div>
                         </td>
                     </tr>
