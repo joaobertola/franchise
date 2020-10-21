@@ -71,6 +71,10 @@ function doBlink(){
     <td align="center" class="center"><?php echo $i++; ?></td>
     <td><a href="painel.php?pagina1=clientes/a_ordem_atendimento.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><font color="red"><b>Ordens de Atendimento</b></font></a></td>
   </tr>
+  <tr>
+    <td align="center" class="center"><?php echo $i++; ?></td>
+    <td><a href="painel.php?pagina1=veiculos/view/controle_veiculos.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><b>Controle de Veículos</b></a></td>
+  </tr>
 
   <tr>
     <td align="center" class="center"><?php echo $i++; ?></td>
