@@ -150,6 +150,24 @@ $(document).on("click", ".openImagem", function (e) {
   $("#linhaImagem" + idOcorrencia).css("display", "block");
 });
 
+$(document).on("click", ".excluiVeiculo", function(e){
+  e.preventDefault();
+  var idVeiculo = $(this).data("id");
+  $.ajax({
+    type: "POST",
+    url: "../php/veiculos/json/jsonVeiculos.php?op=deleteVeiculo",
+    data: {
+      idVeiculo : idVeiculo
+    },
+    dataType: "json",
+    success: function (response) {
+      if (response.status) {
+        window.location.reload();
+      }
+    }
+  });
+});
+
 /**
  *
  * @param {Inputs dos Formulários} params

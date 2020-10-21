@@ -212,6 +212,19 @@ class VeiculosController
     }
 
     /**
+     * deleta o veículo no banco
+     */
+    public function delete($idVeiculo)
+    {
+        try {
+            $veiculo = new VeiculosModel($this);
+            return $veiculo->delete($idVeiculo);
+        } catch (Exception $e) {
+            throw new Exception('Não foi possível deletar o registro.');
+        }
+    }
+
+    /**
      * Lista veículos do banco
      */
     public function selectAll()

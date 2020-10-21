@@ -8,9 +8,10 @@ $op = $_REQUEST['op'];
 
 $retorno = [];
 
-defined("LISTAR_VEICULOS")  || define("LISTAR_VEICULOS",  "listaVeiculo");
-defined("INSERT_VEICULOS")  || define("INSERT_VEICULOS",  "insertVeiculo");
-defined("INSERT_OCORRENCIA")  || define("INSERT_OCORRENCIA",  "insertOcorrencia");
+defined("LISTAR_VEICULOS")   || define("LISTAR_VEICULOS",  "listaVeiculo");
+defined("INSERT_VEICULOS")   || define("INSERT_VEICULOS",  "insertVeiculo");
+defined("INSERT_OCORRENCIA") || define("INSERT_OCORRENCIA",  "insertOcorrencia");
+defined("DELETE_VEICULO")    || define("DELETE_VEICULO",  "deleteVeiculo");
 
 switch ($op) {
     case LISTAR_VEICULOS:
@@ -43,8 +44,8 @@ switch ($op) {
         $veiculo->setChassi($dados['chassi']);
         $veiculo->setChaveReserva($dados['chave_reserva']);
         $veiculo->setCredencial($dados['credencial']);
-        $veiculo->setCondutor($dados['idCondutor']);
-        $veiculo->setIdCondutorProvisorio($dados['idCondutorProvisorio']);
+        $veiculo->setCondutor($dados['condutor']);
+        $veiculo->setIdCondutorProvisorio($dados['condutor_provisorio']);
 
         if ($veiculo->insert()) {
             $status = true;
@@ -106,8 +107,25 @@ switch ($op) {
         echo json_encode($retorno);
 
         break;
+    case DELETE_VEICULO:
+
+        $status = false;
+
+        $idVeiculo = $_POST['idVeiculo'];
+
+        $veiculo = new VeiculosController();
+
+        if ($veiculo->delete($idVeiculo)) {
+            $status = true;
+        }
+
+        $retorno['status'] = $status;
+
+        echo json_encode($retorno);
+
+        break;
 
     default:
-        return "beibeibibe";
+        return "Erro";
         break;
 }

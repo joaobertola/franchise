@@ -79,6 +79,25 @@ class VeiculosModel
     }
 
     /**
+     * Deleta o Registro do Banco de Dados
+     */
+    public function delete($idVeiculo)
+    {
+        try {
+
+            $sql = "DELETE FROM cs2.veiculo WHERE idVeiculo = :idVeiculo";
+
+            $values[':idVeiculo'] = $idVeiculo;
+
+            $pdo = $this->conexao->pdo->prepare($sql);
+
+            return $pdo->execute($values);
+        } catch (PDOException $e) {
+            throw new Exception('Erro ao deleter registros.');
+        }
+    }
+
+    /**
      * Lista os Funcionarios ATIVOS do Banco de Dados
      */
     public function selectFuncionarios()

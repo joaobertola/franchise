@@ -2,7 +2,10 @@
 
 ini_set('allow_url_include', true);
 
-define('ENDERECO', 'http://' . $_SERVER["HTTP_HOST"] . '/');
+// Desenvolvimento
+// define('ENDERECO', 'http://' . $_SERVER["HTTP_HOST"] . '/franquias');
+// Produção 
+define('ENDERECO', 'http://' . $_SERVER["HTTP_HOST"]);
 
 require_once __DIR__ . '/../../atendimento/classes/DbConnection.class.php';
 require_once __DIR__ . '/../controller/VeiculosController.php';
@@ -130,7 +133,7 @@ $listaFuncionarios = $veiculos->selectFuncionarios();
                         <input type="text" class="form-control form-required" id="chassi" name="chassi" placeholder="Chassi">
                     </div>
                     <div class="form-group">
-                        <select class="custom-select">
+                        <select class="custom-select" name="chave_reserva">
                             <option>Chave Reserva</option>
                             <option value="1">Sim</option>
                             <option value="0">Não</option>
