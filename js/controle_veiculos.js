@@ -72,11 +72,11 @@ $(document).on("click", "#sendCadastroOcorrencia", function (e) {
       contentType: false,
       success: function (response) {
         if (response.status) {
-          // $("#sucessoAlert").delay(800).css("display", "block");
-          // $("form[name='cadastroVeiculo']")[0].reset();
-          // window.location.reload();
+          $("#sucessoOcorrenciaAlert").delay(800).css("display", "block");
+          $("form[name='cadastroOcorrencia']")[0].reset();
+          window.location.reload();
         } else {
-          // $("#erroAlert").css("display", "block");
+          $("#erroOcorrenciaAlert").css("display", "block");
         }
       },
     });

@@ -157,7 +157,7 @@ $listaFuncionarios = $veiculos->selectFuncionarios();
 </div>
 
 <!-- Modal Edição de Veículo  -->
-<div class="modal fade bd-example-modal-lg" id="editVeiculo" tabindex="-1" role="dialog" aria-labelledby="EditaVeiculo" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg overflow-auto" id="editVeiculo" tabindex="-1" role="dialog" aria-labelledby="EditaVeiculo" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -207,7 +207,7 @@ $listaFuncionarios = $veiculos->selectFuncionarios();
 </div>
 
 <!-- Modal Cadastro de OCorrencia  -->
-<div class="modal fade bd-example-modal-lg" id="cadastraOcorrencia" role="dialog" aria-labelledby="CadastroOcorrencia" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="cadastraOcorrencia" role="dialog" aria-labelledby="CadastroOcorrencia">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -215,6 +215,12 @@ $listaFuncionarios = $veiculos->selectFuncionarios();
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+            </div>
+            <div class="alert alert-success text-center" id="sucessoOcorrenciaAlert" role="alert" style="display: none;">
+                <b>Sucesso!</b> Ocorrência cadastrado com sucesso.
+            </div>
+            <div class="alert alert-danger text-center" id="erroOcorrenciaAlert" role="alert" style="display: none;">
+                <b>Erro!</b> Não foi possível cadastrar o ocorrência.
             </div>
             <div class="modal-body" id="bodyOcorrencias">
                 <div class="row justify-content-center">
@@ -334,7 +340,7 @@ $listaFuncionarios = $veiculos->selectFuncionarios();
                             </table>
                             <div class="d-flex w-100 justify-content-center">
                                 <button type="button" class="btn btn-success w-25 mr-3" id="sendCadastroOcorrencia">Salvar</button>
-                                <button type="button" class="btn btn-warning w-25">Voltar</button>
+                                <button type="button" class="btn btn-warning w-25" data-dismiss="modal">Voltar</button>
                             </div>
                         </form>
                     </div>

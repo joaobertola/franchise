@@ -78,6 +78,9 @@ $ocorrecias = $ocorrencia->selectAll($idVeiculo);
                     </tr>
                     <tr id="linhaImagem<?= $o['idocorrencia']; ?>" style="display: none;">
                         <td colspan="2" class="table-active font-weight-bold">
+                            <button type="button" class="close" onclick="$('#linhaImagem<?= $o['idocorrencia']; ?>').css('display', 'none');" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                             <div class="d-flex w-100 align-items-center">
                                 <img width="100%" src="#" id="imagem<?= $o['idocorrencia']; ?>" class="imagemOcorrencia">
                             </div>
