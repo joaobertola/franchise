@@ -183,5 +183,4 @@ $rstFuncionario = mysql_query($qryFuncionario, $con);
 
         });
     })
-
 </script>
