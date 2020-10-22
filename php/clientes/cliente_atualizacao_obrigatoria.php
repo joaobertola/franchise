@@ -88,7 +88,7 @@ if($_REQUEST['alterar_cliente'] == "S"){
 }
 
 
-if ( strlen($_REQUEST['codigo'] > 5)){
+if ( strlen($_REQUEST['codigo']) > 5){
     $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,6)='{$_REQUEST['codigo']}' ";
 }else{
     $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,5)='{$_REQUEST['codigo']}' ";
