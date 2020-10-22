@@ -114,14 +114,23 @@ if($_REQUEST['codigo']){
 
 if ($tipo == "b") $frq = "AND a.id_franquia='{$_SESSION['usuario']}'";
 else $frq = "";
-    
+
+
+if ( strlen($codloja > 5)){
+    $sql_concat = "mid(logon,1,6) as logon, 
+    mid(b.logon,8,10) as senha, ";
+}else{
+    $sql_concat = "mid(logon,1,5) as logon, 
+    mid(b.logon,7,10) as senha, ";
+}
+
 $comando = "SELECT 
 				a.renegociacao_tabela, a.codloja, a.razaosoc, a.insc, a.nomefantasia, a.uf, a.cidade, 
 				a.bairro, a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.id_franquia, 
 				date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.ramo_atividade,
 				a.obs, a.mensalidade_solucoes, a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, 
-				a.cpfsocio2, a.emissao_financeiro, a.vendedor, mid(b.logon,1,5) as logon, 
-				mid(b.logon,7,10) as senha, a.classe, a.banco_cliente, a.agencia_cliente,
+				a.cpfsocio2, a.emissao_financeiro, a.vendedor, ".$sql_concat."
+				 a.classe, a.banco_cliente, a.agencia_cliente,
 			    a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta, a.complemento,
 				a.inscricao_estadual, a.cnae_fiscal, a.inscricao_municipal, 
 				a.inscricao_estadual_tributario, a.numero, a.tipo_cliente, a.insc
@@ -131,10 +140,10 @@ $comando = "SELECT
 			where a.codloja='$codloja' $frq limit 1";
 
 
-//if ( $_REQUEST['codigo'] == 90481 ){
-//    echo "<pre>".$comando;
-//    die;
-//}
+if ( $_REQUEST['codigo'] == 90481 ){
+    echo "<pre>".$comando;
+    die;
+}
 $res = mysql_query ($comando, $con);
 $total = mysql_num_rows($res);
 $matriz = mysql_fetch_array($res);
@@ -404,14 +413,7 @@ address {clear: both; padding: 30px 0;}
 
 
 
-    <td class="subtitulopequeno"><b>
-        <?php 
-        if ( strlen($matriz['logon'] > 5)){
-            $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,6)='{$matriz['logon']}' ";
-        }else{
-            $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,5)='{$matriz['logon']}' ";
-        }
-        ?></b></td>
+    <td class="subtitulopequeno"><b><?=$matriz['logon']?></b></td>
   </tr>
   
   <tr height="28px">
