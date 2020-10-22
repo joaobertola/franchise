@@ -116,7 +116,7 @@ if (isset($id)) {
                         left outer join cs2.consultores_assistente g on g.id = a.id_consultor
                         left outer join cs2.consultores_assistente h on h.id = a.id_agendador
                         LEFT JOIN operadora o on o.id = a.id_operadora
-            where mid(b.logon,1,5)='$codigo' $frq limit 1";
+            where mid(b.logon,1,locate('S',b.logon)-1)='$codigo' $frq limit 1";
 }
 
 ///echo "<pre>".$comando;
