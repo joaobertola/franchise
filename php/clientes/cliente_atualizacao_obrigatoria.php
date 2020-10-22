@@ -100,6 +100,7 @@ if($_REQUEST['codigo']){
 }elseif($_REQUEST['cnpj']){   
 	$cnpj = limpaCaracter($_REQUEST['cnpj']);
 	$sql_sel = "SELECT * FROM cs2.cadastro WHERE insc = '$cnpj' ";
+	echo $sql_sel;die;
 	$res_sel = mysql_query($sql_sel, $con);
 	$matriz_sel = mysql_fetch_array($res_sel);
 	$codloja = $matriz_sel['codloja'];  
