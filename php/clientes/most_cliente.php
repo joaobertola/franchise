@@ -29,7 +29,7 @@ $comando = "SELECT
 $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 
-$sql = "select mid(logon,1,5), mid(logon,7,10), sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select mid(logon,1,locate('S',logon)-1)) as logon, mid(logon,locate('S',logon)+1),10) as senha, sitlog from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 
@@ -48,7 +48,7 @@ $_comando = "SELECT
 			a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.id_franquia, 
 			date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.ramo_atividade, a.obs,
 			a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2, a.emissao_financeiro, a.vendedor,
-			mid(b.logon,1,5) as logon, mid(b.logon,7,10) as senha, a.classe, a.banco_cliente, a.agencia_cliente,
+			mid(b.logon,1,locate('S',b.logon)-1)) as logon, mid(b.logon,locate('S',b.logon)+1),10) as senha, a.classe, a.banco_cliente, a.agencia_cliente,
 			a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta, 
 			a.inscricao_estadual, a.cnae_fiscal, a.inscricao_municipal, 
 			a.inscricao_estadual_tributario, a.numero, a.complemento, a.vr_max_limite_crediario,
@@ -135,12 +135,12 @@ function alterarCliente(){
 
             <tr>
                 <td class="subtitulodireita">C&oacute;digo de Cliente </td>
-                <td class="campojustificado"><?php echo $log['mid(logon,1,5)']; ?></td>
+                <td class="campojustificado"><?php echo $log['logon']; ?></td>
             </tr>
             <tr>
                 <td class="subtitulodireita">Senha</td>
                 <td class="subtitulopequeno">
-                    <?php echo $log['mid(logon,8,10)']; ?></td>
+                    <?php echo $log['senha']; ?></td>
             </tr>
 
             <tr>
