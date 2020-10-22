@@ -30,6 +30,9 @@ $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 
 $sql = "select mid(logon,1,locate('S',logon)-1)) as logon, mid(logon,locate('S',logon)+1),10) as senha, sitlog from logon where codloja='$codloja' limit 1";
+
+echo $sql; die;
+
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 
