@@ -186,14 +186,10 @@ while ($rx = mysql_fetch_array($qry_corresp)) {
                 </a><br>";
 }
 
-$sql = "select mid(logon,1,locate('S',b.logon)-1) as logon, sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select mid(logon,1,locate('S',logon)-1) as logon, sitlog from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query($sql, $con);
 $log = mysql_fetch_array($resposta);
 $logon = $log['logon'];
-
-echo $sql;
-
-echo '<b>'.$logon.'</b>';
 
 require "connect/conexao_conecta_virtual.php";
 $sql = "SELECT concat(fra_nomesite, '.', fra_dominio) url FROM dbsites.tbl_framecliente WHERE fra_codloja = $codloja LIMIT 1;";
