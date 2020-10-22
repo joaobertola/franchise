@@ -86,7 +86,7 @@ if ($go=='ingressar') {
 				where mid(logon,1,locate('S',a.logon)-1)='$codigo' and id_franquia='$id_franquia'";
 	}
 	$resulta = mysql_query($sql,$con);
-	$linha = mysql_num_rows($resulta); 
+	$linha = mysql_num_rows($resulta);
 	if ($linha == 0) {
 
 		print"<script>alert(\"Cliente não existe ou nao pertence a sua franquia!\");history.go(-1)</script>";
