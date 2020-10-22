@@ -177,8 +177,9 @@ $data_atual = date("Y-m-d");
                 });
             }
         });
-    }
 
+
+    }
     function closeModalSms() {
         var fundo_modal = document.getElementById('fundo-modal-sms');
         var modal = document.getElementById('modal-sms');
@@ -219,6 +220,7 @@ $data_atual = date("Y-m-d");
         } else {
             div.style.display = 'none';
         }
+
     }
 
     function limpar(form, idDiv) {
@@ -294,6 +296,7 @@ $data_atual = date("Y-m-d");
                 }
             }
         });
+
     }
 
     $(document).ready(function () {
@@ -331,41 +334,39 @@ $data_atual = date("Y-m-d");
 // pega o saldo do crediario/credupere
 
 $saldo_crediario = '0,00';
-//echo "<br>".date('H:m:s');
 
 $sql_saldo = "SELECT saldo FROM cs2.contacorrente_recebafacil WHERE codloja='$codloja' order by id";
 $qr2 = mysql_query($sql_saldo, $con) or die("\nErro ao gerar o extrato\n" . mysql_error() . "\n\n");
-//echo "<br>".date('H:m:s');
+
 while ($matriz = mysql_fetch_array($qr2)) {
     $saldo_crediario = number_format($matriz['saldo'], 2, ",", ".");
     $sdo_crediario = $matriz['saldo'];
 }
-//echo "<br>".date('H:m:s');
-$sql_cliente = "select mid(a.logon,1,locate('S',logon)-1) as logon, b.razaosoc, b.nomefantasia,
+
+$sql_cliente = "select mid(a.logon,1,LOCATE('S',a.logon)-1) as logon, b.razaosoc, b.nomefantasia,
                     b.fone, b.fax, b.celular, b.email, b.sitcli
                 from logon a
                 inner join cadastro b on a.codloja=b.codloja
                 where b.codloja = '$codloja'";
-//echo "<br>".date('H:m:s');
+
 $resulta = mysql_query($sql_cliente, $con);
-//echo "<br>".date('H:m:s');
+
 $linha = mysql_num_rows($resulta);
 if ($linha > 0) {
     $matriz = mysql_fetch_array($resulta);
-    $logon = $matriz['logon'];
-    $razaosoc = $matriz['razaosoc'];
-    $razaosoc = $matriz['nomefantasia'];
-    $fone = mascara_celular($matriz['fone']);
-    $fax = mascara_celular($matriz['fax']);
+    $logon          = $matriz['logon'];
+    $razaosoc       = $matriz['razaosoc'];
+    $razaosoc       = $matriz['nomefantasia'];
+    $fone           = mascara_celular($matriz['fone']);
+    $fax            = mascara_celular($matriz['fax']);
     $celular_n_mask = $matriz['celular'];
-    $email = $matriz['email'];
-    $sitcli = $matriz['sitcli'];
-//  $operadora = ver_operadora($celular);
-    $celular = mascara_celular($matriz['celular']);
+    $email          = $matriz['email'];
+    $sitcli         = $matriz['sitcli'];
+//  $operadora      = ver_operadora($celular);
+    $celular        = mascara_celular($matriz['celular']);
 }
 
 // VERIFICA SE O CLIENTE TEM BOLETO DE MULTA E NAO FOI PAGO
-//echo "<br>".date('H:m:s');
 $command = "SELECT 
                 numdoc AS boleto, date_format(vencimento,'%d/%m/%Y') AS venc, valor, 
                 date_format(datapg,'%d/%m/%Y') AS dtpagamento, valorpg, origem_pgto, 
@@ -422,10 +423,6 @@ $linhas1 = $linhas + 3;
                 <div class="modal-body">
                     <button onclick="enviarCodBarraSMS()">Enviar Código de Barras por SMS</button>
                     <button id="modalDigitarCodBarraSMS">Digitar Código de Barras por SMS</button>
-<!--                    <ul>-->
-<!--                        <li><a onclick="enviarCodBarraSMS()" style="cursor: pointer;">Enviar Código de Barras por SMS</a></li>-->
-<!--                        <li><a id="modalDigitarCodBarraSMS" style="cursor: pointer;">Digitar Código de Barras por SMS</a></li>-->
-<!--                    </ul>-->
                 </div>
             </div>
         </div>
@@ -455,23 +452,23 @@ $linhas1 = $linhas + 3;
     echo "
         <table align='center' width='85%' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
             <tr>
-                <td colspan='15' class='titulo'>Faturas</td>
+                <td colspan='16' class='titulo'>Faturas</td>
             </tr>
             <tr>
                 <td colspan='4' class='subtitulodireita'>Codigo</td>
-                <td colspan='11' class='subtitulopequeno'>$logon</td>
+                <td colspan='12' class='subtitulopequeno'>$logon</td>
             </tr>
             <tr>
                 <td colspan='4' class='subtitulodireita'>Razao Social</td>
-                <td colspan='11' class='subtitulopequeno'>$razaosoc</td>
+                <td colspan='12' class='subtitulopequeno'>$razaosoc</td>
             </tr>
             <tr>
                 <td colspan='4' class='subtitulodireita'>Telefones</td>
-                <td colspan='11' class='subtitulopequeno'>$fone<br>$fax<br>$celular - $operadora</td>
+                <td colspan='12' class='subtitulopequeno'>$fone<br>$fax<br>$celular - $operadora</td>
             </tr>
             <tr>
                 <td colspan='4' class='subtitulodireita'>Email</td>
-                <td colspan='11' class='subtitulopequeno'>$email</td>
+                <td colspan='12' class='subtitulopequeno'>$email</td>
             </tr>
             <tr>
                 <td rowspan='$linhas1' width='1' bgcolor='#999999'></td>
