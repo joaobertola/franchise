@@ -88,16 +88,17 @@ if($_REQUEST['alterar_cliente'] == "S"){
 }
 
 
+if ( strlen($_REQUEST['codigo'] > 5)){
+    $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,6)='{$_REQUEST['codigo']}' ";
+}else{
+    $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,5)='{$_REQUEST['codigo']}' ";
+}
+
+echo '<b>'. strlen($_REQUEST['codigo']). ' - ' . $sql_sel . '</b>';
+
 if($_REQUEST['codigo']){
-    if ( strlen($_REQUEST['codigo'] > 5)){
-        echo '<b>'. strlen($_REQUEST['codigo']).'</b>';
 
-
-        $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,6)='{$_REQUEST['codigo']}' ";
-    }else{
-        $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,5)='{$_REQUEST['codigo']}' ";
-    }
-	$res_sel = mysql_query($sql_sel, $con);
+    $res_sel = mysql_query($sql_sel, $con);
 	$matriz_sel = mysql_fetch_array($res_sel);
 	$codloja = $matriz_sel['codloja'];
 }elseif($_REQUEST['cnpj']){   
