@@ -94,8 +94,6 @@ if ( strlen($_REQUEST['codigo']) > 5){
     $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,5)='{$_REQUEST['codigo']}' ";
 }
 
-echo '<b>'. strlen($_REQUEST['codigo']). ' - ' . $sql_sel . '</b>';
-
 if($_REQUEST['codigo']){
 
     $res_sel = mysql_query($sql_sel, $con);
@@ -112,8 +110,8 @@ if($_REQUEST['codigo']){
 }
 
 //if ( $_REQUEST['codigo'] == 90481 ){
-    echo "<pre>".$sql_sel;
-    die;
+//    echo "<pre>".$sql_sel;
+//    die;
 //}
 
 if ($tipo == "b") $frq = "AND a.id_franquia='{$_SESSION['usuario']}'";
@@ -136,8 +134,8 @@ $comando = "SELECT
 
 
 //if ( $_REQUEST['codigo'] == 90481 ){
-    echo "<pre>".$comando;
-    die;
+//    echo "<pre>".$comando;
+//    die;
 //}
 $res = mysql_query ($comando, $con);
 $total = mysql_num_rows($res);
