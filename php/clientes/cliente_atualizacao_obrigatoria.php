@@ -405,7 +405,7 @@ address {clear: both; padding: 30px 0;}
 
 
     <td class="subtitulopequeno"><b>
-        <?=
+        <?php 
         if ( strlen($matriz['logon'] > 5)){
             $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,6)='{$matriz['logon']}' ";
         }else{
