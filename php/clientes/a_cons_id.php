@@ -191,6 +191,10 @@ $resposta = mysql_query($sql, $con);
 $log = mysql_fetch_array($resposta);
 $logon = $log['logon'];
 
+echo $sql;
+
+echo '<b>'.$logon.'</b>';
+
 require "connect/conexao_conecta_virtual.php";
 $sql = "SELECT concat(fra_nomesite, '.', fra_dominio) url FROM dbsites.tbl_framecliente WHERE fra_codloja = $codloja LIMIT 1;";
 $resposta = mysql_query($sql, $con_virtual);
@@ -465,7 +469,7 @@ if ($codloja > 0) {
 
         <tr>
             <td class="subtitulodireita">C&oacute;digo de Cliente </td>
-            <td colspan="2" class="campojustificado"><?php echo $log['logon']; ?></td>
+            <td colspan="2" class="campojustificado"><?php echo $log['mid(logon,1,5)']; ?></td>
 
             <td width="170" class="subtitulopequeno">
                 <?php if (in_array($_SESSION['id'], array(163,4,11,25,28,4,12,128,1388))) { ?>
