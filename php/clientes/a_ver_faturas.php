@@ -177,9 +177,8 @@ $data_atual = date("Y-m-d");
                 });
             }
         });
-
-
     }
+
     function closeModalSms() {
         var fundo_modal = document.getElementById('fundo-modal-sms');
         var modal = document.getElementById('modal-sms');
@@ -220,7 +219,6 @@ $data_atual = date("Y-m-d");
         } else {
             div.style.display = 'none';
         }
-
     }
 
     function limpar(form, idDiv) {
@@ -296,7 +294,6 @@ $data_atual = date("Y-m-d");
                 }
             }
         });
-
     }
 
     $(document).ready(function () {
@@ -344,7 +341,7 @@ while ($matriz = mysql_fetch_array($qr2)) {
     $sdo_crediario = $matriz['saldo'];
 }
 //echo "<br>".date('H:m:s');
-$sql_cliente = "select mid(a.logon,1,5) as logon, b.razaosoc, b.nomefantasia,
+$sql_cliente = "select mid(a.logon,1,locate('S',logon)-1) as logon, b.razaosoc, b.nomefantasia,
                     b.fone, b.fax, b.celular, b.email, b.sitcli
                 from logon a
                 inner join cadastro b on a.codloja=b.codloja
