@@ -70,16 +70,17 @@ if (empty($go)) {
 
 if ($go == 'ingressar') {
     if (($tipo == "a") || ($tipo == "c")) {
-        $resulta = mysql_query("SELECT mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc 
-							FROM logon a
-							INNER JOIN cadastro b ON a.codloja=b.codloja
-							WHERE mid(logon,1,5)='$codigo'", $con);
+        $sql = "SELECT mid(a.logon,1,LOCATE('S',logon)-1) as logon, b.id_franquia, b.codloja, b.razaosoc 
+				FROM logon a
+				INNER JOIN cadastro b ON a.codloja=b.codloja
+				WHERE mid(logon,1,LOCATE('S',logon)-1)='$codigo'";
     } else {
-        $resulta = mysql_query("SELECT MID(a.logon,1,5) AS logon, b.id_franquia, b.codloja, b.razaosoc 
-							FROM logon a
-							INNER JOIN cadastro b ON a.codloja=b.codloja
-							WHERE MID(logon,1,5)='$codigo' AND id_franquia='$id_franquia'", $con);
+        $sql = "SELECT MID(a.logon,1,LOCATE('S',logon)-1) AS logon, b.id_franquia, b.codloja, b.razaosoc 
+				FROM logon a
+				INNER JOIN cadastro b ON a.codloja=b.codloja
+				WHERE MID(logon,1,LOCATE('S',logon)-1)='$codigo' AND id_franquia='$id_franquia'";
     }
+    $resulta = mysql_query($sql,$con);
     $linha = mysql_num_rows($resulta);
     if ($linha == 0) {
         print"<script>alert(\"Cliente não existe ou não pertence à sua franquia!\");history.back();</script>";
