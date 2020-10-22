@@ -108,8 +108,8 @@ if($_REQUEST['codigo']){
 }
 
 //if ( $_REQUEST['codigo'] == 90481 ){
-//    echo "<pre>".$sql_sel;
-//    die;
+    echo "<pre>".$sql_sel;
+    die;
 //}
 
 if ($tipo == "b") $frq = "AND a.id_franquia='{$_SESSION['usuario']}'";
