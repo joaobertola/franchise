@@ -1,7 +1,6 @@
 <br><br><br>
 <?php
-//require_once('class.phpmailer.php');
-//require_once('class.smtp.php');
+
 require_once('connect/sessao.php');
 
 $go   = $_POST['go'];
@@ -78,7 +77,7 @@ if ($go=='ingressar') {
               b.codloja, a.logon, b.id_franquia, b.razaosoc, b.fone, b.cidade, b.uf, b.email 
           FROM cs2.logon a 
           INNER JOIN cs2.cadastro b ON a.codloja=b.codloja 
-          WHERE mid(logon,1,5)='$codigo' $rfq";
+          WHERE mid(logon,1,LOCATE('S',logon)-1)='$codigo' $rfq";
   $resulta = mysql_query($sql, $con) or die ("Erro ao selecionar o codigo");
   $linha = mysql_num_rows($resulta);
   if ($linha == 0) {
@@ -141,8 +140,7 @@ if ($go=='ingressar') {
                 echo "<td class='campoesquerda' style='padding-left:5px'>
                          <table width='100%'>
                             <tr bgcolor='87b5ff'>
-                                <td width='100' colspan='2'>Venc Original</td>
-                              <!--  <td width='100'>Venc Atualizado</td> -->
+                                <td width='100' colspan='2'>Vencimentog</td>
                                 <td>...</td>
                             </tr>
                             <tr>
