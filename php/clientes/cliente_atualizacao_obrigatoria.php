@@ -100,7 +100,6 @@ if($_REQUEST['codigo']){
 }elseif($_REQUEST['cnpj']){   
 	$cnpj = limpaCaracter($_REQUEST['cnpj']);
 	$sql_sel = "SELECT * FROM cs2.cadastro WHERE insc = '$cnpj' ";
-	echo $sql_sel;die;
 	$res_sel = mysql_query($sql_sel, $con);
 	$matriz_sel = mysql_fetch_array($res_sel);
 	$codloja = $matriz_sel['codloja'];  
@@ -133,8 +132,8 @@ $comando = "SELECT
 
 
 //if ( $_REQUEST['codigo'] == 90481 ){
-//    echo "<pre>".$comando;
-//    die;
+    echo "<pre>".$comando;
+    die;
 //}
 $res = mysql_query ($comando, $con);
 $total = mysql_num_rows($res);
