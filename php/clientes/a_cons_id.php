@@ -100,7 +100,7 @@ if (isset($id)) {
             a.fax, a.email, a.tx_mens, a.id_franquia, c.fantasia, date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, 
             a.mensalidade_solucoes, a.sit_cobranca, a.pendencia_contrato,
             d.descsit, a.ramo_atividade, a.obs, a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2, a.id_operadora,
-            a.emissao_financeiro, a.vendedor, mid(b.logon,1,5) as logon, mid(b.logon,8,10) as senha, e.descricao, f.nbanco,
+            a.emissao_financeiro, a.vendedor, mid(b.logon,1,locate('S',b.logon)-1) as logon, mid(b.logon,locate('S',b.logon)+1,10) as senha, e.descricao, f.nbanco,
             a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.tpconta, a.nome_doc, a.tx_mens_anterior, a.emitir_nfs, a.limite_credito, a.liberar_nfe, a.status_nfe, a.user_pendencia, a.tipo_nfe,
             a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2, a.agendador,
             a.multa_contratual, IF(a.id_consultor = 0 OR a.id_consultor IS NULL OR a.id_consultor = '', a.vendedor, g.nome) as nome_consultor, h.nome as nome_agendador,
@@ -186,10 +186,10 @@ while ($rx = mysql_fetch_array($qry_corresp)) {
                 </a><br>";
 }
 
-$sql = "select mid(logon,1,5), mid(logon,7,10), sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select mid(logon,1,locate('S',b.logon)-1) as logon, sitlog from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query($sql, $con);
 $log = mysql_fetch_array($resposta);
-$logon = $log['mid(logon,1,5)'];
+$logon = $log['logon'];
 
 require "connect/conexao_conecta_virtual.php";
 $sql = "SELECT concat(fra_nomesite, '.', fra_dominio) url FROM dbsites.tbl_framecliente WHERE fra_codloja = $codloja LIMIT 1;";
