@@ -1,12 +1,12 @@
 <?php if (empty($_POST['dataInicial']) || empty($_POST['dataFinal'])) : ?>
     <script>
         alert('Periodo Inicial e Final Obrigatório');
-        location.href = '../php/painel.php?pagina1=area_restrita/d_equipamentos_relatorio.php';
+        location.href = '../php/painel.php?pagina1=area_restrita/rel_brincadeira.php';
     </script>
 <?php elseif (empty($_POST['franquiaPontuacao']) || $_POST['franquiaPontuacao'] == 0) : ?>
     <script>
         alert('Você deve selecionar uma franquia!');
-        location.href = '../php/painel.php?pagina1=area_restrita/d_equipamentos_relatorio.php';
+        location.href = '../php/painel.php?pagina1=area_restrita/rel_brincadeira.php';
     </script>
 <?php endif; ?>
 

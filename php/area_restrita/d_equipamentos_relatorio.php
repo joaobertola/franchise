@@ -166,7 +166,6 @@ require "connect/sessao.php";
         document.getElementById('escolha5').style.display = 'none';
         document.getElementById('escolha6').style.display = 'none';
         document.getElementById('escolha7').style.display = 'none';
-        document.getElementById('escolha8').style.display = 'none';
 
         if (document.getElementById(id).style.display == 'none') {
             document.getElementById(id).style.display = '';
@@ -179,7 +178,6 @@ require "connect/sessao.php";
         if (id == 'escolha5') document.relatorio.equipamento.focus();
         if (id == 'escolha6') document.relatorio.equipamento.focus();
         if (id == 'escolha7') document.relatorio.equipamento.focus();
-        if (id == 'escolha8') document.relatorio.equipamento.focus();
 
     }
 
@@ -355,7 +353,6 @@ $resFuncao = mysql_query($sqlFuncao, $con);
                 <input type="radio" name='tp_rel' id="tp_rel4" value="4" onClick="javascript: mostrar('escolha4');return true;">Produtos &nbsp;&nbsp;
                 <?php if ($id_franquia == 163) { ?>
                     <input type="radio" name='tp_rel' id="tp_rel5" value="5" onClick="javascript: mostrar('escolha5');return true;">Funcionários/Premiações &nbsp;&nbsp;
-                    <input type="radio" name='tp_rel' id="tp_rel8" value="8" onClick="javascript: mostrar('escolha8');return true;">Pontuação Brincadeira &nbsp;&nbsp;
                 <?php } ?>
                 <input type="radio" name='tp_rel' id="tp_rel6" value="6" onClick="javascript: mostrar('escolha6');return true;">Check List Equipamentos/Produtos
                 <input type="radio" name='tp_rel' id="tp_rel6" value="7" onClick="javascript: mostrar('escolha7');return true;">Relatório Estorno
