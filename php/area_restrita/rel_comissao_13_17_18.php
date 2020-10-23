@@ -42,6 +42,8 @@ if ( $id_funcionario > 0 )
     $sql .= " AND f.id = $id_funcionario";
 
 
+//echo '<pre>'.$sql;
+
 $res = mysql_query($sql, $con); ?>
 <button type="button" id="btnImprimir" class="btnImprimir pull-right" style="margin-top: 15px;">Imprimir Relatório</button>
 <div class="imprimir">
@@ -93,8 +95,8 @@ $res = mysql_query($sql, $con); ?>
                                 GROUP BY ce.id
                                 ORDER BY ce.id ASC";
 
-         //   echo '<pre>'.$sqlEquipamentos;
-         //   die;
+           // echo '<pre>'.$sqlEquipamentos;
+           // die;
 
             $qryEquipamentos = mysql_query($sqlEquipamentos, $con);
 
