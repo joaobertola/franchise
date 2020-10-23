@@ -702,6 +702,7 @@ $resFuncao = mysql_query($sqlFuncao, $con);
                 </select>
             </td>
         </tr>
+        <!--
         <tr height='30'>
             <td class="subtitulodireita">Função</td>
             <td height="22" colspan="3" class="subtitulopequeno">
@@ -710,6 +711,7 @@ $resFuncao = mysql_query($sqlFuncao, $con);
                 </select>
             </td>
         </tr>
+    -->
         <tr height='30'>
             <td class="subtitulodireita">Ativo</td>
             <td height="22" colspan="3" class="subtitulopequeno">
