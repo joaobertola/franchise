@@ -8,7 +8,6 @@
  **/
 require_once('auxiliarTabelaComissao.php');
 
-
 if (empty($_POST['data2I']) || empty($_POST['data2F'])) { ?>
 
     <script>
