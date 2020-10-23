@@ -7,10 +7,9 @@ require "connect/sessao.php";
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment-with-langs.min.js" type="text/javascript"></script>
 <script language="JavaScript" src="../js/jquery.meio.mask.js" type="text/javascript"></script>
 <script>
+    $(document).ready(function() {
 
-    $(document).ready(function () {
-
-        $('select[name="franqueado"]').on('change', function () {
+        $('select[name="franqueado"]').on('change', function() {
             var id_franquia = $(this).val();
             $.ajax({
                 url: '../php/clientes/BuscaConsultorAgendador.php',
@@ -20,7 +19,7 @@ require "connect/sessao.php";
                 },
                 type: 'POST',
                 dataType: 'text',
-                success: function (data) {
+                success: function(data) {
                     var arrResult = data.split(';');
                     $('select[name="id_funcionario"]').html('');
                     $('select[name="id_funcionario"]').append('<OPTION value="0">TODOS</OPTION>' + arrResult[0]);
@@ -30,7 +29,7 @@ require "connect/sessao.php";
             });
         });
 
-        $('select[name="iptFuncao"]').on('change', function(){
+        $('select[name="iptFuncao"]').on('change', function() {
 
             var idFuncao = $(this).val();
             var ativo = $('select[name="iptAtivo"] option:checked').val();
@@ -44,7 +43,7 @@ require "connect/sessao.php";
                 },
                 type: 'POST',
                 dataType: 'json',
-                success:function(data){
+                success: function(data) {
 
                     $('select[name="id_funcionario"]').html('');
                     $('select[name="id_funcionario"]').append('<OPTION value="0">TODOS</OPTION>' + data);
@@ -54,7 +53,7 @@ require "connect/sessao.php";
 
         });
 
-        $('select[name="iptAtivo"]').on('change', function(){
+        $('select[name="iptAtivo"]').on('change', function() {
 
             var ativo = $(this).val();
             var idFuncao = $('select[name="iptFuncao"] option:checked').val();
@@ -68,7 +67,7 @@ require "connect/sessao.php";
                 },
                 type: 'POST',
                 dataType: 'json',
-                success:function(data){
+                success: function(data) {
 
                     $('select[name="id_funcionario"]').html('');
                     $('select[name="id_funcionario"]').append('<OPTION value="0">TODOS</OPTION>' + data);
@@ -78,7 +77,7 @@ require "connect/sessao.php";
 
         });
 
-        $('select[name="id_funcionario"]').on('change', function () {
+        $('select[name="id_funcionario"]').on('change', function() {
 
             var id_funcionario = $(this).val();
 
@@ -90,7 +89,7 @@ require "connect/sessao.php";
                 },
                 type: 'POST',
                 dataType: 'json',
-                success: function (data) {
+                success: function(data) {
                     $('#funcaoFuncionario').html(data.funcao);
                 }
             })
@@ -167,6 +166,7 @@ require "connect/sessao.php";
         document.getElementById('escolha5').style.display = 'none';
         document.getElementById('escolha6').style.display = 'none';
         document.getElementById('escolha7').style.display = 'none';
+        document.getElementById('escolha8').style.display = 'none';
 
         if (document.getElementById(id).style.display == 'none') {
             document.getElementById(id).style.display = '';
@@ -179,6 +179,7 @@ require "connect/sessao.php";
         if (id == 'escolha5') document.relatorio.equipamento.focus();
         if (id == 'escolha6') document.relatorio.equipamento.focus();
         if (id == 'escolha7') document.relatorio.equipamento.focus();
+        if (id == 'escolha8') document.relatorio.equipamento.focus();
 
     }
 
@@ -208,7 +209,7 @@ require "connect/sessao.php";
                     $('.idConsignacaoSpan').text(json.id_franquia_equipamento);
                     $('.DtConsignacaoSpan').text(moment(json.data).format("DD/MM/YYYY"));
                     $('.ConsultorSpan').text(json.nome);
-                    $('.DescProdSpan').text(json.codigo_barra+" - "+ json.descricao);
+                    $('.DescProdSpan').text(json.codigo_barra + " - " + json.descricao);
 
                     $('.idConsignacao').removeAttr('style');
                     $('.DtConsignacao').removeAttr('style');
@@ -216,8 +217,8 @@ require "connect/sessao.php";
                     $('.DescProd').removeAttr('style');
                     $('.estornar').removeAttr('style');
                     $('.motivo').removeAttr('style');
-                    $('.tipoConsignacao').removeAttr('style');                    
-                }else{
+                    $('.tipoConsignacao').removeAttr('style');
+                } else {
                     alert("Não existe o produto consignado.");
                 }
             }
@@ -249,7 +250,7 @@ require "connect/sessao.php";
             },
             type: 'POST',
             dataType: 'json',
-            success: function (data) {
+            success: function(data) {
 
                 if (data == 1) {
                     alert('Consignação estornada com sucesso!');
@@ -274,7 +275,7 @@ require "connect/sessao.php";
                 },
                 type: 'POST',
                 dataType: 'json',
-                success: function (data) {
+                success: function(data) {
                     if (data == $('#iptSenha').val()) {
                         console.log('chegou');
                         confirmarEstorno($('#numero_serie').val());
@@ -285,7 +286,6 @@ require "connect/sessao.php";
             })
         }
     }
-
 </script>
 <?php
 
@@ -336,7 +336,7 @@ $sqlFuncao = "
                 WHERE ativo = '1'
                 ORDER BY descricao
                 ";
-$resFuncao = mysql_query($sqlFuncao,$con);
+$resFuncao = mysql_query($sqlFuncao, $con);
 ?>
 <form method="post" action="#" name='relatorio' id='relatorio'>
     <table width=70% border="0" align="center">
@@ -349,27 +349,21 @@ $resFuncao = mysql_query($sqlFuncao,$con);
 
         <tr>
             <td class="campoesquerda" colspan="2" style="text-align: center">
-                <input type="radio" name='tp_rel' id="tp_rel1" value="1"
-                       onClick="javascript: mostrar('escolha1');return true;">Cliente &nbsp;&nbsp;
-                <input type="radio" name='tp_rel' id="tp_rel2" value="2"
-                       onClick="javascript: mostrar('escolha2');return true;">Franquia &nbsp;&nbsp;
-                <input type="radio" name='tp_rel' id="tp_rel3" value="3"
-                       onClick="javascript: mostrar('escolha3');return true;">N&deg; S&eacute;rie &nbsp;&nbsp;
-                <input type="radio" name='tp_rel' id="tp_rel4" value="4"
-                       onClick="javascript: mostrar('escolha4');return true;">Produtos &nbsp;&nbsp;
-                <?php if($id_franquia == 163){ ?>
-                <input type="radio" name='tp_rel' id="tp_rel5" value="5"
-                       onClick="javascript: mostrar('escolha5');return true;">Funcionários/Premiações &nbsp;&nbsp;
+                <input type="radio" name='tp_rel' id="tp_rel1" value="1" onClick="javascript: mostrar('escolha1');return true;">Cliente &nbsp;&nbsp;
+                <input type="radio" name='tp_rel' id="tp_rel2" value="2" onClick="javascript: mostrar('escolha2');return true;">Franquia &nbsp;&nbsp;
+                <input type="radio" name='tp_rel' id="tp_rel3" value="3" onClick="javascript: mostrar('escolha3');return true;">N&deg; S&eacute;rie &nbsp;&nbsp;
+                <input type="radio" name='tp_rel' id="tp_rel4" value="4" onClick="javascript: mostrar('escolha4');return true;">Produtos &nbsp;&nbsp;
+                <?php if ($id_franquia == 163) { ?>
+                    <input type="radio" name='tp_rel' id="tp_rel5" value="5" onClick="javascript: mostrar('escolha5');return true;">Funcionários/Premiações &nbsp;&nbsp;
+                    <input type="radio" name='tp_rel' id="tp_rel8" value="8" onClick="javascript: mostrar('escolha8');return true;">Pontuação Brincadeira &nbsp;&nbsp;
                 <?php } ?>
-                <input type="radio" name='tp_rel' id="tp_rel6" value="6"
-                       onClick="javascript: mostrar('escolha6');return true;">Check List Equipamentos/Produtos
-                <input type="radio" name='tp_rel' id="tp_rel6" value="7"
-                       onClick="javascript: mostrar('escolha7');return true;">Relatório Estorno
+                <input type="radio" name='tp_rel' id="tp_rel6" value="6" onClick="javascript: mostrar('escolha6');return true;">Check List Equipamentos/Produtos
+                <input type="radio" name='tp_rel' id="tp_rel6" value="7" onClick="javascript: mostrar('escolha7');return true;">Relatório Estorno
             </td>
         </tr>
     </table>
 
-    <table id="escolha1" style="display:none;" border="0" width="70%" cellpadding="0" align="center"/>
+    <table id="escolha1" style="display:none;" border="0" width="70%" cellpadding="0" align="center" />
     <tr height='30'>
         <td class="subtitulodireita">Cliente</td>
         <td class="subtitulopequeno">
@@ -379,13 +373,13 @@ $resFuncao = mysql_query($sqlFuncao,$con);
     </tr>
     <tr height='30'>
         <td colspan="2" class="titulo" align="center">
-            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()"/>
-            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()"/>
+            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()" />
+            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()" />
         </td>
     </tr>
     </table>
 
-    <table id="escolha2" style="display:none;" border="0" width="70%" cellpadding="0" align="center"/>
+    <table id="escolha2" style="display:none;" border="0" width="70%" cellpadding="0" align="center" />
     <tr height='30'>
         <td class="subtitulodireita">Per&iacute;odo</td>
         <td class="subtitulopequeno">
@@ -428,59 +422,58 @@ $resFuncao = mysql_query($sqlFuncao,$con);
     </tr>
     <tr height='30'>
         <td colspan="2" class="titulo" align="center">
-            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()"/>
-            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()"/>
+            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()" />
+            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()" />
         </td>
     </tr>
     </table>
 
-    <table id="escolha3" style="display:none;" border="0" width="70%" cellpadding="0" align="center"/>
+    <table id="escolha3" style="display:none;" border="0" width="70%" cellpadding="0" align="center" />
     <tr height='30'>
         <td class="subtitulodireita">N&deg; de S&eacute;rie</td>
         <td class="subtitulopequeno">
-            <input type="text" value="" name="numero_serie" id="numero_serie"/>
+            <input type="text" value="" name="numero_serie" id="numero_serie" />
         </td>
     </tr>
     <tr height='30'>
         <td colspan="2" class="titulo" align="center">
-            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()"/>
-            <input type="button" name="enviar" value="    Estornar    " onclick="estorno(<?php echo $id_franquia ?>)"/>
-            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()"/>
+            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()" />
+            <input type="button" name="enviar" value="    Estornar    " onclick="estorno(<?php echo $id_franquia ?>)" />
+            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()" />
         </td>
     </tr>
     <tr>
     <tr height='30' class="idConsignacao hide" style="display: none;">
         <td class="subtitulo" style="text-align: right !important; padding-right: 10px;">Consignação</td>
-            <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
-                <span class="idConsignacaoSpan" style="font-weight: normal; padding-left: 10px;"></span>
-            </td> 
-    </tr>        
+        <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
+            <span class="idConsignacaoSpan" style="font-weight: normal; padding-left: 10px;"></span>
+        </td>
+    </tr>
     <tr height='30' class="Consultor hide" style="display: none;">
         <td class="subtitulo" style="text-align: right !important; padding-right: 10px;">Consultor</td>
-            <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
-                <span class="ConsultorSpan" style="font-weight: normal; padding-left: 10px;"></span>
-            </td> 
-    </tr>         
+        <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
+            <span class="ConsultorSpan" style="font-weight: normal; padding-left: 10px;"></span>
+        </td>
+    </tr>
     <tr height='30' class="DtConsignacao hide" style="display: none;">
         <td class="subtitulo" style="text-align: right !important; padding-right: 10px;">Data Consignação</td>
-            <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
-                <span class="DtConsignacaoSpan" style="font-weight: normal; padding-left: 10px;"></span>
-            </td> 
-    </tr>    
+        <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
+            <span class="DtConsignacaoSpan" style="font-weight: normal; padding-left: 10px;"></span>
+        </td>
+    </tr>
     <tr height='30' class="DescProd hide" style="display: none;">
         <td class="subtitulo" style="text-align: right !important; padding-right: 10px;">Descrição do Produto</td>
-            <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
-                <span class="DescProdSpan" style="font-weight: normal; padding-left: 10px;"></span>
-            </td> 
-    </tr>           
+        <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
+            <span class="DescProdSpan" style="font-weight: normal; padding-left: 10px;"></span>
+        </td>
+    </tr>
     <tr height='30' class="tipoConsignacao hide" style="display: none;">
         <td class="subtitulo" style="text-align: right !important; padding-right: 10px;">Tipo</td>
         <td colspan="" class="subtitulo" align="center" style="text-align: left !important">
             <input type="radio" id="iptTipoEstorno" name="iptTipoEstorno" value="C" checked>Estornar Consignação
             &nbsp;&nbsp;
             <?php if ($id_franquia == 163) { ?>
-                <input type="radio" id="iptTipoEstorno" name="iptTipoEstorno"
-                       value="V">Estornar Produto de Venda
+                <input type="radio" id="iptTipoEstorno" name="iptTipoEstorno" value="V">Estornar Produto de Venda
             <?php } ?>
         </td>
     </tr>
@@ -493,15 +486,15 @@ $resFuncao = mysql_query($sqlFuncao,$con);
     <tr height='30' class="estornar hide" style="display: none;">
         <td class="subtitulo" style="text-align: right !important;"><?php echo $id_franquia == 163 ? '' : 'Senha:' ?></td>
         <td colspan="" class="subtitulo" style="text-align: left !important">
-            <?php if($id_franquia != 163) { ?>
-                <input type="password" name="iptSenha" id="iptSenha"/>
+            <?php if ($id_franquia != 163) { ?>
+                <input type="password" name="iptSenha" id="iptSenha" />
             <?php } ?>
-            <input type="button" name="estornar" value="    Confirmar    " onclick="verificarSenha()"/>
+            <input type="button" name="estornar" value="    Confirmar    " onclick="verificarSenha()" />
         </td>
     </tr>
     </table>
 
-    <table id="escolha4" style="display:none;" border="0" width="70%" cellpadding="0" align="center"/>
+    <table id="escolha4" style="display:none;" border="0" width="70%" cellpadding="0" align="center" />
     <tr height='30'>
         <td class="subtitulodireita">Equipamento</td>
         <td class="subtitulopequeno">
@@ -532,13 +525,13 @@ $resFuncao = mysql_query($sqlFuncao,$con);
     </tr>
     <tr height='30'>
         <td colspan="2" class="titulo" align="center">
-            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()"/>
-            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()"/>
+            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()" />
+            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()" />
         </td>
     </tr>
     </table>
 
-    <table id="escolha6" style="display:none;" border="0" width="70%" cellpadding="0" align="center"/>
+    <table id="escolha6" style="display:none;" border="0" width="70%" cellpadding="0" align="center" />
     <tr height='30'>
         <td class="subtitulodireita">Franquia</td>
         <td class="subtitulopequeno">
@@ -593,14 +586,14 @@ $resFuncao = mysql_query($sqlFuncao,$con);
     </tr>
     <tr height='30'>
         <td colspan="2" class="titulo" align="center">
-            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()"/>
-            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()"/>
+            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()" />
+            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()" />
         </td>
     </tr>
 
 
     </table>
-    <table id="escolha5" style="display:none;" border="0" width="70%" cellpadding="0" align="center"/>
+    <table id="escolha5" style="display:none;" border="0" width="70%" cellpadding="0" align="center" />
     <tr height='30'>
         <td class="subtitulodireita">Per&iacute;odo</td>
         <td class="subtitulopequeno">
@@ -644,9 +637,9 @@ $resFuncao = mysql_query($sqlFuncao,$con);
         <td height="22" colspan="3" class="subtitulopequeno">
             <select name="iptFuncao">
                 <option value="0">TODOS</option>
-                    <?php while($arrFuncao = mysql_fetch_array($resFuncao)){ ?>
-                        <option value="<?php echo $arrFuncao['id'] ?>"><?php echo $arrFuncao['descricao']?></option>
-                    <?php } ?>
+                <?php while ($arrFuncao = mysql_fetch_array($resFuncao)) { ?>
+                    <option value="<?php echo $arrFuncao['id'] ?>"><?php echo $arrFuncao['descricao'] ?></option>
+                <?php } ?>
                 </option>
             </select>
         </td>
@@ -670,13 +663,79 @@ $resFuncao = mysql_query($sqlFuncao,$con);
     </tr>
     <tr height='30'>
         <td colspan="2" class="titulo" align="center">
-            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()"/>
-            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()"/>
+            <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()" />
+            <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()" />
         </td>
     </tr>
     </table>
+    <table id="escolha8" style="display:none;" border="0" width="70%" cellpadding="0" align="center">
+        <tr height='30'>
+            <td class="subtitulodireita">Per&iacute;odo</td>
+            <td class="subtitulopequeno">
+                <input type="text" id="dataInicial" name="dataInicial" onKeyPress="return MM_formtCep(event,this,'##/##/####');">
+                a
+                <input type="text" id="dataFinal" name="dataFinal" onKeyPress="return MM_formtCep(event,this,'##/##/####');">
+                &nbsp;
+            </td>
+        </tr>
+        <tr height='30'>
+            <td class="subtitulodireita">Franquia</td>
+            <td class="subtitulopequeno">
+                <select name="franquiaPontuacao" id="franquiaPontuacao" style="width:70%">
+                    <option value='0'>TODAS</option>
+                    <?php
+                    $sql = "SELECT id, fantasia FROM franquia WHERE sitfrq=0 AND classificacao != 'J' ORDER BY id";
+                    $resposta = mysql_query($sql, $con);
+                    while ($array = mysql_fetch_array($resposta)) {
+                        $id_franqueado = $array["id"];
+                        $nome_franquia = $array["fantasia"];
+                        if ($id_franqueado == $_REQUEST['franqueado']) {
+                            echo "<option value=\"$id_franqueado\" selected>$id_franqueado - $nome_franquia</option>\n";
+                        } else {
+                            echo "<option value=\"$id_franqueado\"";
+                            if ($id_franqueado == $matriz['id_franquia'])
+                                echo "selected";
+                            echo ">$id_franqueado - $nome_franquia</option>\n";
+                        }
+                    }
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <tr height='30'>
+            <td class="subtitulodireita">Função</td>
+            <td height="22" colspan="3" class="subtitulopequeno">
+                <select name="iptFuncao">
+                    <option value="9">Atendimento Comercial Externo</option>
+                </select>
+            </td>
+        </tr>
+        <tr height='30'>
+            <td class="subtitulodireita">Ativo</td>
+            <td height="22" colspan="3" class="subtitulopequeno">
+                <select name="iptAtivo">
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+            </td>
+        </tr>
+        <tr height='30'>
+            <td class="subtitulodireita">Funcionário</td>
+            <td height="22" colspan="3" class="subtitulopequeno">
+                <select name='id_funcionario' id='id_funcionario' style='width:65%'>
+                    <option value="0">TODOS</option>
+                </select>
+            </td>
+        </tr>
+        <tr height='30'>
+            <td colspan="2" class="titulo" align="center">
+                <input type="button" name="enviar" value="    Gerar Relatório    " onclick="ConfirmarRelatorio()" />
+                <input type="button" name="voltar" value="    Voltar    " onclick="voltar_tela()" />
+            </td>
+        </tr>
+    </table>
 
-    <table id="escolha7" style="display:none;" border="0" width="70%" cellpadding="0" align="center"/>
+    <table id="escolha7" style="display:none;" border="0" width="70%" cellpadding="0" align="center" />
     <tr height='30'>
         <td colspan="7" class="titulo">Relatório de Estorno</td>
     </tr>

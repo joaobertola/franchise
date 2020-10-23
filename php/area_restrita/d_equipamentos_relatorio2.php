@@ -2,12 +2,12 @@
 <script src="https://www.webcontrolempresas.com.br/franquias/css/assets/js/bootstrap.min.js"></script>
 <script src="https://www.webcontrolempresas.com.br/franquias/css/assets/js/mask.js"></script>
 <script>
-    $(document).ready(function(){
-        $('#myModal2').on('show.bs.modal', function(){ 
+    $(document).ready(function() {
+        $('#myModal2').on('show.bs.modal', function() {
             console.log('aqui');
-            setTimeout(function(){
+            setTimeout(function() {
                 $('.focus_input').focus();
-            },1000);
+            }, 1000);
         });
     });
     var post_dataI = '<?= $_REQUEST['dataI'] ?>';
@@ -41,29 +41,29 @@
             }
         }
     }
-    
+
     function voltar() {
         frm = document.tela_voltar;
         frm.action = 'painel.php?pagina1=area_restrita/d_equipamentos_relatorio.php';
         frm.submit();
     }
-    
-    function baixa_parcela( venc, vlr, idp ){
+
+    function baixa_parcela(venc, vlr, idp) {
         $('#vencimento_parcela').val(venc);
         $('#valor_parcela').val(vlr);
         $('#id_pagamento').val(idp);
         $('#myModal2').modal('show');
-        $('.focus_input').focus();       
+        $('.focus_input').focus();
     }
-      
-    function VoltaCheque( venc, vlr, idp, dtconf ){
+
+    function VoltaCheque(venc, vlr, idp, dtconf) {
         $('#vencimento_parcela2').val(venc);
         $('#valor_parcela2').val(vlr);
         $('#id_pagamento2').val(idp);
         $('#data_confirmacao2').val(dtconf);
         $('#myModal3').modal('show');
     }
-    
+
     function saveDataPagamento() {
 
         $.ajax({
@@ -74,16 +74,16 @@
                 'data_confirmacao': $('#data_confirmacao').val(),
                 'cmd': 'ins'
             },
-            success: function (data) {
+            success: function(data) {
                 if (data == 1) {
-                   location.reload();
+                    location.reload();
                 } else {
                     console.log(data);
                 }
             }
         });
     }
-    
+
     function confirmaDevolucao() {
 
         $.ajax({
@@ -93,17 +93,17 @@
                 'id_pagamento': $('#id_pagamento2').val(),
                 'cmd_devol': 'S',
             },
-            success: function (data) {
+            success: function(data) {
                 if (data == 1) {
-                   location.reload();
+                    location.reload();
                 } else {
                     console.log(data);
                 }
             }
         });
     }
-    
-    function DelDataPagamento( idp ) {
+
+    function DelDataPagamento(idp) {
 
         $.ajax({
             url: "area_restrita/d_equipamento_relatorio2_save_recebimento.php?update",
@@ -112,7 +112,7 @@
                 'id_pagamento': idp,
                 'cmd': 'del'
             },
-            success: function (data) {
+            success: function(data) {
                 if (data == 1) {
                     location.reload();
                 } else {
@@ -121,8 +121,8 @@
             }
         });
     }
-    
-    function DelChequeDevolvido( idp ) {
+
+    function DelChequeDevolvido(idp) {
 
         $.ajax({
             url: "area_restrita/d_equipamento_relatorio2_save_devolucao_cheque.php?update",
@@ -131,7 +131,7 @@
                 'id_pagamento': idp,
                 'cmd_devol': 'N'
             },
-            success: function (data) {
+            success: function(data) {
                 if (data == 1) {
                     location.reload();
                 } else {
@@ -140,15 +140,20 @@
             }
         });
     }
-
 </script>
-<link rel="stylesheet"
-      href="https://www.webcontrolempresas.com.br/franquias/css/assets/css/font-awesome.min.css">
-<link rel="stylesheet"
-      href="https://www.webcontrolempresas.com.br/franquias/css/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.webcontrolempresas.com.br/franquias/css/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.webcontrolempresas.com.br/franquias/css/assets/css/bootstrap.min.css">
 
 <style>
-    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{padding:4px;}
+    .table>tbody>tr>td,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>td,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>thead>tr>th {
+        padding: 4px;
+    }
+
     .cropit-preview {
         background-color: #f8f8f8;
         background-size: cover;
@@ -167,7 +172,8 @@
         margin-top: 10px;
     }
 
-    input, .export {
+    input,
+    .export {
         display: block;
     }
 
@@ -175,7 +181,8 @@
         margin-top: 10px;
     }
 
-    .splash .controls-wrapper .slider-wrapper .cropit-image-zoom-input.custom, .demos .demo-wrapper .controls-wrapper .slider-wrapper .cropit-image-zoom-input.custom {
+    .splash .controls-wrapper .slider-wrapper .cropit-image-zoom-input.custom,
+    .demos .demo-wrapper .controls-wrapper .slider-wrapper .cropit-image-zoom-input.custom {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -185,7 +192,6 @@
         border-radius: 5px;
         outline: none;
     }
-
 </style>
 <?php
 
@@ -217,7 +223,7 @@ $data4I = $_REQUEST['data4I'];
 $data4F = $_REQUEST['data4F'];
 $ativo = $_REQUEST['iptAtivo'];
 
-switch ($tp_rel){
+switch ($tp_rel) {
 
     case '1':
 
@@ -239,7 +245,7 @@ switch ($tp_rel){
                       ORDER by id";
         $resx = mysql_query($sql_lista, $con);
 
-        while ($regx = mysql_fetch_array($resx)){
+        while ($regx = mysql_fetch_array($resx)) {
 
             $id = $regx['id'];
 
@@ -252,9 +258,9 @@ switch ($tp_rel){
                           WHERE c.id = $id
                           ORDER BY c.id";
             $res = mysql_query($sql_dados, $con);
-            ?>
+?>
 
-            <div class="modal fade" id="myModal2" tabindex="1" >
+            <div class="modal fade" id="myModal2" tabindex="1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -280,7 +286,7 @@ switch ($tp_rel){
                                 <tr>
                                     <td style="border-top:0;">Data de Confirmação:</td>
                                     <td style="border-top:0;" id="focus_i">
-                                        <input type="text" name="data_confirmacao" class="focus_input" id="data_confirmacao" value="<?php echo date('d/m/Y');?>" onKeyPress="return MM_formtCep(event,this,'##/##/####');">
+                                        <input type="text" name="data_confirmacao" class="focus_input" id="data_confirmacao" value="<?php echo date('d/m/Y'); ?>" onKeyPress="return MM_formtCep(event,this,'##/##/####');">
                                     </td>
                                 </tr>
                             </table>
@@ -293,7 +299,7 @@ switch ($tp_rel){
                 </div>
             </div>
 
-            <div class="modal fade" id="myModal3" tabindex="1" >
+            <div class="modal fade" id="myModal3" tabindex="1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -339,8 +345,7 @@ switch ($tp_rel){
                 <tr>
                     <td colspan='8' height='1' bgcolor='#999999'></td>
                 </tr>
-                <tr height='20' class='titulo'
-                    >
+                <tr height='20' class='titulo'>
                     <td width='7%'>Data</td>
                     <td width='5%'>Qtde</td>
                     <td width='10%'>Cod. Barra</td>
@@ -395,7 +400,6 @@ switch ($tp_rel){
                         echo "<td align='center'>" . $reg['nome'] . "</td>";
                     }
                     echo "</tr>";
-
                 }
                 $vr_desconto = $soma_total - $vr_recebido;
                 $vr_desconto2 = number_format($vr_desconto, 2, ',', '.');
@@ -442,65 +446,63 @@ switch ($tp_rel){
                                 <td>&nbsp;</td>
                             </tr>
                            ";
-                            while ($reg_pg = mysql_fetch_array($res_pgto)) {
+                while ($reg_pg = mysql_fetch_array($res_pgto)) {
 
-                                $j++;
+                    $j++;
 
-                                $id = $reg_pg['id'];
-                                $pgto = $reg_pg['pgto'];
-                                $venc = $reg_pg['venc'];
-                                $devol_doc = $reg_pg['devol_doc'];
-                                $dt_conf_recebimento = $reg_pg['dt_conf_recebimento'];
-                                $vlr = number_format($reg_pg['valor'], 2, ',', '.');
-                                $vr_recebido += $reg_pg['valor'];
-                                $forma_pgto .= $pgto . ' - ' . $venc . ' - R$ ' . $vlr . '<br>';
+                    $id = $reg_pg['id'];
+                    $pgto = $reg_pg['pgto'];
+                    $venc = $reg_pg['venc'];
+                    $devol_doc = $reg_pg['devol_doc'];
+                    $dt_conf_recebimento = $reg_pg['dt_conf_recebimento'];
+                    $vlr = number_format($reg_pg['valor'], 2, ',', '.');
+                    $vr_recebido += $reg_pg['valor'];
+                    $forma_pgto .= $pgto . ' - ' . $venc . ' - R$ ' . $vlr . '<br>';
 
-                                $vlr = number_format($reg_pg['valor'], 2, ',', '.');
-                                if ($vrpg > 0)
-                                    $vrpg = number_format($reg_pg['valor_pagamento'], 2, ',', '.');
+                    $vlr = number_format($reg_pg['valor'], 2, ',', '.');
+                    if ($vrpg > 0)
+                        $vrpg = number_format($reg_pg['valor_pagamento'], 2, ',', '.');
 
-                                if (($j % 2) == 0) {
-                                    $html_recebido .= "<tr align='center' bgcolor='#E5E5E5'>";
-                                } else {
-                                    $html_recebido .= "<tr align='center'>";
-                                }
+                    if (($j % 2) == 0) {
+                        $html_recebido .= "<tr align='center' bgcolor='#E5E5E5'>";
+                    } else {
+                        $html_recebido .= "<tr align='center'>";
+                    }
 
-                                $img_volta = '';
-                                $img_conf = '';
-                                $devol_doc_msg = '';
+                    $img_volta = '';
+                    $img_conf = '';
+                    $devol_doc_msg = '';
 
-                                if ( $_SESSION['id'] == 163 ){
+                    if ($_SESSION['id'] == 163) {
 
-                                    if ( $dt_conf_recebimento == '' )
-                                        $img_conf = "<a href='#' onclick=\"baixa_parcela('$venc','$vlr','$id')\" title='Confirmar o recebimento da venda' onclick='return alerta()'><IMG SRC='../img/drop-add.gif' width='16' height='16' border='0'></a>";
-                                    else
-                                        $img_conf = "<a href='#' onclick=\"DelDataPagamento('$id')\" title='Confirmar o recebimento da venda'><IMG SRC='../img/minus.png' width='16' height='16' border='0'></a>";
+                        if ($dt_conf_recebimento == '')
+                            $img_conf = "<a href='#' onclick=\"baixa_parcela('$venc','$vlr','$id')\" title='Confirmar o recebimento da venda' onclick='return alerta()'><IMG SRC='../img/drop-add.gif' width='16' height='16' border='0'></a>";
+                        else
+                            $img_conf = "<a href='#' onclick=\"DelDataPagamento('$id')\" title='Confirmar o recebimento da venda'><IMG SRC='../img/minus.png' width='16' height='16' border='0'></a>";
 
-                                    if ( $dt_conf_recebimento != '' )
-                                        $img_volta = "<a href='#' onclick=\"VoltaCheque('$venc','$vlr','$id','$dt_conf_recebimento')\" title='Confirmar devolucao de cheque'><IMG SRC='../img/cheque.jpg' width='16' height='16' border='0'></a>";
+                        if ($dt_conf_recebimento != '')
+                            $img_volta = "<a href='#' onclick=\"VoltaCheque('$venc','$vlr','$id','$dt_conf_recebimento')\" title='Confirmar devolucao de cheque'><IMG SRC='../img/cheque.jpg' width='16' height='16' border='0'></a>";
 
-                                    if ( $devol_doc == 'S' ){
-                                        $devol_doc_msg = 'CHEQUE DEVOLVIDO';
-                                        $img_volta = "<a href='#' onclick=\"DelChequeDevolvido('$id')\" title='Cancelar cheque devolvido'><IMG SRC='../img/delete.png' width='16' height='16' border='0'></a>";
-                                    }
-                                    
-                                }else{
-                                    
-                                    if ( $dt_conf_recebimento == '' )
-                                        $img_conf = "<IMG SRC='../img/drop-add.gif' width='16' height='16' border='0'>";
-                                    else
-                                        $img_conf = "<IMG SRC='../img/minus.png' width='16' height='16' border='0'>";
+                        if ($devol_doc == 'S') {
+                            $devol_doc_msg = 'CHEQUE DEVOLVIDO';
+                            $img_volta = "<a href='#' onclick=\"DelChequeDevolvido('$id')\" title='Cancelar cheque devolvido'><IMG SRC='../img/delete.png' width='16' height='16' border='0'></a>";
+                        }
+                    } else {
 
-                                    if ( $dt_conf_recebimento != '' )
-                                        $img_volta = "<IMG SRC='../img/cheque.jpg' width='16' height='16' border='0'>";
+                        if ($dt_conf_recebimento == '')
+                            $img_conf = "<IMG SRC='../img/drop-add.gif' width='16' height='16' border='0'>";
+                        else
+                            $img_conf = "<IMG SRC='../img/minus.png' width='16' height='16' border='0'>";
 
-                                    if ( $devol_doc == 'S' ){
-                                        $devol_doc_msg = 'CHEQUE DEVOLVIDO';
-                                        $img_volta = "<IMG SRC='../img/delete.png' width='16' height='16' border='0'>";
-                                    }
-                                    
-                                }
-                                $html_recebido .= " <td>
+                        if ($dt_conf_recebimento != '')
+                            $img_volta = "<IMG SRC='../img/cheque.jpg' width='16' height='16' border='0'>";
+
+                        if ($devol_doc == 'S') {
+                            $devol_doc_msg = 'CHEQUE DEVOLVIDO';
+                            $img_volta = "<IMG SRC='../img/delete.png' width='16' height='16' border='0'>";
+                        }
+                    }
+                    $html_recebido .= " <td>
                                                 <input type='hidden' name='id_principal' id = 'id_principal' value='$id' />
                                                 $venc
                                             </td>
@@ -511,17 +513,18 @@ switch ($tp_rel){
                                             <td>$img_conf</td>
                                             <td>$img_volta</td>
                                         </tr>";
-                            }
-                            
-                  $html_recebido .="
+                }
+
+                $html_recebido .= "
                       </table>
                     </td>
                 </tr>";
 
-              echo $html_recebido;
-            ?>      
+                echo $html_recebido;
+                ?>
             </table>
-            <br><hr><br>
+            <br>
+            <hr><br>
         <?php
         }
         break;
@@ -555,15 +558,13 @@ switch ($tp_rel){
             $dados_funcionario = '';
 
         //echo "<pre>".$sql;
-        
+
         $qry = mysql_query($sql, $con);
 
         ?>
         <div>
-            <form id="frmImprimirTermica" name="frmImprimirTermica" method="post"
-                  action="clientes/relatorio_indica_amigo_imprimir.php">
-                <table class="tblIndicaAmigo" id="tblIndicaAmigo" border="0" width="95%" align="center" cellspacing="0"
-                       style="border: 1px solid #D1D7DC; background-color:#FFFFFF; font-family: Verdana;font-size: 10px">
+            <form id="frmImprimirTermica" name="frmImprimirTermica" method="post" action="clientes/relatorio_indica_amigo_imprimir.php">
+                <table class="tblIndicaAmigo" id="tblIndicaAmigo" border="0" width="95%" align="center" cellspacing="0" style="border: 1px solid #D1D7DC; background-color:#FFFFFF; font-family: Verdana;font-size: 10px">
                     <tr class="titulo">
                         <td colspan="2">Relat&oacute;rios</td>
                     </tr>
@@ -589,113 +590,103 @@ switch ($tp_rel){
                     </tr>
                 </table>
 
-                <table class="tblIndicaAmigo" id="tblIndicaAmigo" border="1" width="95%" align="center" cellspacing="0"
-                       style="border: 1px solid #D1D7DC; background-color:#FFFFFF; font-family: Verdana;font-size: 10px">
+                <table class="tblIndicaAmigo" id="tblIndicaAmigo" border="1" width="95%" align="center" cellspacing="0" style="border: 1px solid #D1D7DC; background-color:#FFFFFF; font-family: Verdana;font-size: 10px">
                     <thead>
-                    <tr bgcolor="#CFCFCF">
-                        <th>Data Pedido</th>
-                        <th>Franquia/Cliente</th>
-                        <th>Funcionário</th>
-                        <th>Equipamento</th>
-                        <th>Nº. Série</th>
-                        <th>Valor</th>
-                        <th>
-                            <table>
-                                <tr>
-                                    <th width='10%' bgcolor="#F0F8FF">Parcela</th>
-                                    <th width='20%' bgcolor="#FAF0E6">Vencimento</th>
-                                    <th width='15%' bgcolor="#F0F8FF">Valor</th>
-                                    <th width='20%' bgcolor="#FAF0E6">Dt. Pgto</th>
-                                    <th width='15%' bgcolor="#F0F8FF">Valor Pago</th>
-                                </tr>
-                            </table>
-                        </th>
-                        <th>Dt Pgto Premiação</th>
-                        <th>Vlr Premiação</th>
-                    </tr>
+                        <tr bgcolor="#CFCFCF">
+                            <th>Data Pedido</th>
+                            <th>Franquia/Cliente</th>
+                            <th>Funcionário</th>
+                            <th>Equipamento</th>
+                            <th>Nº. Série</th>
+                            <th>Valor</th>
+                            <th>
+                                <table>
+                                    <tr>
+                                        <th width='10%' bgcolor="#F0F8FF">Parcela</th>
+                                        <th width='20%' bgcolor="#FAF0E6">Vencimento</th>
+                                        <th width='15%' bgcolor="#F0F8FF">Valor</th>
+                                        <th width='20%' bgcolor="#FAF0E6">Dt. Pgto</th>
+                                        <th width='15%' bgcolor="#F0F8FF">Valor Pago</th>
+                                    </tr>
+                                </table>
+                            </th>
+                            <th>Dt Pgto Premiação</th>
+                            <th>Vlr Premiação</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    $a_cor = array("#eee", "#FFFFFF");
-                    $cont = 0;
+                        <?php
+                        $a_cor = array("#eee", "#FFFFFF");
+                        $cont = 0;
 
-                    while ($res = mysql_fetch_array($qry)) {
+                        while ($res = mysql_fetch_array($qry)) {
 
-                        $cont++;
+                            $cont++;
                         ?>
-                        <tr
-                            data-identificacao="<?= $res['id'] ?>"
-                            data-data="<?= $res['data'] ?>"
-                            data-id_franquia="<?= $res['id_franquia'] ?>"
-                            data-funcionario="<?= $res['id_funcionario'] ?>"
-                            data-equipamento="<?= $res['codigo_barra'] ?>"
-                            data-id_franquia="<?= $res['id'] ?>"
-                            data-numero_serie="<?= $res['numero_serie'] ?>"
-                            data-valor_unitario="<?= number_format($res['valor_unitario'], 2, ',', '.') ?>">
+                            <tr data-identificacao="<?= $res['id'] ?>" data-data="<?= $res['data'] ?>" data-id_franquia="<?= $res['id_franquia'] ?>" data-funcionario="<?= $res['id_funcionario'] ?>" data-equipamento="<?= $res['codigo_barra'] ?>" data-id_franquia="<?= $res['id'] ?>" data-numero_serie="<?= $res['numero_serie'] ?>" data-valor_unitario="<?= number_format($res['valor_unitario'], 2, ',', '.') ?>">
 
-                            <td class="mostrar"><?= $res['data'] ?></td>
-                            <td class="mostrar"><?= $res['fantasia'] ?></td>
-                            <td class="mostrar"><?= $res['nome'] ?></td>
-                            <td class="mostrar"><?= $res['descricao_produto'] ?></td>
-                            <td class="mostrar"><?= $res['numero_serie'] ?></td>
-                            <td class="mostrar"><?= number_format($res['valor_unitario'], 2, ',', '.') ?></td>
-                            <td>
-                                <table>
-                                    <?php
-                                    if ($res['solicitante'] == 'franquia') {
-                                        $sql_parcela = "SELECT
+                                <td class="mostrar"><?= $res['data'] ?></td>
+                                <td class="mostrar"><?= $res['fantasia'] ?></td>
+                                <td class="mostrar"><?= $res['nome'] ?></td>
+                                <td class="mostrar"><?= $res['descricao_produto'] ?></td>
+                                <td class="mostrar"><?= $res['numero_serie'] ?></td>
+                                <td class="mostrar"><?= number_format($res['valor_unitario'], 2, ',', '.') ?></td>
+                                <td>
+                                    <table>
+                                        <?php
+                                        if ($res['solicitante'] == 'franquia') {
+                                            $sql_parcela = "SELECT
                                                             id, numero_parcela, qtd_parcelas, date_format(data_vencimento,'%d/%m/%Y') as vencimento, valor_parcela, 
                                                             valor_pagamento, date_format(data_pagamento,'%d/%m/%Y') as data_pagamento
                                                         FROM cs2.cadastro_emprestimo_franquia 
                                                         WHERE protocolo = '{$res['id']}'";
-                                        $qry_parcela = mysql_query($sql_parcela, $con);
-                                        $qtd_reg = mysql_num_fields($qry_parcela);
-                                        $reg = 0;
-                                        $link_img = '';
-                                        while ($res2 = mysql_fetch_array($qry_parcela)) {
-                                            $reg++;
-                                            echo "<tr data-id='{$res2['id']}'>
+                                            $qry_parcela = mysql_query($sql_parcela, $con);
+                                            $qtd_reg = mysql_num_fields($qry_parcela);
+                                            $reg = 0;
+                                            $link_img = '';
+                                            while ($res2 = mysql_fetch_array($qry_parcela)) {
+                                                $reg++;
+                                                echo "<tr data-id='{$res2['id']}'>
                                                     <td width='10%' bgcolor='#F0F8FF'>{$res2['numero_parcela']}</td>
                                                     <td width='20%' bgcolor='#FAF0E6'>{$res2['vencimento']}</td>
                                                     <td width='15%' bgcolor='#F0F8FF'>{$res2['valor_parcela']}</td>
                                                     <td width='20%' bgcolor='#FAF0E6'>{$res2['data_pagamento']}</td>
                                                     <td width='15%' bgcolor='#F0F8FF'>{$res2['valor_pagamento']}</td>
                                                   </tr>";
-                                        }
+                                            }
+                                        } else {
 
-                                    } else {
-
-                                        $sql_parcela = "SELECT
+                                            $sql_parcela = "SELECT
                                                             id, id_venda, date_format(vencimento,'%d/%m/%Y') as vencimento, valor, id_formapgto
                                                         FROM cs2.cadastro_equipamento_pagamento
                                                         WHERE id_venda = '{$res['id']}'"
-                                            . " ORDER BY vencimento";
-                                        $qry_parcela = mysql_query($sql_parcela, $con);
-                                        $qtd_reg = mysql_num_fields($qry_parcela);
-                                        $reg = 0;
-                                        $j = 0;
-                                        $link_img = '';
-                                        while ($res2 = mysql_fetch_array($qry_parcela)) {
-                                            $reg++;
-                                            $j++;
-                                            echo "<tr data-id='{$res2['id']}'>
+                                                . " ORDER BY vencimento";
+                                            $qry_parcela = mysql_query($sql_parcela, $con);
+                                            $qtd_reg = mysql_num_fields($qry_parcela);
+                                            $reg = 0;
+                                            $j = 0;
+                                            $link_img = '';
+                                            while ($res2 = mysql_fetch_array($qry_parcela)) {
+                                                $reg++;
+                                                $j++;
+                                                echo "<tr data-id='{$res2['id']}'>
                                                     <td width='10%' bgcolor='#F0F8FF'>$j</td>
                                                     <td width='20%' bgcolor='#FAF0E6'>{$res2['vencimento']}</td>
                                                     <td width='15%' bgcolor='#F0F8FF'>{$res2['valor']}</td>
                                                     <td width='20%' bgcolor='#FAF0E6'></td>
                                                     <td width='15%' bgcolor='#F0F8FF'></td>
                                                   </tr>";
+                                            }
                                         }
-                                    }
-                                    ?>
-                                </table>
-                            </td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
+                                        ?>
+                                    </table>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
                         <?php
-                    }
-                    ?>
+                        }
+                        ?>
                     </tbody>
                 </table>
             </form>
@@ -705,10 +696,10 @@ switch ($tp_rel){
 
     case '3':
 
-    // Localizando o equipamento pelo numero de serie, porem tenho que fazer a pesquisa
-    // em 2 tabelas:  cadastro_equipamento(cliente) e franquia_equipamento(franquia)
+        // Localizando o equipamento pelo numero de serie, porem tenho que fazer a pesquisa
+        // em 2 tabelas:  cadastro_equipamento(cliente) e franquia_equipamento(franquia)
 
-    $sqly = "SELECT
+        $sqly = "SELECT
             'franquia' as solicitante, a.id, a.data as dt_ordem, date_format(a.data,'%d/%m/%Y') as data, 
             d.fantasia, e.nome, d.id AS idFranquia_Codloja
         FROM cs2.franquia_equipamento a
@@ -728,26 +719,26 @@ switch ($tp_rel){
         LEFT JOIN cs2.funcionario e ON a.id_consultor = e.id
         LEFT OUTER JOIN cs2.logon l ON a.codloja = l.codloja
         WHERE b.numero_serie = '{$_REQUEST['numero_serie']}'";
-    $resy = mysql_query($sqly, $con);
-    while ($regy = mysql_fetch_array($resy)){
+        $resy = mysql_query($sqly, $con);
+        while ($regy = mysql_fetch_array($resy)) {
 
-    $solicitante = $regy['solicitante'];
-    $id = $regy['id'];
-    $data = $regy['data'];
-    $nome = $regy['fantasia'];
-    $nomeFuncionario = $regy['nome']; // Nome do Funcionario
-    $idFranquia_Codloja = $regy['idFranquia_Codloja'];
+            $solicitante = $regy['solicitante'];
+            $id = $regy['id'];
+            $data = $regy['data'];
+            $nome = $regy['fantasia'];
+            $nomeFuncionario = $regy['nome']; // Nome do Funcionario
+            $idFranquia_Codloja = $regy['idFranquia_Codloja'];
 
-    if ($solicitante == 'cliente'){
+            if ($solicitante == 'cliente') {
 
-    echo "
+                echo "
                 <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
                     <tr style='background-color: #a1c2fa; text-align: center'>
                         <td colspan='8'>$idFranquia_Codloja - $nome</td>
                     </tr>
                 </table>";
 
-    $sql_dados = "SELECT a.qtd, a.numero_serie, b.descricao, a.valor_unitario, c.vr_desconto,
+                $sql_dados = "SELECT a.qtd, a.numero_serie, b.descricao, a.valor_unitario, c.vr_desconto,
                                     DATE_FORMAT(c.data_compra,'%d/%m/%Y') as data, c.id, a.codigo_barra, ca.nome
                               FROM cs2.cadastro_equipamento_descricao a 
                               INNER JOIN base_web_control.produto b  ON b.id_cadastro = 62735 AND ( a.codigo_barra = b.codigo_barra OR a.codigo_barra = b.identificacao_interna)
@@ -755,59 +746,59 @@ switch ($tp_rel){
                               LEFT JOIN cs2.funcionario ca           ON ca.id = c.id_consultor
                               WHERE c.id = $id
                               ORDER BY c.id";
-    $res = mysql_query($sql_dados, $con);
-    ?>
-    <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
-        <tr class="titulo">
-           <td colspan="8"><?php echo $idFranquia_Codloja . ' - ' . $nome . ' - ' .$nomeFuncionario?></td>
-        </tr>
-        <tr>
-            <td colspan='8' height='1' bgcolor='#999999'></td>
-        </tr>
-        <tr height='20' class='titulo'>
-            <td width='7%'>Data</td>
-            <td width='5%'>Qtde</td>
-            <td width='10%'>Cod. Barra</td>
-            <td width='30%'>Descri&ccedil;&atilde;o</td>
-            <td width='10%'>S&eacute;rie</td>
-            <td width='10%'>Vr. Unit&aacute;rio</td>
-            <?php if ($id_franquia == 1) { ?>
-                <td width='10%'>Consultor</td>
-                <td width='10%'>Alterar Consultor</td>
-            <?php } ?>
-        </tr>
-        <?php
-        $saida = '';
-        $soma_total = 0;
-        $a = 0;
-        while ($reg = mysql_fetch_array($res)) {
+                $res = mysql_query($sql_dados, $con);
+        ?>
+                <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
+                    <tr class="titulo">
+                        <td colspan="8"><?php echo $idFranquia_Codloja . ' - ' . $nome . ' - ' . $nomeFuncionario ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan='8' height='1' bgcolor='#999999'></td>
+                    </tr>
+                    <tr height='20' class='titulo'>
+                        <td width='7%'>Data</td>
+                        <td width='5%'>Qtde</td>
+                        <td width='10%'>Cod. Barra</td>
+                        <td width='30%'>Descri&ccedil;&atilde;o</td>
+                        <td width='10%'>S&eacute;rie</td>
+                        <td width='10%'>Vr. Unit&aacute;rio</td>
+                        <?php if ($id_franquia == 1) { ?>
+                            <td width='10%'>Consultor</td>
+                            <td width='10%'>Alterar Consultor</td>
+                        <?php } ?>
+                    </tr>
+                    <?php
+                    $saida = '';
+                    $soma_total = 0;
+                    $a = 0;
+                    while ($reg = mysql_fetch_array($res)) {
 
-            $a++;
+                        $a++;
 
-            $id_venda = $reg['id'];
-            $cod_barra = $reg['codigo_barra'];
-            $qtd = $reg['qtd'];
-            if($qtd == 0){
-                $qtd = 1;
-            }
-            $data = $reg['data'];
-            $descricao = $reg['descricao'];
-            $serie = $reg['numero_serie'];
-            $vr_unit = $reg['valor_unitario'];
-            $total = $qtd * $vr_unit;
-            $soma_total += $total;
-            $vr_unit = number_format($vr_unit, 2, ',', '.');
+                        $id_venda = $reg['id'];
+                        $cod_barra = $reg['codigo_barra'];
+                        $qtd = $reg['qtd'];
+                        if ($qtd == 0) {
+                            $qtd = 1;
+                        }
+                        $data = $reg['data'];
+                        $descricao = $reg['descricao'];
+                        $serie = $reg['numero_serie'];
+                        $vr_unit = $reg['valor_unitario'];
+                        $total = $qtd * $vr_unit;
+                        $soma_total += $total;
+                        $vr_unit = number_format($vr_unit, 2, ',', '.');
 
-            $vr_desconto = number_format($reg['vr_desconto'], 2, ',', '.');
+                        $vr_desconto = number_format($reg['vr_desconto'], 2, ',', '.');
 
 
-            $saida .= "<tr height='22'";
-            if (($a % 2) == 0) {
-                $saida .= "bgcolor='#E5E5E5'>";
-            } else {
-                $saida .= ">";
-            }
-            $sql_pgto = "SELECT
+                        $saida .= "<tr height='22'";
+                        if (($a % 2) == 0) {
+                            $saida .= "bgcolor='#E5E5E5'>";
+                        } else {
+                            $saida .= ">";
+                        }
+                        $sql_pgto = "SELECT
                                         valor, DATE_FORMAT(vencimento,'%d/%m/%Y') as venc,
                                         vencimento,
                                         CASE id_formapgto 
@@ -821,65 +812,63 @@ switch ($tp_rel){
                                      FROM cs2.cadastro_equipamento_pagamento 
                                      WHERE id_venda = $id_venda
                                      ORDER BY vencimento";
-            $res_pgto = mysql_query($sql_pgto, $con);
-            $forma_pgto = '';
-            $soma_produto = 0;
-            $vr_recebido = 0;
-            while ($reg_pg = mysql_fetch_array($res_pgto)) {
-                $pgto = $reg_pg['pgto'];
-                $venc = $reg_pg['venc'];
-                $vlr = number_format($reg_pg['valor'], 2, ',', '.');
-                $vr_recebido += $reg_pg['valor'];
-                $forma_pgto .= $pgto . ' - ' . $venc . ' - R$ ' . $vlr . '<br>';
-            }
-            $i++;
-            $saida .= "    <td align='center'>$data</td>";
-            $saida .= "    <td align='center'>$qtd</td>";
-            $saida .= "    <td align='center'>$cod_barra</td>";
-            $saida .= "    <td align='center'>$descricao</td>";
-            $saida .= "    <td align='center'>$serie</td>";
-            $saida .= "    <td align='center'>R$ $vr_unit</td>";
+                        $res_pgto = mysql_query($sql_pgto, $con);
+                        $forma_pgto = '';
+                        $soma_produto = 0;
+                        $vr_recebido = 0;
+                        while ($reg_pg = mysql_fetch_array($res_pgto)) {
+                            $pgto = $reg_pg['pgto'];
+                            $venc = $reg_pg['venc'];
+                            $vlr = number_format($reg_pg['valor'], 2, ',', '.');
+                            $vr_recebido += $reg_pg['valor'];
+                            $forma_pgto .= $pgto . ' - ' . $venc . ' - R$ ' . $vlr . '<br>';
+                        }
+                        $i++;
+                        $saida .= "    <td align='center'>$data</td>";
+                        $saida .= "    <td align='center'>$qtd</td>";
+                        $saida .= "    <td align='center'>$cod_barra</td>";
+                        $saida .= "    <td align='center'>$descricao</td>";
+                        $saida .= "    <td align='center'>$serie</td>";
+                        $saida .= "    <td align='center'>R$ $vr_unit</td>";
 
-            if ($id_franquia == 1) {
-                $saida .= "<td align='center'>" . $reg['nome'] . "</td>";
-                $saida .= "<td align='center'><a onclick='alterarVendedor(\"" . $reg['id'] . "\")'>Alterar Consultor</a></td>";
-            }
+                        if ($id_franquia == 1) {
+                            $saida .= "<td align='center'>" . $reg['nome'] . "</td>";
+                            $saida .= "<td align='center'><a onclick='alterarVendedor(\"" . $reg['id'] . "\")'>Alterar Consultor</a></td>";
+                        }
 
-            $saida .= "</tr>";
+                        $saida .= "</tr>";
+                    }
 
-        }
 
+                    $vr_desconto = $soma_total - $vr_recebido;
 
-        $vr_desconto = $soma_total - $vr_recebido;
+                    $vr_desconto2 = number_format($vr_desconto, 2, ',', '.');
 
-        $vr_desconto2 = number_format($vr_desconto, 2, ',', '.');
+                    $total = number_format($soma_total - $vr_desconto, 2, ',', '.');
 
-        $total = number_format($soma_total - $vr_desconto, 2, ',', '.');
+                    $saida .= "<tr>";
+                    $saida .= "    <td align='right' colspan='7'><br><b>Valor Desconto: R$ $vr_desconto2</b></td>";
+                    $saida .= "</tr>";
+                    $saida .= "<tr>";
+                    $saida .= "    <td align='right' colspan='7'><b><font color='#0000FF'>TOTAL PAGO: R$ $total</b></font></td>";
+                    $saida .= "</tr>";
 
-        $saida .= "<tr>";
-        $saida .= "    <td align='right' colspan='7'><br><b>Valor Desconto: R$ $vr_desconto2</b></td>";
-        $saida .= "</tr>";
-        $saida .= "<tr>";
-        $saida .= "    <td align='right' colspan='7'><b><font color='#0000FF'>TOTAL PAGO: R$ $total</b></font></td>";
-        $saida .= "</tr>";
+                    $saida .= "<tr>";
+                    $saida .= "    <td align='right' colspan='7'><br><b>FORMA DE PAGAMENTO: $forma_pgto</b></td>";
+                    $saida .= "</tr>";
 
-        $saida .= "<tr>";
-        $saida .= "    <td align='right' colspan='7'><br><b>FORMA DE PAGAMENTO: $forma_pgto</b></td>";
-        $saida .= "</tr>";
+                    echo $saida;
+                    echo "</table>";
+                } else {
 
-        echo $saida;
-        echo "</table>";
-
-        }else{
-
-            echo "
+                    echo "
                     <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
                         <tr style='background-color: #a1c2fa; text-align: center'>
                             <td colspan='8'>$idFranquia_Codloja - $nome - $nomeFuncionario</td>
                         </tr>
                     </table>";
 
-            $sql_dados = "SELECT
+                    $sql_dados = "SELECT
                             a.qtd, a.numero_serie, b.descricao, a.valor_unitario,
                             DATE_FORMAT(c.data,'%d/%m/%Y') as data, a.codigo_barra, ca.nome
                           FROM cs2.franquia_equipamento_descricao a
@@ -887,86 +876,85 @@ switch ($tp_rel){
                           INNER JOIN cs2.franquia_equipamento c  ON c.id = a.id_franquia_equipamento
                           LEFT JOIN cs2.funcionario ca           ON ca.id = c.id_consultor
                           WHERE a.id_franquia_equipamento = $id";
-            $res = mysql_query($sql_dados, $con);
-            ?>
-            <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
-                <tr class="titulo">
-                    <td colspan="8">Equipamentos em Consignação</td>
-                </tr>
-                <tr>
-                    <td colspan='8' height='1' bgcolor='#999999'></td>
-                </tr>
-                <tr height='20' class='titulo'>
-                    <td width='7%'>Data</td>
-                    <td width='5%'>Qtde</td>
-                    <td width='10%'>Cod. Barra</td>
-                    <td width='30%'>Descri&ccedil;&atilde;o</td>
-                    <td width='10%'>S&eacute;rie</td>
-                    <td width='10%'>Vr. Unit&aacute;rio</td>
-                    <?php if ($id_franquia == 1) { ?>
-                        <td width='10%'>Consultor</td>
-                        <td width='10%'>Alterar Consultor</td>
-                    <?php } ?>
-                </tr>
+                    $res = mysql_query($sql_dados, $con);
+                    ?>
+                    <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
+                        <tr class="titulo">
+                            <td colspan="8">Equipamentos em Consignação</td>
+                        </tr>
+                        <tr>
+                            <td colspan='8' height='1' bgcolor='#999999'></td>
+                        </tr>
+                        <tr height='20' class='titulo'>
+                            <td width='7%'>Data</td>
+                            <td width='5%'>Qtde</td>
+                            <td width='10%'>Cod. Barra</td>
+                            <td width='30%'>Descri&ccedil;&atilde;o</td>
+                            <td width='10%'>S&eacute;rie</td>
+                            <td width='10%'>Vr. Unit&aacute;rio</td>
+                            <?php if ($id_franquia == 1) { ?>
+                                <td width='10%'>Consultor</td>
+                                <td width='10%'>Alterar Consultor</td>
+                            <?php } ?>
+                        </tr>
                 <?php
-                $saida = '';
-                $soma_total = 0;
-                $a = 0;
-                while ($reg = mysql_fetch_array($res)) {
+                    $saida = '';
+                    $soma_total = 0;
+                    $a = 0;
+                    while ($reg = mysql_fetch_array($res)) {
 
-                    $a++;
+                        $a++;
 
-                    $id_venda = $reg['id'];
-                    $cod_barra = $reg['codigo_barra'];
-                    $qtd = $reg['qtd'];
-                    $data = $reg['data'];
-                    $descricao = $reg['descricao'];
-                    $serie = $reg['numero_serie'];
-                    $vr_unit = $reg['valor_unitario'];
-                    $total = $qtd * $vr_unit;
-                    $soma_total += $total;
-                    $vr_unit = number_format($vr_unit, 2, ',', '.');
-                    $vr_desconto = number_format($reg['vr_desconto'], 2, ',', '.');
+                        $id_venda = $reg['id'];
+                        $cod_barra = $reg['codigo_barra'];
+                        $qtd = $reg['qtd'];
+                        $data = $reg['data'];
+                        $descricao = $reg['descricao'];
+                        $serie = $reg['numero_serie'];
+                        $vr_unit = $reg['valor_unitario'];
+                        $total = $qtd * $vr_unit;
+                        $soma_total += $total;
+                        $vr_unit = number_format($vr_unit, 2, ',', '.');
+                        $vr_desconto = number_format($reg['vr_desconto'], 2, ',', '.');
 
-                    $saida .= "<tr height='22'";
-                    if (($a % 2) == 0) {
-                        $saida .= "bgcolor='#E5E5E5'>";
-                    } else {
-                        $saida .= ">";
+                        $saida .= "<tr height='22'";
+                        if (($a % 2) == 0) {
+                            $saida .= "bgcolor='#E5E5E5'>";
+                        } else {
+                            $saida .= ">";
+                        }
+
+                        $i++;
+                        $saida .= "    <td align='center'>$data</td>";
+                        $saida .= "    <td align='center'>$qtd</td>";
+                        $saida .= "    <td align='center'>$cod_barra</td>";
+                        $saida .= "    <td align='center'>$descricao</td>";
+                        $saida .= "    <td align='center'>$serie</td>";
+                        $saida .= "    <td align='center'>R$ $vr_unit</td>";
+
+                        if ($id_franquia == 1) {
+                            $saida .= "<td align='center'>" . $reg['nome'] . "</td>";
+                            $saida .= "<td align='center'><a onclick='alterarVendedor(\"" . $reg['id'] . "\")'>Alterar Consultor</a></td>";
+                        }
+
+                        $saida .= "</tr>";
                     }
-
-                    $i++;
-                    $saida .= "    <td align='center'>$data</td>";
-                    $saida .= "    <td align='center'>$qtd</td>";
-                    $saida .= "    <td align='center'>$cod_barra</td>";
-                    $saida .= "    <td align='center'>$descricao</td>";
-                    $saida .= "    <td align='center'>$serie</td>";
-                    $saida .= "    <td align='center'>R$ $vr_unit</td>";
-
-                    if ($id_franquia == 1) {
-                        $saida .= "<td align='center'>" . $reg['nome'] . "</td>";
-                        $saida .= "<td align='center'><a onclick='alterarVendedor(\"" . $reg['id'] . "\")'>Alterar Consultor</a></td>";
-                    }
-
+                    $total = number_format($soma_total - $vr_desconto, 2, ',', '.');
+                    $saida .= "<tr>";
+                    $saida .= "    <td align='right' colspan='7'>&nbsp;</td>";
                     $saida .= "</tr>";
 
-                }
-                $total = number_format($soma_total - $vr_desconto, 2, ',', '.');
-                $saida .= "<tr>";
-                $saida .= "    <td align='right' colspan='7'>&nbsp;</td>";
-                $saida .= "</tr>";
+                    echo $saida;
 
-                echo $saida;
-
-                $sql_pgto = "SELECT DATE_FORMAT(data_vencimento,'%d/%m/%Y') as data_venc, valor_parcela,
+                    $sql_pgto = "SELECT DATE_FORMAT(data_vencimento,'%d/%m/%Y') as data_venc, valor_parcela,
                                     data_vencimento,
                                     DATE_FORMAT(data_pagamento,'%d/%m/%Y') as data_pagamento, valor_pagamento
                              FROM cs2.cadastro_emprestimo_franquia
                              WHERE protocolo = '$id' ORDER BY data_vencimento";
-                $qry_pgto = mysql_query($sql_pgto, $con);
-                $forma_pgto = '';
+                    $qry_pgto = mysql_query($sql_pgto, $con);
+                    $forma_pgto = '';
 
-                $html_forma = "
+                    $html_forma = "
                         <tr>
                             <td colspan='7'>
                                 <table width='50%' align='center' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
@@ -979,43 +967,40 @@ switch ($tp_rel){
                                         <td>Data Pagamento</td>
                                         <td>Valor Pagamento</td>
                                     </tr>";
-                $j = 0;
-                while ($reg_pg = mysql_fetch_array($qry_pgto)) {
-                    $j++;
-                    $pgto = 'DEBITO Extrato';
-                    $venc = $reg_pg['data_venc'];
-                    $dtpg = $reg_pg['data_pagamento'];
-                    $vrpg = $reg_pg['valor_pagamento'];
+                    $j = 0;
+                    while ($reg_pg = mysql_fetch_array($qry_pgto)) {
+                        $j++;
+                        $pgto = 'DEBITO Extrato';
+                        $venc = $reg_pg['data_venc'];
+                        $dtpg = $reg_pg['data_pagamento'];
+                        $vrpg = $reg_pg['valor_pagamento'];
 
-                    $vlr = number_format($reg_pg['valor_parcela'], 2, ',', '.');
-                    if ($vrpg > 0)
-                        $vrpg = number_format($reg_pg['valor_pagamento'], 2, ',', '.');
+                        $vlr = number_format($reg_pg['valor_parcela'], 2, ',', '.');
+                        if ($vrpg > 0)
+                            $vrpg = number_format($reg_pg['valor_pagamento'], 2, ',', '.');
 
-                    if (($j % 2) == 0) {
-                        $html_forma .= "<tr align='center' bgcolor='#E5E5E5'>";
-                    } else {
-                        $html_forma .= "<tr align='center'>";
-                    }
-                    $html_forma .= " <td>$venc</td>
+                        if (($j % 2) == 0) {
+                            $html_forma .= "<tr align='center' bgcolor='#E5E5E5'>";
+                        } else {
+                            $html_forma .= "<tr align='center'>";
+                        }
+                        $html_forma .= " <td>$venc</td>
                                                          <td>$vlr</td>
                                                          <td>$dtpg</td>
                                                          <td>$vrpg</td>
                                                       </tr>";
-                }
-                $html_forma .= "
+                    }
+                    $html_forma .= "
                                 </table>
                               </td>
                            </tr>
                         </table>";
-                echo $html_forma;
-
-
+                    echo $html_forma;
                 }
-
             }
             break;
 
-    case '4':
+        case '4':
 
             $equipamento = $_REQUEST['equipamento'];
 
@@ -1063,160 +1048,162 @@ switch ($tp_rel){
 
             $qry = mysql_query($sql, $con);
 
-            ?>
+                ?>
 
-            <table width='100%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
-                <tr class="titulo">
-                    <td colspan="8">Equipamentos Vendidos por periodo</td>
-                </tr>
-                <tr>
-                    <td colspan='6' height='1' bgcolor='#999999'></td>
-                </tr>
-                <tr height='20' class='titulo'>
-                    <td width='7%'>Data</td>
-                    <td width='5%'>Codigo</td>
-                    <td width='10%'>Empresa</td>
-                    <td width='30%'>Descri&ccedil;&atilde;o</td>
-                    <td width='10%'>N&deg;. S&eacute;rie</td>
-                    <td width='10%'>Funcion&aacute;rio</td>
-                </tr>
-                <?php
-                $a = 0;
-                $saida = '';
-                while ($reg = mysql_fetch_array($qry)) {
-                    $a++;
-                    $saida .= "<tr height='22'";
-                    if (($a % 2) == 0) {
-                        $saida .= "bgcolor='#E5E5E5'>";
-                    } else {
-                        $saida .= ">";
+                <table width='100%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
+                    <tr class="titulo">
+                        <td colspan="8">Equipamentos Vendidos por periodo</td>
+                    </tr>
+                    <tr>
+                        <td colspan='6' height='1' bgcolor='#999999'></td>
+                    </tr>
+                    <tr height='20' class='titulo'>
+                        <td width='7%'>Data</td>
+                        <td width='5%'>Codigo</td>
+                        <td width='10%'>Empresa</td>
+                        <td width='30%'>Descri&ccedil;&atilde;o</td>
+                        <td width='10%'>N&deg;. S&eacute;rie</td>
+                        <td width='10%'>Funcion&aacute;rio</td>
+                    </tr>
+                    <?php
+                    $a = 0;
+                    $saida = '';
+                    while ($reg = mysql_fetch_array($qry)) {
+                        $a++;
+                        $saida .= "<tr height='22'";
+                        if (($a % 2) == 0) {
+                            $saida .= "bgcolor='#E5E5E5'>";
+                        } else {
+                            $saida .= ">";
+                        }
+                        $saida .= "    <td>{$reg['data']}</td>";
+                        $saida .= "    <td align='center'>{$reg['logon']}</td>";
+                        $saida .= "    <td>{$reg['nomefantasia']}</td>";
+                        $saida .= "    <td>{$reg['descricao']}</td>";
+                        $saida .= "    <td align='center'>{$reg['numero_serie']}</td>";
+                        $saida .= "    <td align='center'>{$reg['nome']}</td>";
+                        $saida .= "</tr>";
                     }
-                    $saida .= "    <td>{$reg['data']}</td>";
-                    $saida .= "    <td align='center'>{$reg['logon']}</td>";
-                    $saida .= "    <td>{$reg['nomefantasia']}</td>";
-                    $saida .= "    <td>{$reg['descricao']}</td>";
-                    $saida .= "    <td align='center'>{$reg['numero_serie']}</td>";
-                    $saida .= "    <td align='center'>{$reg['nome']}</td>";
-                    $saida .= "</tr>";
+                    $saida .= "<tr class='titulo' height='1'><td colspan='6'></td></tr>";
+                    $saida .= "<tr><td colspan='6'>Listados $a registros.</td></tr>";
+                    echo $saida;
+                    echo "</table>";
 
-                }
-                $saida .= "<tr class='titulo' height='1'><td colspan='6'></td></tr>";
-                $saida .= "<tr><td colspan='6'>Listados $a registros.</td></tr>";
-                echo $saida;
-                echo "</table>";
+                    break;
 
-                break;
-
-    case '5':
+                case '5':
 
 
-        if($_POST['iptFuncao'] == 0 || empty($_POST['iptFuncao'])){ ?>
+                    if ($_POST['iptFuncao'] == 0 || empty($_POST['iptFuncao'])) { ?>
+
+                        <script>
+                            alert('Favor selecionar uma função!');
+                            location.href = '../php/painel.php?pagina1=area_restrita/d_equipamentos_relatorio.php';
+                        </script>
+
+                    <?php exit;
+                    }
+
+                    $iptFuncao = $_POST['iptFuncao'];
+                    $iptTipoRelatorio = $_POST['iptTipoRelatorio'];
+
+                    switch ($_POST['iptFuncao']) {
+                        case '9': // Atendimento Comercial Externo
+
+                            if ($_POST['iptTipoRelatorio'] == 'S') {
+                                include('rel_comissao_func.php');
+                            } else if ($_POST['iptTipoRelatorio'] == 'M') {
+                                include('rel_comissao_func_mensal.php');
+                            } else {
+                                include('rel_comissao_func_contabil.php');
+                            }
+                            break;
+
+                        case '19': // Atendimento Administrativo Externo
+                            include('rel_comissao_atend_externo.php');
+
+                            break;
+
+                        case '10': // Auxiliar Comercial
+                            include('rel_comissao_aux_comercial.php');
+                            break;
+
+                        case '13':
+                        case '17':
+                        case '18':
+                        case '28':  // incluido Auxiliar de Conferencia - Pedido Danillo
+                            include('rel_comissao_13_17_18.php');
+                            break;
+
+                        case '24': // Assistente de Automação
+
+                            include('rel_assistente_automacao.php');
+                            break;
+
+                        default:
+
+                            include('rel_cred_deb_func.php');
+                            break;
+                    }
+
+                    break;
+
+                case '6':
+
+                    //                    echo '<pre>';
+                    //                    var_dump($_REQUEST);
+                    //                    die;
+                    ?>
+                    <script>
+                        location.href = 'area_restrita/<?php echo 'd_imprimir_cheklistequipamentos.php?id_funcionario=' . $_REQUEST['id_funcionario_check'] . '&codigo_barra=' . $_REQUEST['codigo_barras_check']; ?>'
+                    </script>
+            <?php
+                    break;
+                case '8':
+                    include('rel_brincadeira.php');
+
+                    break;
+            } ?>
+            <form method="post" action="#" name='tela_voltar' id='tela_voltar' class="noprint">
+                <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
+                    <tr align="center">
+                        <td>
+                            <br>
+                            <input type="button" value=" VOLTAR " onclick="voltar()">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
 
             <script>
-                alert('Favor selecionar uma função!');
-                location.href = '../php/painel.php?pagina1=area_restrita/d_equipamentos_relatorio.php';
-            </script>
+                $(document).ready(function() {
+                    $('#btnImprimir').click(function() {
+                        function Popup(data, style) {
+                            var mywindow = window.open('', '.imprimir');
+                            mywindow.document.write('<html><head><title></title>');
+                            //stylesheet
+                            mywindow.document.write('<style>' + style + '</style>');
 
-            <?php exit;
-        }
+                            mywindow.document.write('</head><body >');
+                            mywindow.document.write(data);
+                            mywindow.document.write('</body></html>');
 
-        $iptFuncao = $_POST['iptFuncao'];
-        $iptTipoRelatorio = $_POST['iptTipoRelatorio'];
+                            mywindow.document.close(); // necessary for IE >= 10
+                            mywindow.focus(); // necessary for IE >= 10
 
-        switch($_POST['iptFuncao']){
-                case '9': // Atendimento Comercial Externo
+                            setTimeout(function() {
+                                mywindow.print();
+                                mywindow.close();
+                            }, 100); //1 segundo
 
-                    if($_POST['iptTipoRelatorio'] == 'S'){
-                        include('rel_comissao_func.php');
-                    }else if($_POST['iptTipoRelatorio'] == 'M'){
-                        include('rel_comissao_func_mensal.php');
-                    }else{
-                        include('rel_comissao_func_contabil.php');
-                    }
-                    break;
+                            return true;
+                        }
 
-                case '19': // Atendimento Administrativo Externo
-                    include('rel_comissao_atend_externo.php');
+                        $('.no-print').remove();
 
-                    break;
-
-                case '10': // Auxiliar Comercial
-                    include('rel_comissao_aux_comercial.php');
-                    break;
-
-                case '13':
-                case '17':
-                case '18':
-                case '28':  // incluido Auxiliar de Conferencia - Pedido Danillo
-                    include('rel_comissao_13_17_18.php');
-                    break;
-                
-                case '24' : // Assistente de Automação
-
-                    include('rel_assistente_automacao.php');
-                    break;
-                
-                default:
-                    
-                    include('rel_cred_deb_func.php');
-                    break;
-            }
-
-            break;
-
-    case '6':
-
-//                    echo '<pre>';
-//                    var_dump($_REQUEST);
-//                    die;
-                    ?>
-                        <script>
-                            location.href = 'area_restrita/<?php echo 'd_imprimir_cheklistequipamentos.php?id_funcionario='. $_REQUEST['id_funcionario_check'] . '&codigo_barra='. $_REQUEST['codigo_barras_check'] ;?>'
-                        </script>
-                <?php
-                    break;
-}
-?>
-<form method="post" action="#" name='tela_voltar' id='tela_voltar' class="noprint">
-    <table width='80%' border='0' cellpadding='0' cellspacing='0' class='bodyText'>
-        <tr align="center">
-            <td>
-                <br>
-                <input type="button" value=" VOLTAR " onclick="voltar()">
-            </td>
-        </tr>
-    </table>
-</form>
-
-
-<script>
-    $(document).ready(function(){
-        $('#btnImprimir').click(function () {
-            function Popup(data, style) {
-                var mywindow = window.open('', '.imprimir');
-                mywindow.document.write('<html><head><title></title>');
-                //stylesheet
-                mywindow.document.write('<style>' + style + '</style>');
-
-                mywindow.document.write('</head><body >');
-                mywindow.document.write(data);
-                mywindow.document.write('</body></html>');
-
-                mywindow.document.close(); // necessary for IE >= 10
-                mywindow.focus(); // necessary for IE >= 10
-
-                setTimeout(function () {
-                    mywindow.print();
-                    mywindow.close();
-                }, 100); //1 segundo
-
-                return true;
-            }
-
-            $('.no-print').remove();
-
-            //estilo da impressao
-            var style = '\n\
+                        //estilo da impressao
+                        var style = '\n\
                 @media print {\n\
                     .page-break{ \n\
                     page-break-after: always;\n\
@@ -1282,8 +1269,7 @@ switch ($tp_rel){
         }\n\
         ';
 
-            Popup($(".imprimir").html(), style);
-        });
-    })
-    
-</script>
+                        Popup($(".imprimir").html(), style);
+                    });
+                })
+            </script>
