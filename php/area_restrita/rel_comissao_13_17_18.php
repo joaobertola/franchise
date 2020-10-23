@@ -38,7 +38,6 @@ $sql = "SELECT
         FROM cs2.funcionario f 
         INNER JOIN cs2.funcao fun ON fun.id = f.id_funcao
         WHERE f.ativo = 'S' AND f.id_funcao = $iptFuncao";
-
 if ( $id_funcionario > 0 )
     $sql .= " AND f.id = $id_funcionario";
 
@@ -93,6 +92,10 @@ $res = mysql_query($sql, $con); ?>
                                 AND ce.codLoja != 23096
                                 GROUP BY ce.id
                                 ORDER BY ce.id ASC";
+
+         //   echo '<pre>'.$sqlEquipamentos;
+         //   die;
+
             $qryEquipamentos = mysql_query($sqlEquipamentos, $con);
 
             ?>
