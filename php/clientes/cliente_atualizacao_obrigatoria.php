@@ -88,9 +88,15 @@ if($_REQUEST['alterar_cliente'] == "S"){
 }
 
 
+if ( strlen($_REQUEST['codigo']) > 5){
+    $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,6)='{$_REQUEST['codigo']}' ";
+}else{
+    $sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,5)='{$_REQUEST['codigo']}' ";
+}
+
 if($_REQUEST['codigo']){
-	$sql_sel = "SELECT * FROM cs2.logon WHERE mid(logon,1,5)='{$_REQUEST['codigo']}' ";
-	$res_sel = mysql_query($sql_sel, $con);
+
+    $res_sel = mysql_query($sql_sel, $con);
 	$matriz_sel = mysql_fetch_array($res_sel);
 	$codloja = $matriz_sel['codloja'];
 }elseif($_REQUEST['cnpj']){   
@@ -110,14 +116,14 @@ if($_REQUEST['codigo']){
 
 if ($tipo == "b") $frq = "AND a.id_franquia='{$_SESSION['usuario']}'";
 else $frq = "";
-    
+
 $comando = "SELECT 
 				a.renegociacao_tabela, a.codloja, a.razaosoc, a.insc, a.nomefantasia, a.uf, a.cidade, 
 				a.bairro, a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.id_franquia, 
 				date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.ramo_atividade,
 				a.obs, a.mensalidade_solucoes, a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, 
-				a.cpfsocio2, a.emissao_financeiro, a.vendedor, mid(b.logon,1,5) as logon, 
-				mid(b.logon,7,10) as senha, a.classe, a.banco_cliente, a.agencia_cliente,
+				a.cpfsocio2, a.emissao_financeiro, a.vendedor, mid(b.logon,1,locate('S',b.logon)-1) as logon, 
+				mid(b.logon,locate('S',b.logon)+1,10) as senha, a.classe, a.banco_cliente, a.agencia_cliente,
 			    a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta, a.complemento,
 				a.inscricao_estadual, a.cnae_fiscal, a.inscricao_municipal, 
 				a.inscricao_estadual_tributario, a.numero, a.tipo_cliente, a.insc
