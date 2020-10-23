@@ -76,8 +76,8 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     $sqlModuloLV = "SELECT COUNT(c.codloja) AS modulo_loja_virtual
     FROM cs2.cadastro c
     WHERE c.sitcli = 0 
-    AND c.dt_cad BETWEEN CONCAT(DATE(base_web_control.fn_get_ultima_data_dia_semana('sexta')),' 18:01:00')
-    AND NOW()
+    AND c.dt_cad BETWEEN '$strDataInicio'
+    AND '$strDataFim'
     AND c.contadorSN = 'N'
     AND c.modulo_loja_virtual IS NOT NULL 
     AND c.id_consultor = $id_consultor";
@@ -90,8 +90,8 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     $sqlPremium = "SELECT COUNT(c.codloja) AS contratos_premium
     FROM cs2.cadastro c
     WHERE c.sitcli = 0 
-    AND c.dt_cad BETWEEN CONCAT(DATE(base_web_control.fn_get_ultima_data_dia_semana('sexta')),' 18:01:00')
-    AND NOW() 
+    AND c.dt_cad BETWEEN '$strDataInicio'
+    AND '$strDataFim'
     AND c.contadorSN = 'N' 
     AND c.tx_mens BETWEEN '89.90' AND '99.90' 
     AND c.id_consultor = $id_consultor";
@@ -103,8 +103,8 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     // Verifico o número de contratos PLATINUM (MAIORES QUE 99,90)
     $sqlPlatinum = "SELECT COUNT(c.codloja) AS contratos_platinum
     FROM cs2.cadastro c
-    WHERE c.sitcli = 0 AND c.dt_cad BETWEEN CONCAT(DATE(base_web_control.fn_get_ultima_data_dia_semana('sexta')),' 18:01:00')
-    AND NOW() 
+    WHERE c.sitcli = 0 AND c.dt_cad BETWEEN '$strDataInicio'
+    AND '$strDataFim'
     AND c.contadorSN = 'N' 
     AND c.tx_mens > '99.90' 
     AND c.id_consultor = $id_consultor";
@@ -117,8 +117,8 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     $sqlContratos = "SELECT c.dt_cad, c.codloja, c.razaosoc, c.tx_mens, c.modulo_loja_virtual
     FROM cs2.cadastro c
     WHERE c.sitcli = 0 
-    AND c.dt_cad BETWEEN CONCAT(DATE(base_web_control.fn_get_ultima_data_dia_semana('sexta')),' 18:01:00')
-    AND NOW()
+    AND c.dt_cad BETWEEN '$strDataInicio'
+    AND '$strDataFim'
     AND c.contadorSN = 'N'
     AND c.id_consultor = $id_consultor";
     $resultContratos = mysql_query($sqlContratos, $con);
@@ -129,8 +129,8 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     INNER JOIN cs2.cadastro_equipamento_descricao ced ON ced.id_cadastro_equipamento = ce.id
     INNER JOIN cs2.cadastro c ON ce.codloja = c.codloja
     LEFT JOIN base_web_control.produto p ON p.id_cadastro = 62735 AND (ced.codigo_barra = p.codigo_barra OR ced.codigo_barra = p.identificacao_interna)
-    WHERE ce.data_venda BETWEEN CONCAT(DATE(base_web_control.fn_get_ultima_data_dia_semana('sexta')),' 18:01:00') 
-    AND NOW() 
+    WHERE ce.data_venda BETWEEN '$strDataInicio' 
+    AND '$strDataFim '
     AND ced.codigo_barra NOT IN ('147258','016','7896586816760','23','07','7898938113328','7899718701513','015','7899018412546','2993500215204','35655138', '7896586816769', '7510103') 
     AND ce.venda_finalizada = 'S' 
     AND ce.id_consultor = $id_funcionario
@@ -143,8 +143,8 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     INNER JOIN cs2.cadastro_equipamento_descricao ced ON ced.id_cadastro_equipamento = ce.id
     INNER JOIN cs2.cadastro c ON ce.codloja = c.codloja
     LEFT JOIN base_web_control.produto p ON p.id_cadastro = 62735 AND (ced.codigo_barra = p.codigo_barra OR ced.codigo_barra = p.identificacao_interna)
-    WHERE ce.data_venda BETWEEN CONCAT(DATE(base_web_control.fn_get_ultima_data_dia_semana('sexta')),' 18:01:00')
-    AND NOW()
+    WHERE ce.data_venda BETWEEN '$strDataInicio'
+    AND '$strDataFim'
     AND ced.codigo_barra = '147258'
     AND ce.venda_finalizada = 'S'
     AND ce.id_consultor = $id_funcionario";
