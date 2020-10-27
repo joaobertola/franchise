@@ -35,7 +35,7 @@ $sql = "SELECT
 		FROM cs2.cadastro a
 		INNER JOIN cs2.logon b ON a.codloja=b.codloja
 		INNER JOIN base_web_control.webc_usuario u ON a.codloja = u.id_cadastro
-		WHERE MID(logon,1,locate('S',b.logon)-1)='$codigo' and u.login_master = 'S' $frq limit 1";
+		WHERE MID(logon,1,locate('S',logon)-1)='$codigo' and u.login_master = 'S' $frq limit 1";
 		
 $query = mysql_query($sql,$con);
 $line = mysql_num_rows($query);
