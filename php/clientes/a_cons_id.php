@@ -489,7 +489,7 @@ if ($codloja > 0) {
             <td colspan="2" class="subtitulopequeno"><?php echo $matriz['nomefantasia']; ?></td>
             <td width="170" class="subtitulopequeno">
                 <?php if (in_array($_SESSION['id'], array(163,4,11,25,28,4,12,128,1388))) { ?>
-                    <input type="button" value="Extrato Crediario/Recupere" onclick='Extrato_Crediario_Recupere( <?php echo $log['mid(logon,1,LOCATE(\'S\',logon)-1)']; ?>)'/>
+                    <input type="button" value="Extrato Crediario/Recupere" onclick='Extrato_Crediario_Recupere( <?php echo $log['logon']; ?>)'/>
                 <?php } ?>
             </td>
         </tr>
