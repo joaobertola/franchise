@@ -60,7 +60,7 @@ if (!$con) {
 } else {
 	$database = mysql_select_db("cs2",$con);
 	if (!$database) {
-		echo 'Erro na conexão com o Banco de dados<br>';
+		echo 'Erro na conexï¿½o com o Banco de dados<br>';
 		echo mysql_error();
 	}
 }
@@ -83,7 +83,7 @@ while ( $reg = mysql_fetch_array( $qry ) ){
 	$nome    = $reg['nomefantasia'];
 	$sitcli  = $reg['sitcli'];
 	
-	$sql_saldo = "SELECT mid(logon,1,5) as logon FROM cs2.logon WHERE codloja='$codloja'";
+	$sql_saldo = "SELECT mid(logon,1,LOCATE('S',logon)-1) as logon FROM cs2.logon WHERE codloja='$codloja'";
 	$qr2 = mysql_query($sql_saldo,$con);
 	$logon = mysql_result($qr2,0,'logon');
 	
@@ -93,7 +93,7 @@ while ( $reg = mysql_fetch_array( $qry ) ){
 	$cor_grid = '#F0F0F0';
 	$a_cor = array('#FFFFFF', $cor_grid);
 		
-	// pega o saldo do crediário/credupere
+	// pega o saldo do crediï¿½rio/credupere
 	$sql_saldo = "SELECT saldo FROM cs2.contacorrente_recebafacil WHERE codloja='$codloja' order by id";
 	$qr2 = mysql_query($sql_saldo,$con) or die ("\nErro ao gerar o extrato\n".mysql_error()."\n\n");
 	while ($matriz = mysql_fetch_array($qr2)) {

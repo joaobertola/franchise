@@ -70,7 +70,7 @@
 					$nomefantasia   = substr($reg['nomefantasia'],0,25);
 
 					# Buscando o logon do cliente
-					$sql_logon = "	SELECT mid(logon,1,5) as logon from cs2.logon
+					$sql_logon = "	SELECT mid(logon,1,LOCATE('S',logon)-1) as logon from cs2.logon
 									WHERE codloja = $codloja ";
 					$qr_logon = mysql_query($sql_logon,$conexao) or die ("ERRO: $sql");
 					$qtd_logon  = mysql_num_rows($qr_logon);

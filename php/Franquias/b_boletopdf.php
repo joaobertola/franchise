@@ -142,7 +142,7 @@ if ($go == 'ingressar') {
 
     $sql = "select b.codloja, a.logon, b.id_franquia, b.razaosoc, b.fone, b.cidade, b.uf, b.email from cs2.logon a
             inner join cs2.cadastro b on a.codloja=b.codloja
-            where mid(logon,1,5)='$codigo' $rfq";
+            where mid(logon,1,LOCATE('S',logon)-1)='$codigo' $rfq";
     $resulta = mysql_query($sql, $con) or die("Erro ao selecionar o codigo");
     $linha = mysql_num_rows($resulta);
     if ($linha == 0) {

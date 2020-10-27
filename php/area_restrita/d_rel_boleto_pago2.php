@@ -27,7 +27,7 @@ if (  $situacao == '0' ){
                      date_format(a.vencimento, '%d/%m/%Y') as vencimento, 
                      a.numboleto_bradesco, a.valor, 
                      date_format(a.datapg, '%d/%m/%Y') as datapg, 
-                     a.valorpg, mid(b.logon,1,5) as codigo, c.razaosoc, origem_pgto 
+                     a.valorpg, mid(b.logon,1,LOCATE('S',b.logon)-1) as codigo, c.razaosoc, origem_pgto 
                  FROM cs2.titulos a
             INNER JOIN cs2.logon b on a.codloja = b.codloja
             INNER JOIN cs2.cadastro c on a.codloja = c.codloja
@@ -112,7 +112,7 @@ if (  $situacao == '0' ){
     $sql = "SELECT
                 date_format(a.datapg, '%d/%m/%Y') as datapgto, 
                 date_format(a.vencimento, '%d/%m/%Y') as vencimento, 
-                a.numboleto_bradesco, a.valor, a.datapg, mid(b.logon,1,5) as logon,
+                a.numboleto_bradesco, a.valor, a.datapg, mid(b.logon,1,LOCATE('S',b.logon)-1) as logon,
                 a.valorpg, a.cpfcnpj_devedor,
                 (
                    SELECT Nom_Nome FROM base_inform.Nome_Brasil

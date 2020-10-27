@@ -56,15 +56,15 @@ if (empty($go)) {
 
 if ($go=='ingressar') {
 	if ( ($tipo == "a") || ($tipo == "c") ) {
-	$resulta = mysql_query("SELECT mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc 
+	$resulta = mysql_query("SELECT mid(a.logon,1,LOCATE('S',a.logon)-1) as logon, b.id_franquia, b.codloja, b.razaosoc 
 							FROM logon a
 							INNER JOIN cadastro b ON a.codloja=b.codloja
-							WHERE mid(logon,1,5)='$codigo'", $con);
+							WHERE mid(logon,1,LOCATE('S',logon)-1)='$codigo'", $con);
 	} else {
 	$resulta = mysql_query("SELECT MID(a.logon,1,5) AS logon, b.id_franquia, b.codloja, b.razaosoc 
 							FROM logon a
 							INNER JOIN cadastro b ON a.codloja=b.codloja
-							WHERE MID(logon,1,5)='$codigo' AND id_franquia='$id_franquia'", $con);
+							WHERE MID(logon,1,LOCATE('S',logon)-1)='$codigo' AND id_franquia='$id_franquia'", $con);
 	}
 	$linha = mysql_num_rows($resulta);
 	if ($linha == 0)
