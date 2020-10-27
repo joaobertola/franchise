@@ -471,7 +471,7 @@ if ($codloja > 0) {
 
             <td width="170" class="subtitulopequeno">
                 <?php if (in_array($_SESSION['id'], array(163,4,11,25,28,4,12,128,1388))) { ?>
-                    <input type="button" value="Web Control Empresas" onclick='LogarWebControl( <?php echo $log['mid(logon,1,5)']; ?>)'/>
+                    <input type="button" value="Web Control Empresas" onclick='LogarWebControl( <?php echo $logon; ?>)'/>
                 <?php } ?>
             </td>
 
