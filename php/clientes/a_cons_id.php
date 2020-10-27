@@ -191,7 +191,7 @@ $resposta = mysql_query($sql, $con);
 $log = mysql_fetch_array($resposta);
 $logon = $log['logon'];
 
-echo $logon;die;
+//echo $logon;die;
 
 require "connect/conexao_conecta_virtual.php";
 $sql = "SELECT concat(fra_nomesite, '.', fra_dominio) url FROM dbsites.tbl_framecliente WHERE fra_codloja = $codloja LIMIT 1;";
