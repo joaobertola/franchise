@@ -827,7 +827,7 @@ if ($codloja > 0) {
                     <td colspan="2" bgcolor="<?= $cor ?>"><font color="#FFFFFF" style="font-size:14px" face="Arial"><b><?= $des_cpendencia_contratual ?></b></font></td>
                     <td>
                         <?php if ( $_SESSION['id'] == 163 ) { ?>
-                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['mid(logon,1,LOCATE(\'S\',logon)-1)']; ?>)" />
+                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['logon']; ?>)" />
                         <?php } ?>
                     </td>
                 </tr>
