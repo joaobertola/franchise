@@ -297,8 +297,15 @@ while ( $reg = mysql_fetch_array($qry) ){
         $oRps->Certificado_Usuario = $Certificado_User;
         $oRps->Certificado_Senha = $Certificado_Senha;
 
+        /*
         $oRps->URLwebservice = 
                         array('producao' => 'https://isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
+                              'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
+                             );
+        */
+
+        $oRps->URLwebservice = 
+                        array('producao' => 'https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
                               'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
                              );
 
@@ -382,7 +389,7 @@ while ( $reg = mysql_fetch_array($qry) ){
         $oRps->URLArqxsd = $urlArqXsd;
 
         $oRps->URLwebservice = 
-                        array('producao' => 'https://isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
+                        array('producao' => 'https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
                               'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
                              );
 
