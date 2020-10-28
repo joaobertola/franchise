@@ -5,7 +5,7 @@ require "funcoes.php";
 
 $id_cadastro = $_REQUEST['id_cadastro']; 
 
-$sql = "SELECT c.id, a.codloja, a.razaosoc, a.uf,a.cpfsocio1, a.email, mid(b.logon,1,locate('S',logon)-1) as logon, mid(b.logon, (locate('S',logon)+1),5) as senha
+$sql = "SELECT c.id, a.codloja, a.razaosoc, a.uf,a.cpfsocio1, a.email, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, REPLACE(mid(b.logon,7,10),'S','') as senha
 FROM cs2.cadastro a
 INNER JOIN cs2.logon b ON a.codloja = b.codloja
 LEFT OUTER JOIN base_web_control.webc_usuario c ON a.codloja = c.id_cadastro

@@ -70,15 +70,15 @@ if (empty($go)) {
 
 if ($go == 'ingressar') {
     if (($tipo == "a") || ($tipo == "c")) {
-        $sql = "SELECT mid(a.logon,1,LOCATE('S',logon)-1) as logon, b.id_franquia, b.codloja, b.razaosoc 
+        $sql = "SELECT CAST(MID(a.logon,1,6) AS UNSIGNED)  as logon, b.id_franquia, b.codloja, b.razaosoc 
 				FROM logon a
 				INNER JOIN cadastro b ON a.codloja=b.codloja
-				WHERE mid(logon,1,LOCATE('S',logon)-1)='$codigo'";
+				WHERE CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo'";
     } else {
-        $sql = "SELECT MID(a.logon,1,LOCATE('S',logon)-1) AS logon, b.id_franquia, b.codloja, b.razaosoc 
+        $sql = "SELECT CAST(MID(a.logon,1,6) AS UNSIGNED)  AS logon, b.id_franquia, b.codloja, b.razaosoc 
 				FROM logon a
 				INNER JOIN cadastro b ON a.codloja=b.codloja
-				WHERE MID(logon,1,LOCATE('S',logon)-1)='$codigo' AND id_franquia='$id_franquia'";
+				WHERE CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo' AND id_franquia='$id_franquia'";
     }
     $resulta = mysql_query($sql,$con);
     $linha = mysql_num_rows($resulta);

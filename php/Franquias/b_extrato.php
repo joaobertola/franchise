@@ -29,7 +29,7 @@ if ($contano === "todos") {
         $periodo = "$contano-$contmes%";
 }
 
-$comando = "select a.codloja, mid(b.logon,1,locate('S',b.logon)-1) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, mid(d.nome,1,10)) as vendedor,
+$comando = "select a.codloja,CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, mid(d.nome,1,10)) as vendedor,
                 a.valor_comissao_vendedor, a.vr_pgto_fixo, date_format(a.dt_pgto_fixo, '%d/%m/%Y') AS dt_pgto_fixo,
                 date_format(a.dt_pgto_comissao_vendedor, '%d/%m/%Y') AS dt_pgto_comissao_vendedor,
                 date_format(a.dt_cad, '%d/%m/%Y') AS data, c.fantasia,
@@ -44,7 +44,7 @@ $comando = "select a.codloja, mid(b.logon,1,locate('S',b.logon)-1) as logon, a.n
 
 
 if ($opcao == 2)
-    $comando = "select a.codloja, mid(b.logon,1,locate('S',b.logon)-1) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, ca.nome) AS vendedor,
+    $comando = "select a.codloja,CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, ca.nome) AS vendedor,
                     a.valor_comissao_vendedor, a.vr_pgto_fixo, date_format(a.dt_pgto_fixo, '%d/%m/%Y') AS dt_pgto_fixo,
                     date_format(a.dt_pgto_comissao_vendedor, '%d/%m/%Y') AS dt_pgto_comissao_vendedor,
                     date_format(a.dt_cad, '%d/%m/%Y') AS data, c.fantasia,

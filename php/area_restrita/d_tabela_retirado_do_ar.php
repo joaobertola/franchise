@@ -39,14 +39,14 @@ if (empty($go)) {
 if ($go == 'mostrar') {
 	if ($tipo == 'b') $frq = "and b.id_franquia = '$id_franquia'";
 	else $frq = "";
-	$sql = "select a.codloja, mid(a.logon,1,LOCATE('S',a.logon)-1) as logon, b.nomefantasia, b.cidade, b.uf, b.banco_cliente
+	$sql = "select a.codloja, CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.nomefantasia, b.cidade, b.uf, b.banco_cliente
 			from cs2.logon a 
 			inner join cs2.cadastro b on a.codloja=b.codloja
 			where a.codloja='$codigo' $frq";
 	$ql = mysql_query($sql,$con);
 	$lin = mysql_num_rows($ql);
 	if (empty($lin)) {
-		$sql = "select a.codloja, mid(a.logon,1,LOCATE('S',a.logon)-1) as logon, b.nomefantasia, b.cidade, b.uf, b.banco_cliente
+		$sql = "select a.codloja, CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.nomefantasia, b.cidade, b.uf, b.banco_cliente
 				from cs2.logon a
 				inner join cs2.cadastro b on a.codloja=b.codloja 
 				where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' $frq limit 1";

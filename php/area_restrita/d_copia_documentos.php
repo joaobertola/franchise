@@ -69,12 +69,12 @@ if ($go=='ingressar') {
 	$resulta = mysql_query("SELECT b.codloja, a.logon, b.id_franquia, c.email FROM logon a
 							INNER JOIN cadastro b ON a.codloja=b.codloja
 							INNER JOIN franquia c ON b.id_franquia = c.id
-							WHERE mid(logon,1,LOCATE('S',logon)-1)='$codigo'", $con);
+							WHERE CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo'", $con);
 	} else {
 	$resulta = mysql_query("select b.codloja, a.logon, b.id_franquia, c.email FROM logon a
 							INNER JOIN cadastro b ON a.codloja=b.codloja
 							INNER JOIN franquia c ON b.id_franquia = c.id
-							WHERE mid(logon,1,LOCATE('S',logon)-1)='$codigo' AND id_franquia='$id_franquia', $con");
+							WHERE CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo' AND id_franquia='$id_franquia', $con");
 	}
 	$linha = mysql_num_rows($resulta);
 	if ($linha == 0) {

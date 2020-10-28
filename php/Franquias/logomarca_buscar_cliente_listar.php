@@ -4,12 +4,12 @@ if (($tipo == "a") || ($tipo == "c")) {
 $sql = "SELECT b.codloja, b.nomefantasia, b.razaosoc, b.codloja, a.logon, b.id_franquia 
 		FROM logon a
 		INNER JOIN cadastro b on a.codloja=b.codloja
-		WHERE mid(logon,1,LOCATE('S',logon)-1)='{$_REQUEST['codigo']}'";
+		WHERE CAST(MID(a.logon,1,6) AS UNSIGNED)='{$_REQUEST['codigo']}'";
 } else {
 $sql = "SELECT b.codloja, b.nomefantasia, b.razaosoc, b.codloja, a.logon, b.id_franquia 
 		FROM logon a
 		INNER JOIN cadastro b on a.codloja=b.codloja
-		WHERE  mid(logon,1,LOCATE('S',logon)-1)='{$_REQUEST['codigo']}' AND id_franquia='$id_franquia'";
+		WHERE  CAST(MID(a.logon,1,6) AS UNSIGNED)='{$_REQUEST['codigo']}' AND id_franquia='$id_franquia'";
 }
 
 $qry = mysql_query($sql, $con);

@@ -5,7 +5,7 @@ $meta_mes_contrato = mysql_result($qry_total_contratos,0,'qtd_contrato_mes');
 
 $ano_mes = date("Y-m");
 
-$sql_contratos_mes = "select a.codloja, mid(b.logon,1,LOCATE('S',b.logon)-1) as logon, a.nomefantasia, a.vendedor,
+$sql_contratos_mes = "select a.codloja,CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.nomefantasia, a.vendedor,
 			date_format(a.dt_cad, '%d/%m/%Y') AS data, c.fantasia from cadastro a
 			inner join logon b on a.codloja = b.codloja
 			inner join franquia c on a.id_franquia = c.id

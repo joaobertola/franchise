@@ -77,7 +77,7 @@ if ($go=='ingressar') {
               b.codloja, a.logon, b.id_franquia, b.razaosoc, b.fone, b.cidade, b.uf, b.email 
           FROM cs2.logon a 
           INNER JOIN cs2.cadastro b ON a.codloja=b.codloja 
-          WHERE mid(a.logon,1,LOCATE('S',a.logon)-1)='$codigo' $rfq";
+          WHERE CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo' $rfq";
   $resulta = mysql_query($sql, $con) or die ("Erro ao selecionar o codigo");
   $linha = mysql_num_rows($resulta);
   if ($linha == 0) {

@@ -29,7 +29,7 @@ $comando = "SELECT
 $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 
-$sql = "select mid(logon,1,locate('S',logon)-1) as logon, mid(logon, locate('S',logon)+1 ,10) as senha, sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select CAST(MID(logon,1,6) AS UNSIGNED) as logon, REPLACE(mid(logon,7,10),'S','') as senha, sitlog from logon where codloja='$codloja' limit 1";
 
 //echo $sql; die;
 
@@ -51,7 +51,7 @@ $_comando = "SELECT
 			a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.id_franquia, 
 			date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.ramo_atividade, a.obs,
 			a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2, a.emissao_financeiro, a.vendedor,
-			mid(b.logon,1,locate('S',b.logon)-1)) as logon, mid(b.logon,locate('S',b.logon)+1),10) as senha, a.classe, a.banco_cliente, a.agencia_cliente,
+			CAST(MID(b.logon,1,6) AS UNSIGNED)) as logon, REPLACE(mid(b.logon,7,10),'S','') as senha, a.classe, a.banco_cliente, a.agencia_cliente,
 			a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta, 
 			a.inscricao_estadual, a.cnae_fiscal, a.inscricao_municipal, 
 			a.inscricao_estadual_tributario, a.numero, a.complemento, a.vr_max_limite_crediario,

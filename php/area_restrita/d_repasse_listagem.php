@@ -54,7 +54,7 @@ $nome2 = $_SESSION['ss_restrito'];
 			$qr3 = mysql_query($sql3, $con);
 			$matrix = mysql_fetch_array($qr3);
 			$sitlog = $matrix['inadimplente'];
-			$sql2 = "select a.saldo, mid(b.logon,1,LOCATE('S',b.logon)-1) as logon 
+			$sql2 = "select a.saldo,CAST(MID(b.logon,1,6) AS UNSIGNED) as logon 
 					 from  cs2.contacorrente_recebafacil a
 					 inner join logon b on a.codloja=b.codloja
 					 where a.codloja='$codigo'
