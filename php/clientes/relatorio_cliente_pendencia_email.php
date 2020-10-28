@@ -7,7 +7,7 @@ if($_SESSION['id_master'] > 0){
 }
 
 if($_REQUEST['opcao'] == 1){
-$sql = "select a.fone, a.email, a.codloja, a.razaosoc, mid(b.logon,1,5) AS logon
+$sql = "select a.fone, a.email, a.codloja, a.razaosoc, CAST(MID(b.logon,1,6) AS UNSIGNED) AS logon
 from cs2.cadastro a
 inner join cs2.logon b on a.codloja = b.codloja
 where sitcli < 2 and email <> '' and dt_atualizacao_email is null
@@ -15,7 +15,7 @@ and id_franquia = '{$_SESSION['id']}' ORDER BY a.razaosoc";
 $texto = "<u>E-mail's cadastrados por&eacute;m n&atilde;o atualizado</u>";
 }else{
 $texto = "<u>E-mail's n&atilde;o cadastrados na WEB CONTROL EMPRESAS</u>";
-$sql = "select a.fone, a.codloja, a.razaosoc, mid(b.logon,1,5)AS logon 
+$sql = "select a.fone, a.codloja, a.razaosoc, CAST(MID(b.logon,1,6) AS UNSIGNED)AS logon 
 from cs2.cadastro a
 inner join cs2.logon b on a.codloja = b.codloja
 where sitcli < 2 and email = '' and dt_atualizacao_email is null

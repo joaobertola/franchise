@@ -1,7 +1,7 @@
 <?php
 require ("../connect/conexao_conecta.php");
 
-$sql = "SELECT a.codloja, mid(c.logon,1,5) AS logon, b.razaosoc, b.nomefantasia, b.insc, b.fone, b.socio1,
+$sql = "SELECT a.codloja, CAST(MID(c.logon,1,6) AS UNSIGNED) AS logon, b.razaosoc, b.nomefantasia, b.insc, b.fone, b.socio1,
 		DATE_FORMAT(a.dt_chegada_procuracao,'%d/%m/%Y') AS chegada, a.autorizado_serasa, 
 		date_format(a.dt_resposta_serasa,'%d/%m/%Y') AS resposta from movimento_serasa a
 		INNER JOIN cadastro b ON a.codloja=b.codloja

@@ -4,7 +4,7 @@ require "connect/sessao.php";
 
 $codigo = $_REQUEST['codigo'];
 
-$sql = "select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
+$sql = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 		inner join cadastro b on a.codloja=b.codloja
 		where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'" ;
 if ( $class == 'J' )

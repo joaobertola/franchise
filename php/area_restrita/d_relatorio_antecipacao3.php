@@ -8,7 +8,7 @@ require "../connect/conexao_conecta.php";
 
 	$protocolo  = $_REQUEST['protocolo'];
 	
-	$sql = "SELECT a.codloja, mid(b.logon,1,5) logon FROM cs2.contacorrente_antecipacao a
+	$sql = "SELECT a.codloja, CAST(MID(b.logon,1,6) AS UNSIGNED) logon FROM cs2.contacorrente_antecipacao a
 			INNER JOIN cs2.logon b ON a.codloja = b.codloja
 			WHERE a.protocolo = '$protocolo'
 			LIMIT 1";

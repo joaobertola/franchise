@@ -48,7 +48,7 @@ function quita_titulo($i_titulo, $i_valor_titulo, $i_total_recebido, $i_juros_ti
                 b.nomefantasia,b.cidade,
                 a.cpfcnpj_devedor, c.Nom_Nome, b.banco_cliente, b.agencia_cliente,
                 b.conta_cliente, b.cpfcnpj_doc, b.nome_doc, a.tp_titulo, a.datapg,
-                mid(d.logon,1,5) AS logon
+                CAST(MID(d.logon,1,6) AS UNSIGNED) AS logon
             FROM cs2.titulos_recebafacil a
             INNER JOIN cs2.cadastro b ON a.codloja=b.codloja
             LEFT OUTER JOIN base_inform.Nome_Brasil c ON a.cpfcnpj_devedor = c.Nom_CPF
@@ -242,7 +242,7 @@ for($i=0;$i<$total;$i++){
                                 b.nomefantasia,b.cidade,
                                 a.cpfcnpj_devedor, c.Nom_Nome, b.banco_cliente, b.agencia_cliente,
                                 b.conta_cliente, b.cpfcnpj_doc, b.nome_doc, a.tp_titulo, a.datapg,
-                                mid(d.logon,1,5) AS logon
+                                CAST(MID(d.logon,1,6) AS UNSIGNED) AS logon
                         FROM cs2.titulos_recebafacil a
                         INNER JOIN cs2.cadastro b ON a.codloja=b.codloja
                         LEFT OUTER JOIN base_inform.Nome_Brasil c ON a.cpfcnpj_devedor = c.Nom_CPF
@@ -358,7 +358,7 @@ for($i=0;$i<$total;$i++){
                     }else{
 
                         // Verificando se o titulo � de ANTECIPACAO
-                        $sql_ant = "SELECT a.id_antecipacao, a.valor, b.nomefantasia, mid(c.logon,1,5) logon
+                        $sql_ant = "SELECT a.id_antecipacao, a.valor, b.nomefantasia, CAST(MID(c.logon,1,6) AS UNSIGNED) logon
                                     FROM cs2.titulos_antecipacao a
                                     INNER JOIN cs2.cadastro b ON a.codloja = b.codloja
                                     INNER JOIN cs2.logon c ON a.codloja = c.codloja

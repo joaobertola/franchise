@@ -6,15 +6,15 @@ $codigo = $_POST['codigo'];
 if ($tipo == "b") $frq = "and a.id_franquia='$id_franquia'";
 else $frq = "";
 
-$sql = "SELECT 1 as tp, a.codloja, mid(b.logon,1,5) as logon, a.razaosoc, a.nomefantasia, a.sitcli, d.descsit FROM cadastro a
+$sql = "SELECT 1 as tp, a.codloja, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.razaosoc, a.nomefantasia, a.sitcli, d.descsit FROM cadastro a
 		inner join logon b on a.codloja=b.codloja
 		inner join situacao d on a.sitcli=d.codsit
 		WHERE b.codloja = '$codigo' $frq
 		union
-		SELECT 2 as tp, a.codloja, mid(b.logon,1,5) as logon, a.razaosoc, a.nomefantasia, a.sitcli, d.descsit FROM cadastro a
+		SELECT 2 as tp, a.codloja, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.razaosoc, a.nomefantasia, a.sitcli, d.descsit FROM cadastro a
 		inner join logon b on a.codloja=b.codloja
 		inner join situacao d on a.sitcli=d.codsit
-		where mid(b.logon,1,5)='$codigo' $frq ORDER BY logon ASC";
+		where CAST(MID(b.logon,1,6) AS UNSIGNED)='$codigo' $frq ORDER BY logon ASC";
 
 $res = mysql_query ($sql, $con);
 $linhas = mysql_num_rows ($res);
@@ -39,9 +39,9 @@ if ($linhas == "0")
 			</tr>
 			<tr align=\"center\" bgcolor=\"#FF9900\">
 				<td>ID</td>
-				<td>Código</td>
-				<td>Razão Social</td>
-				<td>Nome de Fantasía</td>
+				<td>Cï¿½digo</td>
+				<td>Razï¿½o Social</td>
+				<td>Nome de Fantasï¿½a</td>
 				<td>Situacao</td>
 				<td><b>Consultar</b></td>
 				<td rowspan=\"$linhas1\" width=\"1\" bgcolor=\"#999999\"></td>

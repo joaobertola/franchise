@@ -13,7 +13,7 @@ $id_titulo = $_REQUEST['id_titulo'];
 
 $sql = "SELECT 
 			a.numboleto, a.codloja, a.emissao, a.vencimento, a.valor,
-			b.end, b.numero, b.complemento, b.bairro, b.cidade, b.uf, b.cep, b.email, b.insc, b.razaosoc, mid(c.logon,1,5) as logon
+			b.end, b.numero, b.complemento, b.bairro, b.cidade, b.uf, b.cep, b.email, b.insc, b.razaosoc, CAST(MID(c.logon,1,6) AS UNSIGNED) as logon
 		FROM cs2.titulos_antecipacao a
 		INNER JOIN cs2.cadastro b ON a.codloja = b.codloja
 		INNER JOIN cs2.logon c ON a.codloja = c.codloja

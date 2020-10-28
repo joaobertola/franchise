@@ -486,7 +486,7 @@
                                     $registros .= "$Registro\n";
 
                                     if ( $frq == '2'){
-                                        $log = substr($logon,0,5);
+                                        $log = substr($logon,0,6);
                                         $linha_tex .= "<tr style='font-size:12px'>
                                                             <td>$log</td>
                                                             <td>$emp</td>
@@ -830,7 +830,7 @@
                                     $totlinha++;
                                     $registros .= "$Registro\n";
                                                                         if ( $frq == '2'){
-                                                                            $log = substr($logon,0,5);
+                                                                            $log = substr($logon,0,6);
                                                                             $linha_tex .= "<tr style='font-size:12px'>
                                                                                                 <td>$log</td>
                                                                                                 <td>$emp</td>
@@ -1147,7 +1147,7 @@
                                             $totlinha++;
                                             $registros .= "$Registro\n";
                                             if ( $frq == '2'){
-                                                $log = substr($logon,0,5);
+                                                $log = substr($logon,0,6);
                                                 $linha_tex .= "<tr style='font-size:12px'>
                                                                     <td>$log</td>
                                                                     <td>$emp</td>
@@ -1494,7 +1494,7 @@
                                         $totlinha++;
                                         $registros .= "$Registro\n";
                                                                                 if ( $frq == '2'){
-                                                                                    $log = substr($logon,0,5);
+                                                                                    $log = substr($logon,0,6);
                                                                                     $linha_tex .= "<tr style='font-size:12px'>
                                                                                                         <td>$log</td>
                                                                                                         <td>$emp</td>
