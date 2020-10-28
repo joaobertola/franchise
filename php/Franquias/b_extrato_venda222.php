@@ -24,7 +24,7 @@
                                 <td align='center'>Situa��o</td>
                         </tr>";
                 $vendedor = $reg2['vendedor'];
-                $sql_lista_v = "SELECT mid(b.logon,1,5) as logon, a.nomefantasia, date_format(a.dt_cad,'%d/%m/%Y') as dt_cad, 
+                $sql_lista_v = "SELECT mid(b.logon,1,LOCATE('S',b.logon)-1) as logon, a.nomefantasia, date_format(a.dt_cad,'%d/%m/%Y') as dt_cad, 
                                     mid(d.nome,1,10) as vendedor, c.fantasia, a.sitcli, a.pendencia_contratual, a.pendencia_contrato,
                                     a.vr_pgto_fixo
                                 FROM cadastro a

@@ -36,7 +36,7 @@ $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 $codloja = $matriz['codloja'];
 
-$sql = "select mid(logon,1,5), mid(logon,7,10) from logon where codloja='$codloja' limit 1";
+$sql = "select CAST(MID(logon,1,6) AS UNSIGNED) as logon, REPLACE(mid(logon,7,10),'S','') as senha from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 
@@ -113,12 +113,12 @@ function limpar(form) {
   </tr>
   <tr>
     <td class="subtitulodireita">C&oacute;digo de Cliente </td>
-    <td class="subtitulopequeno"><?php echo $log['mid(logon,1,5)']; ?></td>
+    <td class="subtitulopequeno"><?php echo $log['logon']; ?></td>
   </tr>
   <tr>
     <td class="subtitulodireita">Senha</td>
     <td class="subtitulopequeno">
-	<?php echo $log['mid(logon,8,10)']; ?></td>
+	<?php echo $log['senha']; ?></td>
   </tr>
   <tr>
     <td class="subtitulodireita">Raz&atilde;o Social</td>

@@ -191,6 +191,8 @@ $resposta = mysql_query($sql, $con);
 $log = mysql_fetch_array($resposta);
 $logon = $log['logon'];
 
+//echo $logon;die;
+
 require "connect/conexao_conecta_virtual.php";
 $sql = "SELECT concat(fra_nomesite, '.', fra_dominio) url FROM dbsites.tbl_framecliente WHERE fra_codloja = $codloja LIMIT 1;";
 $resposta = mysql_query($sql, $con_virtual);
@@ -469,7 +471,7 @@ if ($codloja > 0) {
 
             <td width="170" class="subtitulopequeno">
                 <?php if (in_array($_SESSION['id'], array(163,4,11,25,28,4,12,128,1388))) { ?>
-                    <input type="button" value="Web Control Empresas" onclick='LogarWebControl( <?php echo $log['mid(logon,1,5)']; ?>)'/>
+                    <input type="button" value="Web Control Empresas" onclick='LogarWebControl(<?php echo $logon; ?>)'/>
                 <?php } ?>
             </td>
 
@@ -487,7 +489,7 @@ if ($codloja > 0) {
             <td colspan="2" class="subtitulopequeno"><?php echo $matriz['nomefantasia']; ?></td>
             <td width="170" class="subtitulopequeno">
                 <?php if (in_array($_SESSION['id'], array(163,4,11,25,28,4,12,128,1388))) { ?>
-                    <input type="button" value="Extrato Crediario/Recupere" onclick='Extrato_Crediario_Recupere( <?php echo $log['mid(logon,1,5)']; ?>)'/>
+                    <input type="button" value="Extrato Crediario/Recupere" onclick='Extrato_Crediario_Recupere( <?php echo $log['logon']; ?>)'/>
                 <?php } ?>
             </td>
         </tr>
@@ -827,7 +829,7 @@ if ($codloja > 0) {
                     <td colspan="2" bgcolor="<?= $cor ?>"><font color="#FFFFFF" style="font-size:14px" face="Arial"><b><?= $des_cpendencia_contratual ?></b></font></td>
                     <td>
                         <?php if ( $_SESSION['id'] == 163 ) { ?>
-                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['mid(logon,1,5)']; ?>)" />
+                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['logon']; ?>)" />
                         <?php } ?>
                     </td>
                 </tr>
@@ -861,7 +863,7 @@ if ($codloja > 0) {
                     </td>
                     <td>
                         <?php if ( $_SESSION['id'] == 163 ) { ?>
-                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['mid(logon,1,5)']; ?>)" />
+                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['CAST(MID(logon,1,6) AS UNSIGNED)']; ?>)" />
                         <?php } ?>
                     </td>
                 </tr>

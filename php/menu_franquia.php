@@ -85,6 +85,11 @@ function doBlink(){
     <td align="center" class="center"><?php echo $i++; ?></td>
     <td><a href="../web/restrito/equifax.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');">Gerar Termo Negativação Equifax</a></td>
   </tr>
+
+  <tr>
+  	<td align="center"><?php echo $i++; ?></td>
+  	<td><a href="painel.php?pagina1=area_restrita/d_pontos_ranking.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><font color="blue"><b>Pontos Brincadeira</b></font></a></td>
+  </tr>
   
 	<?php } ?>
   <?php if ($id_franquia != '01') {  ?>

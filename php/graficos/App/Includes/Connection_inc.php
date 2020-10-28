@@ -9,7 +9,7 @@ function connectToDB() {
     if (!$link) {
         die('Could not connect: ' . mysql_error());
     }
-    $db_selected = mysql_select_db('FusionChartsDB');
+    $db_selected = mysql_select_db('util');
     if (!$db_selected) {
         die ('Can\'t use database : ' . mysql_error());
     }

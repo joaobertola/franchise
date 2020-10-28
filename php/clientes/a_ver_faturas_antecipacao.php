@@ -3,9 +3,9 @@
 require "connect/sessao.php";
 require "connect/conexao_conecta.php";
 
-// pega o saldo do crediário/credupere
+// pega o saldo do crediï¿½rio/credupere
 
-$sql_cliente = "select mid(a.logon,1,5) as logon, b.razaosoc, b.nomefantasia from logon a
+$sql_cliente = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.razaosoc, b.nomefantasia from logon a
 				inner join cadastro b on a.codloja=b.codloja
 				where b.codloja = '$codloja'";
 							
@@ -18,7 +18,7 @@ if ($linha > 0){
 	$razaosoc = $matriz['nomefantasia'];
 }
 
-//pega da tabela títulos todas as ocorrências para esse codloja
+//pega da tabela tï¿½tulos todas as ocorrï¿½ncias para esse codloja
 $command = "SELECT 
 					a.numboleto AS boleto, date_format(a.vencimento,'%d/%m/%Y') AS venc, a.valor, 
 					date_format(a.datapg,'%d/%m/%Y') AS dtpagamento, a.valorpg,  
@@ -34,7 +34,7 @@ $linhas = mysql_num_rows ($res);
 if ( $linhas > 0 ){
 	
 $linhas1 = $linhas + 3;
-//começa a tabela
+//comeï¿½a a tabela
 	echo "<table align='center' width='800' border='0' cellpadding='0' cellspacing='1' class='bodyText'>
 	 		<tr>
 				<td colspan='11' class='titulo'>Faturas REFERENTE A ANTECIPA&Ccedil;&Atilde;O DE CR&Eacute;DITO</td>
@@ -67,7 +67,7 @@ $linhas1 = $linhas + 3;
 		$vr_orig = number_format($vr_orig,2,",",".");
 	
 		
-		/* condição para mostra o pagamento com juros*/
+		/* condiï¿½ï¿½o para mostra o pagamento com juros*/
 		$date = date("d/m/Y",time());
 		$vencimento = $matriz['vencimento'];
 		$vencimentof = substr($vencimento,8,2)."/".substr($vencimento,5,2)."/".substr($vencimento,0,4);
@@ -121,7 +121,7 @@ $linhas1 = $linhas + 3;
 		$vsoma_antecipacao = number_format($soma_antecipacao,2);
 	  	 echo "
 			<tr height='20' class='subtitulodireita'>
-			    <td colspan='11'>Soma das Faturas (Antecipa&ccedil;&atilde;o) não pagas: R$ $vsoma_antecipacao</td>
+			    <td colspan='11'>Soma das Faturas (Antecipa&ccedil;&atilde;o) nï¿½o pagas: R$ $vsoma_antecipacao</td>
 				<td></td>
 			</tr>
 			<tr>

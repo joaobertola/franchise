@@ -5,13 +5,13 @@ $go 	= $_POST['go'];
 $codigo = $_POST['codigo'];
 if ($go=='ingressar') {
 	if (($tipo == "a") || ($tipo == "c")) {
-	$resulta = mysql_query("select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
+	$resulta = mysql_query("select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 							inner join cadastro b on a.codloja=b.codloja
-							where mid(logon,1,5)='$codigo'", $con);
+							where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'", $con);
 	} else {
-	$resulta = mysql_query("select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
+	$resulta = mysql_query("select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 							inner join cadastro b on a.codloja=b.codloja
-							where mid(logon,1,5)='$codigo' and id_franquia='$id_franquia'", $con);
+							where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' and id_franquia='$id_franquia'", $con);
 	}
 	$linha = mysql_num_rows($resulta);
 	if ($linha == 0) {

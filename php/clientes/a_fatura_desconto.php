@@ -136,7 +136,7 @@ window.onload = function() {
     $numdoc = $_REQUEST['numdoc'];
     
     // Buscando dados do cliente e do titulo
-    $sql = "SELECT a.razaosoc, mid(b.logon,1,5) AS logon, date_format(c.vencimento,'%d/%m/%Y') AS vencimento, c.valor, a.codloja FROM cs2.cadastro a
+    $sql = "SELECT a.razaosoc, CAST(MID(b.logon,1,6) AS UNSIGNED) AS logon, date_format(c.vencimento,'%d/%m/%Y') AS vencimento, c.valor, a.codloja FROM cs2.cadastro a
             INNER JOIN cs2.logon b ON a.codloja = b.codloja 
             INNER JOIN cs2.titulos c on a.codloja = b.codloja
             WHERE a.codloja = '$codloja' and c.numdoc = '$numdoc'";

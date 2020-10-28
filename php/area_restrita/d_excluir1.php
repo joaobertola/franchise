@@ -15,7 +15,7 @@ $codigo = $_POST['codigo'];
 
 $resulta = mysql_query("select a.logon, b.id_franquia from logon a
 						inner join cadastro b on a.codloja=b.codloja
-						where mid(logon,1,5)='$codigo'",$con);
+						where mid(logon,1,LOCATE('S',logon)-1)='$codigo'",$con);
 $linha = mysql_num_rows($resulta);
 if (!$linha) {
 	echo "<script>alert(\"Cliente não existe!\"); javascript: history.back();</script>";
@@ -23,10 +23,10 @@ if (!$linha) {
 else 
 {
 $comando = "select a.codloja, a.razaosoc, a.insc, a.nomefantasia, a.uf, a.cidade, a.bairro, a.end, a.cep, a.fone,
-			a.sitcli, d.descsit, mid(b.logon,1,5) as logon from cadastro a
+			a.sitcli, d.descsit, mid(b.logon,1,LOCATE('S',b.logon)-1) as logon from cadastro a
 			inner join logon b on a.codloja=b.codloja
 			inner join situacao d on a.sitcli=d.codsit
-			where mid(logon,1,5)='$codigo'";
+			where mid(logon,1,LOCATE('S',logon)-1)='$codigo'";
 $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res); 
 ?>

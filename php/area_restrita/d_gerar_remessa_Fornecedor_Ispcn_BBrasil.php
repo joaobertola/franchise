@@ -159,7 +159,7 @@
 
 			
 			# verificando o logon do cliente
-			$sql2 = 'SELECT MID(logon,1,5) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
+			$sql2 = 'SELECT CAST(MID(logon,1,6) AS UNSIGNED) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
 			$xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
 			$array_sql2 = mysql_fetch_array($xqr_sql);
 			$logon = $array_sql2["logon"];
@@ -399,7 +399,7 @@
 			$tpconta = $registro['tpconta'];
 			$dt_cad = $registro['dt_cad'];
 			# verificando o logon do cliente
-			$sql2 = 'SELECT MID(logon,1,5) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
+			$sql2 = 'SELECT CAST(MID(logon,1,6) AS UNSIGNED) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
 			$xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
 			$array_sql2 = mysql_fetch_array($xqr_sql);
 			$logon = $array_sql2["logon"];
@@ -623,7 +623,7 @@
 			$tpconta = $registro['tpconta'];
 			$dt_cad = $registro['dt_cad'];	
 			# verificando o logon do cliente
-			$sql2 = 'SELECT MID(logon,1,5) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
+			$sql2 = 'SELECT CAST(MID(logon,1,6) AS UNSIGNED) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
 			$xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
 			$array_sql2 = mysql_fetch_array($xqr_sql);
 			$logon = $array_sql2["logon"];
@@ -873,7 +873,7 @@
 			$tpconta = $registro['tpconta'];
 			$dt_cad = $registro['dt_cad'];	
 			# verificando o logon do cliente
-			$sql2 = 'SELECT MID(logon,1,5) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
+			$sql2 = 'SELECT CAST(MID(logon,1,6) AS UNSIGNED) logon FROM cs2.logon WHERE codloja='.$codloja.' LIMIT 1';
 			$xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
 			$array_sql2 = mysql_fetch_array($xqr_sql);
 			$logon = $array_sql2["logon"];

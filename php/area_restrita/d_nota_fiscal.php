@@ -60,15 +60,15 @@ window.onload = function() {
 
 if ($go=='ingressar') {
 	if ( ($tipo == "a") || ($tipo == "c") ) {
-	$resulta = mysql_query("SELECT mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc 
+	$resulta = mysql_query("SELECT CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja, b.razaosoc 
 							FROM logon a
 							INNER JOIN cadastro b ON a.codloja=b.codloja
-							WHERE mid(logon,1,5)='$codigo'", $con);
+							WHERE CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'", $con);
 	} else {
-	$resulta = mysql_query("SELECT MID(a.logon,1,5) AS logon, b.id_franquia, b.codloja, b.razaosoc 
+	$resulta = mysql_query("SELECT CAST(MID(a.logon,1,6) AS UNSIGNED) AS logon, b.id_franquia, b.codloja, b.razaosoc 
 							FROM logon a
 							INNER JOIN cadastro b ON a.codloja=b.codloja
-							WHERE MID(logon,1,5)='$codigo' AND id_franquia='$id_franquia'", $con);
+							WHERE CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' AND id_franquia='$id_franquia'", $con);
 	}
 	$linha = mysql_num_rows($resulta);
 	if ($linha == 0)
