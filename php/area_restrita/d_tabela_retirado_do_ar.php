@@ -49,7 +49,7 @@ if ($go == 'mostrar') {
 		$sql = "select a.codloja, mid(a.logon,1,LOCATE('S',a.logon)-1) as logon, b.nomefantasia, b.cidade, b.uf, b.banco_cliente
 				from cs2.logon a
 				inner join cs2.cadastro b on a.codloja=b.codloja 
-				where mid(logon,1,5)='$codigo' $frq limit 1";
+				where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' $frq limit 1";
 		$ql = mysql_query($sql,$con);
 		$linha = mysql_num_rows($ql);
 		if (empty($linha)) {

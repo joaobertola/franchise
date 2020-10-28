@@ -36,7 +36,7 @@ $total_inicial = strlen($inicial);
 if ($inicial != ""){
 	$inicio = implode(preg_match("~\/~", $inicial) == 0 ? "/" : "-", array_reverse(explode(preg_match("~\/~", $inicial) == 0 ? "-" : "/", $inicial)));
 	$fim = implode(preg_match("~\/~", $final) == 0 ? "/" : "-", array_reverse(explode(preg_match("~\/~", $final) == 0 ? "-" : "/", $final)));
-	$comando = "select a.insc, date_format(a.amd,'%d/%m/%Y') as data, a.hora, b.nome, a.resp, mid(logon,1,5) as logon from cons a
+	$comando = "select a.insc, date_format(a.amd,'%d/%m/%Y') as data, a.hora, b.nome, a.resp, CAST(MID(logon,1,6) AS UNSIGNED) as logon from cons a
 			inner join valcons b on a.debito = b.codcons
 			where a.codloja='$codloja' and a.amd between '$inicio' and '$fim' order by a.amd,a.hora";
 	

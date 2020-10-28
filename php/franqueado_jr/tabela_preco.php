@@ -67,12 +67,12 @@ if ($go=='ingressar') {
 	if ( $class == 'J' ){
 		$sql = "select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 				inner join cadastro b on a.codloja=b.codloja
-				where mid(logon,1,5)='$codigo' 
+				where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' 
 				and b.id_franquia='$id_franquia_master' and b.id_franquia_jr='$id_franquia'";
 	}else{
 		$sql = "select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 					inner join cadastro b on a.codloja=b.codloja
-					where mid(logon,1,5)='$codigo' 
+					where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' 
 					and b.id_franquia='$id_franquia'";		
 	}
 

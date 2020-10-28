@@ -25,7 +25,7 @@ if  ( mysql_num_rows ($res) == 0 ){
 	exit;
 }
 
-$sql = "select mid(logon,1,5), mid(logon,7,10) from logon where codloja='$codloja' limit 1";
+$sql = "select CAST(MID(logon,1,6) AS UNSIGNED), mid(logon,7,10) from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 
@@ -70,7 +70,7 @@ if($matriz['pendencia_contratual'] == "1"){
   </tr>
   <tr>
     <td class="subtitulodireita">C&oacute;digo de Cliente </td>
-    <td class="subtitulopequeno"><?php echo $log['mid(logon,1,5)']; ?></td>
+    <td class="subtitulopequeno"><?php echo $log['CAST(MID(logon,1,6) AS UNSIGNED)']; ?></td>
   </tr>
   <tr>
     <td class="subtitulodireita">Senha</td>

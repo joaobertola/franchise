@@ -346,7 +346,7 @@ if ($id_franquia == 4 || $id_franquia = 247 || $id_franquia == 163) {
 <form method="post" action="#" name='listacompra' id='listacompra'>
     <?php
 
-    $sql = "SELECT a.nomefantasia, mid(logon,1,5) as codigo, a.codloja FROM cs2.cadastro a
+    $sql = "SELECT a.nomefantasia, CAST(MID(logon,1,6) AS UNSIGNED) as codigo, a.codloja FROM cs2.cadastro a
             INNER JOIN cs2.logon b ON a.codloja = b.codloja WHERE a.codloja = " . $_REQUEST['codigo'];
     $qry = mysql_query($sql, $con);
     $cliente = mysql_result($qry, 0, 'nomefantasia');

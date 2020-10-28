@@ -18,7 +18,7 @@ $comando = "select a.renegociacao_tabela,  a.codloja, a.razaosoc, a.insc, a.nome
 $res = mysql_query ($comando, $con) or die("erro: $comando");
 $matriz = mysql_fetch_array($res);
 
-$sql = "select mid(logon,1,5), mid(logon,7,10), sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select CAST(MID(logon,1,6) AS UNSIGNED), mid(logon,7,10), sitlog from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 
@@ -64,7 +64,7 @@ $data_view.=$ano;
   </tr>
   <tr>
     <td class="subtitulodireita">C&oacute;digo de Cliente </td>
-    <td class="campojustificado"><?php echo $log['mid(logon,1,5)']; ?></td>
+    <td class="campojustificado"><?php echo $log['CAST(MID(logon,1,6) AS UNSIGNED)']; ?></td>
   </tr>
   <tr>
     <td class="subtitulodireita">Senha</td>

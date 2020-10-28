@@ -18,7 +18,7 @@ $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 $codloja = $matriz['codloja'];
 
-$sql = "select mid(logon,1,5), mid(logon,7,10), sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select CAST(MID(logon,1,6) AS UNSIGNED), mid(logon,7,10), sitlog from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 
@@ -53,7 +53,7 @@ $conta_cliente = $matriz['conta_cliente'];
   </tr>
   <tr>
     <td class="subtitulodireita">C&oacute;digo de Cliente </td>
-    <td class="campojustificado"><?php echo $log['mid(logon,1,5)']; ?></td>
+    <td class="campojustificado"><?php echo $log['CAST(MID(logon,1,6) AS UNSIGNED)']; ?></td>
   </tr>
   <!--<tr>
     <td class="subtitulodireita">Senha</td>

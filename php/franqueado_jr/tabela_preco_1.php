@@ -6,7 +6,7 @@ $codigo = $_REQUEST['codigo'];
 
 $sql = "select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 		inner join cadastro b on a.codloja=b.codloja
-		where mid(logon,1,5)='$codigo'" ;
+		where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'" ;
 if ( $class == 'J' )
 	$sql .= " and b.id_franquia='$id_franquia_master' and b.id_franquia_jr='$id_franquia'";
 else
@@ -20,7 +20,7 @@ if ($linha == 0)
 	exit;
 }
 
-$comando = "select a.codloja, a.razaosoc, a.nomefantasia, date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.tx_mens from cadastro a inner join situacao d on a.sitcli=d.codsit inner join logon e on a.codloja=e.codloja where mid(logon,1,5)='$codigo'";
+$comando = "select a.codloja, a.razaosoc, a.nomefantasia, date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.tx_mens from cadastro a inner join situacao d on a.sitcli=d.codsit inner join logon e on a.codloja=e.codloja where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'";
 $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 $codloja = $matriz['codloja'];

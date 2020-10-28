@@ -109,7 +109,7 @@ if ($go=='ingressar') {
 		else $frq = "and id_franquia='$franqueado'";
 		$sql = "select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 				inner join cadastro b on a.codloja=b.codloja
-				where mid(logon,1,5)='$codigo' $frq";
+				where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' $frq";
 		$ql = mysql_query($sql,$con);
 		$linha = mysql_num_rows($ql);
 		if ($linha == 0) 
