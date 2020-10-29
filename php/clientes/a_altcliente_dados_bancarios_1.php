@@ -10,7 +10,7 @@ $comando = "SELECT  a.renegociacao_tabela, a.codloja, a.razaosoc, a.insc, a.nome
 					a.cidade, a.bairro, a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.id_franquia,
 					date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.ramo_atividade, a.obs,
 					a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2, a.emissao_financeiro,
-					a.vendedor, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, REPLACE(mid(b.logon,7,10),'S','') as senha, a.classe, a.banco_cliente,
+					a.vendedor, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, MID(logon,LOCATE('S', b.logon) + 1,10) as senha, a.classe, a.banco_cliente,
 					a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta 
 			FROM cs2.cadastro a
 			INNER JOIN cs2.logon    b on a.codloja = b.codloja
@@ -29,7 +29,7 @@ $_comando = "SELECT
 					a.bairro, a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.id_franquia, 
 					date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.ramo_atividade, a.obs,
 					a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2, a.emissao_financeiro, 
-					a.vendedor, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, REPLACE(mid(b.logon,7,10),'S','') as senha, a.classe, a.banco_cliente,
+					a.vendedor, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, MID(logon,LOCATE('S', b.logon) + 1,10) as senha, a.classe, a.banco_cliente,
 					a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.nome_doc, a.tpconta 
 			FROM cs2.cadastro a
 			INNER JOIN cs2.logon    b on a.codloja = b.codloja

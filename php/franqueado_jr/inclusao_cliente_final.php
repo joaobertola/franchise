@@ -129,7 +129,7 @@ while ($registro = mysql_fetch_array($resposta))	{
 
 $sai = false;
 do{
-	$sql = "select count(*) qtd from cs2.logon where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'";
+	$sql = "select count(*) qtd from cs2.logon where MID(logon,1,LOCATE('S', logon) - 1)='$codigo'";
 	$ql8=mysql_query($sql,$con);
 	$consulta=mysql_fetch_array($ql8);
 	$qtd=$consulta["qtd"];

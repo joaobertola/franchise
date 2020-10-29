@@ -63,11 +63,11 @@ if ($go=='ingressar') {
 	if (($tipo == "a") || ($tipo == "c")) {
 	$resulta = mysql_query("select a.codloja, b.razaosoc, a.logon, b.id_franquia from logon a
 							inner join cadastro b on a.codloja=b.codloja
-							where CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo'",$con);
+							where MID(a.logon,1,LOCATE('S', a.logon) - 1)='$codigo'",$con);
 	} else {
 	$resulta = mysql_query("select a.codloja, b.razaosoc, a.logon, b.id_franquia from logon a
 							inner join cadastro b on a.codloja=b.codloja
-							where CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo' and id_franquia='$id_franquia'",$con);
+							where MID(a.logon,1,LOCATE('S', a.logon) - 1)='$codigo' and id_franquia='$id_franquia'",$con);
 	}
 	$linha = mysql_num_rows($resulta);
 	if ($linha == 0) {

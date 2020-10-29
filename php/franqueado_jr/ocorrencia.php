@@ -82,13 +82,13 @@ function soNumeros(v){
 
 if ($go=='ingressar') {
 	if (($tipo == "a") || ($tipo == "c")) {
-		$sql = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja from logon a
+		$sql = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.id_franquia, b.codloja from logon a
 				inner join cadastro b on a.codloja=b.codloja
-				where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'";
+				where MID(logon,1,LOCATE('S', logon) - 1)='$codigo'";
 	} else {
-		$sql = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja from logon a
+		$sql = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.id_franquia, b.codloja from logon a
 				inner join cadastro b on a.codloja=b.codloja
-				where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' and b.id_franquia='$id_franquia_master' and b.id_franquia_jr='$id_franquia'";		
+				where MID(logon,1,LOCATE('S', logon) - 1)='$codigo' and b.id_franquia='$id_franquia_master' and b.id_franquia_jr='$id_franquia'";		
 	}
 	$resulta = mysql_query($sql,$con);
 	$linha = mysql_num_rows($resulta);

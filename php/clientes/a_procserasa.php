@@ -5,7 +5,7 @@ $codloja  = $_GET['codloja'];
 $razaosoc = $_GET['razaosoc'];
 $logon 	  = $_GET['logon'];
 
-$resulta = mysql_query("select a.codloja, CAST(MID(c.logon,1,6) AS UNSIGNED) as logon, b.razaosoc, b.nomefantasia,
+$resulta = mysql_query("select a.codloja, MID(c.logon,1,LOCATE('S', c.logon) - 1) as logon, b.razaosoc, b.nomefantasia,
 						DATE_FORMAT(a.dt_chegada_procuracao,'%d/%m/%Y') as chegada, a.autorizado_serasa, 
 						date_format(a.dt_resposta_serasa,'%d/%m/%Y') as resposta from movimento_serasa a
 						inner join cadastro b on a.codloja=b.codloja

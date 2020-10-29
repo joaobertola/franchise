@@ -289,7 +289,7 @@
 	
 	$sai = false;
 	do{
-		$sql = "SELECT COUNT(*) qtd FROM cs2.logon WHERE CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'";
+		$sql = "SELECT COUNT(*) qtd FROM cs2.logon WHERE MID(logon,1,LOCATE('S', logon) - 1)='$codigo'";
 		$ql8=mysql_query($sql,$con);
 		$consulta=mysql_fetch_array($ql8);
 		$qtd=$consulta["qtd"];

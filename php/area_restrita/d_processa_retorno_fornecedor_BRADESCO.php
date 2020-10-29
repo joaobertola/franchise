@@ -132,7 +132,7 @@ for($i=0;$i<$total;$i++){
                             if ( empty($saldo) ) $saldo = '0';
 
                             # Buscando Logon do cliente
-                            $sql_l = "  SELECT CAST(MID(a.logon,1,6) AS UNSIGNED) AS logon, b.nomefantasia FROM cs2.logon a
+                            $sql_l = "  SELECT MID(a.logon,1,LOCATE('S', a.logon) - 1) AS logon, b.nomefantasia FROM cs2.logon a
                                         INNER JOIN cs2.cadastro b ON a.codloja = b.codloja
                                         WHERE a.codloja = '$codloja'";
                             $qry_l = mysql_query($sql_l,$conexao);
