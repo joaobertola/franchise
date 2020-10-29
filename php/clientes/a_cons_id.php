@@ -863,7 +863,7 @@ if ($codloja > 0) {
                     </td>
                     <td>
                         <?php if ( $_SESSION['id'] == 163 ) { ?>
-                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['MID(logon,1,LOCATE('S', logon) - 1)']; ?>)" />
+                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['login']; ?>)" />
                         <?php } ?>
                     </td>
                 </tr>
