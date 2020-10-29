@@ -1632,6 +1632,7 @@ function getCategoryName($catId) {
     function grafico_franquia_novo_16($intYear, $selecao, $addJSLinks, $forDataURL, &$FC) {
     
         $selecao = str_replace('a.id_franquia', 'b.id_franquia', $selecao);
+        $link = connectToDB();
         /*
         // Function to connect to the DB
         $link = connectToDB();
