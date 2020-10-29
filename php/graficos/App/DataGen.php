@@ -1258,18 +1258,18 @@ function getCategoryName($catId) {
         $link = connectToDB();
         $strSQL = "SELECT count(*) Average, b.debito, concat( 
                             case month(b.amd) 
-                             when 1 then 'Janeiro'
-                             when 2 then 'Fevereiro'        
-                             when 3 then 'Marco'        
-                             when 4 then 'Abril'        
-                             when 5 then 'Maio'        
-                             when 6 then 'Junho'        
-                             when 7 then 'Julho'
-                             when 8 then 'Agosto'
-                             when 9 then 'Setembro'
-                             when 10 then 'Outubro'        
-                             when 11 then 'Novembro'        
-                             when 12 then 'Dezembro'
+                             when 1 then 'Jan'
+                             when 2 then 'Fev'        
+                             when 3 then 'Mar'        
+                             when 4 then 'Abr'        
+                             when 5 then 'Mai'        
+                             when 6 then 'Jun'        
+                             when 7 then 'Jul'
+                             when 8 then 'Ago'
+                             when 9 then 'Set'
+                             when 10 then 'Out'        
+                             when 11 then 'Nov'        
+                             when 12 then 'Dez'
                            end ,'/',year(b.amd)) as Country 
                         FROM cs2.cadastro a 
                         INNER JOIN cs2.cons b ON a.codloja = b.codloja 
