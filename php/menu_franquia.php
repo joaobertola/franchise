@@ -96,7 +96,7 @@
 
 	<?php } ?>
 
-	<?php if ($id_franquia == 163 || $id_franquia == 247) : ?>
+	<?php if ($id_franquia == 163) : ?>
 		<tr>
 			<td align="center"><?php echo $i++; ?></td>
 			<td><a href="painel.php?pagina1=area_restrita/d_pontos_ranking.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');">
