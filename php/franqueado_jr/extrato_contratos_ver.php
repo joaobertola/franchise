@@ -22,14 +22,14 @@ if ($contano === "todos") {
 	else $periodo = "$contano-$contmes%";
 }
 
-$comando = "select a.codloja, mid(b.logon,1,5) as logon, a.nomefantasia, a.vendedor,
+$comando = "select a.codloja, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.nomefantasia, a.vendedor,
 			date_format(a.dt_cad, '%d/%m/%Y') AS data, c.fantasia from cadastro a
 			inner join logon b on a.codloja = b.codloja
 			inner join franquia c on a.id_franquia = c.id
 			where a.dt_cad like '$periodo' $sitcli $frq
 			group by a.codloja order by $ordenacao";
 if ($opcao == 2) 
-$comando = "select a.codloja, mid(b.logon,1,5) as logon, c.nomefantasia, c.vendedor, date_format(c.dt_cad, '%d/%m/%Y')
+$comando = "select a.codloja, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, c.nomefantasia, c.vendedor, date_format(c.dt_cad, '%d/%m/%Y')
 			as data, date_format(a.data_documento, '%d/%m/%Y') as datacanc from pedidos_cancelamento a
 			inner join logon b on a.codloja=b.codloja
 			inner join cadastro c on a.codloja=c.codloja
@@ -38,7 +38,7 @@ $comando = "select a.codloja, mid(b.logon,1,5) as logon, c.nomefantasia, c.vende
 if ($opcao == 4) 
 $comando = "select count(*), a.codloja, b.razaosoc as fantasia, mid(a.nomefantasia,1,25) nomefantasia, a.uf, a.cidade,
 			a.bairro, a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.boleto, a.carteira, a.diapagto,
-			date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit,mid(e.logon,1,5) as logon
+			date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit,MID(e.logon,1,LOCATE('S', e.logon) - 1) as logon
 			from cs2.cadastro a
 			inner join cs2.franquia b on a.id_franquia=b.id 
 			left join cs2.situacao d on a.sitcli=d.codsit

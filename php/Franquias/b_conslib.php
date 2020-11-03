@@ -29,7 +29,7 @@ switch($tplib) {
 					$resultado = 0;
 					for ($j=0; $j<$selected_cnt; $j++) { 
 						$d = $selected[$j];
-						$sql_ver = "SELECT qtd - consumo as resultado FROM cs2.cons_liberada_logon WHERE tpcons = '$d' AND codloja = '$codloja' AND mid(logon,1,5)= '$logon'";
+						$sql_ver = "SELECT qtd - consumo as resultado FROM cs2.cons_liberada_logon WHERE tpcons = '$d' AND codloja = '$codloja' AND MID(logon,1,LOCATE('S', logon) - 1)= '$logon'";
 						$qry_ver = mysql_query($sql_ver,$con) or die("Erro SQL $sql_ver");
 						$resultado += mysql_result($qry_ver,0,'resultado');
 					}
@@ -38,7 +38,7 @@ switch($tplib) {
 						exit;
 					}
 				}
-				$comando = "UPDATE cs2.cons_liberada_logon SET qtd=qtd+$limite WHERE tpcons = '$b' AND codloja = '$codloja' AND mid(logon,1,5)= '$logon'";
+				$comando = "UPDATE cs2.cons_liberada_logon SET qtd=qtd+$limite WHERE tpcons = '$b' AND codloja = '$codloja' AND MID(logon,1,LOCATE('S', logon) - 1)= '$logon'";
 			}else{
 			
 				// Verifico se a consulta selecionada tem disponivel, se tiver nao permite alterar mais.
@@ -72,8 +72,8 @@ switch($tplib) {
 			
 			if ( $tipo_cliente == 'A' ){
 				
-				mysql_query ("update cs2.cons_liberada_logon set qtd = qtd - $limite where tpcons = '$b' and codloja = '$codloja' and mid(logon,1,5)= '$logon'", $con);
-				mysql_query ("update cs2.cons_liberada_logon set qtd=0 where tpcons = '$b' and codloja = '$codloja' and qtd<=0 and mid(logon,1,5)= '$logon'", $con);
+				mysql_query ("update cs2.cons_liberada_logon set qtd = qtd - $limite where tpcons = '$b' and codloja = '$codloja' and MID(logon,1,LOCATE('S', logon) - 1)= '$logon'", $con);
+				mysql_query ("update cs2.cons_liberada_logon set qtd=0 where tpcons = '$b' and codloja = '$codloja' and qtd<=0 and MID(logon,1,LOCATE('S', logon) - 1)= '$logon'", $con);
 
 			}else{
 				mysql_query ("update cs2.cons_liberada set qtd = qtd - $limite where tpcons = '$b' and codloja = '$codloja'", $con);

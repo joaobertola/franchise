@@ -70,7 +70,7 @@ if (isset($id)) {
             pendencia_contratual, a.fax, a.email, a.tx_mens, a.id_franquia, c.fantasia, date_format(a.dt_cad, '%d/%m/%Y') as data,
             a.sitcli, a.mensalidade_solucoes, a.sit_cobranca, a.sitcli, a.pendencia_contrato,
             d.descsit, a.ramo_atividade, a.obs, a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2, a.id_operadora,
-            a.emissao_financeiro, a.vendedor, mid(b.logon,1,locate('S',b.logon)-1) as logon, mid(b.logon,locate('S',b.logon)+1,10) as senha, e.descricao, f.nbanco,
+            a.emissao_financeiro, a.vendedor,MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, MID(logon,LOCATE('S', b.logon) + 1,10) as senha, e.descricao, f.nbanco,
             a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.tpconta, a.nome_doc, a.tx_mens_anterior, a.emitir_nfs, a.limite_credito, a.liberar_nfe, a.status_nfe, a.user_pendencia, a.tipo_nfe,
             a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2,
             a.multa_contratual, IF(a.id_consultor = 0 OR a.id_consultor IS NULL OR a.id_consultor = '', a.vendedor, g.nome) as nome_consultor, h.nome as nome_agendador, o.descricao AS operadora,
@@ -100,7 +100,7 @@ if (isset($id)) {
             a.fax, a.email, a.tx_mens, a.id_franquia, c.fantasia, date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, 
             a.mensalidade_solucoes, a.sit_cobranca, a.pendencia_contrato,
             d.descsit, a.ramo_atividade, a.obs, a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2, a.id_operadora,
-            a.emissao_financeiro, a.vendedor, mid(b.logon,1,locate('S',b.logon)-1) as logon, mid(b.logon,locate('S',b.logon)+1,10) as senha, e.descricao, f.nbanco,
+            a.emissao_financeiro, a.vendedor,MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, MID(logon,LOCATE('S', b.logon) + 1,10) as senha, e.descricao, f.nbanco,
             a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.tpconta, a.nome_doc, a.tx_mens_anterior, a.emitir_nfs, a.limite_credito, a.liberar_nfe, a.status_nfe, a.user_pendencia, a.tipo_nfe,
             a.contador_nome, a.contador_telefone, a.contador_celular, a.contador_email1, a.contador_email2, a.agendador,
             a.multa_contratual, IF(a.id_consultor = 0 OR a.id_consultor IS NULL OR a.id_consultor = '', a.vendedor, g.nome) as nome_consultor, h.nome as nome_agendador,
@@ -116,7 +116,7 @@ if (isset($id)) {
                         left outer join cs2.consultores_assistente g on g.id = a.id_consultor
                         left outer join cs2.consultores_assistente h on h.id = a.id_agendador
                         LEFT JOIN operadora o on o.id = a.id_operadora
-            where mid(b.logon,1,locate('S',b.logon)-1)='$codigo' $frq limit 1";
+            where MID(b.logon,1,LOCATE('S', b.logon) - 1)='$codigo' $frq limit 1";
 }
 
 ///echo "<pre>".$comando;
@@ -186,10 +186,12 @@ while ($rx = mysql_fetch_array($qry_corresp)) {
                 </a><br>";
 }
 
-$sql = "select mid(logon,1,locate('S',logon)-1) as logon, sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select MID(logon,1,LOCATE('S', logon) - 1) as logon, sitlog from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query($sql, $con);
 $log = mysql_fetch_array($resposta);
 $logon = $log['logon'];
+
+//echo $logon;die;
 
 require "connect/conexao_conecta_virtual.php";
 $sql = "SELECT concat(fra_nomesite, '.', fra_dominio) url FROM dbsites.tbl_framecliente WHERE fra_codloja = $codloja LIMIT 1;";
@@ -469,7 +471,7 @@ if ($codloja > 0) {
 
             <td width="170" class="subtitulopequeno">
                 <?php if (in_array($_SESSION['id'], array(163,4,11,25,28,4,12,128,1388))) { ?>
-                    <input type="button" value="Web Control Empresas" onclick='LogarWebControl( <?php echo $log['mid(logon,1,5)']; ?>)'/>
+                    <input type="button" value="Web Control Empresas" onclick='LogarWebControl(<?php echo $logon; ?>)'/>
                 <?php } ?>
             </td>
 
@@ -487,7 +489,7 @@ if ($codloja > 0) {
             <td colspan="2" class="subtitulopequeno"><?php echo $matriz['nomefantasia']; ?></td>
             <td width="170" class="subtitulopequeno">
                 <?php if (in_array($_SESSION['id'], array(163,4,11,25,28,4,12,128,1388))) { ?>
-                    <input type="button" value="Extrato Crediario/Recupere" onclick='Extrato_Crediario_Recupere( <?php echo $log['mid(logon,1,5)']; ?>)'/>
+                    <input type="button" value="Extrato Crediario/Recupere" onclick='Extrato_Crediario_Recupere( <?php echo $log['logon']; ?>)'/>
                 <?php } ?>
             </td>
         </tr>
@@ -827,7 +829,7 @@ if ($codloja > 0) {
                     <td colspan="2" bgcolor="<?= $cor ?>"><font color="#FFFFFF" style="font-size:14px" face="Arial"><b><?= $des_cpendencia_contratual ?></b></font></td>
                     <td>
                         <?php if ( $_SESSION['id'] == 163 ) { ?>
-                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['mid(logon,1,5)']; ?>)" />
+                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['logon']; ?>)" />
                         <?php } ?>
                     </td>
                 </tr>
@@ -861,7 +863,7 @@ if ($codloja > 0) {
                     </td>
                     <td>
                         <?php if ( $_SESSION['id'] == 163 ) { ?>
-                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['mid(logon,1,5)']; ?>)" />
+                            <input type="button" name="bt1" value="<?= $texto ?>" onclick="aplicarMultaContratual(<?php echo $multa_contratual . ',' . $codloja . ',' . $log['login']; ?>)" />
                         <?php } ?>
                     </td>
                 </tr>

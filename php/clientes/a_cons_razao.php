@@ -6,12 +6,12 @@ $opraz = $_POST['opraz'];
 
 
 if (($tipo == "a") || ($tipo == "c")) {
-	$comando = "SELECT a.codloja, a.razaosoc, a.nomefantasia, a.fone, mid(b.logon,1,5) as logon FROM cs2.cadastro a
+	$comando = "SELECT a.codloja, a.razaosoc, a.nomefantasia, a.fone, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon FROM cs2.cadastro a
 	            INNER JOIN cs2.logon b ON a.codloja = b.codloja
 	            WHERE a.razaosoc like '%$razao%' and a.sitcli='$opraz' 
 	            ORDER BY a.razaosoc ASC";
 } else {
-	$comando = "SELECT a.codloja, a.razaosoc, a.nomefantasia, a.fone, mid(b.logon,1,5) as logon FROM cs2.cadastro a
+	$comando = "SELECT a.codloja, a.razaosoc, a.nomefantasia, a.fone, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon FROM cs2.cadastro a
 	            INNER JOIN cs2.logon b ON a.codloja = b.codloja
 	            WHERE a.razaosoc like '%$razao%' and a.sitcli='$opraz' and a.id_franquia='$id_franquia' 
 	            ORDER BY a.razaosoc ASC";

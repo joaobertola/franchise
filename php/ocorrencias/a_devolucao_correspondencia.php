@@ -64,13 +64,13 @@ function pesquisa(dados){
 
 if ($go=='ingressar') {
 	if (($tipo == "a") || ($tipo == "c")) {
-		$sql = "select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja from logon a
+		$sql = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.id_franquia, b.codloja from logon a
 				inner join cadastro b on a.codloja=b.codloja
-				where mid(logon,1,5)='$codigo'";
+				where MID(logon,1,LOCATE('S', logon) - 1)='$codigo'";
 	} else {
-		$sql = "select mid(a.logon,1,5) as logon, b.id_franquia, b.codloja from logon a
+		$sql = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.id_franquia, b.codloja from logon a
 				inner join cadastro b on a.codloja=b.codloja
-				where mid(logon,1,5)='$codigo' and id_franquia='$id_franquia'";
+				where MID(logon,1,LOCATE('S', logon) - 1)='$codigo' and id_franquia='$id_franquia'";
 	}
 	$resulta = mysql_query($sql,$con);
 	$linha = mysql_num_rows($resulta);

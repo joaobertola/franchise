@@ -106,7 +106,7 @@ if (empty($protocolo)) {
     if (isset($codigo_cliente) && $codigo_cliente <> '') {
 
         // Verifico se o codigo informado realmente está cadastrado na base.
-        $sql_logon = "SELECT count(*) qtd FROM cs2.logon WHERE MID(logon,1,5) = '$codigo_cliente'";
+        $sql_logon = "SELECT count(*) qtd FROM cs2.logon WHERE MID(logon,1,LOCATE('S', logon) - 1) = '$codigo_cliente'";
         $qry_logon = mysql_query($sql_logon, $con);
         $qtd = mysql_result($qry_logon, 0, 'qtd');
         if ($qtd == 0) {

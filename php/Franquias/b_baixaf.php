@@ -89,7 +89,7 @@ if ( $tipo == 'a' )
 	if (! empty($codigo1))
 		 $frq .= " and d.logon like '$codigo1%' ";
 
-	$command = "SELECT a.numdoc, mid(b.logon,1,5) as logon, c.fone, c.celular, c.nomefantasia, a.valor, a.vencimento,
+	$command = "SELECT a.numdoc,MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, c.fone, c.celular, c.nomefantasia, a.valor, a.vencimento,
 				   DATE_FORMAT(a.vencimento,'%d/%m/%Y') as vencimento2, a.valorpg, a.codloja, 
 				   a.referencia, a.datapg as datapg2,DATE_FORMAT(a.datapg,'%d/%m/%Y') as datapg, 
 				   a.numboleto, a.origem_pgto, c.razaosoc 
@@ -103,7 +103,7 @@ if ( $tipo == 'a' )
 
 if ( trim($situacao) <> 'and a.datapg is not null' ){
 	$command .= "UNION
-				 SELECT a.contrato, mid(b.logon,1,5) as logon, c.fone, c.celular, 
+				 SELECT a.contrato,MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, c.fone, c.celular, 
 				 		c.nomefantasia, a.valor, a.vencimento, DATE_FORMAT(a.vencimento,'%d/%m/%Y') as vencimento2, 
 						a.valorpg, a.codloja, 'ANTECIPACAO' as referencia, a.datapg as datapg2,
 						DATE_FORMAT(a.datapg,'%d/%m/%Y') as datapg,	a.numboleto, '', c.razaosoc

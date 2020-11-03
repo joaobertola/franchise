@@ -9,7 +9,7 @@ if (($tipo == "a") || ($tipo == "c")) {
 	$comando = "AND a.id_franquia='$id_franquia'";
 }
 
-$sql = "SELECT mid(b.logon,1,5) as logon, a.razaosoc, a.nomefantasia, a.fone, a.codloja 
+$sql = "SELECT MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.razaosoc, a.nomefantasia, a.fone, a.codloja 
 				FROM cadastro a
 				INNER JOIN logon b on a.codloja = b.codloja
 				WHERE (a.fone = '$telefone' OR a.fax = '$telefone' OR a.celular = '$telefone' OR a.fone_res = '$telefone') 

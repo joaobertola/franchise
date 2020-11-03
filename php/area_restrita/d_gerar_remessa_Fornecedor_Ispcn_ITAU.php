@@ -335,7 +335,7 @@
                 }else{
             
                     # verificando o logon do cliente
-                    $sql2 = 'SELECT MID(logon,1,5) logon, sitlog FROM cs2.logon WHERE codloja='.$codloja.' and sitlog < 2 LIMIT 1';
+                    $sql2 = 'SELECT MID(logon,1,LOCATE(\'S\', logon) - 1) logon, sitlog FROM cs2.logon WHERE codloja='.$codloja.' and sitlog < 2 LIMIT 1';
                     $xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
                     $array_sql2 = mysql_fetch_array($xqr_sql);
                     $logon = $array_sql2["logon"];
@@ -486,7 +486,7 @@
                                     $registros .= "$Registro\n";
 
                                     if ( $frq == '2'){
-                                        $log = substr($logon,0,5);
+                                        $log = substr($logon,0,6);
                                         $linha_tex .= "<tr style='font-size:12px'>
                                                             <td>$log</td>
                                                             <td>$emp</td>
@@ -680,7 +680,7 @@
                 }else{
                     
                     # verificando o logon do cliente
-                    $sql2 = 'SELECT MID(logon,1,5) logon, sitlog FROM cs2.logon WHERE codloja='.$codloja.' and sitlog < 2 LIMIT 1';
+                    $sql2 = 'SELECT MID(logon,1,LOCATE(\'S\', logon) - 1) logon, sitlog FROM cs2.logon WHERE codloja='.$codloja.' and sitlog < 2 LIMIT 1';
                     $xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
                     $array_sql2 = mysql_fetch_array($xqr_sql);
                     $logon  = $array_sql2["logon"];
@@ -830,7 +830,7 @@
                                     $totlinha++;
                                     $registros .= "$Registro\n";
                                                                         if ( $frq == '2'){
-                                                                            $log = substr($logon,0,5);
+                                                                            $log = substr($logon,0,6);
                                                                             $linha_tex .= "<tr style='font-size:12px'>
                                                                                                 <td>$log</td>
                                                                                                 <td>$emp</td>
@@ -1024,7 +1024,7 @@
                             }else{
 
                                 # verificando o logon do cliente
-                                $sql2 = 'SELECT MID(logon,1,5) logon, sitlog FROM cs2.logon 
+                                $sql2 = 'SELECT MID(logon,1,LOCATE(\'S\', logon) - 1) logon, sitlog FROM cs2.logon 
                                          WHERE codloja='.$codloja.' and sitlog < 2 LIMIT 1';
                                 $xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
                                 $array_sql2 = mysql_fetch_array($xqr_sql);
@@ -1147,7 +1147,7 @@
                                             $totlinha++;
                                             $registros .= "$Registro\n";
                                             if ( $frq == '2'){
-                                                $log = substr($logon,0,5);
+                                                $log = substr($logon,0,6);
                                                 $linha_tex .= "<tr style='font-size:12px'>
                                                                     <td>$log</td>
                                                                     <td>$emp</td>
@@ -1339,7 +1339,7 @@
                 }else{
                     
                     # verificando o logon do cliente
-                    $sql2 = 'SELECT MID(logon,1,5) logon, sitlog FROM cs2.logon 
+                    $sql2 = 'SELECT MID(logon,1,LOCATE(\'S\', logon) - 1) logon, sitlog FROM cs2.logon 
                              WHERE codloja = '.$codloja.' and sitlog < 2 LIMIT 1';
                     $xqr_sql = mysql_query($sql2,$conexao) or die ("Erro no SQL: $sql2");
                     $array_sql2 = mysql_fetch_array($xqr_sql);
@@ -1494,7 +1494,7 @@
                                         $totlinha++;
                                         $registros .= "$Registro\n";
                                                                                 if ( $frq == '2'){
-                                                                                    $log = substr($logon,0,5);
+                                                                                    $log = substr($logon,0,6);
                                                                                     $linha_tex .= "<tr style='font-size:12px'>
                                                                                                         <td>$log</td>
                                                                                                         <td>$emp</td>

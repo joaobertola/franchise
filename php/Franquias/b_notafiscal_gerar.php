@@ -89,7 +89,7 @@ $sql = "SELECT
              b.cnpj_empresa_faturar, b.insc, b.codloja, b.razaosoc, b.email,
              b.end, b.numero, b.bairro, b.cidade, b.uf, b.cep, b.fone,
              c.protocolo, c.status,
-             mid(logon,1,5) as logon
+             MID(logon,1,LOCATE('S', logon) - 1) as logon
         FROM cs2.titulos a
         INNER JOIN cs2.cadastro b ON a.codloja = b.codloja
         LEFT OUTER JOIN cs2.titulos_notafiscal c ON a.numdoc = c.numdoc
@@ -297,8 +297,15 @@ while ( $reg = mysql_fetch_array($qry) ){
         $oRps->Certificado_Usuario = $Certificado_User;
         $oRps->Certificado_Senha = $Certificado_Senha;
 
+        /*
         $oRps->URLwebservice = 
                         array('producao' => 'https://isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
+                              'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
+                             );
+        */
+
+        $oRps->URLwebservice = 
+                        array('producao' => 'https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
                               'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
                              );
 
@@ -382,7 +389,7 @@ while ( $reg = mysql_fetch_array($qry) ){
         $oRps->URLArqxsd = $urlArqXsd;
 
         $oRps->URLwebservice = 
-                        array('producao' => 'https://isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
+                        array('producao' => 'https://srv2-isscuritiba.curitiba.pr.gov.br/Iss.NfseWebService/nfsews.asmx',
                               'homologacao' => 'http://pilotoisscuritiba.curitiba.pr.gov.br/nfse_ws/nfsews.asmx'
                              );
 

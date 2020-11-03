@@ -22,7 +22,7 @@ echo"<table align='center' width='800' border='0' cellpadding='0' cellspacing='1
 			</tr>";
 // Selecionando todos od cliente pertencentes a Franquia
 
-$sql_cliente = "SELECT nomefantasia, mid(logon,1,5) as logon, a.sitcli, a.codloja 
+$sql_cliente = "SELECT nomefantasia, MID(logon,1,LOCATE('S', logon) - 1) as logon, a.sitcli, a.codloja 
 				FROM cs2.cadastro a
 				INNER JOIN cs2.logon b ON a.codloja = b.codloja
 				WHERE a.id_franquia = $id_franquia and a.sitcli <> 2

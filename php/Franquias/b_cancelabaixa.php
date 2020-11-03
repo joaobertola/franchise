@@ -13,7 +13,7 @@ $query="UPDATE cs2.titulos SET
 		WHERE numdoc = '$numdoc'";
 mysql_query($query,$con) or die (" erro:  $sql");
 
-$sql = "SELECT mid(a.logon,1,5) as logon, b.razaosoc 
+$sql = "SELECT MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.razaosoc 
 		FROM cs2.logon a
 		INNER JOIN cs2.cadastro b ON a.codloja = b.codloja 
 		WHERE a.codloja = $codloja";

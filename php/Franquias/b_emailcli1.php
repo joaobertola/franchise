@@ -18,7 +18,7 @@ if ($status==2) $tipo = "";
 else if ($status==0) $tipo = "and a.sitcli<2";
 else $tipo = "and a.sitcli=2";
 
-$sql2 = mysql_query("select mid(b.logon,1,5) as logon, a.razaosoc, a.nomefantasia, a.email from cs2.cadastro a
+$sql2 = mysql_query("select MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.razaosoc, a.nomefantasia, a.email from cs2.cadastro a
 					inner join logon b on a.codloja=b.codloja
 					where a.email != '' and a.id_franquia='$id_franquia' $tipo group by a.codloja order by $criterio", $con);
 $total = mysql_num_rows($sql2);
@@ -26,7 +26,7 @@ $total = mysql_num_rows($sql2);
 $paginas = ceil($total / $lpp);
 if (!isset($pagina)) { $pagina = 0; }
 $inicio = $pagina * $lpp;
-$sql2 = mysql_query("select mid(b.logon,1,5) as logon, a.razaosoc, a.nomefantasia, a.email from cs2.cadastro a
+$sql2 = mysql_query("select MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.razaosoc, a.nomefantasia, a.email from cs2.cadastro a
 					inner join logon b on a.codloja=b.codloja
 					where a.email != '' and a.id_franquia='$id_franquia' $tipo group by a.codloja order by $criterio limit $inicio, $lpp", $con);
 if ($total == 0) {

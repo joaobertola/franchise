@@ -75,7 +75,7 @@ else
 		while( $res = mysql_fetch_array($qr_lista) ){
 			$qtd_reg++;
 			$codloja = $res['codloja'];
-			$sql_l = "select mid(logon,1,5) as logon FROM cs2.logon WHERE codloja = $codloja";
+			$sql_l = "select MID(logon,1,LOCATE('S', logon) - 1) as logon FROM cs2.logon WHERE codloja = $codloja";
 			$qr_l = mysql_query($sql_l,$con) or die ("Erro: $sql_l");
 			$logon = mysql_result($qr_l,0,'logon');
 

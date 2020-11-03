@@ -17,7 +17,7 @@ for( $i = 0 ; $i < $qtd_reg ; $i++ ){
 	if ( $codigo != '' && $funcionario != '0' ){
 		$sql = "SELECT a.codloja FROM cs2.cadastro a
 				INNER JOIN cs2.logon b on a.codloja = b.codloja
-				WHERE mid(logon,1,5) = '$codigo'";
+				WHERE MID(b.logon,1,LOCATE('S', b.logon) - 1) = '$codigo'";
 		$qry = mysql_query($sql,$con);
 		$codloja = mysql_result($qry,0,'codloja');
 		

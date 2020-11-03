@@ -23,7 +23,7 @@ if ($linprot ==0) {
 include "ocorrencias/config.php";
 include "ocorrencias/javascript.php";
 
-$resulta = mysql_query("select mid(b.logon,1,5) as logon, a.codloja, a.nomefantasia, a.fone, a.fone_res, a.celular from cadastro a
+$resulta = mysql_query("select MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.codloja, a.nomefantasia, a.fone, a.fone_res, a.celular from cadastro a
 							inner join logon b on a.codloja=b.codloja
 							where a.codloja=$codloja limit 1");
 $matriz = mysql_fetch_array($resulta); 

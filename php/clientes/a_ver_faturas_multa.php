@@ -13,7 +13,7 @@ while ($matriz = mysql_fetch_array($qr2)) {
 	$sdo_crediario      = $matriz['saldo'];
 }
 
-$sql_cliente = "select mid(a.logon,1,5) as logon, b.razaosoc, b.nomefantasia from logon a
+$sql_cliente = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.razaosoc, b.nomefantasia from logon a
 							inner join cadastro b on a.codloja=b.codloja
 							where b.codloja = '$codloja'";
 							

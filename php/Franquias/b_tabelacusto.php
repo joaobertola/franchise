@@ -65,11 +65,11 @@ if ($go=='ingressar') {
 if (($tipo == "a") || ($tipo == "c")) {
 $resulta = mysql_query("select a.logon, b.id_franquia from logon a
 						inner join cadastro b on a.codloja=b.codloja
-						where mid(logon,1,5)='$codigo'", $con);
+						where MID(a.logon,1,LOCATE('S', a.logon) - 1)='$codigo'", $con);
 } else {
 $resulta = mysql_query("select a.logon, b.id_franquia from logon a
 						inner join cadastro b on a.codloja=b.codloja
-						where mid(logon,1,5)='$codigo' and id_franquia='$id_franquia'", $con);
+						where MID(a.logon,1,LOCATE('S', a.logon) - 1)='$codigo' and id_franquia='$id_franquia'", $con);
 }
 $linha = mysql_num_rows($resulta);
 if ($linha == 0)
@@ -80,7 +80,7 @@ $comando = "select a.codloja, a.razaosoc, a.nomefantasia, date_format(a.dt_cad, 
 			d.descsit, a.tx_mens from cadastro a
 			inner join situacao d on a.sitcli=d.codsit
 			inner join logon e on a.codloja=e.codloja
-			where mid(logon,1,5)='$codigo'";
+			where MID(e.logon,1,LOCATE('S', e.logon) - 1)='$codigo'";
 $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 $codloja = $matriz['codloja'];

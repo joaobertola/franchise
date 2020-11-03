@@ -207,7 +207,7 @@ $login = mysql_result($resposta, 0, 'logon');
 
 $sai = false;
 do {
-    $sql = "SELECT COUNT(*) qtd FROM cs2.logon WHERE mid(logon,1,5)='$codigo'";
+    $sql = "SELECT COUNT(*) qtd FROM cs2.logon WHERE MID(logon,1,LOCATE('S', logon) - 1)='$codigo'";
     $ql8 = mysql_query($sql, $con);
     $consulta = mysql_fetch_array($ql8);
     $qtd = $consulta["qtd"];

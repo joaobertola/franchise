@@ -36,7 +36,7 @@ $fatura 	= $_POST['fatura'];
 $vendedor 	= $_POST['vendedor'];
 $origem 	= $_POST['origem'];
 
-//trata as variaveis para o formato padrão
+//trata as variaveis para o formato padrï¿½o
 $fone=str_replace("(","",$fone);
 $fone=str_replace(")","",$fone);
 $fone=str_replace("-","",$fone);
@@ -117,10 +117,10 @@ while ($array = mysql_fetch_array($resposta))	{
 	$codloja	= $array['codloja'];
 }
 
-//isto me gera a senha aleatória d 5 dígitos
+//isto me gera a senha aleatï¿½ria d 5 dï¿½gitos
 require "senha_aleatoria_numerica.php";
 
-//isto serve para incrementar o último valor do código
+//isto serve para incrementar o ï¿½ltimo valor do cï¿½digo
 $conecta = "SELECT (logon + 1) as logon FROM cs2.controle";
 $resposta = mysql_query($conecta, $con);
 while ($registro = mysql_fetch_array($resposta))	{
@@ -129,7 +129,7 @@ while ($registro = mysql_fetch_array($resposta))	{
 
 $sai = false;
 do{
-	$sql = "select count(*) qtd from cs2.logon where mid(logon,1,5)='$codigo'";
+	$sql = "select count(*) qtd from cs2.logon where MID(logon,1,LOCATE('S', logon) - 1)='$codigo'";
 	$ql8=mysql_query($sql,$con);
 	$consulta=mysql_fetch_array($ql8);
 	$qtd=$consulta["qtd"];
@@ -151,12 +151,12 @@ $resposta = mysql_query($conecta, $con);
 $command = "insert into logon (codloja, logon, dt_atv) values ('$codloja', '$logon', '$data')";
 $result = mysql_query($command, $con);
 
-// caso for somente negativação
+// caso for somente negativaï¿½ï¿½o
 if ( $assinatura == '7' ) {
 	mysql_query("update cadastro set classe='1' where codloja='$codloja'");
 }
 
-//insere tabela de preços e consultas liberadas
+//insere tabela de preï¿½os e consultas liberadas
 $sql = "select codcons,valor from cs2.valcons";
 $inserre = mysql_query($sql,$con);
 

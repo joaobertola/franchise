@@ -90,7 +90,7 @@ if ( $tipo == 'a' )
 	if (! empty($codigo1))
 		 $frq .= " and d.logon like '$codigo1%' ";
 
-$command = "select a.numdoc, mid(b.logon,1,5) as logon, c.fone, c.celular, c.nomefantasia, a.valor,
+$command = "select a.numdoc, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, c.fone, c.celular, c.nomefantasia, a.valor,
 				   DATE_FORMAT(a.vencimento,'%d/%m/%Y') as vencimento, a.valorpg, a.codloja, 
 				   a.referencia, a.datapg as datapg2,DATE_FORMAT(a.datapg,'%d/%m/%Y') as datapg, 
 				   a.numboleto, a.origem_pgto 
