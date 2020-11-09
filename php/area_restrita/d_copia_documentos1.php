@@ -154,6 +154,7 @@ $qry_sql = mysql_query($sql_digitalizado, $con) or die("Erro SQL: $sql_digitaliz
                                     $endereco = 'http://contrato.webcontrolempresas.com.br/inform/' . $xarq;
                                     */
 
+                                    $xarq = str_replace('contrato/', '/', $xarq);
                                     $enderecofoto[] .= 'https://www.webcontrolempresas.com.br/franquias/php/' . $registro['caminho_imagem'];
                                     $endereco = 'https://www.webcontrolempresas.com.br/franquias/php/' . $xarq;
 
@@ -161,7 +162,7 @@ $qry_sql = mysql_query($sql_digitalizado, $con) or die("Erro SQL: $sql_digitaliz
                                     <input type="hidden" name="endereco_foto[]" value="<?= $endereco ?>">
                                     <img src='http://contrato.webcontrolempresas.com.br/inform/<?= $xarq ?>' width="100%" height="100%">
                                     <?php
-                                    
+
                                 } else {
 
                                     echo "<input type='hidden' name='endereco_foto[]' value='http://contrato.webcontrolempresas.com.br/inform/$xarq'>";
