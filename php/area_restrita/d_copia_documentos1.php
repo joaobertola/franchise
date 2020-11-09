@@ -145,12 +145,23 @@ $qry_sql = mysql_query($sql_digitalizado, $con) or die("Erro SQL: $sql_digitaliz
                                 <?php
                             } else {
                                 if ($tipo_arq == '.JPG') {
+
+
+                                    shell_exec("rm -rf  /var/www/html/franquias/php/$xarq");
+
+                                    /*
                                     $enderecofoto[] .= 'http://contrato.webcontrolempresas.com.br/inform/' . $registro['caminho_imagem'];
                                     $endereco = 'http://contrato.webcontrolempresas.com.br/inform/' . $xarq;
+                                    */
+
+                                    $enderecofoto[] .= 'https://www.webcontrolempresas.com.br/franquias/php/' . $registro['caminho_imagem'];
+                                    $endereco = 'https://www.webcontrolempresas.com.br/franquias/php/' . $xarq;
+
                                     ?>
                                     <input type="hidden" name="endereco_foto[]" value="<?= $endereco ?>">
                                     <img src='http://contrato.webcontrolempresas.com.br/inform/<?= $xarq ?>' width="100%" height="100%">
                                     <?php
+                                    
                                 } else {
 
                                     echo "<input type='hidden' name='endereco_foto[]' value='http://contrato.webcontrolempresas.com.br/inform/$xarq'>";
