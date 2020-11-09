@@ -17,7 +17,7 @@ include "ocorrencias/javascript.php";
 
 $natureza_ocorr = array("geral", "Cobran&ccedil;a", "Atendimento", "Administrativo", "Comercial");
 
-$sql3 = "SELECT MID(b.logon,1,locate('S',b.logon)-1) as logon, a.codloja, a.razaosoc, a.nomefantasia, a.fone, a.fone_res, a.celular 
+$sql3 = "SELECT MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.codloja, a.razaosoc, a.nomefantasia, a.fone, a.fone_res, a.celular 
 		FROM cadastro a
 		INNER JOIN logon b ON a.codloja=b.codloja
 		WHERE a.codloja='$codloja' LIMIT 1";

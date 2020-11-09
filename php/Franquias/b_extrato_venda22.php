@@ -32,7 +32,7 @@
                         <!-- <td align='center'>&nbsp;V V I</td> -->
                     </tr>";
             $id_consultor = $reg2['id_consultor'];
-            $sql_lista_v = "SELECT mid(b.logon,1,LOCATE('S',b.logon)-1) as logon, a.nomefantasia, date_format(a.dt_cad,'%d/%m/%Y') as dt_cad,
+            $sql_lista_v = "SELECT MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.nomefantasia, date_format(a.dt_cad,'%d/%m/%Y') as dt_cad,
                                    d.nome as vendedor, c.fantasia, a.sitcli, a.pendencia_contratual, a.pendencia_contrato,
                                    a.valor_comissao_vendedor, a.codloja
                             FROM cadastro a

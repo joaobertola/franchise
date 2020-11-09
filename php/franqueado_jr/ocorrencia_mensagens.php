@@ -9,7 +9,7 @@ include "ocorrencias/javascript.php";
 
 $natureza_ocorr = array("geral", "Cobran&ccedil;a", "Atendimento", "Administrativo", "Comercial");
 
-$sql3 = "select CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.codloja, a.nomefantasia, a.fone, a.fone_res, a.celular from cadastro a
+$sql3 = "select MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.codloja, a.nomefantasia, a.fone, a.fone_res, a.celular from cadastro a
 		inner join logon b on a.codloja=b.codloja
 		where a.codloja=$codloja limit 1";
 $resulta = mysql_query($sql3, $con);

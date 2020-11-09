@@ -39,7 +39,7 @@ elseif ($status == '2') $sts = " AND a.sitcli = '2'";
 
 if ($cidade != 'TODAS' ) $filtro_bairro = " AND a.cidade = '$cidade'";
 
-$comando = "SELECT a.codloja, a.cidade, mid(b.logon,1,LOCATE('S',logon)-1) as logon, a.nomefantasia, a.fone,
+$comando = "SELECT a.codloja, a.cidade, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.nomefantasia, a.fone,
 					a.fax, a.celular, a.bairro, a.end, a.numero, a.complemento, a.uf,
 					a.nome_consultoria,  date_format(a.data_consultoria, '%d/%m/%Y') AS data_consultoria
 			FROM cadastro a

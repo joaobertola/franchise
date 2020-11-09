@@ -33,14 +33,14 @@ switch ($franquia){
 $sql_cli = "SELECT b.codloja
             FROM logon a
 			INNER JOIN cadastro b on a.codloja=b.codloja
-			WHERE mid(logon,1,LOCATE('S',logon)-1) = '{$codigo}' ";
+			WHERE MID(a.logon,1,LOCATE('S', a.logon) - 1) = '{$codigo}' ";
 $qry_cli = mysql_query ($sql_cli, $con);
 $codloja = @mysql_result($qry_cli,0,0);
 
 $sql = "SELECT
 		  o.id_atendente, o.codigo, o.atendente, o.franquia, o.tipo_ocorr, 
 		  a.atendente, o.ocorrencia, o.protocolo, 
-		  date_format(o.data,'%d/%m/%Y - %h:%i')AS data, mid(l.logon,1,LOCATE('S',l.logon)-1) as logon
+		  date_format(o.data,'%d/%m/%Y - %h:%i')AS data, MID(l.logon,1,LOCATE('S', l.logon) - 1) as logon
 		FROM
 		  atendentes a 
 		INNER JOIN ocorrencias o ON o.id_atendente = a.id 

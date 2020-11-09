@@ -6,7 +6,7 @@ $codigo = $_GET['codigo'];
 $comando = "select a.codloja, a.razaosoc, a.insc, a.nomefantasia, a.uf, a.cidade, a.bairro, a.end, a.cep, a.fone,
 			a.fax, a.email, a.tx_mens, a.id_franquia, c.fantasia, date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli,
 			d.descsit, a.ramo_atividade, a.obs, a.celular, a.fone_res, a.socio1, a.socio2, a.cpfsocio1, a.cpfsocio2,
-			a.emissao_financeiro, a.vendedor, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, mid(b.logon,8,10) as senha, e.descricao, f.nbanco,
+			a.emissao_financeiro, a.vendedor, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, mid(b.logon,8,10) as senha, e.descricao, f.nbanco,
 			a.agencia_cliente, a.conta_cliente, a.cpfcnpj_doc, a.tpconta, a.nome_doc, a.tx_mens_anterior from cadastro a
 			inner join logon b on a.codloja=b.codloja
 			inner join franquia c on a.id_franquia=c.id
@@ -18,7 +18,7 @@ $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 $codloja = $matriz['codloja'];
 
-$sql = "select CAST(MID(logon,1,6) AS UNSIGNED) as logon, REPLACE(mid(logon,7,10),'S','') as senha, sitlog from logon where codloja='$codloja' limit 1";
+$sql = "select MID(logon,1,LOCATE('S', logon) - 1) as logon, MID(logon,LOCATE('S', logon) + 1,10) as senha, sitlog from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 

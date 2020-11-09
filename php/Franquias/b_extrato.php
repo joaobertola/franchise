@@ -29,7 +29,7 @@ if ($contano === "todos") {
         $periodo = "$contano-$contmes%";
 }
 
-$comando = "select a.codloja, mid(b.logon,1,locate('S',b.logon)-1) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, mid(d.nome,1,10)) as vendedor,
+$comando = "select a.codloja,MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, mid(d.nome,1,10)) as vendedor,
                 a.valor_comissao_vendedor, a.vr_pgto_fixo, date_format(a.dt_pgto_fixo, '%d/%m/%Y') AS dt_pgto_fixo,
                 date_format(a.dt_pgto_comissao_vendedor, '%d/%m/%Y') AS dt_pgto_comissao_vendedor,
                 date_format(a.dt_cad, '%d/%m/%Y') AS data, c.fantasia,
@@ -44,7 +44,7 @@ $comando = "select a.codloja, mid(b.logon,1,locate('S',b.logon)-1) as logon, a.n
 
 
 if ($opcao == 2)
-    $comando = "select a.codloja, mid(b.logon,1,locate('S',b.logon)-1) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, ca.nome) AS vendedor,
+    $comando = "select a.codloja,MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.nomefantasia, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, ca.nome) AS vendedor,
                     a.valor_comissao_vendedor, a.vr_pgto_fixo, date_format(a.dt_pgto_fixo, '%d/%m/%Y') AS dt_pgto_fixo,
                     date_format(a.dt_pgto_comissao_vendedor, '%d/%m/%Y') AS dt_pgto_comissao_vendedor,
                     date_format(a.dt_cad, '%d/%m/%Y') AS data, c.fantasia,
@@ -63,7 +63,7 @@ if ($opcao == 2)
 if ($opcao == 4)
     $comando = "select count(*), a.codloja, b.razaosoc as fantasia, mid(a.nomefantasia,1,25) nomefantasia, a.uf, a.cidade,
                     a.bairro, a.end, a.cep, a.fone, a.fax, a.email, a.tx_mens, a.boleto, a.carteira, a.diapagto,
-                    date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit,CAST(MID(e.logon,1,6) AS UNSIGNED) as logon,
+                    date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit,MID(e.logon,1,LOCATE('S', e.logon) - 1) as logon,
                     date_format(a.dt_pgto_fixo, '%d/%m/%Y') AS dt_pgto_fixo,
                     a.vr_pgto_fixo,	date_format(a.dt_pgto_comissao_vendedor, '%d/%m/%Y') AS dt_pgto_comissao_vendedor,
                     a.valor_comissao_vendedor, IF(a.id_consultor = 0 || a.id_consultor = '' || a.id_consultor IS NULL,a.vendedor, ca.nome) AS vendedor,

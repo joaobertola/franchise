@@ -1,12 +1,12 @@
 <?php if (empty($_POST['dataInicial']) || empty($_POST['dataFinal'])) : ?>
     <script>
         alert('Periodo Inicial e Final Obrigatório');
-        location.href = '../php/painel.php?pagina1=area_restrita/rel_brincadeira.php';
+        location.href = '../php/painel.php?pagina1=area_restrita/d_pontos_ranking.php';
     </script>
 <?php elseif (empty($_POST['franquiaPontuacao']) || $_POST['franquiaPontuacao'] == 0) : ?>
     <script>
         alert('Você deve selecionar uma franquia!');
-        location.href = '../php/painel.php?pagina1=area_restrita/rel_brincadeira.php';
+        location.href = '../php/painel.php?pagina1=area_restrita/d_pontos_ranking.php';
     </script>
 <?php endif; ?>
 
@@ -114,8 +114,10 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     }
 
     // Verifico os Contratos independente do valor 
-    $sqlContratos = "SELECT c.dt_cad, c.codloja, c.razaosoc, c.tx_mens, c.modulo_loja_virtual
+    $sqlContratos = "SELECT c.dt_cad, c.codloja, wu.login, c.razaosoc, c.tx_mens, c.modulo_loja_virtual
     FROM cs2.cadastro c
+    LEFT JOIN base_web_control.webc_usuario wu 
+    ON wu.id_cadastro = c.codloja AND wu.login_master = 'S'
     WHERE c.sitcli = 0 
     AND c.dt_cad BETWEEN '$strDataInicio'
     AND '$strDataFim'
@@ -124,8 +126,10 @@ while ($arrFuncionario = mysql_fetch_array($rstFuncionario)) {
     $resultContratos = mysql_query($sqlContratos, $con);
 
     // Verifico os Equipamentos 
-    $sqlEquipamentos = "SELECT ce.data_venda, ce.codloja, c.razaosoc, p.descricao
+    $sqlEquipamentos = "SELECT ce.data_venda, ce.codloja, wu.login, c.razaosoc, p.descricao
     FROM cs2.cadastro_equipamento ce
+    LEFT JOIN base_web_control.webc_usuario wu
+    ON wu.id_cadastro = ce.codloja AND wu.login_master = 'S'
     INNER JOIN cs2.cadastro_equipamento_descricao ced ON ced.id_cadastro_equipamento = ce.id
     INNER JOIN cs2.cadastro c ON ce.codloja = c.codloja
     LEFT JOIN base_web_control.produto p ON p.id_cadastro = 62735 AND (ced.codigo_barra = p.codigo_barra OR ced.codigo_barra = p.identificacao_interna)
@@ -192,7 +196,7 @@ usort($ranking, 'cmp');
                 <?php while ($rc = mysql_fetch_assoc($r['contratos'])) : ?>
                     <tr>
                         <td class="corpoTabela"><?= date('d/m/Y', strtotime($rc['dt_cad'])); ?></td>
-                        <td class="corpoTabela"><?= $rc['codloja']; ?></td>
+                        <td class="corpoTabela"><?= $rc['login']; ?></td>
                         <td class="corpoTabela"><?= $rc['razaosoc']; ?></td>
                         <?php
                         $tipoContrato = 'Normal';
@@ -224,7 +228,7 @@ usort($ranking, 'cmp');
                 <?php while ($re = mysql_fetch_assoc($r['equipamentos'])) : ?>
                     <tr>
                         <td class="corpoTabela"><?= date('d/m/Y', strtotime($re['data_venda'])); ?></td>
-                        <td class="corpoTabela"><?= $re['codloja']; ?></td>
+                        <td class="corpoTabela"><?= $re['login']; ?></td>
                         <td class="corpoTabela"><?= $re['razaosoc']; ?></td>
                         <td class="corpoTabela"><?= $re['descricao']; ?></td>
                         <td class="corpoTabela"><?= 1 * $pesoPedidoEquipamento; ?></td>

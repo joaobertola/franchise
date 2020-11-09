@@ -5,7 +5,7 @@ require "connect/conexao_conecta.php";
 
 // pega o saldo do credi�rio/credupere
 
-$sql_cliente = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.razaosoc, b.nomefantasia from logon a
+$sql_cliente = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.razaosoc, b.nomefantasia from logon a
 				inner join cadastro b on a.codloja=b.codloja
 				where b.codloja = '$codloja'";
 							

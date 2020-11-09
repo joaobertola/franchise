@@ -42,7 +42,7 @@ else
                                         a.codloja, UPPER(a.nomefantasia) nomefantasia, UPPER(a.end) end, a.numero, 
                                         UPPER(a.bairro) bairro,UPPER(a.cidade) cidade, UPPER(a.uf) uf, a.cep, a.fone, 
                                         a.fax, date_format(b.data_consultoria,'%d/%m/%Y') AS data_consultoria,
-                                        a.nome_consultoria, mid(c.logon,1,LOCATE('S',c.logon)-1) as logon 
+                                        a.nome_consultoria, MID(c.logon,1,LOCATE('S', c.logon) - 1) as logon 
                                 FROM
                                         cs2.cadastro a
                                 INNER JOIN

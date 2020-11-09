@@ -140,6 +140,40 @@ if ( $id_franquia == 4 || $id_franquia == 5 || $id_franquia == 163 || $id_franqu
 
 				break;
 
+			case 'buscarConsultor' :
+
+				if ( $id_franquia == 1 ){
+					$sql_sel = "SELECT
+					id,
+					nome
+				FROM cs2.funcionario
+				WHERE id_funcao = 9 and ativo = 'S'
+				ORDER BY nome ASC;";
+					$qry = mysql_query($sql_sel,$con);
+					while ($rs = mysql_fetch_array($qry)) {
+						$html .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] ."</option>";
+					}
+					$html2 = '';
+					$html3 = '';
+					$sqlFuncionario = "SELECT
+											id,
+											nome
+										FROM cs2.funcionario
+										WHERE id_funcao = 9 and ativo = 'S'
+										ORDER BY nome ASC;";
+					$resFuncionario = mysql_query($sqlFuncionario,$con);
+					while ($rs = mysql_fetch_array($resFuncionario)) {
+						$html3 .= "<option value='" . $rs['id'] . "'>" . $rs['nome'] ."</option>";
+					}
+
+				}else{
+					$html = "<option value='0'>Funcionario - Franquia</option>";
+					$html2 = '';
+				}
+				echo $html . ';' .$html2 .';'. $html3;
+
+				break;
+
 			case 'buscarFuncionarioFuncao' :
 
 				$idFuncao = $_POST['idFuncao'];

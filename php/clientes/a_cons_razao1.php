@@ -25,7 +25,7 @@ if  ( mysql_num_rows ($res) == 0 ){
 	exit;
 }
 
-$sql = "select CAST(MID(logon,1,6) AS UNSIGNED) as logon, REPLACE(mid(logon,7,10),'S','') as senha from logon where codloja='$codloja' limit 1";
+$sql = "select MID(logon,1,LOCATE('S', logon) - 1) as logon, MID(logon,LOCATE('S', logon) + 1,10) as senha from logon where codloja='$codloja' limit 1";
 $resposta = mysql_query ($sql, $con);
 $log = mysql_fetch_array($resposta);
 
