@@ -54,7 +54,7 @@ switch ($op) {
                     mkdir($destino);
                 }
                 $destino = $destino . '/' . $novoNome;
-                if (@move_uploaded_file($arquivo_tmp, $destino)) {
+                if (move_uploaded_file($arquivo_tmp, $destino)) {
                     $usuarioCpd->setFoto($novoNome);
                 }
             }
@@ -66,9 +66,6 @@ switch ($op) {
             $metodo = 'update';
             $usuarioCpd->setIdUsuarioCpd($dados['id']);
         }
-
-
-
 
         if ($usuarioCpd->$metodo()) {
             $status = true;
