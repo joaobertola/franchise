@@ -2,7 +2,6 @@
 
 require '../../atendimento/classes/DbConnection.class.php';
 require '../controller/UsuariosCpdController.php';
-require '../controller/OcorrenciasController.php';
 
 $op = $_REQUEST['op'];
 

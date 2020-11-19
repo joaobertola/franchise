@@ -80,7 +80,7 @@ class UsuarioCpdModel
         $sql .= $set;
 
         $sql .= ' WHERE id =' . $this->usuarioCpd->getIdUsuarioCpd();
-        
+
         $pdo = $this->conexao->pdo->prepare($sql);
 
         return $pdo->execute($values);
@@ -119,44 +119,6 @@ class UsuarioCpdModel
             $pdo = $this->conexao->pdo->prepare($sql);
 
             $pdo->execute($values);
-
-            return $pdo->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new Exception('Erro ao selecionar registros.');
-        }
-    }
-
-    /**
-     * Deleta o Registro do Banco de Dados
-     */
-    public function delete($idVeiculo)
-    {
-        try {
-
-            $sql = "DELETE FROM cs2.veiculo WHERE idVeiculo = :idVeiculo";
-
-            $values[':idVeiculo'] = $idVeiculo;
-
-            $pdo = $this->conexao->pdo->prepare($sql);
-
-            return $pdo->execute($values);
-        } catch (PDOException $e) {
-            throw new Exception('Erro ao deleter registros.');
-        }
-    }
-
-    /**
-     * Lista os Funcionarios ATIVOS do Banco de Dados
-     */
-    public function selectFuncionarios()
-    {
-        try {
-
-            $sql = "SELECT * FROM cs2.funcionario f WHERE f.ativo = 'S' ORDER BY nome ASC";
-
-            $pdo = $this->conexao->pdo->prepare($sql);
-
-            $pdo->execute();
 
             return $pdo->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
