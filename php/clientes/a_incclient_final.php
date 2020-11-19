@@ -225,9 +225,6 @@
 					)
 				";
 
-// echo '<pre>';
-// var_dump($comando);
-// exit;
 
 #	if($franqueado == 1){
 #		echo '<pre>';

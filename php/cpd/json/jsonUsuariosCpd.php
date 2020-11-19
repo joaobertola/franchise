@@ -58,6 +58,10 @@ switch ($op) {
                     $usuarioCpd->setFoto($novoNome);
                 }
             }
+        } else {
+            echo '<pre>';
+            var_dump($_FILES);
+            die;
         }
 
         if ($dados['id'] == 0) {
