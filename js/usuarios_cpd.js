@@ -24,7 +24,7 @@ $(document).on("change", "#imagem", function () {
   var extPermitidas = ["jpg", "png", "gif"];
   if (fileInput.get(0).files.length) {
     var fileSize = fileInput.get(0).files[0].size; // in bytes
-    console.log(fileSize, maxSize);
+    // console.log(fileSize, maxSize);
     if (fileSize > maxSize) {
       $("#imagem").val("");
     } else if (
@@ -88,7 +88,7 @@ $(document).on("click", ".editUsuarioCpd", function (e) {
     },
     dataType: "json",
     success: function (response) {
-      console.log(response);
+      // console.log(response);
       var usuarioCpd = response[0];
       $("#titleCadastroUsuarioCpd").html(
         "Usuário " + usuarioCpd.id + " - " + usuarioCpd.nome
