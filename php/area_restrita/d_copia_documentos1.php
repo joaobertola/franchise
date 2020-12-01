@@ -7,14 +7,16 @@ if ($_REQUEST['enviar'] == 1) {
     $email = $_REQUEST['email'];
     $enderecoFoto = $_REQUEST['endereco_foto'];
 
+    
     $args = array(
         'logon' => $logon, //nao e master aqui!
         'email' => $email,
         'endereco_foto' => $enderecoFoto,
     );
-
+    
     // TRANSFORMA O ARRAY EM PARAMETROS PARA A URL
     $field_string = http_build_query($args);
+
     $url = 'http://10.2.2.8/enviarEmailContrato.php?' . $field_string;
     //echo $url;
     // CURL PARA ENVIO DOS SMS
