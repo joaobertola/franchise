@@ -171,8 +171,6 @@ if (empty($go)) {
 
 if ($go == 'ingressar') {
 
-    echo "<pre>";
-
     $mes = $_REQUEST['mes'];
     $ano = $_REQUEST['ano'];
 
@@ -203,8 +201,34 @@ if ($go == 'ingressar') {
 
     if ( $franquia == 'TODOS' )
         $sql_loop = "SELECT id, fantasia FROM cs2.franquia WHERE classificacao = 'M'";
-    else
+    else{
         $sql_loop = "SELECT id, fantasia FROM cs2.franquia WHERE id = $franquia";
+    }
+
+    // Verifica se o mesmo ja foi processado, se SIM, apenas mostra na tela pegando do banco
+    $sql1 = "SELECT count(*) qtd, detalhe 
+             FROM fechamento_franquia
+             WHERE id_franquia='$franqueado' AND mes_ano = '$mes-$ano'
+             GROUP BY id_franquia,mes_ano";
+    $ql1 = mysql_query($sql1, $con);
+    $fechamento = '';
+    while ($array = mysql_fetch_array($ql1)) {
+        $qtd = $array['qtd'];
+        $fechamento = $array['detalhe'];
+        $fechamento = str_replace(chr(13), '<br>', $fechamento);
+        $fechamento = str_replace(' ', '&nbsp;', $fechamento);
+    }
+
+    if ($fechamento != ''){
+
+        echo "<table width='100%'>
+            <tr>
+                <td class='noprint'><font face='Courier New, Courier, monospace' size='-1'><?php echo $fechamento; ?></font></td>
+            </tr>
+        </table>";
+        die;
+    }
+
     $qry_loop = mysql_query($sql_loop, $con);
     while ($array_loop = mysql_fetch_array($qry_loop)) {
 
@@ -826,7 +850,7 @@ if ($go == 'ingressar') {
             $linhav .= "<br>";
             $linhav .= "<br>";
             $linha = '';
-            echo $linhav;
+            echo "<pre>".$linhav;
 
         }else{
 
