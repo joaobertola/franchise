@@ -110,10 +110,6 @@ $i = 1;
             </tr>
             <tr>
                 <td align="center"><?php echo $i++; ?></td>
-                <td><a href="painel.php?pagina1=area_restrita/d_financeiro_comercial.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');">Financeiro/Comercial</a></td>
-            </tr>
-            <tr>
-                <td align="center"><?php echo $i++; ?></td>
                 <td><a href="painel.php?pagina1=area_restrita/d_rel_boleto_pago.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');">Titulos Pagos Nexxera</a></td>
             </tr>
         <?php
