@@ -2,12 +2,13 @@
   <td align="center">&nbsp;</td>
   <td>Area Administrativa</td>
 </tr>
-
-<?php if ($_SESSION['id'] == '163') { ?>
+<?php if ($_SESSION['id'] == '163' || $_SESSION['id'] == '4') : ?>
   <tr>
     <td align="center" class="center"><?php echo $i++; ?></td>
     <td><a href="painel.php?pagina1=cpd/view/usuarios_cpd.php" onMouseOver="return showStatus('Menu Franquias');" onMouseOut="return showStatus('');"><b> Usúarios CPD</b></a></td>
   </tr>
+<?php endif; ?>
+<?php if ($_SESSION['id'] == '163') { ?>
   <tr>
     <td align="center"><?php echo $i++; ?></td>
     <td><a href="painel.php?pagina1=Franquias/funcionario_listagem.php&lista_ativo=S" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');">Cadastro Funcionário </a></td>

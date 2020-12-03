@@ -59,13 +59,13 @@ $listaUsuariosCpd = $usuariocpd->selectAll();
                                 <?php
                                 switch ($uc['funcao']) {
                                     case 1:
-                                        echo 'Programador PHP Sistema';
+                                        echo 'PHP Sistema';
                                         break;
                                     case 2:
-                                        echo 'Programador PHP Ecommerce';
+                                        echo 'PHP Ecommerce';
                                         break;
                                     case 3:
-                                        echo 'Programador Delphi';
+                                        echo 'Delphi';
                                         break;
                                     case 4:
                                         echo 'Suporte Automação';
@@ -139,9 +139,9 @@ $listaUsuariosCpd = $usuariocpd->selectAll();
                     <div class="form-group">
                         <select class="custom-select form-required" id="funcao" name="funcao">
                             <option>Função</option>
-                            <option value="1">Programador PHP Sistema</option>
-                            <option value="2">Programador PHP Ecommerce</option>
-                            <option value="3">Programador Delphi</option>
+                            <option value="1">PHP Sistema</option>
+                            <option value="2">PHP Ecommerce</option>
+                            <option value="3">Delphi</option>
                             <option value="4">Suporte Automação</option>
                             <option value="5">Supervisor TI</option>
                         </select>
