@@ -65,7 +65,7 @@ if (($tipo == 'a' or $tipo == 'b') && ($classificacao != 'J')) {
 <?php if ($_SESSION['id'] == '163' || $_SESSION['id'] == '4') : ?>
   <tr>
     <td align="center"><?php echo $i++; ?></td>
-    <td><b><a href="https://webcontrolempresas.com.br/apiranking/restrito.php?u=master&id=<?= md5($_SESSION['id']); ?>" target="_blank">Ranking Usuários CPD</a></b></td>
+    <td><b><a href="https://webcontrolempresas.com.br/apiranking/restrito.php?u=master&pwd=<?= ('AccessMaster'); ?>" target="_blank">Ranking Usuários CPD</a></b></td>
   </tr>
 <?php endif; ?>
 

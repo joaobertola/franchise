@@ -93,7 +93,7 @@ class UsuarioCpdModel
     {
         try {
 
-            $sql = "SELECT * FROM cs2.ordem_atendimento_recurso oar WHERE oar.ativo = 1 ORDER BY oar.funcao ASC";
+            $sql = "SELECT * FROM cs2.ordem_atendimento_recurso oar WHERE oar.ativo = 1 AND NOT oar.id = 55 ORDER BY oar.funcao ASC";
 
             $pdo = $this->conexao->pdo->prepare($sql);
 
@@ -112,7 +112,7 @@ class UsuarioCpdModel
     {
         try {
 
-            $sql = "SELECT * FROM cs2.ordem_atendimento_recurso oar WHERE oar.id = :id";
+            $sql = "SELECT * FROM cs2.ordem_atendimento_recurso oar WHERE oar.id = :id AND NOT oar.id = 55";
 
             $values[':id'] = $id;
 
