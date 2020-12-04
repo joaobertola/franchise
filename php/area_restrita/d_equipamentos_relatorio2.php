@@ -229,7 +229,7 @@ switch ($tp_rel) {
 
         $sql = "SELECT a.nomefantasia, a.codloja FROM cs2.cadastro a
                 INNER JOIN cs2.logon b ON a.codloja = b.codloja 
-                WHERE MID(b.logon,1,LOCATE('S', b.logon) - 1) = " . $_REQUEST['cliente'];
+                WHERE CAST(MID(b.logon,1,6) AS UNSIGNED) = " . $_REQUEST['cliente'];
         $qry = mysql_query($sql, $con);
         $cliente = mysql_result($qry, 0, 'nomefantasia');
         $codigo = mysql_result($qry, 0, 'codloja');
@@ -557,7 +557,7 @@ switch ($tp_rel) {
         } else
             $dados_funcionario = '';
 
-        echo "<pre>".$sql;
+        //echo "<pre>".$sql;
 
         $qry = mysql_query($sql, $con);
 
@@ -712,7 +712,7 @@ switch ($tp_rel) {
         SELECT 
                 'cliente' as solicitante, a.id, a.data_compra as dt_ordem, 
                 date_format(a.data_compra,'%d/%m/%Y') as data, d.nomefantasia AS fantasia, 
-                e.nome, MID(l.logon,1,LOCATE('S', l.logon) - 1) as idFranquia_Codloja
+                e.nome, CAST(MID(l.logon,1,6) AS UNSIGNED) as idFranquia_Codloja
         FROM cs2.cadastro_equipamento a
         INNER JOIN cs2.cadastro_equipamento_descricao b ON a.id = b.id_cadastro_equipamento
         INNER JOIN cs2.cadastro   d ON a.codloja = d.codloja
@@ -1021,7 +1021,7 @@ switch ($tp_rel) {
             $sql = "SELECT
                     'cliente' as origem, DATE_FORMAT(c.data_compra,'%d/%m/%Y') as data, c.codloja, 
                     b.descricao, a.numero_serie, ca.nome,
-                    ( SELECT MID(logon,1,LOCATE('S', logon) - 1) FROM cs2.logon WHERE codloja = c.codloja LIMIT 1) AS logon,
+                    ( SELECT CAST(MID(logon,1,6) AS UNSIGNED) FROM cs2.logon WHERE codloja = c.codloja LIMIT 1) AS logon,
                     ( SELECT nomefantasia FROM cs2.cadastro WHERE codloja = c.codloja LIMIT 1) AS nomefantasia
                 FROM cs2.cadastro_equipamento_descricao a 
                 INNER JOIN base_web_control.produto b  ON b.id_cadastro = 62735 AND ( a.codigo_barra = b.codigo_barra OR a.codigo_barra = b.identificacao_interna)
