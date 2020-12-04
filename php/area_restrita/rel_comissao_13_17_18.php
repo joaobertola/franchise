@@ -95,8 +95,8 @@ $res = mysql_query($sql, $con); ?>
                                 GROUP BY ce.id
                                 ORDER BY ce.id ASC";
 
-           // echo '<pre>'.$sqlEquipamentos;
-           // die;
+            echo '<pre>'.$sqlEquipamentos;
+            die;
 
             $qryEquipamentos = mysql_query($sqlEquipamentos, $con);
 
