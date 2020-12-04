@@ -1108,9 +1108,8 @@ switch ($tp_rel) {
                     $iptTipoRelatorio = $_POST['iptTipoRelatorio'];
 
                     switch ($_POST['iptFuncao']) {
-
                         case '9': // Atendimento Comercial Externo
-                            echo __LINE__;
+
                             if ($_POST['iptTipoRelatorio'] == 'S') {
                                 include('rel_comissao_func.php');
                             } else if ($_POST['iptTipoRelatorio'] == 'M') {
@@ -1121,13 +1120,11 @@ switch ($tp_rel) {
                             break;
 
                         case '19': // Atendimento Administrativo Externo
-                            echo __LINE__;
                             include('rel_comissao_atend_externo.php');
 
                             break;
 
                         case '10': // Auxiliar Comercial
-                            echo __LINE__;
                             include('rel_comissao_aux_comercial.php');
                             break;
 
@@ -1135,17 +1132,16 @@ switch ($tp_rel) {
                         case '17':
                         case '18':
                         case '28':  // incluido Auxiliar de Conferencia - Pedido Danillo
-                            echo __LINE__;
                             include('rel_comissao_13_17_18.php');
                             break;
 
                         case '24': // Assistente de Automação
-                            echo __LINE__;
+
                             include('rel_assistente_automacao.php');
                             break;
 
                         default:
-                            echo __LINE__;
+
                             include('rel_cred_deb_func.php');
                             break;
                     }
