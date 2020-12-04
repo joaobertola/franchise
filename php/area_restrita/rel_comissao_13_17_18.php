@@ -42,7 +42,7 @@ if ( $id_funcionario > 0 )
     $sql .= " AND f.id = $id_funcionario";
 
 
-//echo '<pre>'.$sql;
+echo '<pre>'.$sql;
 
 $res = mysql_query($sql, $con); ?>
 <button type="button" id="btnImprimir" class="btnImprimir pull-right" style="margin-top: 15px;">Imprimir Relatório</button>
