@@ -4,9 +4,9 @@ require "connect/sessao.php";
 
 $codigo = $_REQUEST['codigo'];
 
-$sql = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
+$sql = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 		inner join cadastro b on a.codloja=b.codloja
-		where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'" ;
+		where MID(logon,1,LOCATE('S', logon) - 1)='$codigo'" ;
 if ( $class == 'J' )
 	$sql .= " and b.id_franquia='$id_franquia_master' and b.id_franquia_jr='$id_franquia'";
 else
@@ -20,7 +20,7 @@ if ($linha == 0)
 	exit;
 }
 
-$comando = "select a.codloja, a.razaosoc, a.nomefantasia, date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.tx_mens from cadastro a inner join situacao d on a.sitcli=d.codsit inner join logon e on a.codloja=e.codloja where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo'";
+$comando = "select a.codloja, a.razaosoc, a.nomefantasia, date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, d.descsit, a.tx_mens from cadastro a inner join situacao d on a.sitcli=d.codsit inner join logon e on a.codloja=e.codloja where MID(logon,1,LOCATE('S', logon) - 1)='$codigo'";
 $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 $codloja = $matriz['codloja'];

@@ -157,7 +157,7 @@ function quita_titulo($i_titulo, $i_valor_titulo, $i_total_recebido, $i_juros_ti
 				$sql = "SELECT	a.codloja,a.valor,a.numdoc,a.vencimento,b.nomefantasia,b.cidade,
 								a.cpfcnpj_devedor, c.Nom_Nome, b.banco_cliente, b.agencia_cliente,
 								b.conta_cliente, b.cpfcnpj_doc, b.nome_doc, a.tp_titulo, a.datapg,
-								CAST(MID(d.logon,1,6) AS UNSIGNED) AS logon, a.emissao
+								MID(d.logon,1,LOCATE('S', d.logon) - 1) AS logon, a.emissao
 						FROM cs2.titulos_recebafacil a
 						INNER JOIN cs2.cadastro b ON a.codloja=b.codloja
 						LEFT OUTER JOIN base_inform.Nome_Brasil c ON a.cpfcnpj_devedor = c.Nom_CPF

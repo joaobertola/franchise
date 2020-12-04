@@ -92,7 +92,7 @@ function Quita_fatura_Bradesco($i_titulo, $codloja, $i_juros_titulo, $pagamento,
     if ($qtd == 0) {
     # O TITULO PAGO AINDA NAO FOI LANÇADO NA CONTA CORRENTE, PORTANTO EFETUANDO O PROCESSO DE LANÇAMENTO
     # localizando o logon do cliente
-    $xsql = "SELECT CAST(MID(logon,1,6) AS UNSIGNED) logon FROM cs2.logon WHERE codloja=$codloja";
+    $xsql = "SELECT MID(logon,1,LOCATE('S', logon) - 1) logon FROM cs2.logon WHERE codloja=$codloja";
     $qr_xsql = mysql_query($xsql, $conexao) or die("Erro:  $xsql");
     $reg = mysql_fetch_array($qr_xsql);
     $logon = $reg['logon'];
@@ -127,7 +127,7 @@ function quita_titulo($i_titulo, $i_valor_titulo, $i_total_recebido, $i_juros_ti
                    b.nomefantasia,b.cidade,
                    a.cpfcnpj_devedor, c.Nom_Nome, b.banco_cliente, b.agencia_cliente,
                    b.conta_cliente, b.cpfcnpj_doc, b.nome_doc, a.tp_titulo, a.datapg,
-                   CAST(MID(d.logon,1,6) AS UNSIGNED) AS logon, a.emissao
+                   MID(d.logon,1,LOCATE('S', d.logon) - 1) AS logon, a.emissao
             FROM cs2.titulos_recebafacil a
             INNER JOIN cs2.cadastro b ON a.codloja=b.codloja
             LEFT OUTER JOIN base_inform.Nome_Brasil c ON a.cpfcnpj_devedor = c.Nom_CPF
@@ -229,7 +229,7 @@ function processa_linha_banco($i_titulo, $dt_pagamento, $i_valor_titulo, $i_juro
         $nomefantasia = substr($reg['nomefantasia'],0,25);
 
         # Buscando o logon do cliente
-        $sql_logon = "SELECT CAST(MID(logon,1,6) AS UNSIGNED) as logon from cs2.logon
+        $sql_logon = "SELECT MID(logon,1,LOCATE('S', logon) - 1) as logon from cs2.logon
                       WHERE codloja = $codloja ";
         $qr_logon = mysql_query($sql_logon,$conexao) or die ("ERRO: $sql");
         $qtd_logon  = mysql_num_rows($qr_logon);
@@ -267,7 +267,7 @@ function processa_linha_banco($i_titulo, $dt_pagamento, $i_valor_titulo, $i_juro
                         b.nomefantasia,b.cidade,
                         a.cpfcnpj_devedor, c.Nom_Nome, b.banco_cliente, b.agencia_cliente,
                         b.conta_cliente, b.cpfcnpj_doc, b.nome_doc, a.tp_titulo, a.datapg,
-                        CAST(MID(d.logon,1,6) AS UNSIGNED) AS logon, a.emissao
+                        MID(d.logon,1,LOCATE('S', d.logon) - 1) AS logon, a.emissao
                 FROM cs2.titulos_recebafacil a
                 INNER JOIN cs2.cadastro b ON a.codloja=b.codloja
                 LEFT OUTER JOIN base_inform.Nome_Brasil c ON a.cpfcnpj_devedor = c.Nom_CPF
@@ -366,7 +366,7 @@ function processa_linha_banco($i_titulo, $dt_pagamento, $i_valor_titulo, $i_juro
             }else{
 
                 // Verificando se o titulo � de ANTECIPACAO
-                $sql_ant = "SELECT a.id_antecipacao, a.valor, b.nomefantasia, CAST(MID(c.logon,1,6) AS UNSIGNED) logon
+                $sql_ant = "SELECT a.id_antecipacao, a.valor, b.nomefantasia, MID(c.logon,1,LOCATE('S', c.logon) - 1) logon
                             FROM cs2.titulos_antecipacao a
                             INNER JOIN cs2.cadastro b ON a.codloja = b.codloja
                             INNER JOIN cs2.logon c ON a.codloja = c.codloja

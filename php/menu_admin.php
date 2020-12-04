@@ -74,6 +74,15 @@
         <td align="center"><?php echo $i++; ?></td>
         <td><a href="painel.php?pagina1=area_restrita/d_fechamento.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');">Relatório de Faturamento</a></td>
     </tr>
+    
+    <?php
+    if($_SESSION['id'] == '163') { ?>
+        <tr>
+            <td align="center"><?php echo $i++; ?></td>
+            <td ><a href="painel.php?pagina1=area_restrita/d_fechamento_new.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');"><font color="#00CC00" style="font-weight:bold">Retenção Franquia x Franqueadora</font></a></td>
+        </tr>
+     <?php } ?>
+
     <tr>
         <td align="center"><?php echo $i++; ?></td>
         <td><a href="painel.php?pagina1=Franquias/b_emailcli.php" onmouseover="return showStatus('Menu Franquias');" onmouseout="return showStatus('');">E-mails dos clientes </a></td>

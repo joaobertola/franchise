@@ -285,7 +285,7 @@ $data_atual = date("Y-m-d");
 
 <?php
 
-$sql_cliente = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.razaosoc, b.nomefantasia,
+$sql_cliente = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.razaosoc, b.nomefantasia,
                     b.fone, b.fax, b.celular, b.email, b.sitcli
                 from logon a
                 inner join cadastro b on a.codloja=b.codloja

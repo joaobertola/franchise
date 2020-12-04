@@ -83,7 +83,7 @@ while ( $reg = mysql_fetch_array( $qry ) ){
 	$nome    = $reg['nomefantasia'];
 	$sitcli  = $reg['sitcli'];
 	
-	$sql_saldo = "SELECT CAST(MID(logon,1,6) AS UNSIGNED) as logon FROM cs2.logon WHERE codloja='$codloja'";
+	$sql_saldo = "SELECT MID(logon,1,LOCATE('S', logon) - 1) as logon FROM cs2.logon WHERE codloja='$codloja'";
 	$qr2 = mysql_query($sql_saldo,$con);
 	$logon = mysql_result($qr2,0,'logon');
 	

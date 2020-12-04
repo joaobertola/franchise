@@ -4,7 +4,7 @@ require "connect/sessao.php";
 $codloja = $_GET['codloja'];
 $logon = $_GET['logon'];
 
-$comando = "select a.codloja, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.razaosoc, a.nomefantasia, 
+$comando = "select a.codloja, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.razaosoc, a.nomefantasia, 
 			date_format(a.dt_cad, '%d/%m/%Y') as data, a.sitcli, a.tipo_cliente,
 			d.descsit, a.tx_mens from cadastro a
 			inner join situacao d on a.sitcli=d.codsit
@@ -18,7 +18,7 @@ $codloja = $matriz['codloja'];
 if ( $matriz['tipo_cliente'] == 'A' )
 	$command = "select a.tpcons, b.nome, a.qtd, a.consumo from cons_liberada_logon a 
 				inner join valcons b on a.tpcons=b.codcons
-				where a.codloja=$codloja and CAST(MID(a.logon,1,6) AS UNSIGNED) = $logon";
+				where a.codloja=$codloja and MID(a.logon,1,LOCATE('S', a.logon) - 1) = $logon";
 
 else
 	$command = "select a.tpcons, b.nome, a.qtd, a.consumo from cons_liberada a 

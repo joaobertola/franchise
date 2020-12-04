@@ -81,6 +81,11 @@ $(document).ready(function(){
                 //$('#modalDetalhes .spanSolicitacoes ').html(solicitados);
                 $('#modalDetalhes .spanAssunto ').text(res.assunto);
                 $('#modalDetalhes .spanDescricao ').text(res.descricao);
+
+                //difinit valor da dificuldade e da previsao
+                $('#modalDetalhes select[name=iptAlteraNivelDificuldade] ').val(res.dificuldade);
+                $('#modalDetalhes input[name=iptTempoEstimado]').val(res.previsao);
+                $('#modalDetalhes input[name=iptTempoEstimado]').mask('00:00:00');
                 
                 /* prenche inputs para manter os dados importantes */
                  $('#modalDetalhes input[name=iptProtocolo]').val(res.protocolo);

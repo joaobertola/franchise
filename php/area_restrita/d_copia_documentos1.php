@@ -7,14 +7,16 @@ if ($_REQUEST['enviar'] == 1) {
     $email = $_REQUEST['email'];
     $enderecoFoto = $_REQUEST['endereco_foto'];
 
+    
     $args = array(
         'logon' => $logon, //nao e master aqui!
         'email' => $email,
         'endereco_foto' => $enderecoFoto,
     );
-
+    
     // TRANSFORMA O ARRAY EM PARAMETROS PARA A URL
     $field_string = http_build_query($args);
+
     $url = 'http://10.2.2.8/enviarEmailContrato.php?' . $field_string;
     //echo $url;
     // CURL PARA ENVIO DOS SMS
@@ -137,18 +139,33 @@ $qry_sql = mysql_query($sql_digitalizado, $con) or die("Erro SQL: $sql_digitaliz
                             $tipo_arq = strtoupper(substr($xarq, strpos($xarq, '.'), 4));
                             $arquivo = 'http://contrato.webcontrolempresas.com.br/inform/' . $xarq;
 
+                            //echo $tipo_arq;
+
                             if ($xarq == '') {
                                 ?>
                                     <img src="area_restrita/d_copia_documentos_ver.php?id=<?= $registro['id'] ?>" width="100%" height="100%">
                                 <?php
                             } else {
                                 if ($tipo_arq == '.JPG') {
+
+
+                                   // shell_exec("rm -rf  /var/www/html/franquias/php/$xarq");
+
+                                    /*
                                     $enderecofoto[] .= 'http://contrato.webcontrolempresas.com.br/inform/' . $registro['caminho_imagem'];
                                     $endereco = 'http://contrato.webcontrolempresas.com.br/inform/' . $xarq;
+                                    */
+
+                                    $xarq = str_replace('contrato/', '', $xarq);
+                                    $enderecofoto[] .= 'http://contrato.webcontrolempresas.com.br/inform/' . $registro['caminho_imagem'];
+                                    
+                                    $endereco = 'https://www.webcontrolempresas.com.br/franquias/php/' . $xarq;
+
                                     ?>
                                     <input type="hidden" name="endereco_foto[]" value="<?= $endereco ?>">
-                                    <img src='http://contrato.webcontrolempresas.com.br/inform/<?= $xarq ?>' width="100%" height="100%">
+                                    <img src='https://www.webcontrolempresas.com.br/franquias/php/<?= $xarq ?>' width="100%" height="100%">
                                     <?php
+
                                 } else {
 
                                     echo "<input type='hidden' name='endereco_foto[]' value='http://contrato.webcontrolempresas.com.br/inform/$xarq'>";

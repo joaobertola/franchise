@@ -88,7 +88,7 @@ class NovoAtendimento {
                 */
                 $sql2 =  "  
                     SELECT
-                        CAST(MID(logon.logon,1,6) AS UNSIGNED) as logon
+                        MID(logon.logon,1,LOCATE('S', logon.logon) - 1)
                     FROM
                         cs2.logon as logon
                     WHERE

@@ -55,7 +55,7 @@ if (empty($go)) {
 //pega o tipo de pacote da tabela Clientes
 $codloja = $_GET['codloja'];
 
-$resulta = "SELECT a.razaosoc, a.tx_mens, CAST(MID(b.logon,1,6) AS UNSIGNED) as logon FROM cs2.cadastro a
+$resulta = "SELECT a.razaosoc, a.tx_mens, MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon FROM cs2.cadastro a
 			inner join cs2.logon b on a.codloja=b.codloja
 			WHERE a.codloja='$codloja'";
 $resulta = mysql_query($resulta, $con);

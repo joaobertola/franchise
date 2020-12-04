@@ -107,9 +107,9 @@ if ($go=='ingressar') {
 	if ($tpregistro == 1) {
 		if (($tipo == "a") || ($tipo == "c")) $frq = "";
 		else $frq = "and id_franquia='$franqueado'";
-		$sql = "select CAST(MID(a.logon,1,6) AS UNSIGNED) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
+		$sql = "select MID(a.logon,1,LOCATE('S', a.logon) - 1) as logon, b.id_franquia, b.codloja, b.razaosoc from logon a
 				inner join cadastro b on a.codloja=b.codloja
-				where CAST(MID(logon,1,6) AS UNSIGNED)='$codigo' $frq";
+				where MID(logon,1,LOCATE('S', logon) - 1)='$codigo' $frq";
 		$ql = mysql_query($sql,$con);
 		$linha = mysql_num_rows($ql);
 		if ($linha == 0) 
@@ -122,7 +122,7 @@ if ($go=='ingressar') {
 	}
 	if ($tpregistro == 2) $criterio = "";
 	
-	$sql = "Select a.id, CAST(MID(c.logon,1,6) AS UNSIGNED) as logon, b.razaosoc, date_format(a.data_msg,'%d/%m/%Y') as data_msg, a.titulo, a.data_leitura from cs2.correio_cliente a
+	$sql = "Select a.id, MID(c.logon,1,LOCATE('S', c.logon) - 1) as logon, b.razaosoc, date_format(a.data_msg,'%d/%m/%Y') as data_msg, a.titulo, a.data_leitura from cs2.correio_cliente a
 			inner join cs2.cadastro b on a.codloja=b.codloja
 			inner join cs2.logon c on a.codloja=c.codloja
 			where b.id_franquia='$franqueado' and titulo<>'COMUNICADO INTERNO' $criterio
@@ -195,7 +195,7 @@ if ($go=='ingressar') {
 } // fim if go=ingressar 
 
 if ($go=='individual') {
-	$sql = "select a.codloja, date_format(a.data_msg,'%d/%m/%Y') as data_msg, a.titulo, a.mensagem, b.razaosoc, b.nomefantasia, b.insc, CAST(MID(c.logon,1,6) AS UNSIGNED) as logon from correio_cliente a
+	$sql = "select a.codloja, date_format(a.data_msg,'%d/%m/%Y') as data_msg, a.titulo, a.mensagem, b.razaosoc, b.nomefantasia, b.insc, MID(c.logon,1,LOCATE('S', c.logon) - 1) as logon from correio_cliente a
 			inner join cadastro b on a.codloja=b.codloja
 			inner join logon c on a.codloja=c.codloja
 			where a.id='$id_correio'";

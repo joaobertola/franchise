@@ -7,7 +7,7 @@ $comando = "select a.codloja, a.razaosoc, a.nomefantasia, date_format(a.dt_cad, 
 			d.descsit, a.tx_mens, a.tipo_cliente from cadastro a
 			inner join situacao d on a.sitcli=d.codsit
 			inner join logon e on a.codloja=e.codloja
-			where CAST(MID(e.logon,1,6) AS UNSIGNED)='$codigo'";
+			where MID(e.logon,1,LOCATE('S', e.logon) - 1)='$codigo'";
 $res = mysql_query ($comando, $con);
 $matriz = mysql_fetch_array($res);
 $codloja = $matriz['codloja'];
@@ -19,7 +19,7 @@ if ( $matriz['tipo_cliente'] <> 'A' ){
 }else{
 	$command = "select a.tpcons, b.nome, a.qtd, a.consumo from cons_liberada_logon a 
 				inner join valcons b on a.tpcons=b.codcons
-				where a.codloja=$codloja and CAST(MID(a.logon,1,6) AS UNSIGNED)='$codigo'";
+				where a.codloja=$codloja and MID(a.logon,1,LOCATE('S', a.logon) - 1)='$codigo'";
 }
 
 $result = mysql_query ($command, $con);

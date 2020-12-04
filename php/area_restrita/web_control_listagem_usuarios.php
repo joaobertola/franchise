@@ -47,7 +47,7 @@ if($_REQUEST['codigo']){
 				FROM 
 				cadastro c INNER JOIN
 				logon l ON c.codloja = l.codloja	
-				WHERE CAST(MID(logon,1,6) AS UNSIGNED) = '{$_REQUEST['codigo']}'";
+				WHERE MID(logon,1,LOCATE('S', logon) - 1) = '{$_REQUEST['codigo']}'";
 	$_qry = mysql_query($_sql, $con);	
 	$codloja   = mysql_result($_qry,0,'codloja');
 	$sql .=" AND c.codloja = '$codloja' ";

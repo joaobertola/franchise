@@ -89,7 +89,7 @@ $sql = "SELECT
              b.cnpj_empresa_faturar, b.insc, b.codloja, b.razaosoc, b.email,
              b.end, b.numero, b.bairro, b.cidade, b.uf, b.cep, b.fone,
              c.protocolo, c.status,
-             CAST(MID(logon,1,6) AS UNSIGNED) as logon
+             MID(logon,1,LOCATE('S', logon) - 1) as logon
         FROM cs2.titulos a
         INNER JOIN cs2.cadastro b ON a.codloja = b.codloja
         LEFT OUTER JOIN cs2.titulos_notafiscal c ON a.numdoc = c.numdoc

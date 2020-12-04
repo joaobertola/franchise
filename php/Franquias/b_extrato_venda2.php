@@ -61,7 +61,7 @@ if($_POST['ordem'] == 'codloja'){
 
 if ($_REQUEST['tp_rel'] == '') {
 
-    $sql = "SELECT CAST(MID(b.logon,1,6) AS UNSIGNED) as logon, a.nomefantasia, date_format(a.dt_cad,'%d/%m/%Y') as dt_cad, mid(d.nome,1,10) as vendedor, c.fantasia,
+    $sql = "SELECT MID(b.logon,1,LOCATE('S', b.logon) - 1) as logon, a.nomefantasia, date_format(a.dt_cad,'%d/%m/%Y') as dt_cad, mid(d.nome,1,10) as vendedor, c.fantasia,
                     date_format(a.dt_pgto_comissao_vendedor, '%d/%m/%Y') AS dt_pgto_comissao_vendedor,
                     a.valor_comissao_vendedor, mid(e.nome,1,10) as agendador, a.sitcli, a.pendencia_contratual, a.pendencia_contrato, a.codLoja, a.contadorsn
             FROM cadastro a

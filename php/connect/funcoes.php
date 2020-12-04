@@ -300,7 +300,7 @@ function data_mysql_i($data){
 function ver_logon($codloja){
 	
 	$con = @mysql_connect("10.2.2.3", "csinform", "inform4416#scf");
-	$sql = "SELECT CAST(MID(logon,1,6) AS UNSIGNED) AS logon FROM cs2.logon WHERE codloja = $codloja";
+	$sql = "SELECT MID(logon,1,LOCATE('S', logon) - 1) AS logon FROM cs2.logon WHERE codloja = $codloja";
 	$qry = mysql_query($sql,$con) or die($sql);
 	$logon = mysql_result($qry,0,'logon');
 	return $logon;
