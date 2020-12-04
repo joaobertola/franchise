@@ -557,7 +557,7 @@ switch ($tp_rel) {
         } else
             $dados_funcionario = '';
 
-        //echo "<pre>".$sql;
+        echo "<pre>".$sql;
 
         $qry = mysql_query($sql, $con);
 
